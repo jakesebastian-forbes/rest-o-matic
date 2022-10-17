@@ -1,0 +1,45 @@
+#myVideo {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    margin-top: 0;
+    min-width: 100%;
+    min-height: 100%;
+  }
+   
+#reg_f{
+
+margin: 15px; 
+margin-top: 150px;
+/* margin-bottom: auto; */
+
+}
+
+/* // Extra small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) {
+
+
+ }
+
+/* // Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) and (max-width: 767.98px) {
+
+
+}
+
+/* // Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 991.98px) { 
+
+
+}
+
+/* // Large devices (desktops, 992px and up) */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+
+
+ }
+/* // Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) { 
+
+    
+}
