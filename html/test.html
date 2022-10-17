@@ -1,34 +1,106 @@
 <!DOCTYPE html>
-<html>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/bootstrap-5.2.2/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
 <body>
 
-  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d241.8967825637641!2d120.63980472095764!3d14.056585335956887!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33bd96bd0a14e985%3A0x29f6cee62947d4f5!2sWaltermart%20Nasugbu!5e0!3m2!1sen!2sph!4v1665988868684!5m2!1sen!2sph" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+<section class = "bg-light">
+    <div class = "container">
+        <div class = "text-center">
+            <h2>Stay int he Loop</h2>
+            <p class = "lead"> Get the latest updates as they happen</p>
 
-<canvas id="myChart" style="width:100%;max-width:600px"></canvas>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-md-8 text-center">
+                <p class="text-muted my-4">
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officia eum doloribus totam, n
+                    ostrum culpa perspiciatis at laudantium neque corrupti eligendi sapiente labore vitae voluptatibus m
+                    aiores similique quasi eos fugiat ipsum.
+                </p>
 
-<script>
-var xValues = ["Italy", "France", "Spain", "USA", "Argentina"];
-var yValues = [55, 49, 44, 24, 15];
-var barColors = ["red", "green","blue","orange","brown"];
+                <button class="btn btn-primary" data-bs-toggle ="modal" data-bs-target = "#reg-modal" id ="mybtn">
+                    Register for updates
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
 
-new Chart("myChart", {
-  type: "bar",
-  data: {
-    labels: xValues,
-    datasets: [{
-      backgroundColor: barColors,
-      data: yValues
-    }]
-  },
-  options: {
-    legend: {display: false},
-    title: {
-      display: true,
-      text: "World Wine Production 2018"
-    }
-  }
-});
+<!-- modal -->
+
+<div class="modal fade" id = "reg-modal" tabindex="-1" aria-labelledby="modal-title" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modal-title">Geasdasd</h5>
+                <button class="btn-close" data-bs-dismiss ="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                     Ipsam voluptatum voluptas, enim est, maxime similique dignissimos 
+                     voluptatem quia nulla reiciendis eligendi sequi magnam officia? Eveniet 
+                     aspernatur pariatur repellat modi quae!</p>
+                     <label for="modal-email" class ="form-label">Your email</label>
+                     <input type="email"class = "form-control" id = "modal-email" placeholder="asdasdasd" name="" >
+                     <div class="modal-footer">
+
+                        <button class="btn btn-primary">
+                            sadas
+                        </button>
+
+                     </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Launch demo modal
+  </button>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          ...
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <link rel="script" href="/bootstrap-5.2.2/js/bootstrap.min.js">
+<script type = "text/javascript">
+const myModal = document.getElementById('exampleModal')
+const myInput = document.getElementById('mybtn')
+ 
+myModal.addEventListener('shown.bs.modal', () => {
+  myInput.focus()
+})
 </script>
 
 </body>
