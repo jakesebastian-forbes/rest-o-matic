@@ -11,6 +11,18 @@
     <link rel="stylesheet" href="/bootstrap-5.2.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/general.css">
 </head>
+
+<style>
+
+  .nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+      color: #fff;
+      background-color: #af2e89;
+      border-radius: 90px;
+  }
+
+</style>
+
+
 <body>
 
     <div class = "container-fluid" style ="background-color: white;">  
@@ -36,39 +48,65 @@
                 </nav>      
             </div>     
             
-            <div class = "row m-5"> 
-           
-                <nav class="nav nav-pills nav-fill mynavbar py-3"> 
-                    <a class="nav-link myheading1" href="#"><img src="/images/icon/log2.png" alt="" style="height:70px;"> LOGS</a>
-                    <a class="nav-link active myheading1" aria-current="page" href="#"><img src="/images/icon/analytics.png" alt="" style="height:70px;"> DASHBOARD</a> 
+          
+    <div class="row m-5">
+      <div class="panel-body border" style="width: 80vw; margin-left: auto; margin-right: auto;background-color: rgb(13, 13, 13);">
+        
+        <ul class="nav nav-pills nav-justified" id="pills-tab" role="tablist">
+
+          <!-- <li class="nav-brand ">
+
+            <img src="/images/icon/web_icon.png" alt="" style = "height: 75px; margin-right:150px" class="">
+          </li> -->
+          <li class="nav-item my-auto myheading1" role="presentation">
+            <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true"
+            style="color:white"><span>
+              <img src="/images/icon/files.png" alt="logs" height="75px" style ="filter: invert();">
+            </span> LOGS</button>
+          </li>
+          <li class="nav-item my-auto myheading1" role="presentation">
+            <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false"
+            style="color:white"><span>
+              <img src="/images/icon/analytics.png" alt="dashboard" style="height: 75px; filter: saturate(0);" >
+            </span> DASHBOARD</button>
+          </li>
+          <!-- <li class="nav-item my-auto" role="presentation">
+            <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Contact</button>
+          </li>
+          <li class="nav-item my-auto" role="presentation">
+            <button class="nav-link" id="pills-disabled-tab" data-bs-toggle="pill" data-bs-target="#pills-disabled" type="button" role="tab" aria-controls="pills-disabled" aria-selected="false" disabled>Disabled</button>
+          </li> -->
+        </ul>
+
+      </div>
+
+      <div class="panel-body border" style="width: 80vw; height:70vh;margin-left: auto; margin-right: auto;background-color: rgb(251, 130, 130);">
+        <div class="tab-content" id="pills-tabContent">
+            <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0" style="">
+              <img src="/images/yeji.jpg" alt="" style ="object-fit:contain; height: 400px;" class ="">
               
               
-                </nav>
-                <div class = "" style ="min-height: 80vh; background-color: rgb(245, 245, 245);">     
+              1</div>
+            <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" tabindex="0">
+              <img src="/images/icon/web_icon.png" alt="" style ="height: 400px;">
+              
+              ...2</div>
+            <!-- <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab" tabindex="0">...3</div>
+            <div class="tab-pane fade" id="pills-disabled" role="tabpanel" aria-labelledby="pills-disabled-tab" tabindex="0">...4</div> -->
+        </div>
+      </div>
+
+    </div>
 
 
 
-                </div>
-
-                  
-             
-                  </ul>
-                  <div class="tab-content" id="pills-tabContent">
-                    <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">1</div>
-                    <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" tabindex="0">2</div>
-                    <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab" tabindex="0">3</div>
-
-                  </div>
 
 
-            </div>  
-
-            
-      
 
     </div>
     
 
+    <link rel="script" href="/bootstrap-5.2.2/js/bootstrap.min.js">
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
 integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
