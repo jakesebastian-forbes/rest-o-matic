@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Login | Rest-o-Matic</title>
-  <link rel="icon" type="image/x-icon" href="images/icon/web_icon.png"/> 
+  <link rel="icon" type="image/x-icon" href="images/icon/web_icon.png" />
   <link rel="stylesheet" href="bootstrap-5.2.2/css/bootstrap.min.css" />
   <link rel="stylesheet" href="css/general.css" />
 </head>
@@ -40,7 +40,7 @@
         RES-O-MATIC!
       </h1>
 
-      <div class="row px-5 py-1 g-0" style ="margin-left: 2%;">
+      <div class="row px-5 py-1 g-0" style="margin-left: 2%;">
         <div class="col-3 g-0">
           <img src="images/2dogs.jpg" class="img img-fluid myimg" alt="2dogs" />
           <img src="images/2dogs.jpg" class="img img-fluid myimg" alt="2dogs" />
@@ -55,7 +55,8 @@
         <div class="col-4">
           <div class="panel panel-basic border rounded" style="background-color: white; height: 100%">
             <div class="row">
-              <img src="images/yeji.jpg" class="img img-responsive rounded-circle mx-auto d-block" alt="avatar_logo" style="
+              <img src="images/yeji.jpg" class="img img-responsive rounded-circle mx-auto d-block" alt="avatar_logo"
+                style="
                     max-height: 180px;
                     max-width: 200px;
                     margin-top: -15%;
@@ -105,7 +106,7 @@
                     <button class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
 
-                  <div class="modal-body p-4">  
+                  <div class="modal-body p-4">
                     <div class="text-center">
                       <div class="row mb-2">
 
@@ -119,38 +120,52 @@
 
                       </div>
 
-                    
-                        <div class="row mb-2 my-0 py-0 gx-0">    
-                          <input type="email" class="form-control" id="modal-email" placeholder="Mobile number or email" name="" />
-                        </div>
 
-                        <div class="row mb-2 my-0 py-0 gx-0">  
-                          <input type="password" class="form-control" id="modal-email" placeholder="New password" name="" />
-                        </div> 
-                        <div class="row mb-2 my-0 py-0 gx-0">  
-                          <input type="password" class="form-control" id="modal-email" placeholder="Confirm password" name="" />
-                        </div>
-                      
-                       <!-- birthday -->
+                      <div class="row mb-2 my-0 py-0 gx-0">
+                        <input type="email" class="form-control" id="modal-email" placeholder="Mobile number"
+                          name="" />
+                      </div>
+
+                      <div class="row mb-2 my-0 py-0 gx-0">
+                        <input type="email" class="form-control" id="modal-email" placeholder="E-mail"
+                          name="" />
+                      </div>
+
+                      <div class="row mb-2 my-0 py-0 gx-0">
+                        <input type="password" class="form-control" id="modal-email" placeholder="New password"
+                          name="" />
+                      </div>
+                      <div class="row mb-2 my-0 py-0 gx-0">
+                        <input type="password" class="form-control" id="modal-email" placeholder="Confirm password"
+                          name="" />
+                      </div>
+
+                      <div class="row mb-2 my-0 py-0 gx-0">
+                        <input type="text" class="form-control" id="modal-email" placeholder="Address"
+                          name="" />
+                      </div>
+
+                      <!-- birthday -->
                       <div class="row mb-2">
                         <div class="col my-2">
                           <h6>
                             Must be at least 16 years old!
-                          </h6>  
+                          </h6>
                         </div>
                         <div class="col">
                           <input type="date" class="form-control" id="modal-email" placeholder="date" name="" />
                         </div>
-                      
+
                       </div>
 
                       <!-- gender -->
 
                       <!-- policy agreement -->
-                   <div>
+                      <div>
 
 
-                   </div>
+
+                      </div>
 
 
                     </div>
