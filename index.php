@@ -6,22 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home | Rest-o-Matic</title>
 
-    <link rel="icon" type="image/x-icon" href="/images/web_icon.png">
 
-    <link rel="stylesheet" href="/bootstrap-5.2.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/css/general.css">
+    <link rel="icon" type="image/x-icon" href="images/icon/web_icon.png"/> 
+    <link rel="stylesheet" href="bootstrap-5.2.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/general.css">
 </head>
 <body>
 
-    <div class = "container-fluid" style ="background-image: url(/images/bg/home-bg2.png); background-repeat:no-repeat; height:100vh; width:100vw; min-width:fit-content;">  
+    <div class = "container-fluid" style ="background-image: url(images/bg/home-bg2.png); background-repeat:no-repeat; height:100vh; width:100vw; min-width:fit-content;">  
        
             <div class = "row"> 
                 <nav class="navbar mynavbar" style = "width:100vw;min-width: fit-content;max-height: 86px;">   
                     <div class="d-flex flex-row mx-5"> 
-                        <img src="/images/icon/web_icon.png" alt="web_icon.png" style="max-height: 70px;">  
+                        <img src="images/icon/web_icon.png" alt="web_icon.png" style="max-height: 70px;">  
                         <!-- <span class="navbar-brand mb-0 myheading1"></span> --> 
-                        <a type ="button" class ="mybtn1" href = "/html/login.html">LOGIN</a>
-                        <a type ="button" class ="mybtn1" href="/html/about_us.html">ABOUT US</a>
+                        <a type ="button" class ="mybtn1" href = "login.php">LOGIN</a>
+                        <a type ="button" class ="mybtn1" href="about_us.php">ABOUT US</a>
                     </div>
                 </nav>      
             </div>         

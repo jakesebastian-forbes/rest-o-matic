@@ -6,8 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About us | Rest-o-Matic!</title>
 
-    <link rel="stylesheet" href="/bootstrap-5.2.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/css/general.css">
+    <link rel="icon" type="image/x-icon" href="images/icon/web_icon.png"/> 
+    <link rel="stylesheet" href="bootstrap-5.2.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/general.css">
 
 
     <style>
@@ -75,13 +76,13 @@
     <div class="row">
         <nav class="navbar mynavbar" style="width: 100vw; min-width: fit-content; max-height: 86px">
           <div class="d-flex justify-content-start">
-            <img src="/images/icon/web_icon.png" class="px-3" alt="web_icon.png" style="max-height: 70px" />
+            <img src="images/icon/web_icon.png" class="px-3" alt="web_icon.png" style="max-height: 70px" />
             <!-- <span class="navbar-brand mb-0 myheading1"></span> -->
             <h1 class="myheading1" style="padding-bottom: 0">ABOUT US</h1>
             <!-- <a type ="button" class ="mybtn1">ABOUT US</a> -->
           </div>
           <div class="d-flex justify-content-end">
-            <a type="button" class="mybtn1 mx-4" href="/html/home_page.html" style="
+            <a type="button" class="mybtn1 mx-4" href="index.php" style="
                   padding-bottom: 10px;
                   background-color: #7ed957;
                   color: black;">HOME</a>

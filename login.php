@@ -6,8 +6,9 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Login | Rest-o-Matic</title>
-  <link rel="stylesheet" href="/bootstrap-5.2.2/css/bootstrap.min.css" />
-  <link rel="stylesheet" href="/css/general.css" />
+  <link rel="icon" type="image/x-icon" href="images/icon/web_icon.png"/> 
+  <link rel="stylesheet" href="bootstrap-5.2.2/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="css/general.css" />
 </head>
 
 <body>
@@ -20,7 +21,7 @@
     <div class="row">
       <nav class="navbar mynavbar" style="width: 100vw; min-width: fit-content; max-height: 86px">
         <div class="d-flex justify-content-start">
-          <img src="/images/icon/web_icon.png" class="px-3" alt="web_icon.png" style="max-height: 70px" />
+          <img src="images/icon/web_icon.png" class="px-3" alt="web_icon.png" style="max-height: 70px" />
           <!-- <span class="navbar-brand mb-0 myheading1"></span> -->
           <h1 class="myheading1" style="padding-bottom: 0">LOGIN</h1>
           <!-- <a type ="button" class ="mybtn1">ABOUT US</a> -->
@@ -41,12 +42,12 @@
 
       <div class="row px-5 py-1 g-0" style ="margin-left: 2%;">
         <div class="col-3 g-0">
-          <img src="/images/2dogs.jpg" class="img img-fluid myimg" alt="2dogs" />
-          <img src="/images/2dogs.jpg" class="img img-fluid myimg" alt="2dogs" />
+          <img src="images/2dogs.jpg" class="img img-fluid myimg" alt="2dogs" />
+          <img src="images/2dogs.jpg" class="img img-fluid myimg" alt="2dogs" />
         </div>
         <div class="col-3 g-0">
-          <img src="/images/2dogs.jpg" class="img img-fluid myimg" alt="2dogs" />
-          <img src="/images/2dogs.jpg" class="img img-fluid myimg" alt="2dogs" />
+          <img src="images/2dogs.jpg" class="img img-fluid myimg" alt="2dogs" />
+          <img src="images/2dogs.jpg" class="img img-fluid myimg" alt="2dogs" />
         </div>
 
         <div class="col"></div>
@@ -54,7 +55,7 @@
         <div class="col-4">
           <div class="panel panel-basic border rounded" style="background-color: white; height: 100%">
             <div class="row">
-              <img src="/images/yeji.jpg" class="rounded-circle mx-auto d-block" alt="avatar_logo" style="
+              <img src="images/yeji.jpg" class="img img-responsive rounded-circle mx-auto d-block" alt="avatar_logo" style="
                     max-height: 180px;
                     max-width: 200px;
                     margin-top: -15%;
