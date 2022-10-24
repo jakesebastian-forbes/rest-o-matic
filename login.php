@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -63,18 +64,22 @@
                     object-fit: cover;
                   " />
             </div>
+
+            
+    
             <div class="row">
-              <form>
+              <form method="get" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">  
+
                 <div class="mb-2">
                   <!-- <label for="exampleInputEmail1" class="form-label">Email address</label> -->
-                  <input type="email" class="form-control text-muted hotdog1" placeholder="Username" id=""
-                    aria-describedby="emailHelp" />
+                  <input type="text" class="form-control text-muted hotdog1" placeholder="Username" id=""
+                    aria-describedby="emailHelp" name = "login_username"/>
                   <hr class="stick" />
                   <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
                 </div>
                 <div class="mb-2">
                   <!-- <label for="exampleInputPassword1" class="form-label">Password</label> -->
-                  <input type="password" class="form-control text-muted hotdog1" placeholder="Password" id="" />
+                  <input type="password" class="form-control text-muted hotdog1" placeholder="Password" id="" name = "login_password"/>
                   <hr class="stick" />
                 </div>
                 <!-- <div class="mb-3 form-check">
@@ -89,12 +94,39 @@
                         margin-top: 20px;
                         width: 80%;
                         background-color: #ff5757;
-                      ">
+                      " name = "login_btn">
                     Login
                   </button>
                 </div>
               </form>
             </div>
+
+
+            <?php
+
+              if(isset($_GET['login_btn'])){
+                echo $_GET['login_username'];
+                echo $_GET['login_password'];
+              }
+             
+              if (isset($_POST['login_username']) && isset($_POST['login_password'])) {
+                function validate($data)
+                   $data = trim($data);
+                   $data = stripslashes($data);
+                   $data = htmlspecialchars($data);
+                   return $data;
+                }
+                $uname = validate($_POST['login_username']);
+                $pass = validate($_POST['login_password']);
+
+                if (empty($uname)){
+                  echo "Cannot LogIn";
+                }
+
+
+            ?>
+
+
 
             <!-- modal -->
 
@@ -110,39 +142,79 @@
                     <div class="text-center">
                       <div class="row mb-2">
 
+                      <!-- account connection database -->
+
+            <?php
+
+              $conn = mysqli_connect("localhost", "root", "", "restomatic_db");
+                      
+              // Check connection
+              if($conn === false){
+                  die("ERROR: Could not connect. "
+                      . mysqli_connect_error());
+              }
+              else{
+                echo "success";
+              }
+
+              // define variables and set to empty values
+              $firstname = $lastname = $mobile = $email = $password = $address = $birthdate = "";
+
+              if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                $firstname = test_input($_POST["firstname"]);
+                $lastname = test_input($_POST["lastname"]);
+                $mobile = test_input($_POST["mobile_number"]);
+                $email = test_input($_POST["email"]);
+                // $username = test_input($_POST["Username"]);
+                $password = test_input($_POST["password"]);
+                $address = test_input($_POST["address"]);
+                $birthdate = test_input($_POST["birthdate"]);
+              }
+
+              function test_input($data) {
+                $data = trim($data);
+                $data = stripslashes($data);
+                $data = htmlspecialchars($data);
+                return $data;
+              }
+              ?>
+
+
+                      <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">  
+
                         <div class="col">
-                          <input type="email" class="form-control" id="modal-email" placeholder="First name" name="" />
+                          <input type="text" class="form-control" id="modal-email" placeholder="First name" name="firstname" />
                         </div>
 
                         <div class="col">
-                          <input type="email" class="form-control" id="modal-email" placeholder="Last name" name="" />
+                          <input type="text" class="form-control" id="modal-email" placeholder="Last name" name="lastname" />
                         </div>
 
                       </div>
 
 
                       <div class="row mb-2 my-0 py-0 gx-0">
-                        <input type="email" class="form-control" id="modal-email" placeholder="Mobile number"
-                          name="" />
+                        <input type="number" class="form-control" id="modal-email" placeholder="Mobile number"
+                          name="mobile_number" />
                       </div>
 
                       <div class="row mb-2 my-0 py-0 gx-0">
                         <input type="email" class="form-control" id="modal-email" placeholder="E-mail"
-                          name="" />
+                          name="email" />
                       </div>
 
                       <div class="row mb-2 my-0 py-0 gx-0">
                         <input type="password" class="form-control" id="modal-email" placeholder="New password"
-                          name="" />
+                          name="password" />
                       </div>
-                      <div class="row mb-2 my-0 py-0 gx-0">
+                      <!-- <div class="row mb-2 my-0 py-0 gx-0">
                         <input type="password" class="form-control" id="modal-email" placeholder="Confirm password"
                           name="" />
-                      </div>
+                      </div> -->
 
                       <div class="row mb-2 my-0 py-0 gx-0">
                         <input type="text" class="form-control" id="modal-email" placeholder="Address"
-                          name="" />
+                          name="address" />
                       </div>
 
                       <!-- birthday -->
@@ -153,7 +225,7 @@
                           </h6>
                         </div>
                         <div class="col">
-                          <input type="date" class="form-control" id="modal-email" placeholder="date" name="" />
+                          <input type="date" class="form-control" id="modal-email" placeholder="date" name="birthdate" />
                         </div>
 
                       </div>
@@ -171,11 +243,54 @@
                     </div>
 
                     <div class="modal-footer">
-                      <button class="btn btn-primary">Signup</button>
+                    
+                      <!-- <a href="login.php"></a><a href='login.php?hello=true'>Submit</a> -->
+                    <button class="btn btn-primary" name = "signup_btn" method="post">Signup</button> 
+      
+
                     </div>
+                    </form>
+
+                    <?php
+
+                        if (isset($_POST['signup_btn'])) {
+                            echo "echo";
+                          
+                          
+                            // Performing insert query execution
+                          
+                            $sql = "INSERT INTO `signup`(`firstname`, `lastname`, `mobile_number`, `email`,`password`, `address`, `birthdate`) 
+                            VALUES ('$firstname','$lastname','$mobile','$email','$password','$address','$birthdate')";
+                            
+                            if ($conn->query($sql) === TRUE) {
+
+                                $firstname =  $_REQUEST['firstname'];
+                                $lastname = $_REQUEST['lastname'];
+                                $mobile = $_REQUEST['mobile_number'];
+                                $email = $_REQUEST['email'];
+                                $password = $_REQUEST['password'];
+                                $address = $_REQUEST['address'];
+                                $birthdate = $_REQUEST['birthdate'];
+                          
+                              }
+                          
+                            else{
+                                echo "ERROR: Hush! Sorry $sql. "
+                                    . mysqli_error($conn);
+                            }
+                            
+                            // Close connection
+                            mysqli_close($conn);
+                            
+                          
+                          }
+                          echo "hello";
+
+                        ?>
+                        
 
 
-
+                    
 
                   </div>
                 </div>
