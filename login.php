@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -63,18 +64,22 @@
                     object-fit: cover;
                   " />
             </div>
+
+            
+    
             <div class="row">
-              <form>
+              <form method="post" action="login_validation.php">  
+
                 <div class="mb-2">
                   <!-- <label for="exampleInputEmail1" class="form-label">Email address</label> -->
-                  <input type="email" class="form-control text-muted hotdog1" placeholder="Username" id=""
-                    aria-describedby="emailHelp" />
+                  <input type="text" class="form-control text-muted hotdog1" placeholder="Username" id=""
+                    aria-describedby="emailHelp" name = "login_username"/>
                   <hr class="stick" />
                   <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
                 </div>
                 <div class="mb-2">
                   <!-- <label for="exampleInputPassword1" class="form-label">Password</label> -->
-                  <input type="password" class="form-control text-muted hotdog1" placeholder="Password" id="" />
+                  <input type="password" class="form-control text-muted hotdog1" placeholder="Password" id="" name = "login_password"/>
                   <hr class="stick" />
                 </div>
                 <!-- <div class="mb-3 form-check">
@@ -89,7 +94,7 @@
                         margin-top: 20px;
                         width: 80%;
                         background-color: #ff5757;
-                      ">
+                      " name = "login_btn">
                     Login
                   </button>
                 </div>
@@ -108,44 +113,44 @@
 
                   <div class="modal-body p-4">
                     <div class="text-center">
+
+                    <form method="post" action = "signup.php">  
                       <div class="row mb-2">
+                          <div class="col">
+                            <input type="text" class="form-control" id="modal-firstname" placeholder="First name" name="firstname" />
+                          </div>
 
-                        <div class="col">
-                          <input type="email" class="form-control" id="modal-email" placeholder="First name" name="" />
-                        </div>
-
-                        <div class="col">
-                          <input type="email" class="form-control" id="modal-email" placeholder="Last name" name="" />
-                        </div>
+                          <div class="col">
+                            <input type="text" class="form-control" id="modal-lastname" placeholder="Last name" name="lastname" />
+                          </div>
 
                       </div>
-
+                      <div class="row mb-2 my-0 py-0 gx-0">
+                        <input type="text" class="form-control" id="modal-username" placeholder="Username"
+                          name="username" />
+                      </div>
 
                       <div class="row mb-2 my-0 py-0 gx-0">
-                        <input type="email" class="form-control" id="modal-email" placeholder="Mobile number"
-                          name="" />
+                        <input type="number" class="form-control" id="modal-mobile_number" placeholder="Mobile number"
+                          name="mobile_number" />
                       </div>
 
                       <div class="row mb-2 my-0 py-0 gx-0">
                         <input type="email" class="form-control" id="modal-email" placeholder="E-mail"
-                          name="" />
+                          name="email" />
                       </div>
 
                       <div class="row mb-2 my-0 py-0 gx-0">
-                        <input type="password" class="form-control" id="modal-email" placeholder="New password"
-                          name="" />
+                        <input type="password" class="form-control" id="modal-password" placeholder="New password"
+                          name="password" />
                       </div>
+          
                       <div class="row mb-2 my-0 py-0 gx-0">
-                        <input type="password" class="form-control" id="modal-email" placeholder="Confirm password"
-                          name="" />
+                        <input type="text" class="form-control" id="modal-address" placeholder="Address"
+                          name="address" />
                       </div>
 
-                      <div class="row mb-2 my-0 py-0 gx-0">
-                        <input type="text" class="form-control" id="modal-email" placeholder="Address"
-                          name="" />
-                      </div>
 
-                      <!-- birthday -->
                       <div class="row mb-2">
                         <div class="col my-2">
                           <h6>
@@ -153,30 +158,22 @@
                           </h6>
                         </div>
                         <div class="col">
-                          <input type="date" class="form-control" id="modal-email" placeholder="date" name="" />
+                          <input type="date" class="form-control" id="modal-birthdate" placeholder="date" name="birthdate" />
                         </div>
 
                       </div>
 
-                      <!-- gender -->
-
-                      <!-- policy agreement -->
-                      <div>
-
-
-
-                      </div>
-
-
-                    </div>
+                        </div>
 
                     <div class="modal-footer">
-                      <button class="btn btn-primary">Signup</button>
+                    
+                      <!-- <a href="login.php"></a><a href='login.php?hello=true'>Submit</a> -->
+                    <button class="btn btn-primary" name = "signup_btn" method="post">Signup</button> 
+      
+
                     </div>
-
-
-
-
+                    </form>
+                  
                   </div>
                 </div>
               </div>
