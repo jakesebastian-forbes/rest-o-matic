@@ -66,49 +66,87 @@
            
         </div>
     </div>
-
     <h1>CATEGORY 1</h1>
-    <div class="row row-cols-1 row-cols-sm-6 g-4 py-3">
-        <div class="col">
-            <img src="images/yeji.jpg" style="width: 200px; height:200px" class="card-img-top">
+    <div class="row ">
+    <?php
+                          $conn = new mysqli('localhost','root','','restomatic_db');
+
+                          if($conn->connect_error){
+                            die('Connection failed : ' . $conn->connect_error);
+                           }else{
+
+                          $query = "SELECT * FROM `inventory`; ";
+                        
+                          $result = mysqli_query($conn,$query);
+
+                          while($rows = mysqli_fetch_assoc($result))
+                              {
+                                
+                          ?>  
+      <div class="col-2">
+        <div class="card h-100"> 
+                       
+                          <img src="<?php $rows['item_img'] ?>" class="card-img-top" alt="...">
+                          <div class="card-body">
+                            <h5 class="card-title"><?php echo $rows['item_name'] ?></h5>
+                            <p class="card-text"><?php echo $rows['short_desc'] ?></p>
+                          </div>
+
+
+          <div class="card-footer">
+            <small class="text-muted">Last updated 3 mins ago <?php $rows['item_name'] ?></small>
+          </div>
         </div>
-        <div class="col">
-            <img src="images/yeji.jpg" style="width: 200px; height:200px" class="card-img-top">
-        </div>
-        <div class="col">
-            <img src="images/yeji.jpg" style="width: 200px; height:200px" class="card-img-top">
-        </div>
-        <div class="col">
-            <img src="images/yeji.jpg" style="width: 200px; height:200px" class="card-img-top">
-        </div>
-        <div class="col">
-            <img src="images/yeji.jpg" style="width: 200px; height:200px" class="card-img-top">
-        </div>
-        <div class="col">
-            <img src="images/yeji.jpg" style="width: 200px; height:200px" class="card-img-top">
-        </div>
-    </div>
+      </div>
+      <?php
+
+        }
+      }
+      ?>
+</div>
+
+
+
+ 
+ 
     <h1>CATEGORY 2</h1>
-    <div class="row row-cols-1 row-cols-sm-6 g-4 py-3">
-        <div class="col">
-            <img src="images/yeji.jpg" style="width: 200px; height:200px" class="card-img-top">
+    <div class="row ">
+    <?php
+                          $conn = new mysqli('localhost','root','','restomatic_db');
+
+                          if($conn->connect_error){
+                            die('Connection failed : ' . $conn->connect_error);
+                           }else{
+
+                          $query = "SELECT * FROM `inventory`; ";
+                        
+                          $result = mysqli_query($conn,$query);
+
+                          while($rows = mysqli_fetch_assoc($result))
+                              {
+                                
+                          ?>  
+      <div class="col-2">
+        <div class="card h-100"> 
+                       
+                          <img src="<?php $rows['item_img'] ?>" class="card-img-top" alt="...">
+                          <div class="card-body">
+                            <h5 class="card-title"><?php echo $rows['item_name'] ?></h5>
+                            <p class="card-text"><?php echo $rows['short_desc'] ?></p>
+                          </div>
+
+
+          <div class="card-footer">
+            <small class="text-muted">Last updated 3 mins ago <?php $rows['item_name'] ?></small>
+          </div>
         </div>
-        <div class="col">
-            <img src="images/yeji.jpg" style="width: 200px; height:200px" class="card-img-top">
-        </div>
-        <div class="col">
-            <img src="images/yeji.jpg" style="width: 200px; height:200px" class="card-img-top">
-        </div>
-        <div class="col">
-            <img src="images/yeji.jpg" style="width: 200px; height:200px" class="card-img-top">
-        </div>
-        <div class="col">
-            <img src="images/yeji.jpg" style="width: 200px; height:200px" class="card-img-top">
-        </div>
-        <div class="col">
-            <img src="images/yeji.jpg" style="width: 200px; height:200px" class="card-img-top">
-        </div>
-    </div>
+      </div>
+      <?php
+
+        }
+      }
+      ?>
+</div>
 
 </body>
 </html>

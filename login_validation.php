@@ -11,27 +11,35 @@ if($conn->connect_error){
     die('Connection failed : ' . $conn->connect_error);
 }else{
 
-    $query = "SELECT `username`,`password` FROM `client_account` WHERE `username` = '$login_username' AND `password` = '$login_password' ";
+    $query1 = "SELECT `username`, `password` FROM `staff_account` 
+    WHERE `username` = '$login_username' AND `password` = '$login_password';";
 
-    $result = mysqli_query($conn,$query);
+    $result = mysqli_query($conn,$query1);
 
-    $credencials = mysqli_fetch_assoc($result);
+    $S_credencials = mysqli_fetch_assoc($result);
     
     // echo "credits:";
     
     // echo $credencials;
 
 
-    if($credencials == NULL){
+    if($S_credencials == NULL){
 
-        echo "I am sorry. It seems you haven't created an account. Please create an account and then try again.";
+        $query = "SELECT `username`,`password` FROM `client_account` 
+        WHERE `username` = '$login_username' AND `password` = '$login_password' ";
 
+        $result = mysqli_query($conn,$query);
 
-    }
-    else{
+        $C_credencials = mysqli_fetch_assoc($result);
 
-        $val_username = $credencials['username'];
-        $val_password = htmlspecialchars($credencials['password']);
+        if($C_credencials == NULL){
+
+            echo "I am sorry. It seems you haven't created an account. Please create an account and then try again.";
+            echo "Client";
+        }else{
+
+            $val_username = $C_credencials['username'];
+            $val_password = htmlspecialchars($C_credencials['password']);
     
         // echo "val_username : " . $val_username;
         // echo "val_password : " . $val_password;
@@ -39,13 +47,37 @@ if($conn->connect_error){
     
         if($val_username == $login_username AND $val_password == $login_password){
             echo "Welcome to Restomatic ". $val_username ." !";
+            echo "Success Client";
     
+            header("Location: user_ui.php");
+            die;
+        }
+        }
+
+    }
+    else{
+
+        $val_username = $S_credencials['username'];
+        $val_password = htmlspecialchars($S_credencials['password']);
+    
+        // echo "val_username : " . $val_username;
+        // echo "val_password : " . $val_password;
+    
+    
+        if($val_username == $login_username AND $val_password == $login_password){
+            echo "Welcome to Restomatic ". $val_username ." !";
+            echo "Success Staff";
+
+            header("Location: admin_home.php");
+            die;
+    
+        }
+        else{
+            echo "failed staff";
         }
         
     }  
 }
-
-
 
 
 

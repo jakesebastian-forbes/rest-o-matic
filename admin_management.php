@@ -87,12 +87,33 @@
                           </tr>
                         </thead>
                         <tbody>
+                          <?php
+                          $conn = new mysqli('localhost','root','','restomatic_db');
+
+                          if($conn->connect_error){
+                            die('Connection failed : ' . $conn->connect_error);
+                           }else{
+
+                          $query = "SELECT `item_id`, `item_name`, `item_type`, `item_quantity`,`item_price`, `short_desc`, `item_img` FROM `inventory` ";
+                        
+                          $result = mysqli_query($conn,$query);
+
+                          while($rows = mysqli_fetch_assoc($result))
+                              {
+                                
+                          ?>  
                           <tr>
-                            <th scope="row">NAME</th>
-                            <td>SNACK</td>
-                            <td>4</td>
-                            <td>503</td>
+                            <th scope="row"><?php echo $rows['item_name'] ?></th>
+                            <td><?php echo $rows['item_type'] ?></td>
+                            <td><?php echo $rows['item_quantity'] ?></td>
+                            <td><?php echo $rows['item_price'] ?></td>
                           </tr>
+
+                          <?php
+                                
+                              }
+                            }
+                          ?>  
                         </tbody>
                       </table>
                       
@@ -134,10 +155,80 @@
         
         
         
-        
-        
+            <a type="button" class="mybtn1 mx-4 myfixedbtn" data-bs-toggle="modal" data-bs-target="#reg-modal" id="mybtn" style="
+                padding-bottom: 10px;
+                background-color: #7ed957;
+                color: black;
+              ">Add item</a>
+            <!-- <a type = "button" class ="mybtn1 myfixedbtn " style="background-color:rgb(215, 46, 46) ;">ADD ITEM</a>    -->
         
             </div>
+
+           <!-- modal -->
+
+           <div class="modal fade " id="reg-modal" tabindex="-1" aria-labelledby="modal-title" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="modal-title">ADD ITEM</h5>
+                    <button class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+
+                  <div class="modal-body p-4">
+                    <div class="text-center">
+
+                    <form method="post" action = "insert_item.php">  
+                      <div class="row mb-2">
+                          <div class="col">
+                            <input type="text" class="form-control" id="modal-firstname" placeholder="Item Name" name="item_name" />
+                          </div>
+
+                          <div class="col">
+                            <input type="text" class="form-control" id="modal-lastname" placeholder="Item Type" name="item_type" />
+                          </div>
+
+                      </div>
+                      <div class="row mb-2 my-0 py-0 gx-0">
+                        <input type="number" class="form-control" id="modal-username" placeholder="Quantity"
+                          name="item_quantity" />
+                      </div>
+
+                      <div class="row mb-2 my-0 py-0 gx-0">
+                        <input type="number" class="form-control" id="modal-mobile_number" placeholder="Price"
+                          name="item_price" />
+                      </div>
+
+                      <div class="row mb-2 my-0 py-0 gx-0">
+                      <textarea placeholder="Description" class="form-control" id="modal-email" 
+                      name="short_desc" ></textarea>
+                      
+                        <!-- <input type="Long Text" class="form-control" id="modal-email" placeholder="Description"
+                          name="email" /> -->
+                      </div>
+
+                      <div class="row mb-2 my-0 py-0 gx-0">
+                        <input placeholder="Image" type="file" class="file-upload-input" id="modal-password" 
+                          name="item_img" onchange="readURL(this) accept = image/*"/>
+                      </div>
+          
+        
+                      </div>
+
+                        </div>
+
+                    <div class="modal-footer">
+                    
+                      <!-- <a href="login.php"></a><a href='login.php?hello=true'>Submit</a> -->
+                    <button class="btn btn-primary" name = "signup_btn" method="post">Add Item</button> 
+                    
+                    </div>
+                    </form>
+                  
+                  </div>
+                </div>
+              </div>
+            </div>
+
             
         
         <link rel="script" href="/bootstrap-5.2.2/js/bootstrap.min.js">
