@@ -35,7 +35,7 @@
 
                   
                   <div class="d-flex justify-content-end mx-5 px-5" style=" max-height: 65px;">    
-                    <a href="admin_management.html" class = "nav-link active"><img src="images/icon/team-management.png" class="mx-3" alt="home"  style=" max-height: 70px;"></a>     
+                    <a href="admin_management.php" class = "nav-link active"><img src="images/icon/team-management.png" class="mx-3" alt="home"  style=" max-height: 70px;"></a>     
                     
                     <a href=""><img src="images/icon/notification.png" class="mx-3" alt="home"  style=" max-height: 70px;"></a>   
 

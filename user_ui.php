@@ -83,8 +83,8 @@
                               {
                                 
                           ?>  
-      <div class="col-2">
-        <div class="card h-100"> 
+      <div class="col-lg-2 col-md-3 col-sm-6 col-xs-9 m-1 mb-1" style = "">
+        <div class="card h-100 "> 
                        
                           <img src="<?php $rows['item_img'] ?>" class="card-img-top" alt="...">
                           <div class="card-body">
@@ -94,7 +94,7 @@
 
 
           <div class="card-footer">
-            <small class="text-muted">Last updated 3 mins ago <?php $rows['item_name'] ?></small>
+            <small class="text-muted">Last updated 3 mins ago</small>
           </div>
         </div>
       </div>
