@@ -16,7 +16,7 @@
     <div class = "container-fluid" style ="background-image: url(images/bg/home-bg2.png); background-repeat:no-repeat; height:100vh; width:100vw; min-width:fit-content;">  
        
             <div class = "row"> 
-                <nav class="navbar mynavbar" style = "width:100vw;min-width: fit-content;max-height: 86px;">   
+                <nav class="navbar mynavbar" style = "">   
                     <div class="d-flex flex-row mx-5"> 
                         <img src="images/icon/web_icon.png" alt="web_icon.png" style="max-height: 70px;">  
                         <!-- <span class="navbar-brand mb-0 myheading1"></span> --> 
@@ -32,12 +32,13 @@
                     <h6 class ="mytitle2" style ="padding: 0px 0px 0px 65px;">WELCOME TO REST-O-MATIC! 
                         CLICK A FEW BUTTONS AND WAIT</h6>
                         
-                </div>
-                <a type = "button" class ="mybtn1 myfixedbtn ">BROWSE</a>   
+                </div>    
+                  
                
 
 
             </div>
+            <a type = "button" class ="mybtn1 myfixedbtn ">BROWSE</a> 
 
 
     </div>
