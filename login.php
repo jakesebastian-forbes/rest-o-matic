@@ -42,18 +42,20 @@
       </h1>
 
       <div class="row px-5 py-1 g-0" style="margin-left: 2%;">
-        <div class="col-3 g-0">
-          <img src="images/2dogs.jpg" class="img img-fluid myimg" alt="2dogs" />
-          <img src="images/2dogs.jpg" class="img img-fluid myimg" alt="2dogs" />
-        </div>
-        <div class="col-3 g-0">
-          <img src="images/2dogs.jpg" class="img img-fluid myimg" alt="2dogs" />
-          <img src="images/2dogs.jpg" class="img img-fluid myimg" alt="2dogs" />
-        </div>
+      <!-- <div> -->
+          <div class="col-lg-3 col-md-6 col-sm-6 col-6  ">
+            <img src="images/2dogs.jpg" class="img img-fluid myimg" alt="2dogs" />
+            <img src="images/2dogs.jpg" class="img img-fluid myimg" alt="2dogs" />
+          </div>
+          <div class="col-lg-3 col-md-6 col-sm-6 col-6">
+            <img src="images/2dogs.jpg" class="img img-fluid myimg" alt="2dogs" />
+            <img src="images/2dogs.jpg" class="img img-fluid myimg" alt="2dogs" />
+          </div>
+        <!-- </div> -->
 
         <div class="col"></div>
 
-        <div class="col-4">
+        <div class="col-lg-5 col-12">
           <div class="panel panel-basic border rounded" style="background-color: white; height: 100%">
             <div class="row">
               <img src="images/yeji.jpg" class="img img-responsive rounded-circle mx-auto d-block" alt="avatar_logo"
@@ -94,6 +96,7 @@
                         margin-top: 20px;
                         width: 80%;
                         background-color: #ff5757;
+                        margin-bottom:4%;
                       " name = "login_btn">
                     Login
                   </button>
