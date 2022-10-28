@@ -5,6 +5,10 @@ a{
 
 .mynavbar{
     background-color: black;
+    width:100vw;
+    min-width:max-content;
+    /* max-width: 100vw; */
+    max-height: 86px;
 }
 
 .myheading1{
@@ -45,6 +49,7 @@ a{
     padding-bottom: -5px;
     /* padding:10px; */
     margin: 10px;
+    flex:auto;
 
 }
 
@@ -53,7 +58,7 @@ a{
     font-size: x-large;
     position: absolute; 
     bottom: 2%; 
-    left:85%;      
+    right:-45%;      
     padding:0px;  
     width:150px;       
     text-align: center;
@@ -112,10 +117,14 @@ a{
 
    */
 
-   @media screen and (max-width: 375px) {
-    {
-
+   @media screen and (max-width: 550px) {
+      /*.myfixedbtn{
+       display: block;
+        width: 100%;
+        border: none;
+        
+         */
         
     }
     
-   }
+   

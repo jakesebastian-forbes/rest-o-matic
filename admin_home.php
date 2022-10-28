@@ -27,7 +27,7 @@
     <div class = "container-fluid" style ="background-color: white;">  
        
             <div class = "row"> 
-                <nav class="navbar mynavbar" style = "width:100vw;min-width: fit-content;max-height: 86px;">   
+                <nav class="navbar mynavbar" style = "">   
                     <div class="d-flex flex-row mx-5"> 
                         <img src="images/icon/web_icon.png" alt="web_icon.png" style="max-height: 70px;">  
            

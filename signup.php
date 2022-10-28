@@ -9,6 +9,7 @@ $phonenumber = $_POST['mobile_number'];
 $address = $_POST['address'];
 $birthday = $_POST['birthdate'];
 
+$hash_password = password_hash($password, PASSWORD_DEFAULT);
 //db connection
 
 $conn = new mysqli('localhost','root','','restomatic_db');
@@ -17,12 +18,12 @@ if($conn->connect_error){
     die('Connection failed : ' . $conn->connect_error);
 }else{
     $stmt = $conn->prepare("INSERT INTO `client_account`(`firstname`, `lastname`, `username`, `password`, `email`,
-     `phone_number`, `address`, `birthday`) VALUES
+     `mobile_number`, `address`, `birthdate`) VALUES
      (?,?,?,?,?,?,?,?)");
 
-     $stmt->bind_param("ssssssss",$firstname,$lastname,$username,$password,$email,$phonenumber,$address,$birthday);
+     $stmt->bind_param("ssssssss",$firstname,$lastname,$username,$hash_password,$email,$phonenumber,$address,$birthday);
      $stmt->execute();
-     echo "registration successful";
+     echo "registration successfully";
      $stmt->close();
      $conn->close();
 

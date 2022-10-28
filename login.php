@@ -20,7 +20,7 @@
         min-width: fit-content;
       ">
     <div class="row">
-      <nav class="navbar mynavbar" style="width: 100vw; min-width: fit-content; max-height: 86px">
+      <nav class="navbar mynavbar" style="">
         <div class="d-flex justify-content-start">
           <img src="images/icon/web_icon.png" class="px-3" alt="web_icon.png" style="max-height: 70px" />
           <!-- <span class="navbar-brand mb-0 myheading1"></span> -->

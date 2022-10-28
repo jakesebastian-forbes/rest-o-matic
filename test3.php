@@ -50,8 +50,8 @@ if($conn->connect_error){
         if($verify == 1 ){
                 echo "Welcome to Restomatic ". $val_username ." !";
                 echo "Success Client";
-                // header("Location: user_ui.php");
-                // die;
+                header("Location: user_ui.php");
+                die;
 
         }else{
             echo "Wrong password!";
@@ -79,8 +79,8 @@ if($conn->connect_error){
         if($val_username == $login_username AND $val_password == $login_password){
             echo "Welcome to Restomatic ". $val_username ." !";
             echo "Success Staff";
-            // header("Location: admin_home.php");
-            // die;
+            header("Location: admin_home.php");
+            die;
     
         }
         else{
