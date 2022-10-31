@@ -1,4 +1,15 @@
+<?php
 
+// session_start();
+echo "Session Array:";
+print_r($_SESSION);
+echo "\n";
+echo "Sess_ID ";
+echo SESSION_ID();
+
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,7 +17,7 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Login | Rest-o-Matic</title>
+  <title> TEST Login | Rest-o-Matic</title>
   <link rel="icon" type="image/x-icon" href="images/icon/web_icon.png" />
   <link rel="stylesheet" href="bootstrap-5.2.2/css/bootstrap.min.css" />
   <link rel="stylesheet" href="css/general.css" />
@@ -71,7 +82,7 @@
     
             <div class="row">
               <form method="post" action="login_validation.php">  
-
+       
                 <div class="mb-2">
                   <!-- <label for="exampleInputEmail1" class="form-label">Email address</label> -->
                   <input type="text" class="form-control text-muted hotdog1" placeholder="Username" id=""
@@ -81,13 +92,14 @@
                 </div>
                 <div class="mb-2">
                   <!-- <label for="exampleInputPassword1" class="form-label">Password</label> -->
-                  <input type="password" class="form-control text-muted hotdog1" placeholder="Password" id="" name = "login_password"/>
+                  <input type="password" class="form-control text-muted hotdog1" placeholder="Password" id="" name = "login_password" />
                   <hr class="stick" />
                 </div>
                 <!-- <div class="mb-3 form-check">
                                       <input type="checkbox" class="form-check-input" id="exampleCheck1">
                                       <label class="form-check-label" for="exampleCheck1">Check me out</label>
                                     </div> -->
+                    <p><input type="checkbox" name="remember" /> Remember me</p>
                 <div class="text-center">
                   <a href="" style="color: black">
                     <h5>forgot password?</h5>

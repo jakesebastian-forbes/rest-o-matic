@@ -1,3 +1,16 @@
+<?php
+session_start();
+echo "Session Array:";
+print_r($_SESSION);
+echo "\n";
+echo "Sess_ID ";
+echo SESSION_ID();
+
+require "check_sess.php";
+require "client_priv.php"
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +18,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Home | Client</title>
+  <title>TEST3 Home | Client</title>
 
   <link rel="icon" type="image/x-icon" href="images/icon/web_icon.png" />
   <link rel="stylesheet" href="bootstrap-5.2.2/css/bootstrap.min.css" />
@@ -35,7 +48,7 @@
               aria-labelledby="offcanvasNavbarLabel">
               <div class="offcanvas-header">
                 <h5 class="offcanvas-title" id="offcanvasNavbarLabel">
-                  <?php echo "ues"?>
+                  <?php echo $_SESSION["username"];?>
                 </h5>
                 <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
               </div>
@@ -68,104 +81,40 @@
                     </ul>
                   </li>
                 </ul>
+                <div class="position-absolute bottom-0 end-0 m-3">
+                  
+                <a href="logout.php">LOGOUT</a>
+               </div>
 
         </nav>
 
     </div>
   </div>
-  <h1>CATEGORY 1</h1>
-  <div class="row ">
-    <?php
-                          $conn = new mysqli('localhost','root','','restomatic_db');
+   <h1>CLASSICS</h1>
+<?php
+$category = "classics";
+include('menu_content.php');
+?>
 
-                          if($conn->connect_error){
-                            die('Connection failed : ' . $conn->connect_error);
-                           }else{
+<h1>Whole Mozzarella</h1>
+<?php
+$category = "Whole Mozzarella";
+include('menu_content.php');
+?>
 
-                          $query = "SELECT * FROM `menu`; ";
-                        
-                          $result = mysqli_query($conn,$query);
+<h1>Half Mozza Plus Half Sausage</h1>
+<?php
+$category = "Half Mozza Plus Half Sausage";
+include('menu_content.php');
+?>
 
-                          while($rows = mysqli_fetch_assoc($result))
-                              {
-                               
-                          ?>
-    <div class="col-lg-2 col-md-3 col-sm-6 col-xs-9 m-1 mb-1 15vw" style="">
-      <div class="card h-100 ">
-
-        <?php echo '<img class="card-img-top img img-responsive" src = "data:image/jpeg;base64,'.base64_encode($rows['img']) .'" style ="width : 100%; height:200px; object-fit: cover;"/>';?>
-
-
-        <div class="card-body">
-          <h5 class="card-title">
-            <?php echo $rows['item_name'] ?>
-          </h5>
-          <p class="card-text">
-            <?php echo $rows['item_desc'] ?>
-          </p>
-        </div>
-
-
-        <div class="card-footer">
-          <small class="text-muted">Last updated 3 mins ago</small>
-        </div>
-      </div>
-    </div>
-    <?php
-
-        }
-      }
-      ?>
-  </div>
-
-
-
-
-
-  <h1>CATEGORY 2</h1>
-  <div class="row ">
-    <?php
-                          $conn = new mysqli('localhost','root','','restomatic_db');
-
-                          if($conn->connect_error){
-                            die('Connection failed : ' . $conn->connect_error);
-                           }else{
-
-                          $query = "SELECT * FROM `inventory`; ";
-                        
-                          $result = mysqli_query($conn,$query);
-
-                          while($rows = mysqli_fetch_assoc($result))
-                              {
-                                
-                          ?>
-    <div class="col-2">
-      <div class="card h-100">
-
-        <img src="<?php $rows['item_img'] ?>" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">
-            <?php echo $rows['item_name'] ?>
-          </h5>
-          <p class="card-text">
-            <?php echo $rows['short_desc'] ?>
-          </p>
-        </div>
-
-
-        <div class="card-footer">
-          <small class="text-muted">Last updated 3 mins ago
-            <?php $rows['item_name'] ?>
-          </small>
-        </div>
-      </div>
-    </div>
-    <?php
-
-        }
-      }
-      ?>
-  </div>
+<h1>Specials</h1>
+<?php
+$category = "Specials";
+include('menu_content.php');
+?>
+  
+  
 
 </body>
 
