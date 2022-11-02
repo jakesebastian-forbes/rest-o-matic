@@ -27,4 +27,6 @@ if($conn->connect_error){
      
 }
 
+header("Location: admin_management.php");
+
 ?>

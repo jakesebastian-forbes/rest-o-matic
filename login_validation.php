@@ -37,8 +37,8 @@ if($conn->connect_error){
 
             echo "I am sorry. It seems you haven't created an account. Please create an account and then try again.";
             echo "Client";
-        }else{
-
+        }else{  
+            //note add condition to catch user does not exists
             $val_username = $C_credencials['username'];
             $val_password = htmlspecialchars($C_credencials['password']);
 

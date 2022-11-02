@@ -9,6 +9,7 @@ a{
     min-width:max-content;
     /* max-width: 100vw; */
     max-height: 86px;
+    min-width:100%;
 }
 
 .myheading1{
@@ -25,14 +26,14 @@ a{
 .mytitle1{
 
     color:white;
-    font-size:15vh;
+    /* font-size:15vh; */
     font-family: "Google Sans Text", Arial, Helvetica, sans-serif;
     font-weight: 900;
 }
 
 .mytitle2{
     color:white;
-    font-size:3vh;   
+    /* font-size:3vh;    */
 }
 
 .mybtn1{
@@ -58,12 +59,12 @@ a{
     font-size: x-large;
     position: absolute; 
     bottom: 2%; 
-    right:-45%;      
-    padding:0px;  
+    /* right:-45%;       */
+    float:right;
     width:150px;       
     text-align: center;
     padding:20px;
-    margin-right: 50%; 
+    /* margin-right: 50%;  */
      
 }
 
@@ -102,7 +103,7 @@ a{
     z-index: 1;
     position: relative;
     bottom: 25px;  
- 
+
 
 }
 
@@ -127,4 +128,8 @@ a{
         
     }
     
-   
+    @media (min-width: 1200px) {
+        .title {
+          font-size: 4rem;
+        }
+      }

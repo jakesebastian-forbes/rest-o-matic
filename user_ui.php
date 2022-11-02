@@ -28,10 +28,10 @@ require "client_priv.php"
 </head>
 
 <body>
-  <div class="container-fluid" style="background-color: white;">
+  <div class="container-fluid" style="background-color: white; height:100vh; width:100vw; min-width:fit-content;">
 
     <div class="row">
-      <nav class="navbar mynavbar" style="">
+      <nav class="navbar mynavbar" style="min-width:100%;">
         <div class="d-flex flex-row mx-5" style="color:white">
           <h1>MENU</h1>
 
@@ -89,7 +89,7 @@ require "client_priv.php"
         </nav>
 
     </div>
-  </div>
+  
    <h1>CLASSICS</h1>
 <?php
 $category = "classics";
@@ -115,7 +115,7 @@ include('menu_content.php');
 ?>
   
   
-
+  </div>
 </body>
 
 </html>

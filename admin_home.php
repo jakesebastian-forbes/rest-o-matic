@@ -136,7 +136,7 @@ require "admin_priv.php";
               </div>
             <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" tabindex="0">
               <!-- <img src="/images/icon/web_icon.png" alt="" style ="height: 400px;"> -->
-              
+              <!-- canvas -->
               <div class="container">
                 <div class="row my-3">
                     <div class="col">
@@ -200,21 +200,13 @@ require "admin_priv.php";
     </div>
     
 
-<link rel="script" href="/bootstrap-5.2.2/js/bootstrap.min.js">
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+  <script src = "bootstrap-5.2.2/js/bootstrap.bundle.min.js"></script>
+<!-- for tabs -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
 integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-crossorigin="anonymous"></script>
+crossorigin="anonymous"></script>  -->
 
-<script
-src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.js">
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/chart.min.js" integrity="sha512-ElRFoEQdI5Ht6kZvyzXhYG9NqjtkmlkfYk0wr6wHxU9JEHakS7UJZNeml5ALk+8IKlU6jDgMabC3vkumRokgJA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
-<script src="@@path/vendor/chartist/dist/chartist.min.js"></script>
-<script src="@@path/vendor/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script>
-
-<link rel="stylesheet" href="/js/admin_home_dashboard.js">
 
 
 </body>
