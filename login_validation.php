@@ -37,7 +37,8 @@ if($conn->connect_error){
 
             echo "I am sorry. It seems you haven't created an account. Please create an account and then try again.";
             echo "Client";
-        }else{  
+        }
+        else{  
             //note add condition to catch user does not exists
             $val_username = $C_credencials['username'];
             $val_password = htmlspecialchars($C_credencials['password']);
@@ -98,9 +99,7 @@ if($conn->connect_error){
         // echo "val_password : " . $val_password;
         
         $s_verify = password_verify($login_password, $val_password);
-    
-    
-    
+ 
         if($s_verify == 1){
             echo "Welcome to Restomatic ". $val_username ." !";
             echo "Success Staff";

@@ -32,14 +32,17 @@ require "client_priv.php"
 
     <div class="row">
       <nav class="navbar mynavbar" style="min-width:100%;">
-        <div class="d-flex flex-row mx-5" style="color:white">
-          <h1>MENU</h1>
-
-        </div>
-
+        
+          <div class="d-flex flex-row mx-51" style="color:white">
+            <a href="index.php">
+            <img src="images/icon/web_icon.png" alt="web_icon.png" style="max-height: 70px;" >
+            </a>
+            <h1 class="myheading2 px-3 my=2" style="padding-bottom: 0 ">MENU</h1>
+          </div>
+        <div>
         <nav class="navbar bg-dark">
           <div class="container-fluid">
-            <a class="navbar-brand" href="#"></a>
+            
             <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
               aria-controls="offcanvasNavbar">
               <span class="navbar-toggler-icon"></span>
@@ -56,13 +59,13 @@ require "client_priv.php"
                 <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                   <li class="nav-item">
                     <!-- <a class="nav-link active" aria-current="page" href="#">ACCOUNT</a> -->
-                    <a class="nav-link" aria-current="" href="#">ACCOUNT</a>
+                    <a class="nav-link" aria-current="" href="client_profile.php">ACCOUNT</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#">ORDERS</a>
+                    <a class="nav-link" href="client_orders.php">ORDERS</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#">RESERVATION</a>
+                    <a class="nav-link" href="client_reservation.php">RESERVATION</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="#">REVIEWS</a>
@@ -76,9 +79,11 @@ require "client_priv.php"
                       GO TO
                     </a>
                     <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="#">CATEGORY 1</a></li>
-                      <li><a class="dropdown-item" href="#">CATEGORY 2</a></li>
-                    </ul>
+                      <li><a class="dropdown-item" href="#classics">CLASSICS</a></li>
+                      <li><a class="dropdown-item" href="#holeMozza">WHOLE MOZZARELLA</a></li>
+                      <li><a class="dropdown-item" href="#halfMozza_halfSausge">HALF MOZZARELLA AND HALF SAUSGAE</a></li>
+                      <li><a class="dropdown-item" href="#specials">SPECIALS</a></li>
+                      </ul>
                   </li>
                 </ul>
                 <div class="position-absolute bottom-0 end-0 m-3">
@@ -87,28 +92,29 @@ require "client_priv.php"
                </div>
 
         </nav>
-
+        </div>
+        </nav>
     </div>
   
-   <h1>CLASSICS</h1>
+   <h1 id="classics">CLASSICS</h1>
 <?php
 $category = "classics";
 include('menu_content.php');
 ?>
 
-<h1>Whole Mozzarella</h1>
+<h1 id="wholeMozza">Whole Mozzarella</h1>
 <?php
 $category = "Whole Mozzarella";
 include('menu_content.php');
 ?>
 
-<h1>Half Mozza Plus Half Sausage</h1>
+<h1 id="halfMozza_halfSausge">Half Mozza Plus Half Sausage</h1>
 <?php
 $category = "Half Mozza Plus Half Sausage";
 include('menu_content.php');
 ?>
 
-<h1>Specials</h1>
+<h1 id="specials">Specials</h1>
 <?php
 $category = "Specials";
 include('menu_content.php');

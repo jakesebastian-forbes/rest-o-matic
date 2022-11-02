@@ -1,11 +1,27 @@
 <?php
 
-// session_start();
+session_start();
 echo "Session Array:";
 print_r($_SESSION);
 echo "\n";
 echo "Sess_ID ";
 echo SESSION_ID();
+
+if(!isset($_SESSION_ID)){
+    if($_SESSION['privilage'] == 'admin'){
+        header("Location: admin_home.php");
+
+
+    }
+    elseif ($_SESSION['privilage'] == 'staff'){
+      # code...
+    }
+    elseif($_SESSION['privilage'] == 'client'){
+        header("Location: user_ui.php");
+
+    }
+
+}
 
 
 
@@ -142,12 +158,12 @@ echo SESSION_ID();
                       </div>
                       <div class="row mb-2 my-0 py-0 gx-0">
                         <input type="text" class="form-control" id="modal-username" placeholder="Username"
-                          name="username" />
+                          name="username" required pattern=".{8,}" title="Please enter 8 Characters">
                       </div>
 
                       <div class="row mb-2 my-0 py-0 gx-0">
                         <input type="number" class="form-control" id="modal-mobile_number" placeholder="Mobile number"
-                          name="mobile_number" />
+                          name="mobile_number" required/>
                       </div>
 
                       <div class="row mb-2 my-0 py-0 gx-0">
@@ -157,7 +173,8 @@ echo SESSION_ID();
 
                       <div class="row mb-2 my-0 py-0 gx-0">
                         <input type="password" class="form-control" id="modal-password" placeholder="New password"
-                          name="password" />
+                          name="password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                          title="Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters"/>
                       </div>
           
                       <div class="row mb-2 my-0 py-0 gx-0">
@@ -173,26 +190,32 @@ echo SESSION_ID();
                           </h6>
                         </div>
                         <div class="col">
-                          <input type="date" class="form-control" id="modal-birthdate" placeholder="date" name="birthdate" />
+                          <input type="date" class="form-control" id="modal-birthdate" placeholder="date" name="birthdate"  
+            
+                          max = "<?php  echo date("Y")-16 . "-" . date("m") . "-" .date("d");?>"
+                          required />
                         </div>
 
                       </div>
 
-                        </div>
+                        
 
                     <div class="modal-footer">
-                    
+
                       <!-- <a href="login.php"></a><a href='login.php?hello=true'>Submit</a> -->
                     <button class="btn btn-primary" name = "signup_btn" method="post">Signup</button> 
-      
-
+    
                     </div>
+
                     </form>
-                  
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
+
+
+
           </div>
         </div>
       </div>

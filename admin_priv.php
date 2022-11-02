@@ -1,5 +1,5 @@
 <?php
-    if($_SESSION['privilage'] != 'admin'){
+    if($_SESSION['privilage'] == 'client'){
         echo "not authorized. admin only!";
         header("Location: user_ui.php");
 

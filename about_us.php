@@ -76,7 +76,7 @@
     <div class="row">
         <nav class="navbar mynavbar" style="width: 100vw; min-width: fit-content; max-height: 86px">
           <div class="d-flex justify-content-start">
-           <a href="index.html"><img src="images/icon/web_icon.png" class="px-3" alt="web_icon.png" style="max-height: 70px" /></a> 
+           <a href="index.php"><img src="images/icon/web_icon.png" class="px-3" alt="web_icon.png" style="max-height: 70px" /></a> 
             <!-- <span class="navbar-brand mb-0 myheading1"></span> -->
             <h1 class="myheading1" style="padding-bottom: 0">ABOUT US</h1>
             <!-- <a type ="button" class ="mybtn1">ABOUT US</a> -->
