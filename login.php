@@ -17,7 +17,7 @@ if(!isset($_SESSION_ID)){
       # code...
     }
     elseif($_SESSION['privilage'] == 'client'){
-        header("Location: user_ui.php");
+        header("Location: client_ui.php");
 
     }
 
@@ -97,7 +97,7 @@ if(!isset($_SESSION_ID)){
             
     
             <div class="row">
-              <form method="post" action="login_validation.php">  
+              <form method="post" action="func_login_validation.php">  
        
                 <div class="mb-2">
                   <!-- <label for="exampleInputEmail1" class="form-label">Email address</label> -->
@@ -145,7 +145,7 @@ if(!isset($_SESSION_ID)){
                   <div class="modal-body p-4">
                     <div class="text-center">
 
-                    <form method="post" action = "signup.php">  
+                    <form method="post" action = "func_signup.php">  
                       <div class="row mb-2">
                           <div class="col">
                             <input type="text" class="form-control" id="modal-firstname" placeholder="First name" name="firstname" />

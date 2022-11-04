@@ -177,7 +177,7 @@
                   <div class="modal-body p-4">
                     <div class="text-center">
 
-                    <form method="post" action = "insert_item.php">  
+                    <form method="post" action = "func_insert_item.php">  
                       <div class="row mb-2">
                           <div class="col">
                             <input type="text" class="form-control" id="modal-firstname" placeholder="Item Name" name="item_name" />

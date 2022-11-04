@@ -76,7 +76,7 @@ if($conn->connect_error){
                 $_SESSION["birthdate"] = $C_credencials['birthdate'];
                 // $_SESSION["profile_picture"] = $C_credencials['profile_picture'];
 
-                header("Location: user_ui.php");
+                header("Location: client_ui.php");
                 die;
 
         }else{

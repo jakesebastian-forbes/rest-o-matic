@@ -6,8 +6,8 @@ echo "\n";
 echo "Sess_ID ";
 echo SESSION_ID();
 
-require "check_sess.php";
-require "client_priv.php";
+require "func_check_sess.php";
+require "func_client_priv.php";
 
 ?>
 
@@ -88,7 +88,7 @@ require "client_priv.php";
                 </ul>
                 <div class="position-absolute bottom-0 end-0 m-3">
                   
-                <a href="logout.php">LOGOUT</a>
+                <a href="func_logout.php">LOGOUT</a>
                </div>
 
         </nav>
@@ -99,25 +99,25 @@ require "client_priv.php";
    <h1 id="classics">CLASSICS</h1>
 <?php
 $category = "classics";
-include('menu_content.php');
+include('func_menu_content.php');
 ?>
 
 <h1 id="wholeMozza">Whole Mozzarella</h1>
 <?php
 $category = "Whole Mozzarella";
-include('menu_content.php');
+include('func_menu_content.php');
 ?>
 
 <h1 id="halfMozza_halfSausge">Half Mozza Plus Half Sausage</h1>
 <?php
 $category = "Half Mozza Plus Half Sausage";
-include('menu_content.php');
+include('func_menu_content.php');
 ?>
 
 <h1 id="specials">Specials</h1>
 <?php
 $category = "Specials";
-include('menu_content.php');
+include('func_menu_content.php');
 ?>
   
   

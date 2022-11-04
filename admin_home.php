@@ -6,8 +6,8 @@ echo "<br>";
 echo "Sess_ID ";
 echo SESSION_ID();
 
-require "check_sess.php";
-require "admin_priv.php";
+require "func_check_sess.php";
+require "func_admin_priv.php";
 
 ?>
 

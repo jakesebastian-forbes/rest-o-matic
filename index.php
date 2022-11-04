@@ -40,7 +40,7 @@
             </div>
             <div style = "float:right;">
             <a type = "button" class ="mybtn1 myfixedbtn"
-            href = "user_ui.php">BROWSE</a> 
+            href = "client_ui.php">BROWSE</a> 
             </div>
 
 
