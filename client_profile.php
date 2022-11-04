@@ -167,7 +167,7 @@
                                     <table>
                                         <tr>
                                             <th>ORDER NUMBER</th>
-                                            <th>PLACED ON</th>
+                                            <th>EXPECTED ARRIVAL</th>
                                             <th>ITEM</th>
                                             <th>TOTAL</th>
                                         </tr>

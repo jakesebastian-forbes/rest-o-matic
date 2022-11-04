@@ -7,7 +7,7 @@ echo "Sess_ID ";
 echo SESSION_ID();
 
 require "check_sess.php";
-require "client_priv.php"
+require "client_priv.php";
 
 ?>
 
@@ -31,7 +31,7 @@ require "client_priv.php"
   <div class="container-fluid" style="background-color: white; height:100vh; width:100vw; min-width:fit-content;">
 
     <div class="row">
-      <nav class="navbar mynavbar" style="min-width:100%;">
+      <nav class="navbar mynavbar" style="">
         
           <div class="d-flex flex-row mx-51" style="color:white">
             <a href="index.php">
