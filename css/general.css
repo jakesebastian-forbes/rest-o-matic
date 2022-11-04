@@ -1,3 +1,16 @@
+
+.testheading{
+    color:white;
+    margin-top: auto;
+    margin-bottom: auto;
+
+}
+
+.nav_logo{
+    max-height: 70px;
+    margin-left: -25%;
+}
+
 a{
     text-decoration: none;
 
@@ -8,7 +21,7 @@ a{
     width:100vw;
     min-width:max-content;
     /* max-width: 100vw; */
-    max-height: 86px;
+    max-height: max-content;
     min-width:100%;
 }
 
@@ -62,7 +75,7 @@ a{
     padding-left: 20px;
     padding-right :20px;
     padding-bottom: -5px;
-    /* padding:10px; */
+    padding:10px 20px 10px 20px;
     margin: 10px;
     flex:auto;
 
@@ -86,7 +99,7 @@ a{
 .mybtn1:hover{
       
     color:red;
-    margin-top: 3px;
+    margin-top: 10px;
 
 }
 
@@ -214,3 +227,5 @@ transform: translate(-50%, -50%);
 text-align: center;
 
 } */
+
+
