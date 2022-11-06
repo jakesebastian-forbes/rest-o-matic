@@ -29,6 +29,7 @@ aboutus_btn.textContent ='ABOUT US';
 aboutus_btn.setAttribute('type','button');
 aboutus_btn.setAttribute('class','mybtn1 my-auto');
 aboutus_btn.setAttribute('href','about_us.php');
+// aboutus_btn.setAttribute('hidden');
 document.getElementById('buttonss').append(aboutus_btn);
 
 </script>";

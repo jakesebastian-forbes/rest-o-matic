@@ -18,7 +18,7 @@ if(!isset($_SESSION_ID)){
     }
     elseif($_SESSION['privilage'] == 'client'){
         header("Location: client_ui.php");
-
+        
     }
 
 }
@@ -40,19 +40,14 @@ if(!isset($_SESSION_ID)){
 </head>
 
 <body>
-  <div class="container-fluid" style="
-        background-color: #8ecdda;
-        height: 100vh;
-        width: 100vw;
-        min-width: fit-content;
-      ">
-    <div class="row">
+
+    <!-- <div class="row">
       <nav class="navbar mynavbar" style="">
         <div class="d-flex justify-content-start">
           <img src="images/icon/web_icon.png" class="px-3" alt="web_icon.png" style="max-height: 70px" />
-          <!-- <span class="navbar-brand mb-0 myheading1"></span> -->
+
           <h1 class="myheading1" style="padding-bottom: 0">LOGIN</h1>
-          <!-- <a type ="button" class ="mybtn1">ABOUT US</a> -->
+
         </div>
         <div class="d-flex justify-content-end">
           <a type="button" class="mybtn1 mx-4" data-bs-toggle="modal" data-bs-target="#reg-modal" id="mybtn" style="
@@ -62,7 +57,35 @@ if(!isset($_SESSION_ID)){
               ">SIGN UP</a>
         </div>
       </nav>
-    </div>
+    </div> -->
+    
+<?php 
+$page_title = "login";
+include ('test7.php');
+echo"<script>
+
+let signup_btn = document.createElement('a');
+signup_btn.textContent ='SIGNUP';
+
+signup_btn.setAttribute('type','button');
+signup_btn.setAttribute('class','mybtn1 my-auto');
+signup_btn.setAttribute('data-bs-toggle','modal');
+signup_btn.setAttribute('data-bs-target','#reg-modal');
+signup_btn.setAttribute('id','mybtn');
+signup_btn.setAttribute('style','background-color:#7ed957;color:black;display:inline;');
+document.getElementById('buttonss').append(signup_btn);
+
+</script>";
+?>
+
+<div class="container-fluid" style="
+        background-color: #8ecdda;
+        height: 100vh;
+        width: 100vw;
+  
+      ">
+      
+
     <div>
       <h1 class="mytitle1" style="font-size: 10vh; padding: 30px 0px 0px 40px">
         RES-O-MATIC!
@@ -85,13 +108,17 @@ if(!isset($_SESSION_ID)){
         <div class="col-lg-5 col-12">
           <div class="panel panel-basic border rounded" style="background-color: white; height: 100%">
             <div class="row">
-              <img src="images/yeji.jpg" class="img img-responsive rounded-circle mx-auto d-block" alt="avatar_logo"
+              <img src="images/yeji.jpg" class="img img-responsive rounded-circle mx-auto d-block myprof" alt="avatar_logo"
                 style="
+                    height: 35vw;
+                    width: 40vw;
+                    margin-top: -15%;
                     max-height: 180px;
                     max-width: 200px;
-                    margin-top: -15%;
                     object-fit: cover;
-                  " />
+                  "
+                    
+                   />
             </div>
 
             
@@ -197,7 +224,6 @@ if(!isset($_SESSION_ID)){
                         </div>
 
                       </div>
-
                         
 
                     <div class="modal-footer">

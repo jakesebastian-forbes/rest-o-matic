@@ -6,7 +6,14 @@ echo "\n";
 echo "Sess_ID ";
 echo SESSION_ID();
 
-require "func_check_sess.php";
+if ($_SESSION["privilage"] == 'guest'){
+  echo "GUESTTTTTTTTTTT";
+ 
+}else{
+  require "func_check_sess.php";
+
+}
+
 require "func_client_priv.php";
 
 ?>
@@ -18,7 +25,7 @@ require "func_client_priv.php";
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TEST3 Home | Client</title>
+  <title id ="fck">TEST3 Home | Client</title>
 
   <link rel="icon" type="image/x-icon" href="images/icon/web_icon.png" />
   <link rel="stylesheet" href="bootstrap-5.2.2/css/bootstrap.min.css" />
@@ -39,8 +46,8 @@ require "func_client_priv.php";
             </a>
             <h1 class="myheading2 px-3 my=2" style="padding-bottom: 0 ">MENU</h1>
           </div>
-        <div>
-        <nav class="navbar bg-dark">
+        <div id = "sidebar-btn"> 
+        <nav class="navbar bg-dark" >
           <div class="container-fluid">
             
             <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
@@ -122,6 +129,20 @@ include('func_menu_content.php');
   
   
   </div>
+
+
+  <?php
+  
+  if ($_SESSION["privilage"] != 'client'){
+    echo "GUESTTTTTTTTTTT";
+    echo"<script>
+  
+  
+    document.getElementById('sidebar-btn').setAttribute('hidden','true'); 
+   
+  </script>";
+  }
+  ?>
 </body>
 
 </html>

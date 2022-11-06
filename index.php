@@ -1,3 +1,9 @@
+<?php
+session_start();
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -40,7 +46,11 @@
             </div>
             <div style = "float:right;">
             <a type = "button" class ="mybtn1 myfixedbtn"
-            href = "client_ui.php">BROWSE</a> 
+            href = "client_ui.php"
+            action = "<?php $_SESSION["privilage"] = 'guest'; 
+            
+            ?>"
+            >BROWSE</a> 
             </div>
 
 

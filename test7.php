@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
-    <link rel="icon" type="image/x-icon" href="web_icon.png"/> 
+    <link rel="icon" type="image/x-icon" href="images/icon/web_icon.png"/> 
     <link rel="stylesheet" href="bootstrap-5.2.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/general.css">
 </head> 
@@ -16,8 +16,8 @@
        
         <div class = "row"> 
             <nav class="navbar mynavbar">   
-                <div class="row m-0">
-                    <div class="d-flex flex-row mx-5 col"> 
+               
+                    <div class="d-flex flex-row mx-5 "> 
                         <a href="index.php">
                                 <img src="images/icon/web_icon.png" alt="web_icon.png" class = "nav_logo">  
                         </a>
@@ -25,11 +25,11 @@
 
                     </div>
 
-                    <div class ="d-flex justify-content-end text-center col" id = "buttonss" >
+                    <div class ="d-flex justify-content-end text-center m-lg-0 m-sm-0 m-auto  " id = "buttonss" >
 
 
                     </div>
-                </div>
+                
 
             </nav>      
         </div>         
