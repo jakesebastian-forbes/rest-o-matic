@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="bootstrap-5.2.2/css/bootstrap.min.css"/>
+    <script src="https://kit.fontawesome.com/1c020da525.js" crossorigin="anonymous"></script> 
+    <script src="bootstrap-5.2.2/js/bootstrap.bundle.min.js"></script> 
+
+    <title>Home | Client</title>
+</head>
+
+<style>
+   .accNavbar{
+    margin-top: 10px;
+    background-color: black;
+   }
+
+   .accNavbar h2{
+    float: left; color:white;
+    padding-top: 5px; 
+    margin-left:10px;
+   }
+   .accNavbar ul{
+        color: white;
+        display: flex;
+        list-style-type: none;
+        padding: 0%;
+        padding-top: 1%;
+        justify-content: end;
+    }
+    .accNavbar li{
+        text-decoration: none;
+        color: white;
+        margin: 0% 14px;
+        cursor: pointer;
+    }
+
+    /* table{
+        margin-top: 50px;
+        width: 100%;
+    }
+
+    th{
+        background-color: #C5C5C5;
+    }
+    table, th, td{
+        
+        border: 1px solid;
+        text-align: center;
+
+    } */
+     /* The flip card container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
+     .flip-card {
+          background-color: transparent;
+          width: 80wh;
+          height: 60vh;
+          /* border: 1px solid #f1f1f1; */
+          perspective: 1000px;
+          /* Remove this if you don't want the 3D effect */
+        }
+    
+        /* This container is needed to position the front and back side */
+        .flip-card-inner {
+          position: relative;
+          width: 100%;
+          height: 100%;
+          text-align: center;
+          transition: transform 0.8s;
+          transform-style: preserve-3d;
+        }
+    
+        /* Do an horizontal flip when you move the mouse over the flip box container */
+        .flip-card:hover .flip-card-inner {
+          transform: rotateY(180deg);
+        }
+    
+        /* Position the front and back side */
+        .flip-card-front,
+        .flip-card-back {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          -webkit-backface-visibility: hidden;
+          /* Safari */
+          backface-visibility: hidden;
+        }
+    
+        /* Style the front side (fallback if image is missing) */
+        .flip-card-front {
+          background-color: #F1EBE5;
+          color: black;
+        }
+    
+        /* Style the back side */
+        .flip-card-back {
+          background-color: dodgerblue;
+          color: white;
+          transform: rotateY(180deg);
+        }
+</style>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <nav class="navbar mynavbar" style="width: 100vw; min-width: fit-content; max-height: 86pfix                                  ; background-color: black;">
+                <div class="d-flex justify-content-start">
+                  <img src="images/icon/web_icon.png" class="px-3" alt="web_icon.png" style="max-height: 70px">
+                  <h1 class="myheading1" style="padding-top: 7px; color: white;">REST-O-MATIC</h1>
+                  </div>
+                  <nav class="navbar bg-dark">
+                    <div class="container-fluid">
+                      <a class="navbar-brand" href="#"></a>
+                      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+                        <span class="navbar-toggler-icon"></span>
+                      </button>
+                      <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                        <div class="offcanvas-header">
+                          <h5 class="offcanvas-title" id="offcanvasNavbarLabel">USERNAME</h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                        </div>
+                        <div class="offcanvas-body">
+                          <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                            <li class="nav-item">
+                              <a class="nav-link active" aria-current="page" href="#">ACCOUNT</a>
+                            </li>
+                            <li class="nav-item">
+                              <a class="nav-link" href="#">ORDERS</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">RESERVATION</a>
+                              </li>
+                              <li class="nav-item">
+                                <a class="nav-link" href="#">REVIEWS</a>
+                              </li>
+                              <li class="nav-item">
+                                <a class="nav-link" href="#">CART</a>
+                              </li>
+                            <li class="nav-item dropdown">
+                              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                GO TO
+                              </a>
+                              <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">CATEGORY 1</a></li>
+                                <li><a class="dropdown-item" href="#">CATEGORY 2</a></li>
+                              </ul>
+                            </li>
+                            <li class="nav-item">
+                                <button type="button" class="btn btn-danger btn-lg text-black" style="border-radius: 24px;"> LOGOUT </button>
+                            </li>
+                          </ul>
+                        </div>
+                    </div>
+                </nav>
+                </nav>
+                
+        </div>
+
+        <div class="container">
+            <div class="panel">
+                <nav>
+                    <div class="navbar accNavbar">
+                      <h2><img src="images/yeji.jpg" alt="avatar" class="img-fluid rounded-circle" style="width: 50px; height: 50px; border-radius: 50%;"> My Profile</h2>
+                        <!-- <h2><i class="fa-regular fa-user"></i> My Profile</h2> -->
+                        <ul>
+                            <li><i class="fa fa-gear" style="font-size: 24px"></i></li>
+                             <li><i class="fa fa-shopping-cart" style="font-size: 24px;"></i></li>
+                             <li><i class="fa-solid fa-star" style="font-size:24px ;"></i></li>
+                        </ul> 
+                    </div>
+                    
+                </nav>
+                <div class="panel-body" style="background-color:#EEEDE7 ;">
+                  <!-- <div class="card" style="width: 20rem;"> -->
+                   <div class="row" >
+                        <div class="col-6" style="padding: 2%;" >
+                          <div class="card">
+                            <div class="row" style="margin-left:380px; margin-top: 5px">
+                              <div class="col-md">
+                                  <button type="button" class="btn btn-secondary"><a href="/rest-o-matic-master/acc_settings_ui.html" style="text-decoration: none; color:black;"> Edit Profile</button></a>
+                              </div>
+                          </div>
+                            <div class="row" style="margin-left:2px ;" >
+                                <div class="col-md">
+                                    <h5>Username</h5>
+                                </div>
+                                <div class="col-md text-secondary">
+                                    <h5>xxxxxxx</h5>
+                                </div>
+                             
+                            </div>
+                            <div class="row" style="margin-left:2px ;">
+                                <div class="col-md">
+                                    <h5>Full Name</h5>
+                                </div>
+                                <div class="col-md text-secondary">
+                                    <h5>xxxxxxx</h5>
+                                </div>
+                            </div>
+                            <div class="row" style="margin-left:2px ;">
+                                <div class="col-md">
+                                    <h5>Email</h5>
+                                </div>
+                                <div class="col-md text-secondary">
+                                    <h5>xxxxxxx</h5>
+                                </div>
+                                
+                            </div>
+                            <div class="row" style="margin-left:2px ;">
+                                <div class="col-md">
+                                    <h5>Phone Number</h5>
+                                </div>
+                                <div class="col-md text-secondary">
+                                    <h5>xxxxxxx</h5>
+                                </div>
+                              
+                            </div>
+                            <div class="row" style="margin-left:2px ;">
+                                <div class="col-md">
+                                    <h5>Address</h5>
+                                </div>
+                                <div class="col-md text-secondary">
+                                    <h5>xxxxxxx</h5>
+                                </div>
+                               
+                            </div>
+                          </div>
+                        </div>
+                      
+                  <!-- </div> -->
+                        <div class="col-6" style=" padding:2% ">
+                            <div class="row row1">
+                                <div class="col-6">
+                                    <!-- <div class="card" style="background-color: #FFA500;" > 
+                                        <h1 style="font-size: 200%; text-align: center; margin-top: 5px;">3</h1>
+                                         <div class="card-body" style="font-size: 100%; text-align: center; margin-top: 5px;">
+                                              </div>
+                                   </div> -->
+                                   <button class="btn btn-light" style="background-color: #FFA500; border: none; height: 120px; width: 240px ;">
+                                    <a href="/orders.html" style="text-decoration: none; color: black;">
+                                        <h1 style="font-size: 200%; text-align: center; margin-top: 5px;">3</h1>
+                                        ORDERS</a>
+                                    </button>
+                                      
+                                            
+                                
+                                   
+                                </div>
+                                <div class="col-6">
+                                    <!-- <div class="card" style="background-color: #FFA500;">
+                                        <h1 style="font-size: 200%;text-align: center; margin-top: 5px;">5</h1>
+                                        <div class="card-body" style="font-size: 100%; text-align: center; margin-top: 5px;">
+                                            <button class="btn btn-light" style="background-color:#FFA500; border: none;" ><a href="/reservation.html" style="text-decoration: none; color: black;">RESERVATION</a></button>
+                                   
+                                        </div>     
+                                </div> -->
+                                <button class="btn btn-light" style="background-color: #FFA500; border: none; height: 120px; width: 240px ;">
+                                    <a href="/reservation.html" style="text-decoration: none; color: black;">
+                                        <h1 style="font-size: 200%; text-align: center; margin-top: 5px;">5</h1>
+                                        RESERVATION</a>
+                                </button>
+                             
+
+                            </div>
+                        </div>
+                   </div>
+                </div>
+                <div class="row row2" style="margin: 7%; margin-top: 2px;">
+                  <div class="col">
+                    <div class="card">
+                      <table class="table">
+                        <thead>
+                          <tr>
+                            <th scope="col">ORDER NUMBER</th>
+                            <th scope="col">PLACED ON</th>
+                            <th scope="col">ITEM</th>
+                            <th scope="col">TOTAL</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <th scope="row">123456</th>
+                            <td>October 1, 2022</td>
+                            <td>Item 6</td>
+                            <td>250</td>
+                          </tr>
+                        </tbody>
+                        <tbody>
+                          <tr>
+                            <th scope="row">456789</th>
+                            <td>October 2, 2022</td>
+                            <td>Item 7</td>
+                            <td>475</td>
+                          </tr>
+                        </tbody>
+                        <tbody>
+                          <tr>
+                            <th scope="row">678901</th>
+                            <td>October 6, 2022</td>
+                            <td>Item 6</td>
+                            <td>236</td>
+                          </tr>
+                        </tbody>
+                        <tbody>
+                          <tr>
+                            <th scope="row">245678</th>
+                            <td>October 17, 2022</td>
+                            <td>Item 3</td>
+                            <td>490</td>
+                          </tr>
+                        </tbody>
+                          <!-- <tr>
+                              <th>ORDER NUMBER</th>
+                              <th>PLACED ON</th>
+                              <th>ITEM</th>
+                              <th>TOTAL</th>
+                          </tr>
+                          <tr>
+                              <td>123456</td>
+                              <td>October 1, 2022</td>
+                              <td>Item 6</td>
+                              <td>250</td>
+                          </tr>
+                          <tr>
+                              <td>456789</td>
+                              <td>October 2, 2022</td>
+                              <td>Item 6</td>
+                              <td>300</td>
+                          </tr>
+                          <tr>
+                              <td>468531</td>
+                              <td>October 5, 2022</td>
+                              <td>Item 4</td>
+                              <td>400</td>
+                          </tr> -->
+                      </table>
+                    </div>
+                  </div>
+              </div>
+                <hr>
+              
+                <center>
+                  <h1 class="p-1" style="font-size: vw;font-weight:bold">ABOUT US</h1>
+                </center>
+                <div class="text-center" style="margin:7%; margin-bottom: 2px; margin-top: 2px;"> 
+                  <div class="flip-card"> 
+                    <div class="flip-card-inner">
+                      <div class="flip-card-front py-5 text-center " style="font-family: 'Courier New', monospace;contain:; font-size: large">
+                          <div class = "text-responsive my-auto">
+                            
+                            <h2 class="p-1" style="font-size: vw; margin-top: 3%;">Rest-o-Matic</h2>
+                            <h1 class="p-1" style="font-size: vw;font-weight:bold">09-XXX-XXX-XXX</h1>
+                            <h4 class="p-1" style="font-size: vw;">CONTACT NUMBER</h4>
+                            <h1 class="p-1" style="font-size: vw;font-weight:bold">BRGY. SAMPLE, NASUGBU</h1>
+                            <h4 class="p-1" style="font-size: vw;"><a onclick="" href="" 
+                                style="text-decoration: none; color:inherit">ADDRESS</a> </h4>
+                          </div>
+              
+                      </div>
+                      <div class="flip-card-back">
+              
+                        <iframe
+                          src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d967.5875798701267!2d120.63969!3d14.056479!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x29f6cee62947d4f5!2sWaltermart%20Nasugbu!5e0!3m2!1sen!2sph!4v1666085008834!5m2!1sen!2sph"
+                          width="100%" height="100%" style="border:0;" allowfullscreen="true" loading="lazy" 
+                          referrerpolicy="no-referrer-when-downgrade"></iframe>  
+              
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <hr>
+            </div>
+          </div>
+        </div>
+    </div>
+    
+</body>
+</html>
