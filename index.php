@@ -1,6 +1,11 @@
 <?php
 session_start();
 
+echo "Session Array:";
+print_r($_SESSION);
+echo "\n";
+echo "Sess_ID ";
+echo SESSION_ID();
 
 ?>
 
@@ -40,18 +45,16 @@ session_start();
                         
                 </div>    
                   
-               
-
-
-            </div>
-            <div style = "float:right;">
+                <div style = "float:right;">
             <a type = "button" class ="mybtn1 myfixedbtn"
-            href = "client_ui.php"
-            action = "<?php $_SESSION["privilage"] = 'guest'; 
-            
-            ?>"
+            href = "func_set_guest.php"
+            action = ""
             >BROWSE</a> 
             </div>
+
+
+            </div>
+            
 
 
     </div>

@@ -7,7 +7,7 @@ echo "Sess_ID ";
 echo SESSION_ID();
 
 if ($_SESSION["privilage"] == 'guest'){
-  echo "GUESTTTTTTTTTTT";
+  // echo "GUESTTTTTTTTTTT";
  
 }else{
   require "func_check_sess.php";
@@ -134,7 +134,7 @@ include('func_menu_content.php');
   <?php
   
   if ($_SESSION["privilage"] != 'client'){
-    echo "GUESTTTTTTTTTTT";
+    // echo "GUESTTTTTTTTTTT";
     echo"<script>
   
   

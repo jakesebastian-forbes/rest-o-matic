@@ -175,11 +175,11 @@ document.getElementById('buttonss').append(signup_btn);
                     <form method="post" action = "func_signup.php">  
                       <div class="row mb-2">
                           <div class="col">
-                            <input type="text" class="form-control" id="modal-firstname" placeholder="First name" name="firstname" />
+                            <input type="text" class="form-control" id="modal-firstname" placeholder="First name" name="firstname" required />
                           </div>
 
                           <div class="col">
-                            <input type="text" class="form-control" id="modal-lastname" placeholder="Last name" name="lastname" />
+                            <input type="text" class="form-control" id="modal-lastname" placeholder="Last name" name="lastname" required />
                           </div>
 
                       </div>
