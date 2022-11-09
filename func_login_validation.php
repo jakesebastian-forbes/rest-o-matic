@@ -18,10 +18,7 @@ if($conn->connect_error){
 
     $S_credencials = mysqli_fetch_assoc($result); //staff credencials
     
-    // echo "credits:";
-    
-    // echo $credencials;
-
+ 
 
     if($S_credencials == NULL){
 

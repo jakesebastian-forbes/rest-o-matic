@@ -1,0 +1,11 @@
+
+SELECT client_order.order_id, client_order.status,menu.item_name, menu.item_price, client_account.username, client_account.address, order_details.quantity, client_order.total,client_order.timestamp
+
+FROM client_order JOIN order_details 
+ON client_order.order_id = order_details.order_id
+JOIN menu 
+ON menu.menu_id = order_details.menu_id
+JOIN client_account
+ON client_account.client_id = client_order.order_id
+
+ORDER BY client_order.timestamp DESC

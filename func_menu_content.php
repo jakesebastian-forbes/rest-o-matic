@@ -1,3 +1,41 @@
+<?php
+// $is_guest = 0;
+
+if(isset($_SESSION['privilage'])){
+  if($_SESSION['privilage'] == 'guest'){
+    // $is_guest = 1;
+    echo"<script>
+    // const add = document.querySelectorAll('#add_cart');
+
+
+    add = document.getElementById('add_cart');
+    add.setAttribute('data-bs-toggle','modal');
+    add.setAttribute('data-bs-target','#reg-modal');
+    add.removeAttribute('onclick');
+    
+    // const btn_modal = document.querySelectorAll('btn-modal');
+
+    // Change the text of multiple elements with a loop
+    // btn_modal.forEach(element => {
+    //   add.setAttribute('data-bs-toggle','modal');
+    //   add.setAttribute('data-bs-target','#reg-modal');
+    //   add.removeAttribute('onclick'); 
+      
+    // });
+    
+    // Access the first element in the NodeList
+    // btn_modal[0];
+
+    </script>";
+  }
+
+
+}
+
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -48,7 +86,8 @@
               <!-- <button class="mybtn1 my-auto" style = "margin-left: 15px;" action= "func_add_cart.php">ADD ITEM TO CART</button>  -->
               <!-- <button type="submit" class="mybtn1 my-auto" name="insert" value="<?php //echo $menu_id?>">Submit</button> -->
               <button type="submit" class="mybtn1 my-auto" name="insert" 
-              id = "add_cart">Submit</button>
+              id = "add_cart" onclick=showid(this.value)
+               value="<?php echo $menu_id?>"  >Submit</button>
             <!-- for maybe buy now -->
               <button type="submit" formaction="/action_page2.php">Submit to another page</button>
            
@@ -69,8 +108,59 @@
 
 
         <div class="card-footer">
-          <small class="text-muted">₱<?php echo $rows['item_price']?>.00</small>
-      
+          <small class="text-muted" id = "item_price">₱<?php echo $rows['item_price']?>.00</small> <br>
+          <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" id="with_fries">
+            <label class="form-check-label" for="flexSwitchCheckDefault">With Fries</label>
+          </div>
+          <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+            ADD ONS
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            
+          <li>
+              <a class="dropdown-item" href="">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="Checkme1" />
+                        <label class="form-check-label" for="Checkme1">Flamin' Hot Cheetos</label>
+                </div>
+              </a>
+          </li>
+          <li>
+              <a class="dropdown-item" href="">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="Checkme1" />
+                        <label class="form-check-label" for="Checkme1">Grated Cheese</label>
+                </div>
+              </a>
+          </li>
+          <li>
+              <a class="dropdown-item" href="">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="Checkme1" />
+                        <label class="form-check-label" for="Checkme1">Extra Sauce</label>
+                </div>
+              </a>
+          </li>
+          <li>
+              <a class="dropdown-item" href="">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="Checkme1" />
+                        <label class="form-check-label" for="Checkme1">Parmesan Cheese</label>
+                </div>
+              </a>
+          </li>
+          <li>
+              <a class="dropdown-item" href="">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="Checkme1" />
+                        <label class="form-check-label" for="Checkme1">Korean Hot Sauce</label>
+                </div>
+              </a>
+          </li>
+          </ul>
+        </div>
         </div>
      
       </div>
@@ -81,12 +171,25 @@
         }
       }
       ?>
+
+
+  
   </div>
   <!-- </form> -->
-
-
-
   <br>
-  
+
+<script>
+
+if ($("#with_fries").is(":checked")) {
+    $("item_price").value =+60;
+    return;
+}
+</script>
+
+
+
+
     </body>
   </html>
+
+  

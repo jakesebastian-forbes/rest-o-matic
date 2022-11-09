@@ -22,12 +22,13 @@ onclick="loadDoc('ajax_info2.txt', myFunction)">Change Content
 function loadDoc(url, cFunction) { //callback fucnction
   var xhttp;
   xhttp=new XMLHttpRequest();
+  xhttp.open("GET", url, true);
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
       cFunction(this);
     }
   };
-  xhttp.open("GET", url, true);
+ 
   xhttp.send();
 }
 

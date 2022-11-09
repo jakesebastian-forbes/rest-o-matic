@@ -1,11 +1,11 @@
 <?php
 session_start();
 
-echo "Session Array:";
-print_r($_SESSION);
-echo "\n";
-echo "Sess_ID ";
-echo SESSION_ID();
+// echo "Session Array:";
+// print_r($_SESSION);
+// echo "\n";
+// echo "Sess_ID ";
+// echo SESSION_ID();
 
 ?>
 
@@ -24,15 +24,15 @@ echo SESSION_ID();
 </head>
 <body>
 
-    <div class = "container-fluid" style ="background-image: url(images/bg/home-bg2.png); background-repeat:no-repeat; height:100vh; width:100vw; min-width:fit-content;">  
+    <div class = "container-fluid" style ="background-image: url(images/bg/home-bg2.png); background-repeat:no-repeat; height:100vh; width:100vw;  ">  
        
             <div class = "row"> 
                 <nav class="navbar mynavbar" style = "min-width:100%;">   
                     <div class="d-flex flex-row mx-5"> 
                         <img src="images/icon/web_icon.png" alt="web_icon.png" style="max-height: 70px;">  
                         <!-- <span class="navbar-brand mb-0 myheading1"></span> --> 
-                        <a type ="button" class ="mybtn1" href = "login.php">LOGIN</a>
-                        <a type ="button" class ="mybtn1" href="about_us.php">ABOUT US</a>
+                        <a type ="button" class ="btn mybtn1" href = "login.php">LOGIN</a>
+                        <a type ="button" class ="btn mybtn1" href="about_us.php">ABOUT US</a>
                     </div>
                 </nav>      
             </div>         

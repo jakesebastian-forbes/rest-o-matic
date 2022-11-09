@@ -1,0 +1,45 @@
+SELECT cart.cart_id, menu.item_name,menu.item_price,client_account.username,client_account.address
+FROM cart JOIN menu 
+ON cart.menu_id = menu.menu_id 
+JOIN client_account
+ON client_account.client_id = cart.client_id; 
+
+
+ 
+<script>
+    function showid(value){
+    var user = parseInt(<?php echo $_SESSION['client_id']; ?>) ; 
+    var menu_id = value;
+    console.log('user ' +user);
+    console.log('ordered '+menu_id);
+  
+  //  alert('added to cart!');
+
+
+  $.ajax({
+		url: "func_add_cart.php",
+		type: "POST",
+		data: {
+			"client_id": user,
+			"menu_id": menu_id
+		},
+		cache: false,
+		success: function(dataResult){
+			var dataResult = JSON.parse(dataResult);
+			if(dataResult.statusCode==200){
+        alert("Something happened!");
+				// $("#butsave").removeAttr("disabled");
+				// $('#fupForm').find('input:text').val('');
+				// $("#success").show();
+				// $('#success').html('Data added successfully !'); 						
+			}
+			else if(dataResult.statusCode==201){
+				alert("Error occurred !");
+			}
+			
+		}
+	});
+    
+    }
+
+  </script>
