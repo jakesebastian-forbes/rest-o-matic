@@ -1,11 +1,12 @@
 <?php
 
 session_start();
-echo "Session Array:";
-print_r($_SESSION);
-echo "\n";
-echo "Sess_ID ";
-echo SESSION_ID();
+// echo "Session Array:";
+// print_r($_SESSION);
+// echo "\n";
+// echo "Sess_ID ";
+// echo SESSION_ID();
+$_SESSION['privilage'] = NULL;
 
 if(!isset($_SESSION_ID)){
     if($_SESSION['privilage'] == 'admin'){
@@ -88,7 +89,7 @@ document.getElementById('buttonss').append(signup_btn);
 
     <div>
       <h1 class="mytitle1" style="font-size: 10vh; padding: 30px 0px 0px 40px">
-        RES-O-MATIC!
+        REST-O-MATIC!
       </h1>
 
       <div class="row px-5 py-1 g-0" style="margin-left: 2%;">
@@ -144,7 +145,7 @@ document.getElementById('buttonss').append(signup_btn);
                                     </div> -->
                     <p><input type="checkbox" name="remember" /> Remember me</p>
                 <div class="text-center">
-                  <a href="" style="color: black">
+                  <a href="#password_reset" style="color: black">
                     <h5>forgot password?</h5>
                   </a>
                   <button type="submit" class="btn btn-primary" style="

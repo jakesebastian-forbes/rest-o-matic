@@ -1,3 +1,10 @@
+<?php
+session_start();
+// print_r($_SESSION);
+include 'db_connection.php';
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -207,27 +214,67 @@
                 <div class="row">
                     <div class="col">
                         <center>
+                        <?php
+
+$client_id = $_SESSION['client_id'] ;
+  if($conn->connect_error){
+    die('Connection failed : ' . $conn->connect_error);
+   }else{
+    // echo " uyyy". $category;
+  $query = "SELECT * FROM `client_order` WHERE `client_id` = $client_id ;";
+
+  $result_orderID = mysqli_query($conn,$query);
+
+  while($rows_orderID = mysqli_fetch_assoc($result_orderID))
+      {
+       $order_id =  $rows_orderID['order_id']
+  ?>
                             <div class="card" style="width:60rem ; margin-top: 10px; margin-bottom: 10px;">
-                                <div class="card-header">
-                                    <h5 style="color: black ; float: right;">PENDING</h5>
+                                <div class="card-header" id = "order">
+                         
+                                    <h6 style="color: black ;">Order ID : </h6>
+                                    <h6 id = "order_id" style="color: black ;"><?php echo $rows_orderID['order_id']?> </h6>
+                                    <h5 style="color: black ; float: right;"><?php echo $rows_orderID['status']?></h5>
+                        
                                 </div>
                                 <div class="card-body cardbody">
                                     <div class="row">
+                                    <?php
+
+                                        
+                                        if($conn->connect_error){
+                                            die('Connection failed : ' . $conn->connect_error);
+                                        }else{
+                                            // echo " uyyy". $category;
+                                        $query = "SELECT * FROM `orders_content` WHERE `client_id` = $client_id AND `order_id` = $order_id;";
+
+                                        $result = mysqli_query($conn,$query);
+
+                                        while($rows = mysqli_fetch_assoc($result))
+                                            {
+                                            
+                                        ?>
                                         <div class="col-sm-3">
-                                            <img src="/images/2dogs.jpg" alt="pfp" width="90px" height="90px" style="float:left;">
+                                            <img src="/images/2dogs.jpg" alt="pfp" width="90px" height="90px" style="float:left;"
+                                            id = "order_menu_img">
                                             <div class="row">
-                                                <h6>CORNDOG</h6>
+                                                <h6 id = "order_menu_item"><?php echo $rows['item_name']?></h6>
                                             </div>
                                             <div class="row">
-                                                <h6>3</h6>
+                                                <h6 id = "item_qnt">QNT: <?php echo $rows['quantity']?></h6>
                                             </div>
                                         </div>
                                         
                                         <div class="col-sm-9">
 
-                                            <h5 style="float:right ;"> PRICE: 100</h5>
+                                            <h5 style="float:right ;"
+                                            id = "order_menu_price"> PRICE: <?php echo $rows['item_price']?></h5>
                                         </div>
                                     </div>
+                                    <?php
+                              }
+                            }
+                                ?>
 
 
                                 </div>
@@ -244,9 +291,39 @@
                                         <div class="col-6">
                                             <div class="row" style="float: right;">
                                                 <div class="col">
-                                                    <h6 >TOTAL: 300</h6>
+                                                <?php
+
+                                                                                        
+                                                    if($conn->connect_error){
+                                                    die('Connection failed : ' . $conn->connect_error);
+                                                    }else{
+                                                    // echo " uyyy". $category;
+                                                    $query = "SELECT * FROM `order_total` WHERE `order_id` = $order_id ";
+
+                                                    echo $order_id;
+                                                    $result_total = mysqli_query($conn,$query);
+                                                    $rows = mysqli_fetch_assoc($result_total);
+
+                                                    ?>
+                                                    <h6 id = "order_total">TOTAL: <?php 
+                                                    if($rows == NULL){
+                                                        echo "0.00";
+
+                                                    }else{
+                                                        echo $rows['total'];
+                                                    }
+
+                                                    
+                                                    ?></h6>
+
+
+
+                                                    <?php
+                                                    
+                                                    }
+                                                        ?>
                                                 </div>
-                                                
+                                   
                                             </div> <br> <br>
                                             <div class="row" style="justify-content: right; margin: 5px;">
                                                 <div class="col-sm-3"> 
@@ -262,6 +339,10 @@
                                     </div>
                                 </div>
                             </div>
+                            <?php
+                              }
+                            }
+                                ?>
                         </center>
                         
                     </div>

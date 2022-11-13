@@ -1,0 +1,10 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"livePreview.defaultPreviewPath": "c:\\xampp\\htdocs\\rest-o-matic\\user_ui.html"
+	}
+}

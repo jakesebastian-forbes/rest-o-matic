@@ -1,0 +1,1 @@
+SELECT order_id,client_id, (SELECT SUM(sub_total) FROM `orders_content` WHERE order_id = 10) as `total` FROM `client_order` WHERE order_id = 10;

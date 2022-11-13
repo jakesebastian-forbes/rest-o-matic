@@ -5,29 +5,21 @@ if(isset($_SESSION['privilage'])){
   if($_SESSION['privilage'] == 'guest'){
     // $is_guest = 1;
     echo"<script>
-    // const add = document.querySelectorAll('#add_cart');
+ 
 
+    var el = document.querySelectorAll('#add_cart');
 
-    add = document.getElementById('add_cart');
-    add.setAttribute('data-bs-toggle','modal');
-    add.setAttribute('data-bs-target','#reg-modal');
-    add.removeAttribute('onclick');
-    
-    // const btn_modal = document.querySelectorAll('btn-modal');
+    for (var i = 0; i < el.length; i++) {
+        var currentEl = el[i];                          
+        currentEl.setAttribute('data-bs-toggle','modal');
+        currentEl.setAttribute('data-bs-target','#reg-modal');
+        currentEl.removeAttribute('onclick'); 
+    }
 
-    // Change the text of multiple elements with a loop
-    // btn_modal.forEach(element => {
-    //   add.setAttribute('data-bs-toggle','modal');
-    //   add.setAttribute('data-bs-target','#reg-modal');
-    //   add.removeAttribute('onclick'); 
-      
-    // });
-    
-    // Access the first element in the NodeList
-    // btn_modal[0];
 
     </script>";
   }
+
 
 
 }
@@ -87,9 +79,9 @@ if(isset($_SESSION['privilage'])){
               <!-- <button type="submit" class="mybtn1 my-auto" name="insert" value="<?php //echo $menu_id?>">Submit</button> -->
               <button type="submit" class="mybtn1 my-auto" name="insert" 
               id = "add_cart" onclick=showid(this.value)
-               value="<?php echo $menu_id?>"  >Submit</button>
+               value="<?php echo $menu_id?>"  >Add To Cart</button>
             <!-- for maybe buy now -->
-              <button type="submit" formaction="/action_page2.php">Submit to another page</button>
+              <button type="submit" formaction="/action_page2.php" class="mybtn1 my-auto p-auto">Buy Item</button>
            
             </div>
           </div>
@@ -108,64 +100,78 @@ if(isset($_SESSION['privilage'])){
 
 
         <div class="card-footer">
-          <small class="text-muted" id = "item_price">₱<?php echo $rows['item_price']?>.00</small> <br>
+          <?php
+          $item_price = $rows['item_price']
+          ?>
+          <small class="text-muted" id = "item_price">₱<?php echo $item_price.'.00' ?></small> <br>
+
+          
           <div class="form-check form-switch">
-            <input class="form-check-input" type="checkbox" id="with_fries">
-            <label class="form-check-label" for="flexSwitchCheckDefault">With Fries</label>
+            <input class="form-check-input" type="checkbox" id="with_fries_sw" onclick = 'update_price()'>
+            <label class="form-check-label" for="flexSwitchCheckDefault" name = "with_fries" id ="with_fries_label" >With Fries</label>
           </div>
+          <div>
+            <label for="with_fries_lbl2"></label>
+          </div>
+          
+
+          <!-- dropdown addons -->
           <div class="dropdown">
-          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+          <button class="mybtn1 btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
             ADD ONS
           </button>
           <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
             
           <li>
-              <a class="dropdown-item" href="">
+              <a class="dropdown-item">
                 <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="" id="Checkme1" />
+                  <input class="form-check-input" type="checkbox" value="Flamin' Hot Cheetos" id="Checkme" name = "addons"/>
                         <label class="form-check-label" for="Checkme1">Flamin' Hot Cheetos</label>
                 </div>
               </a>
           </li>
           <li>
-              <a class="dropdown-item" href="">
+              <a class="dropdown-item">
                 <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="" id="Checkme1" />
+                  <input class="form-check-input" type="checkbox" value="Grated Cheese" id="Checkme" name = "addons"/>
                         <label class="form-check-label" for="Checkme1">Grated Cheese</label>
                 </div>
               </a>
           </li>
           <li>
-              <a class="dropdown-item" href="">
+              <a class="dropdown-item">
                 <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="" id="Checkme1" />
+                  <input class="form-check-input" type="checkbox" value="Extra Sauce" id="Checkme" name = "addons"/>
                         <label class="form-check-label" for="Checkme1">Extra Sauce</label>
                 </div>
               </a>
           </li>
           <li>
-              <a class="dropdown-item" href="">
+              <a class="dropdown-item">
                 <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="" id="Checkme1" />
+                  <input class="form-check-input" type="checkbox" value="Parmesan Cheese" id="Checkme" name = "addons"/>
                         <label class="form-check-label" for="Checkme1">Parmesan Cheese</label>
                 </div>
               </a>
           </li>
           <li>
-              <a class="dropdown-item" href="">
+              <a class="dropdown-item" >
                 <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="" id="Checkme1" />
+                  <input class="form-check-input" type="checkbox" value="Korean Hot Cheetos" id="Checkme" name = "addons"/>
                         <label class="form-check-label" for="Checkme1">Korean Hot Sauce</label>
                 </div>
               </a>
           </li>
+          <button onclick="selectAddons()" class="btn btn-primary mx-5">Submit</button> <br> 
           </ul>
+          
         </div>
         </div>
      
       </div>
     </div>
 
+    
     <?php
 
         }
@@ -178,16 +184,31 @@ if(isset($_SESSION['privilage'])){
   <!-- </form> -->
   <br>
 
+
+  
+
+
 <script>
-
-if ($("#with_fries").is(":checked")) {
-    $("item_price").value =+60;
-    return;
+   // selecting all checkboxes
+// of group language using querySelectorAll()
+function selectAddons(){
+  var checkboxes = document.querySelectorAll('input[name="addons"]');
+  var values = [];
+  // looping through all checkboxes
+  // if checked property is true then push
+  for (var i = 0; i < checkboxes.length; i++) {
+    if (checkboxes[i].checked == true) {
+      values.push(checkboxes[i].value);
+  }
 }
-</script>
+alert(values);
+}
 
 
 
+
+  </script>
+  
 
     </body>
   </html>

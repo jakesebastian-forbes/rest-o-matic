@@ -1,3 +1,22 @@
+<?php
+session_start();
+// print_r($_SESSION);
+
+$username1 = $_SESSION['username'];
+$firstname = $_SESSION['firstname'];
+$lastname = $_SESSION['lastname'];
+$fullname = $firstname. ' '. $lastname;
+$email = $_SESSION['email'];
+$phone_number = $_SESSION['mobile_number'];
+$address = $_SESSION['address'];
+
+
+
+
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -85,7 +104,7 @@
                                     <h5>Username</h5>
                                 </div>
                                 <div class="col-md text-secondary">
-                                    <h5>xxxxxxx</h5>
+                                    <h5 id = 'val_username'>xxxxxxx</h5>
                                 </div>
                              
                             </div>
@@ -94,7 +113,7 @@
                                     <h5>Full Name</h5>
                                 </div>
                                 <div class="col-md text-secondary">
-                                    <h5>xxxxxxx</h5>
+                                    <h5 id = 'val_fullname'>xxxxxxx</h5>
                                 </div>
                             
                             </div>
@@ -103,7 +122,7 @@
                                     <h5>Email</h5>
                                 </div>
                                 <div class="col-md text-secondary">
-                                    <h5>xxxxxxx</h5>
+                                    <h5 id = 'val_email'>xxxxxxx</h5>
                                 </div>
                                 
                             </div>
@@ -112,7 +131,7 @@
                                     <h5>Phone Number</h5>
                                 </div>
                                 <div class="col-md text-secondary">
-                                    <h5>xxxxxxx</h5>
+                                    <h5 id = 'val_phone'>xxxxxxx</h5>
                                 </div>
                               
                             </div>
@@ -121,7 +140,7 @@
                                     <h5>Address</h5>
                                 </div>
                                 <div class="col-md text-secondary">
-                                    <h5>xxxxxxx</h5>
+                                    <h5 id = 'val_address'>xxxxxxx</h5>
                                 </div>
                                
                             </div>
@@ -135,8 +154,8 @@
                                               </div>
                                    </div> -->
                                    <button class="btn btn-light" style="background-color: #FFA500; border: none; height: 120px; width: 240px ;">
-                                    <a href="/orders.html" style="text-decoration: none; color: black;">
-                                        <h1 style="font-size: 200%; text-align: center; margin-top: 5px;">3</h1>
+                                    <a href="client_ui_order.php" style="text-decoration: none; color: black;">
+                                        <h1 style="font-size: 200%; text-align: center; margin-top: 5px;" id = "orders_cnt">3</h1>
                                         ORDERS</a>
                                     </button>
                                       
@@ -154,7 +173,7 @@
                                 </div> -->
                                 <button class="btn btn-light" style="background-color: #FFA500; border: none; height: 120px; width: 240px ;">
                                     <a href="/reservation.html" style="text-decoration: none; color: black;">
-                                        <h1 style="font-size: 200%; text-align: center; margin-top: 5px;">5</h1>
+                                        <h1 style="font-size: 200%; text-align: center; margin-top: 5px;" id = "reservation_cnt">5</h1>
                                         RESERVATION</a>
                                 </button>
                              
@@ -199,6 +218,45 @@
             
         </div>
     </div>
-    
+
+
+<?php
+
+include ('db_connection.php');
+$client_id = $_SESSION['client_id'];
+
+if($conn->connect_error){
+    die('Connection failed : ' . $conn->connect_error);
+   }else{
+    // echo " uyyy". $category;
+  $query = "SELECT `count` FROM `order_count` WHERE client_id = $client_id ;";
+
+  $result = mysqli_query($conn,$query);
+
+  while($rows = mysqli_fetch_assoc($result))
+      {
+        $count = $rows['count'];
+
+      }
+    //   echo 'count ' . $count;
+
+    }
+
+echo "
+<script>
+
+document.getElementById('val_username').innerHTML = '$username1' ; 
+document.getElementById('val_fullname').innerHTML = '$fullname' ; 
+document.getElementById('val_email').innerHTML = '$email' ; 
+document.getElementById('val_phone').innerHTML = '$phone_number' ; 
+document.getElementById('val_address').innerHTML = '$address' ; 
+
+document.getElementById('orders_cnt').innerHTML = '$count' ; 
+
+</script>";
+
+
+?>
+
 </body>
 </html>

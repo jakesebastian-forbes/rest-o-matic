@@ -1,10 +1,10 @@
 <?php
 session_start();
-echo "Session Array:";
-print_r($_SESSION);
-echo "\n";
-echo "Sess_ID ";
-echo SESSION_ID();
+// echo "Session Array:";
+// print_r($_SESSION);
+// echo "\n";
+// echo "Sess_ID ";
+// echo SESSION_ID();
 
 if ($_SESSION["privilage"] == 'guest'){
   // echo "GUESTTTTTTTTTTT";
@@ -68,7 +68,7 @@ require "func_client_priv.php";
                 <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                   <li class="nav-item">
                     <!-- <a class="nav-link active" aria-current="page" href="#">ACCOUNT</a> -->
-                    <a class="nav-link" aria-current="" href="client_ui_account.php">ACCOUNT</a>
+                    <a class="nav-link" aria-current="" href="client_ui_profile.php">ACCOUNT</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="client_ui_order.php">ORDERS</a>
@@ -99,12 +99,14 @@ require "func_client_priv.php";
                   
                 <a href="func_logout.php">LOGOUT</a>
                </div>
-
+               </div>
         </nav>
-        </div>
+        
         </nav>
     </div>
    
+
+
     <h1 id="classics">CLASSICS</h1>
   <?php
   $category = "classics";
@@ -133,9 +135,47 @@ require "func_client_priv.php";
   
 
 </div>
+</div>
+</div>
+</div>
 
 
   
+
+<div class="modal fade " id="reg-modal" tabindex="-1" aria-labelledby="modal-title" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="modal-title">GO TO LOGIN</h5>
+                    <button class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+
+                  <div class="modal-body p-4">
+                    <div class="text-center">
+
+                  
+                      <div class="row mb-2">
+                          <div >
+                            <h4>
+                              You don't have an account, please login first!
+                            </h4>
+                          </div>
+
+                    <div class="modal-footer">
+
+                    <a href="login.php"> <!-- <a href="login.php"></a><a href='login.php?hello=true'>Submit</a> -->
+                    <button class="btn btn-primary" name = "">Go to login</button> 
+                    </a>
+                    </div>
+
+                  
+                    </div>
+                  </div>
+                </div>
+              </div>
+        </div>
+
+
 
 
 
@@ -173,7 +213,7 @@ require "func_client_priv.php";
 		success: function(dataResult){
 			var dataResult = JSON.parse(dataResult);
 			if(dataResult.statusCode==200){
-        alert("Something happened!");
+        alert("Added to Cart!");
 				// $("#butsave").removeAttr("disabled");
 				// $('#fupForm').find('input:text').val('');
 				// $("#success").show();
@@ -185,90 +225,69 @@ require "func_client_priv.php";
 			
 		}
 	});
+}
     
+  </script>
+  <script>
+
+function update_price(){
+    onToggle();//Update when toggled
+}
+
+
+
+$(document).ready(function () {
+  putStatus();//Set button to current status
+    onToggle();//Update when toggled
+    statusText();//Last updated text
+});
+
+
+function putStatus() {
+    $.ajax({
+        type: "GET",
+        url: "https://api.srv3r.com/toggle/",
+        data: {toggle_select: true},
+        success: function (result) {
+            if (result == 1) {
+                $(this).prop('checked', true);
+                statusText(1);
+            } else {
+                $(this).prop('checked', false);
+                statusText(0);
+            }
+            // lastUpdated();
+        }
+    });
+}
+
+function statusText(status_val) {
+    if (status_val == 1) {
+        var status_str = "<?php echo $item_price + 16 .'.00'?>";
+    } else {
+        var status_str = "<?php echo $item_price .'.00'?>";
     }
+    document.getElementById("item_price").innerText = status_str;
+}
+
+function onToggle() {
+    $('#with_fries_sw').change(function () {
+        if (this.checked) {
+            // alert('checked');
+            // updateStatus(1);
+            statusText(1);
+        } else {
+            // alert('NOT checked');
+            // updateStatus(0);
+            statusText(0);
+        }
+    });
+}
+
 
   </script>
 
-<div class="modal fade " id="reg-modal" tabindex="-1" aria-labelledby="modal-title" aria-hidden="true">
-              <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="modal-title">SIGNUP</h5>
-                    <button class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                  </div>
-
-                  <div class="modal-body p-4">
-                    <div class="text-center">
-
-                    <form method="post" action = "func_signup.php">  
-                      <div class="row mb-2">
-                          <div class="col">
-                            <input type="text" class="form-control" id="modal-firstname" placeholder="First name" name="firstname" required />
-                          </div>
-
-                          <div class="col">
-                            <input type="text" class="form-control" id="modal-lastname" placeholder="Last name" name="lastname" required />
-                          </div>
-
-                      </div>
-                      <div class="row mb-2 my-0 py-0 gx-0">
-                        <input type="text" class="form-control" id="modal-username" placeholder="Username"
-                          name="username" required pattern=".{8,}" title="Please enter 8 Characters">
-                      </div>
-
-                      <div class="row mb-2 my-0 py-0 gx-0">
-                        <input type="number" class="form-control" id="modal-mobile_number" placeholder="Mobile number"
-                          name="mobile_number" required/>
-                      </div>
-
-                      <div class="row mb-2 my-0 py-0 gx-0">
-                        <input type="email" class="form-control" id="modal-email" placeholder="E-mail"
-                          name="email" />
-                      </div>
-
-                      <div class="row mb-2 my-0 py-0 gx-0">
-                        <input type="password" class="form-control" id="modal-password" placeholder="New password"
-                          name="password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-                          title="Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters"/>
-                      </div>
-          
-                      <div class="row mb-2 my-0 py-0 gx-0">
-                        <input type="text" class="form-control" id="modal-address" placeholder="Address"
-                          name="address" />
-                      </div>
-
-
-                      <div class="row mb-2">
-                        <div class="col my-2">
-                          <h6>
-                            Must be at least 16 years old!
-                          </h6>
-                        </div>
-                        <div class="col">
-                          <input type="date" class="form-control" id="modal-birthdate" placeholder="date" name="birthdate"  
-            
-                          max = "<?php  echo date("Y")-16 . "-" . date("m") . "-" .date("d");?>"
-                          required />
-                        </div>
-
-                      </div>
-                        
-
-                    <div class="modal-footer">
-
-                      <!-- <a href="login.php"></a><a href='login.php?hello=true'>Submit</a> -->
-                    <button class="btn btn-primary" name = "signup_btn" method="post">Signup</button> 
-    
-                    </div>
-
-                    </form>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
+         
 </body>
 
 </html>
