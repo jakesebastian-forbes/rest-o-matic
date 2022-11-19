@@ -38,8 +38,6 @@ require "func_client_priv.php";
   <div class="container-fluid" style="background-color: white; height:100vh; width:100vw; min-width:fit-content;">
 
     <div class="row">
-
-      
       <nav class="navbar mynavbar" style="">
         
           <div class="d-flex flex-row mx-51" style="color:white">
@@ -50,8 +48,8 @@ require "func_client_priv.php";
           </div>
         <div id = "sidebar-btn"> 
         <nav class="navbar bg-dark" >
+
           <div class="container-fluid">
-            
             <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
               aria-controls="offcanvasNavbar">
               <span class="navbar-toggler-icon"></span>
@@ -77,7 +75,7 @@ require "func_client_priv.php";
                     <a class="nav-link" href="client_ui_reservation.php">RESERVATION</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="client_ui_reviews.php">REVIEWS</a>
+                    <a class="nav-link" href="client_ui_review.php">REVIEWS</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="client_ui_cart.php">CART</a>
@@ -132,11 +130,12 @@ require "func_client_priv.php";
   ?>
 
 
-  
 
 </div>
 </div>
 </div>
+
+
 </div>
 
 
@@ -193,15 +192,13 @@ require "func_client_priv.php";
   ?>
 
 <script>
-    function showid(value){
+    function add_to_cart(value){
     var user = parseInt(<?php echo $_SESSION['client_id']; ?>) ; 
     var menu_id = value;
-    console.log('user ' +user);
-    console.log('ordered '+menu_id);
+    // console.log('user ' +user);
+    // console.log('ordered '+menu_id);
   
   //  alert('added to cart!');
-
-
   $.ajax({
 		url: "func_add_cart.php",
 		type: "POST",
@@ -228,66 +225,30 @@ require "func_client_priv.php";
 }
     
   </script>
-  <script>
-
-function update_price(){
-    onToggle();//Update when toggled
-}
 
 
+ <script>
+        function switches(x){
+        var element = document.getElementById("with_fries_sw" + x);
+        var price = document.getElementById("item_price" + x);
+    
+        if (event.target.checked) {
+          console.log("ON");
+          console.log(parseInt(price.innerHTML) + 10 );
 
-$(document).ready(function () {
-  putStatus();//Set button to current status
-    onToggle();//Update when toggled
-    statusText();//Last updated text
-});
-
-
-function putStatus() {
-    $.ajax({
-        type: "GET",
-        url: "https://api.srv3r.com/toggle/",
-        data: {toggle_select: true},
-        success: function (result) {
-            if (result == 1) {
-                $(this).prop('checked', true);
-                statusText(1);
-            } else {
-                $(this).prop('checked', false);
-                statusText(0);
-            }
-            // lastUpdated();
-        }
-    });
-}
-
-function statusText(status_val) {
-    if (status_val == 1) {
-        var status_str = "<?php echo $item_price + 16 .'.00'?>";
-    } else {
-        var status_str = "<?php echo $item_price .'.00'?>";
-    }
-    document.getElementById("item_price").innerText = status_str;
-}
-
-function onToggle() {
-    $('#with_fries_sw').change(function () {
-        if (this.checked) {
-            // alert('checked');
-            // updateStatus(1);
-            statusText(1);
+    
         } else {
-            // alert('NOT checked');
-            // updateStatus(0);
-            statusText(0);
+            console.log("OFF");
+        
         }
-    });
-}
+        console.log(x);
+
+  };
 
 
-  </script>
 
-         
+
+      </script>
 </body>
 
 </html>

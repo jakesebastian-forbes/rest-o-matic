@@ -1,3 +1,12 @@
+<?php
+session_start();
+// print_r($_SESSION);
+include 'db_connection.php';
+
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -162,28 +171,9 @@
             </ul> 
         </div>
 
-        <div class="panel-body" style="background-color:#EEEDE7 ;padding-bottom:10px" >
-            <!-- <div class="row" style="background-color:#FFA500; align-content: center;">
-                
-                    <div class="col-6">
-                        <p>ITEM</p>
-                    </div>
-                    <div class="col-2">
-                        <p>PRICE</p>
-                    </div>
-                    <div class="col-2">
-                        <p>QUANTITY</p>
-                    </div>
-                    <div class="col-2">
-                        <p>TOTAL PRICE</p>
-                    </div>
-            
-                    
-                
-                
-            </div> -->
+        <div class="panel-body" style="background-color:#EEEDE7 ;padding-bottom:10px" >  
+            <div class="row-sm" style="margin-bottom:10px;">
 
-            <div class="row-sm" style="margin-bottom:10px ;">
                 <ul class="nav cartDet">
                     <div class="col-sm-6">
                         <li>ITEM</li>
@@ -199,61 +189,63 @@
                     </div>
                 </ul>
             </div>
+
             <div class="row-sm" style="padding-top:10px ;">
+            <?php
+
+            $client_id = $_SESSION['client_id'] ;
+            if($conn->connect_error){
+                die('Connection failed : ' . $conn->connect_error);
+            }else{
+                // echo " uyyy". $category;
+            $query = "SELECT * FROM `my_cart` WHERE `client_id` = $client_id ;";
+
+            $result_orderID = mysqli_query($conn,$query);
+
+            while($rows = mysqli_fetch_assoc($result_orderID))
+                {
+                // $order_id =  $rows_orderID['order_id']
+            ?>
+
+            
                 <ul class="itemRow">
+                
                     <div class="row">
                         <div class="col-sm-3" style="align-content:center">
                             <input type="checkbox" id="item1" name="item1" value="item1" style="width:20px ; height:20px; margin-right: 10px;">
-                            <img src="/images/2dogs.jpg" alt="corndog" width="100" height="100"> 
-                           
+                         <?php  echo '<img src=" data:image/jpeg;base64,'.base64_encode($rows['image']) .'" 
+                         alt="corndog" width="100" height="100">' ?>
                         </div>
+                        
                         <div class="col-sm-3">
-                            <h5 style="float: left; margin-top: 20px;">CORNDOG</h5>
+                            <h5 style="float: left; margin-top: 20px;"><?php echo $rows['item_name']?></h5>
                         </div>
                         <div class="col-sm-2">
-                           <h5 style="margin-top: 20px;"> 100</h5>
+                           <h5 style="margin-top: 20px;" ><?php echo $rows['item_price']?></h5>
                         </div>
                         <div class="col-sm-2">
-                            <div class="quantity quantity_btn" style="display: flex; margin-top: 20px;">
-                                
-                                <input type="number" step="1" min="1" max="" name="quantity" value="1" title="Qty" class="input-text qty text" size="40" pattern="" inputmode="" style="width: 40px; ">
-                                
+                            <div class="quantity quantity_btn" style="display: flex; margin-top: 20px;">       
+                                <input type="number" step="1" min="1" max="" name="quantity" value="<?php echo $rows['qnt']?>" title="Qty" class="input-text qty text" size="40" pattern="" inputmode="" style="width: 40px; ">       
                             </div>
                         </div>
                         <div class="col-sm-2">
-                            <h5 style="margin-top: 20px;">300</h5>
-                            
-                        </div>
-                    </div>
-                    <br>
-                    <div class="row">
-                        <div class="col-sm-3" style="align-content:center">
-                            <input type="checkbox" id="item1" name="item1" value="item1" style="width:20px ; height:20px; margin-right: 10px;">
-                            <img src="/images/2dogs.jpg" alt="corndog" width="100" height="100">
-                           
-                        </div>
-                        <div class="col-sm-3">
-                            <h5 style="float: left; margin-top: 20px;">CORNDOG</h5>
-                        </div>
-                        <div class="col-sm-2">
-                           <h5 style="margin-top: 20px;"> 100</h5>
-                        </div>
-                        <div class="col-sm-2">
-                            <div class="quantity quantity_btn" style="display: flex; margin-top: 20px;">
-                                
-                                <input type="number" step="1" min="1" max="" name="quantity" value="1" title="Qty" class="input-text qty text" size="40"  style="width: 40px; ">
-                                
-                            </div>
-                        </div>
-                        <div class="col-sm-2">
-                            <h5 style="margin-top: 20px;">300</h5>
-                            
+                            <h5 style="margin-top: 20px;"><?php echo $rows['item_price'] * $rows['qnt']?></h5>    
                         </div>
                     </div>
                    
+                    <br>
+                    
+                    
                 </ul>
+                <?php 
+                        }
+                        } 
+                            ?>
+                
             </div>
+            
         </div>
+      
 
     </div>
     

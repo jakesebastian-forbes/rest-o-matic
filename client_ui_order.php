@@ -229,16 +229,16 @@ $client_id = $_SESSION['client_id'] ;
       {
        $order_id =  $rows_orderID['order_id']
   ?>
-                            <div class="card" style="width:60rem ; margin-top: 10px; margin-bottom: 10px;">
+                            <div class="card" style="width:inherit; margin:2%;">
                                 <div class="card-header" id = "order">
                          
-                                    <h6 style="color: black ;">Order ID : </h6>
-                                    <h6 id = "order_id" style="color: black ;"><?php echo $rows_orderID['order_id']?> </h6>
+                                    <h6 style="color: black ; float:left;">Order ID : </h6>
+                                    <h6 id = "order_id" style="color: black ;  float:left;"><?php echo $rows_orderID['order_id']?> </h6>
                                     <h5 style="color: black ; float: right;"><?php echo $rows_orderID['status']?></h5>
                         
                                 </div>
                                 <div class="card-body cardbody">
-                                    <div class="row">
+                                    
                                     <?php
 
                                         
@@ -254,6 +254,7 @@ $client_id = $_SESSION['client_id'] ;
                                             {
                                             
                                         ?>
+                                        <div class="row">
                                         <div class="col-sm-3">
                                             <img src="/images/2dogs.jpg" alt="pfp" width="90px" height="90px" style="float:left;"
                                             id = "order_menu_img">
@@ -281,12 +282,12 @@ $client_id = $_SESSION['client_id'] ;
                                 <div class="card-footer cardFooter">
                                     <div class="row">
                                         <div class="col-6">
-                                            <h5>RATING</h5>
+                                            <!-- <h5>RATING</h5>
                                                     <span class="fa fa-star checked"></span>
                                                     <span class="fa fa-star checked"></span>
                                                     <span class="fa fa-star checked"></span>
                                                     <span class="fa fa-star"></span>
-                                                    <span class="fa fa-star"></span>
+                                                    <span class="fa fa-star"></span> -->
                                         </div>
                                         <div class="col-6">
                                             <div class="row" style="float: right;">
@@ -300,7 +301,7 @@ $client_id = $_SESSION['client_id'] ;
                                                     // echo " uyyy". $category;
                                                     $query = "SELECT * FROM `order_total` WHERE `order_id` = $order_id ";
 
-                                                    echo $order_id;
+                                                    // echo $order_id;
                                                     $result_total = mysqli_query($conn,$query);
                                                     $rows = mysqli_fetch_assoc($result_total);
 
@@ -324,7 +325,8 @@ $client_id = $_SESSION['client_id'] ;
                                                         ?>
                                                 </div>
                                    
-                                            </div> <br> <br>
+                                            </div> 
+                                            <br> 
                                             <div class="row" style="justify-content: right; margin: 5px;">
                                                 <div class="col-sm-3"> 
                                                     <button class="btn" style="width:100px ;background-color:#FFA500 ; font-size:small">BUY AGAIN</button>

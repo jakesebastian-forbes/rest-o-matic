@@ -18,6 +18,17 @@
 
 </head>
 
+<style>
+.footer{
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: black;
+  color: white;
+  text-align: center;
+}
+</style>
+
 <body>
     <div class = "container-fluid" style ="background-color: white;">  
 
@@ -69,14 +80,13 @@
                                 <button type="button" class="btn btn-danger btn-lg text-black" style="border-radius: 24px;"> LOGOUT </button>
                             </li>
                           </ul>
-
                 </nav>
-
+              </nav>
         </div>
 
+        <div class="col-lg-12 col-md-12 col-sm-12"></div>
         <div class="row m-5">
             <div class="panel-body border" style="width: 80vw; margin-left: auto; margin-right: auto;background-color: rgb(13, 13, 13);">
-
               <ul class="nav nav-pills nav-justified" id="pills-tab" role="tablist">
                 <li class="nav-item my-auto myheading1" role="presentation">
                   <p class="bi bi-gear">
@@ -88,7 +98,7 @@
               </ul>
 
             </div>
-            <div class="panel-body border" style="width: 80vw; height:60vh;margin-left: auto; margin-right: auto;background-color: lightgrey;">
+            <div class="panel-body border" style="width: 80vw; margin-left: auto; margin-right: auto;background-color: lightgrey;">
                 <form class="row m-5">
                     <div class="col-md-6">
                       <label for="inputUserName" class="form-label">Username</label>
@@ -116,7 +126,67 @@
                   </form>
             </div>
         </div>
+      </div>
     </div>
+    <footer>
+      <div class="footer container-fluid" style="background-color:black ;margin-top: 20px; color: white;">
+        <div class="row" style="padding-top:1%;">
+            <div class="col-lg-6 col-md-6 col-sm-6" >
+                <div class="row">
+                    <h2>ABOUT US</h2>
+                </div>
+                <div class="row">
+                    <p>HOT DOG DIGIDIDOG HOT DOG DIGIDIDOG<br>HOT DOG DIGIDIDOG HOT DOG DIGIDIDOG<br>HOT DOG DIGIDIDOG HOT DOG DIGIDIDOG<br>HOT DOG DIGIDIDOG HOT DOG DIGIDIDOG</p>
+                </div>
+                
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6" style="display: flex; justify-content: space-evenly">
+            <div class="col-lg-3">
+                <div class="row">
+                    <center>
+                        <h4>FOLLOW US</h4>
+                    </center>
+                    
+                </div>
+                <div class="row"  >
+                    <div class="col">
+                        <center>
+                            <div class="socialmedia" >
+                                <a href="https://www.facebook.com/kcorndognasugbu/"><i class="fa-brands fa-facebook"></i></a>
+                                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                                <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                            </div>
+                        </center>
+                       
+                    </div> 
+                </div>
+            </div>
+        
+            
+            <div class="col-lg-3">
+                <center>
+                    <h5>CALL US</h5>
+                    <p>(+63) 916 987 4623</p>
+                </center>
+            </div>
+        </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-lg-6">
+                <small>@2021 cornpups kenan's korean Corndog, Nasugbu Batangas, All Rights Reserved</small>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6" style="display: flex; justify-content:space-evenly;">
+            <div class="col-4">
+                <small style="float:right;">PRIVACY POLICY</small>
+            </div>
+            <div class="col-4">
+                <small style="float: left">TERMS OF USE</small>
+            </div>    
+        </div>
+    </div>
+    </div>
+  </footer>
 
 </body>
 </html>

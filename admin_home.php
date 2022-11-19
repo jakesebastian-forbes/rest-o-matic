@@ -71,17 +71,18 @@ require "func_admin_priv.php";
 
             <img src="/images/icon/web_icon.png" alt="" style = "height: 75px; margin-right:150px" class="">
           </li> -->
+          
           <li class="nav-item my-auto myheading1" role="presentation">
-            <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true"
-            style="color:white"><span>
-              <img src="images/icon/files.png" alt="logs" height="75px" style ="filter: invert();">
-            </span> LOGS</button>
-          </li>
-          <li class="nav-item my-auto myheading1" role="presentation">
-            <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false"
+            <button class="nav-link active" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="true"
             style="color:white"><span>
               <img src="images/icon/analytics.png" alt="dashboard" style="height: 75px; filter: saturate(0);" >
             </span> DASHBOARD</button>
+          </li>
+          <li class="nav-item my-auto myheading1" role="presentation">
+            <button class="nav-link" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="false"
+            style="color:white"><span>
+              <img src="images/icon/files.png" alt="logs" height="75px" style ="filter: invert();">
+            </span> LOGS</button>
           </li>
           <!-- <li class="nav-item my-auto" role="presentation">
             <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Contact</button>
@@ -208,6 +209,13 @@ require "func_admin_priv.php";
 <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
 integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
 crossorigin="anonymous"></script>  -->
+
+<script>
+var c = document.getElementById("chLine");
+var ctx = c.getContext("2d");
+ctx.font = "30px Arial";
+ctx.strokeText("Hello World", 10, 50);
+</script>
 
 
 

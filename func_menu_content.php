@@ -1,5 +1,4 @@
 <?php
-// $is_guest = 0;
 
 if(isset($_SESSION['privilage'])){
   if($_SESSION['privilage'] == 'guest'){
@@ -15,47 +14,38 @@ if(isset($_SESSION['privilage'])){
         currentEl.setAttribute('data-bs-target','#reg-modal');
         currentEl.removeAttribute('onclick'); 
     }
-
-
     </script>";
   }
-
-
-
 }
-
-
-
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
+  <!-- <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>TEST6 MENU | Client</title>
 
-  <link rel="icon" type="image/x-icon" href="images/icon/web_icon.png" />
-  <link rel="stylesheet" href="bootstrap-5.2.2/css/bootstrap.min.css" />
+  <link rel="icon" type="image/x-icon" href="images/icon/web_icon.png" /> -->
+  <!-- <link rel="stylesheet" href="bootstrap-5.2.2/css/bootstrap.min.css" />
   <script src="bootstrap-5.2.2/js/bootstrap.bundle.min.js"></script>
-  <link rel="stylesheet" href="css/general.css" />
+  <link rel="stylesheet" href="css/general.css" /> -->
   <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
 
 </head>
 
 <body>
-<!-- <form> -->
 <div class="row d-flex justify-content-start mx-auto">
+
     <?php
                           $conn = new mysqli('localhost','root','','restomatic_db');
 
                           if($conn->connect_error){
                             die('Connection failed : ' . $conn->connect_error);
                            }else{
-                            // echo " uyyy". $category;
-                          $query = "SELECT * FROM `menu` WHERE item_category = '$category' ;";
+                          $query = "SELECT * FROM `menu` WHERE item_category = '$category';";
                         
                           $result = mysqli_query($conn,$query);
 
@@ -63,28 +53,31 @@ if(isset($_SESSION['privilage'])){
                               {
                                
                           ?>
-                          <!-- m-1 mb-1 15vw -->
-                 
+                   
+    <?php $menu_id = $rows['menu_id']?>
     <div class="col-lg-2 col-md-3 col-sm-5 col-11 m-1 mb-1 15vw" style="">
-      <div class="card h-100">
+      <div class="card h-100" id = "<?php echo $menu_id; ?>">
         
         <div class="img_overlay">
         <?php echo '<img class="card-img-top img img-responsive" src = "data:image/jpeg;base64,'.base64_encode($rows['img']) .'" 
         style ="width : 100%; height:200px; object-fit: cover;"/>';?>
+        
         <div class="img_title" style="color: white; text-align: center;">ADD TO CART 
       
           <div class="" style="margin-left: auto; margin-top: 47px;"> 
-          <?php $menu_id = $rows['menu_id']?>
+         
               <!-- <button class="mybtn1 my-auto" style = "margin-left: 15px;" action= "func_add_cart.php">ADD ITEM TO CART</button>  -->
               <!-- <button type="submit" class="mybtn1 my-auto" name="insert" value="<?php //echo $menu_id?>">Submit</button> -->
               <button type="submit" class="mybtn1 my-auto" name="insert" 
-              id = "add_cart" onclick=showid(this.value)
+              id = "add_cart" onclick=add_to_cart(this.value)
                value="<?php echo $menu_id?>"  >Add To Cart</button>
             <!-- for maybe buy now -->
               <button type="submit" formaction="/action_page2.php" class="mybtn1 my-auto p-auto">Buy Item</button>
            
             </div>
+
           </div>
+          
         </div>
         
 
@@ -103,69 +96,21 @@ if(isset($_SESSION['privilage'])){
           <?php
           $item_price = $rows['item_price']
           ?>
-          <small class="text-muted" id = "item_price">₱<?php echo $item_price.'.00' ?></small> <br>
+          <small class="text-muted" id = "item_price<?php echo $menu_id?>" value = "<?php echo $item_price?>"> 
+          <?php echo $item_price.'.00' ?></small> <br>
 
-          
           <div class="form-check form-switch">
-            <input class="form-check-input" type="checkbox" id="with_fries_sw" onclick = 'update_price()'>
-            <label class="form-check-label" for="flexSwitchCheckDefault" name = "with_fries" id ="with_fries_label" >With Fries</label>
-          </div>
+        <input class="form-check-input" type="checkbox" id="with_fries_sw<?php echo $menu_id?>" value = <?php echo $menu_id?> onclick = "switches(this.value)">
+        <label class="form-check-label" for="flexSwitchCheckDefault" name = "with_fries" id ="with_fries_label" >With Fries</label>
+      </div>
+
           <div>
             <label for="with_fries_lbl2"></label>
           </div>
           
 
           <!-- dropdown addons -->
-          <div class="dropdown">
-          <button class="mybtn1 btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-            ADD ONS
-          </button>
-          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-            
-          <li>
-              <a class="dropdown-item">
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="Flamin' Hot Cheetos" id="Checkme" name = "addons"/>
-                        <label class="form-check-label" for="Checkme1">Flamin' Hot Cheetos</label>
-                </div>
-              </a>
-          </li>
-          <li>
-              <a class="dropdown-item">
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="Grated Cheese" id="Checkme" name = "addons"/>
-                        <label class="form-check-label" for="Checkme1">Grated Cheese</label>
-                </div>
-              </a>
-          </li>
-          <li>
-              <a class="dropdown-item">
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="Extra Sauce" id="Checkme" name = "addons"/>
-                        <label class="form-check-label" for="Checkme1">Extra Sauce</label>
-                </div>
-              </a>
-          </li>
-          <li>
-              <a class="dropdown-item">
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="Parmesan Cheese" id="Checkme" name = "addons"/>
-                        <label class="form-check-label" for="Checkme1">Parmesan Cheese</label>
-                </div>
-              </a>
-          </li>
-          <li>
-              <a class="dropdown-item" >
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="Korean Hot Cheetos" id="Checkme" name = "addons"/>
-                        <label class="form-check-label" for="Checkme1">Korean Hot Sauce</label>
-                </div>
-              </a>
-          </li>
-          <button onclick="selectAddons()" class="btn btn-primary mx-5">Submit</button> <br> 
-          </ul>
-          
-        </div>
+          <?php include('func_addons.php');?>
         </div>
      
       </div>
@@ -192,7 +137,7 @@ if(isset($_SESSION['privilage'])){
    // selecting all checkboxes
 // of group language using querySelectorAll()
 function selectAddons(){
-  var checkboxes = document.querySelectorAll('input[name="addons"]');
+  var checkboxes = document.querySelector('input[name="addons"]');
   var values = [];
   // looping through all checkboxes
   // if checked property is true then push
@@ -204,11 +149,23 @@ function selectAddons(){
 alert(values);
 }
 
-
+function switch_it(){
+var switchStatus = false;
+$(this).on('change', function() {
+    if ($(this).is(':checked')) {
+        switchStatus = $(this).is(':checked');
+        alert(switchStatus);// To verify
+    }
+    else {
+       switchStatus = $(this).is(':checked');
+       alert("esle " + switchStatus);// To verify
+    }
+});
+}
 
 
   </script>
-  
+
 
     </body>
   </html>
