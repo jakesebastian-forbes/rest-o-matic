@@ -1,15 +1,17 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link rel="stylesheet" href="bootstrap-5.2.2/css/bootstrap.min.css"/>
+  
     <script src="https://kit.fontawesome.com/1c020da525.js" crossorigin="anonymous"></script> 
-    <script src="bootstrap-5.2.2/js/bootstrap.bundle.min.js"></script> 
 
-    <title>Review | Client</title>
+    <?php
+    $title = "Review | Client | Restomatic";
+      require('must_haves.php');
+    ?>
 </head>
 
 <style>
@@ -96,59 +98,12 @@
 <body>
 
     <div class="container-fluid">
-        <div class="row">
-            <nav class="navbar mynavbar" style="width: 100vw; min-width: fit-content; max-height: 86px; background-color: black;">
-                <div class="d-flex justify-content-start">
-                  <img src="images/icon/web_icon.png" class="px-3" alt="web_icon.png" style="max-height: 70px">
-                  <h1 class="myheading1" style="padding-top: 7px; color: white;">REST-O-MATIC</h1>
-                </div>
-                  <nav class="navbar bg-dark">
-                    <div class="container-fluid">
-                      <a class="navbar-brand" href="#"></a>
-                      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
-                        <span class="navbar-toggler-icon"></span>
-                      </button>
-                      <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-                        <div class="offcanvas-header">
-                          <h5 class="offcanvas-title" id="offcanvasNavbarLabel">USERNAME</h5>
-                          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                        </div>
-                        <div class="offcanvas-body">
-                          <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                            <li class="nav-item">
-                              <a class="nav-link active" aria-current="page" href="#">ACCOUNT</a>
-                            </li>
-                            <li class="nav-item">
-                              <a class="nav-link" href="#">ORDERS</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">RESERVATION</a>
-                              </li>
-                              <li class="nav-item">
-                                <a class="nav-link" href="#">REVIEWS</a>
-                              </li>
-                              <li class="nav-item">
-                                <a class="nav-link" href="#">CART</a>
-                              </li>
-                            <li class="nav-item dropdown">
-                              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                GO TO
-                              </a>
-                              <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">CATEGORY 1</a></li>
-                                <li><a class="dropdown-item" href="#">CATEGORY 2</a></li>
-                              </ul>
-                            </li>
-                            <li class="nav-item">
-                                <button type="button" class="btn btn-danger btn-lg text-black" style="border-radius: 24px;"> LOGOUT </button>
-                            </li>
-                          </ul>
-                        </div>
-                    </div>
-                    </div>
-                </nav>   
-            </nav>
-      </div>
+        <?php
+        $title_sidebar = "REVIEW";
+          require('client_sidebar.php');
+        ?>    
+
+
         <div class="panel">
             <div class="navbar revNavbar">
                 <h2><i class="fa-solid fa-star"></i> REVIEWS</h2>
@@ -310,5 +265,14 @@
       </div>
     </div>
     
+<Script>
+
+
+var active = document.getElementById('nav_review');
+active.setAttribute('class','nav-link my-nav-link active',);
+
+
+</Script>
+
 </body>
 </html>

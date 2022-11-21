@@ -10,11 +10,10 @@ include 'db_connection.php';
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link rel="stylesheet" href="bootstrap-5.2.2/css/bootstrap.min.css"/>
+    <?php
+        $title = "Cart | Client | Restomatic";
+        require('must_haves.php');
+    ?>
     <script src="https://kit.fontawesome.com/1c020da525.js" crossorigin="anonymous"></script> 
     <script data-require="jquery@3.1.1" data-semver="3.1.1" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script>
@@ -43,7 +42,7 @@ include 'db_connection.php';
     </script>
 
 
-    <title>CART2</title>
+
 </head>
 
     <style>
@@ -135,30 +134,12 @@ include 'db_connection.php';
 
 <body>
    <div class="container-fluid">
-    <div class="row">
-        <nav class="navbar mynavbar" style="width: 100vw; min-width: fit-content; max-height: 86px; background-color: black;">
-            <div class="d-flex justify-content-start">
-              <img src="images/icon/web_icon.png" class="px-3" alt="web_icon.png" style="max-height: 70px">
-              <h1 class="myheading1" style="padding-top: 7px; color: white;">REST-O-MATIC</h1>
-             
-           <!-- <div class="dropdown">
-            <button class="dropbtn" style="background-color: black;"><i class="fa-solid fa-bars" style="color:white ; font-size:32px; float: right;"></i>
-              <div class="dropdown-content">
-                <ul>
-                  <li> <a href="#">ACCOUNT</a></li>
-                  <li><a href="#">ORDERS</a></li>
-                  <li><a href="#">RESERVATION</a></li>
-                  <li><a href="#">REVIEWS</a></li>
-                  <li><a href="#">CART</a></li>
-                  <li> <a href="#">GOTO</a></li>
-                </ul> 
-              </div>
-            </button>
-           </div> -->
+    
+<?php
+    $title_sidebar = "MY CART";
+    require('client_sidebar.php');
+?>
 
-          </div>   
-        </nav>
-  </div>
   <div class="container">
     <div class="panel" style="margin-bottom: 50px;">
         <div class="navbar cartNavbar">
@@ -317,5 +298,10 @@ include 'db_connection.php';
     </div>
     
 </footer>
+
+<script>
+var active = document.getElementById('nav_cart');
+active.setAttribute('class','nav-link my-nav-link active',);
+</script>
 </body>
 </html>

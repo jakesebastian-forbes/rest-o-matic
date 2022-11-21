@@ -81,7 +81,7 @@ $address = $_SESSION['address'];
 <body>
     <div class="container-fluid">
       <?php 
-      
+      $title_sidebar = "MY PROFILE";
       include('client_sidebar.php');?>
 
         <!-- <div class="container"> -->

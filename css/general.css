@@ -226,11 +226,11 @@ opacity: 1;
 
 }
 
-.active{
+.my-active{
     background-color: #df8f27ec;
     border-radius: 7px;
-    /* padding-right:50%; */
-    width:80%;
+    padding-right:50%;
+    /* width:80%; */
 
 }
 
@@ -244,6 +244,13 @@ opacity: 1;
 .my-nav-link{
     display:inline-block; 
    
+}
+
+.navbar-nav > :hover{
+    background-color: #df8f27ec;
+    border-radius: 7px;
+    /* padding-right:50%; */
+
 }
 
 /* .class:hover{} */

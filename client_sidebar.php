@@ -1,11 +1,11 @@
 <head>
 <style>
-.nav-item:hover{
+/* .nav-item:hover{
   background-color: #df8f279e;
     border-radius: 7px;
     width:80%;
 
-}
+} */
 
 </style>
 </head>
@@ -17,7 +17,7 @@
             <a href="index.php">
             <img src="images/icon/web_icon.png" alt="web_icon.png" style="max-height: 70px;" >
             </a>
-            <h1 class="myheading2 px-3 my=2" style="padding-bottom: 0 ">MENU</h1>
+            <h1 class="myheading2 px-3 my=2" style="padding-bottom: 0 "><?php echo $title_sidebar;?></h1>
           </div>
         <div id = "sidebar-btn" style="margin-right: 20px;"> 
         <nav class="navbar bg-dark" >
@@ -46,20 +46,31 @@
                     ACCOUNT</a>
                   </li>
                   <li class="nav-item">
-                  <span><img src="images/icon/cart_icon.png" alt="account_icon" class = "nav_icon"></span>
-                    <a class="nav-link my-nav-link" href="client_ui_cart.php">CART</a>
+                  
+                    <a class="nav-link my-nav-link" href="client_ui_cart.php"
+                    id = "nav_cart">
+                    <span><img src="images/icon/cart_icon.png" alt="account_icon" class = "nav_icon"></span>
+                    CART</a>
                   </li>
                   <li class="nav-item">
-                  <span><img src="images/icon/purchases_icon.png" alt="account_icon" class = "nav_icon"></span>
-                    <a class="nav-link my-nav-link" href="client_ui_order.php">PURCHASES?</a>
+                  
+                    <a class="nav-link my-nav-link" href="client_ui_order.php"
+                    id = "nav_orders">
+                    <span><img src="images/icon/purchases_icon.png" alt="account_icon" class = "nav_icon"></span>  
+                    PURCHASES?</a>
                   </li>
                   <li class="nav-item">
-                  <span><img src="images/icon/reservation_icon.png" alt="account_icon" class = "nav_icon"></span>
-                    <a class="nav-link my-nav-link" href="client_ui_reservation.php">RESERVATION</a>
+                  
+                    <a class="nav-link my-nav-link" href="client_ui_reservation.php">
+                    <span><img src="images/icon/reservation_icon.png" alt="account_icon" class = "nav_icon"></span>  
+                    RESERVATION</a>
                   </li>
                   <li class="nav-item">
-                  <span><img src="images/icon/review_icon.png" alt="account_icon" class = "nav_icon"></span>
-                    <a class="nav-link my-nav-link" href="client_ui_review.php">REVIEWS</a>
+                  
+                    <a class="nav-link my-nav-link" href="client_ui_review.php"
+                    id = "nav_review" >
+                    <span><img src="images/icon/review_icon.png" alt="account_icon" class = "nav_icon"></span>
+                    REVIEWS</a>
                   </li>
                
                   <li class="nav-item dropdown">

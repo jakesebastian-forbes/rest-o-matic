@@ -8,15 +8,13 @@ include 'db_connection.php';
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link rel="stylesheet" href="bootstrap-5.2.2/css/bootstrap.min.css"/>
+  
     <script src="https://kit.fontawesome.com/1c020da525.js" crossorigin="anonymous"></script>  
 
-
-    <title>Orders</title>
+    <?php
+        $title = "Orders | Client | Restomatic";
+        require('must_haves.php');
+    ?>
 </head>
 
     
@@ -50,14 +48,6 @@ include 'db_connection.php';
         display: block;
         }
 
-
-/* .orderNavbar h2{
-    float: left; color:white;
-    padding-top: 5px; 
-    margin-left:10px;
-    font-size: 24px;
-   } */
-
         .orderNavbar{
         background-color: #FFA500;
         margin-top: 10px;
@@ -65,26 +55,12 @@ include 'db_connection.php';
         
         }
 
-/* .orderNavbar ul{
-        color: white;
-        display: flex;
-        list-style-type: none;
-        padding: 0%;
-        padding-top: 1%;
-        justify-content: end;
-}*/
-
-/* .orderNavbar li a{
-    
-    color: black;
-} */
-
         .nav-item a{
             margin: 5px;
             color: black;
         }
 
-        .nav-item :hover{
+        .my-nav-item :hover{
             
             background-color: white;
             color: black;
@@ -154,33 +130,11 @@ include 'db_connection.php';
 
 <body>
     <div class="container-fluid">
-        <div class="row">
-            <nav class="navbar mynavbar" style="width: 100vw; min-width: fit-content; max-height: 86px; background-color: black;">
-                <div class="d-flex justify-content-start">
-                  <img src="images/icon/web_icon.png" class="px-3" alt="web_icon.png" style="max-height: 70px">
-                  <h1 class="myheading1" style="padding-top: 7px; color: white;">REST-O-MATIC</h1>
-                 
-               <!-- <div class="dropdown">
-                <button class="dropbtn" style="background-color: black;"><i class="fa-solid fa-bars" style="color:white ; font-size:32px; float: right;"></i>
-                  <div class="dropdown-content">
-                    <ul>
-                      <li> <a href="#">ACCOUNT</a></li>
-                      <li><a href="#">ORDERS</a></li>
-                      <li><a href="#">RESERVATION</a></li>
-                      <li><a href="#">REVIEWS</a></li>
-                      <li><a href="#">CART</a></li>
-                      <li> <a href="#">GOTO</a></li>
-                    </ul> 
-                  </div>
-                </button>
-               </div> -->
-
-              
-
-
-              </div>   
-            </nav>
-      </div>
+            
+<?php
+    $title_sidebar = "MY ORDERS";
+    require('client_sidebar.php');
+?>
 
       <div class="container-fluid">
         <div class="panel" style="background-color:black ; margin-top:10px; color:white">
@@ -190,22 +144,22 @@ include 'db_connection.php';
             <h2 style="padding-top:5px ; margin-left:10px;"><i class="fa-solid fa-list"></i> ORDERS</h2>
             
             <ul class="nav orderNavbar">
-                <li class="nav-item">
+                <li class="nav-item my-nav-item">
                     <a class="nav-link active" href="#">ALL</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item my-nav-item">
                     <a class="nav-link active" href="#">TO PAY</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item my-nav-item">
                     <a class="nav-link active" href="#">TO RECIEVE</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item my-nav-item">
                     <a class="nav-link active" href="#">COMPLETED</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item my-nav-item">
                     <a class="nav-link active" href="#">CANCELLED</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item my-nav-item">
                     <a class="nav-link active" href="#">RETURN/REFUND</a>
                 </li>
             </ul>
@@ -352,70 +306,6 @@ $client_id = $_SESSION['client_id'] ;
                 
             </div>
          
-            <!-- <div class="panel-footer panelFooter">
-
-                <div class="row">
-                    <div class="col">
-                        <center>
-                            <h3 style="color: black;">ABOUT US</h3>
-                            <h5 style="color: black">Connect with us</h5>
-                            <h6 style="color: black">09123456789</h6>
-                        </center>
-                            <div class="socialmedia">
-                                
-                                <a href="#"><i class="fa-brands fa-facebook"></i></a>
-                                <a href="#"><i class="fa-brands fa-facebook-messenger"></i></a>
-                                <a href="#"><i class="fa-brands fa-instagram"></i></a>
-                                <a href="#"><i class="fa-brands fa-google"></i></a>
-                            </div>     
-                        
-                    </div> 
-                </div>
-            </div> -->
-        <!-- <div class="footerline" style="  width: 100%; height: 1px; background-color: black;"></div>
-            <div class="panel-footer panelFooter" style=" margin-bottom:40px">
-                
-                <div class="row" style="color: black;width: 100%;">
-                    <center>
-                        <h1 class="p-1" style="font-size: vw;font-weight:bold">ABOUT US</h1>
-                        <p>hindikoalam@gmail.com</p>
-                        <p>+76 209 1092 4095</p>
-                        <p><b>ifb acc</b></p>
-                    </center>
-                    <div class="col">
-                    <div class="row" style="margin-left: 2px;">
-                        <div class="col-6">
-                        <p><b>CONNECT WITH US</b></p>
-                        <ul>
-                            <i class="fa fa-instagram" style="font-size: 30px"></i>
-                            <i class="fa fa-twitter" style="font-size: 30px"></i>
-                            <i class="fa fa-facebook" style="font-size: 30px"></i>
-                        </ul>
-                        </div>
-
-                        <div class="col-6" >
-                            <div class="row" style="float:right;">
-                                <div class="col" style="display: flex;">
-                                    <p>Terms of Use</p>
-                                    <p>Privacy Policy</p>
-                                </div>
-                                
-                                    
-                                
-                            </div>
-                           
-                                
-                            
-                            
-                        </div>
-                    </div>
-                    </div>
-                    
-                </div>
-                  
-            </div> -->
-            
-           
             
          
 
@@ -497,5 +387,11 @@ $client_id = $_SESSION['client_id'] ;
         </div>
         
     </footer>
+
+    
+<script>
+var active = document.getElementById('nav_orders');
+active.setAttribute('class','nav-link my-nav-link my-active',);
+</script>
 </body>
 </html>
