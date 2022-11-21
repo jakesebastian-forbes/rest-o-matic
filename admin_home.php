@@ -23,6 +23,9 @@ require "func_admin_priv.php";
     <link rel="icon" type="image/x-icon" href="images/icon/web_icon.png"/> 
     <link rel="stylesheet" href="bootstrap-5.2.2/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="css/general.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+
 </head>
 
 <style>
@@ -146,45 +149,54 @@ require "func_admin_priv.php";
                     </div>
                 </div>
                 <div class="row my-2">
-                    <div class="col-md-6 py-1">
+                    <div class="col-md-3 py-1">
                         <div class="card">
-                            <div class="card-body">
+                            <div class="card-body"  style="width:100%;max-width:700px;background-color: blue;">
+                                <canvas id="chLine""></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 py-1">
+                        <div class="card">
+                            <div class="card-body" style="width:100%;max-width:700px;background-color: green;">
+                                <canvas id="chLine" ></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 py-1">
+                        <div class="card">
+                            <div class="card-body"style="width:100%;max-width:700px;background-color: red;">
                                 <canvas id="chLine"></canvas>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6 py-1">
-                        <div class="card">
+                    <div class="col-md-3 py-1">
+                        <div class="card" style="width:100%;max-width:700px;background-color: pink;">
                             <div class="card-body">
-                                <canvas id="chBar"></canvas>
+                                <canvas id="chBar" ></canvas>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="row py-2">
-                    <div class="col-md-4 py-1">
+              </div>
+                  <div class="row py-2">
+                    <div class="col-lg-9 py-1">
                         <div class="card">
-                            <div class="card-body">
+                            <div class="card-body" style="width:100%;max-width:1000px;min-height:300px;background-color: orange;">
                                 <canvas id="chDonut1"></canvas>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4 py-1">
-                        <div class="card">
-                            <div class="card-body">
-                                <canvas id="chDonut2"></canvas>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 py-1">
-                        <div class="card">
-                            <div class="card-body">
+                   
+                    <div class="col-md-3 py-1">
+                        <div class="card" >
+                            <div class="card-body" style="width:100%;max-width:700px;min-height:300px;background-color: yellow;>
                                 <canvas id="chDonut3"></canvas>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+          </div>
 
             </div>
             <!-- <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab" tabindex="0">...3</div>
@@ -202,7 +214,7 @@ require "func_admin_priv.php";
     </div>
     
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script> -->
   <script src = "bootstrap-5.2.2/js/bootstrap.bundle.min.js"></script>
   
 <!-- for tabs -->
@@ -210,14 +222,15 @@ require "func_admin_priv.php";
 integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
 crossorigin="anonymous"></script>  -->
 
-<script>
-var c = document.getElementById("chLine");
+<!-- <script>
+var c = document.getElementById("chBar");
 var ctx = c.getContext("2d");
 ctx.font = "30px Arial";
-ctx.strokeText("Hello World", 10, 50);
-</script>
+ctx.strokeText("Bar Chart", 10, 50);
+</script> -->
 
 
+<!-- <script src ="admin_home.js"></script> -->
 
 </body>
 </html>

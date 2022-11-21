@@ -19,15 +19,11 @@ $address = $_SESSION['address'];
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link rel="stylesheet" href="bootstrap-5.2.2/css/bootstrap.min.css"/>
-    <script src="https://kit.fontawesome.com/1c020da525.js" crossorigin="anonymous"></script> 
-    <script src="bootstrap-5.2.2/js/bootstrap.bundle.min.js"></script> 
-
-    <title>profile | Client</title>
+  <?php
+    $title = "Home | Client";
+    require('must_haves.php');
+  ?>
+   <script src="https://kit.fontawesome.com/1c020da525.js" crossorigin="anonymous"></script> 
 </head>
 
 <style>
@@ -84,61 +80,9 @@ $address = $_SESSION['address'];
 
 <body>
     <div class="container-fluid">
-        <div class="row">
-            <nav class="navbar mynavbar" style="width: 100vw; min-width: fit-content; max-height: 86pfix                                  ; background-color: black;">
-                <div class="d-flex justify-content-start">
-                  <img src="images/icon/web_icon.png" class="px-3" alt="web_icon.png" style="max-height: 70px">
-                  <h1 class="myheading1" style="padding-top: 7px; color: white;">REST-O-MATIC</h1>
-                  </div>
-                  <nav class="navbar bg-dark">
-                    <div class="container-fluid">
-                      <a class="navbar-brand" href="#"></a>
-                      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
-                        <span class="navbar-toggler-icon"></span>
-                      </button>
-                      <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-                        <div class="offcanvas-header">
-                          <h5 class="offcanvas-title" id="offcanvasNavbarLabel">USERNAME</h5>
-                          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                        </div>
-                        <div class="offcanvas-body">
-                          <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                            <li class="nav-item">
-                              <a class="nav-link active" aria-current="page" href="client_ui_profile.php">ACCOUNT</a>
-                            </li>
-                            <li class="nav-item">
-                              <a class="nav-link" href="client_ui_order.php">ORDERS</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="client_ui_reservation.php">RESERVATION</a>
-                              </li>
-                              <li class="nav-item">
-                                <a class="nav-link" href="client_ui_review.php">REVIEWS</a>
-                              </li>
-                              <li class="nav-item">
-                                <a class="nav-link" href="client_ui_cart.php">CART</a>
-                              </li>
-                            <!-- <li class="nav-item dropdown">
-                              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                GO TO
-                              </a>
-                              <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">CATEGORY 1</a></li>
-                                <li><a class="dropdown-item" href="#">CATEGORY 2</a></li>
-                              </ul>
-                            </li> -->
-                            <li class="nav-item">
-                                <a href="func_logout.php">
-                                <button type="button" class="btn btn-danger btn-lg text-black" style="border-radius: 24px;" > LOGOUT </button>
-                                </a>
-                            </li>
-                          </ul>
-                        </div>
-                    </div>
-                </nav>
-                </nav>
-                
-        </div>
+      <?php 
+      
+      include('client_sidebar.php');?>
 
         <!-- <div class="container"> -->
             <div class="panel">
@@ -160,7 +104,14 @@ $address = $_SESSION['address'];
                                 <div class="panel-body">
                                       <div class="row">
                                         <div class="col-lg-12 col-md-12 col-sm-12">
-                                            <button type="button" class="btn btn-secondary btn-sm" style="float: right; width: 140px; margin-top: 2%; margin-right: 2%;"><a href="acc_settings_ui.php" style="text-decoration: none; color:black;"> Edit Profile</button></a>
+                                        <a href="acc_settings_ui.php" style="text-decoration: none; color:black;">
+                                            <button type="button" class="btn btn-secondary btn-sm" style="float: right; width: 140px; margin-top: 2%; margin-right: 2%;">
+                                            <span>
+
+                                            <img src="images/icon/pencil_icon.png" alt="pencil_icon" class ="icon_img">
+                                            </span> 
+                                            Edit Profile</button>
+                                          </a>
                                         </div>
                                       </div>
                                       <div class="row">
@@ -399,6 +350,9 @@ document.getElementById('val_phone').innerHTML = '$phone_number' ;
 document.getElementById('val_address').innerHTML = '$address' ; 
 
 document.getElementById('orders_cnt').innerHTML = '$count' ; 
+
+var active = document.getElementById('nav_account');
+active.setAttribute('class','nav-link my-nav-link active',);
 
 </script>";
 

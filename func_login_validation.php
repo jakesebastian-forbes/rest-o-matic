@@ -32,11 +32,13 @@ if($conn->connect_error){
 
         if($C_credencials == NULL){
 
-            echo "I am sorry. It seems you haven't created an account. Please create an account and then try again.";
-            echo "Client";
+            // echo "I am sorry. It seems you haven't created an account. Please create an account and then try again.";
+            // echo "Client";
+            header("Location: login.php?acc=null");
+            exit();
         }
         else{  
-            //note add condition to catch user does not exists
+ 
             $val_username = $C_credencials['username'];
             $val_password = htmlspecialchars($C_credencials['password']);
 
@@ -78,8 +80,8 @@ if($conn->connect_error){
 
         }else{
             echo "Wrong password!";
-            header("login.php");
-            die;
+            header("Location: login.php?credencial=mismatch&user=$login_username");
+            exit();
 
         }
 

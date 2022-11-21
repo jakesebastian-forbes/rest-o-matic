@@ -1,12 +1,12 @@
 <?php
 
 session_start();
-// echo "Session Array:";
-// print_r($_SESSION);
-// echo "\n";
-// echo "Sess_ID ";
-// echo SESSION_ID();
-$_SESSION['privilage'] = NULL;
+echo "Session Array:";
+print_r($_SESSION);
+echo "\n";
+echo "Sess_ID ";
+echo SESSION_ID();
+// $_SESSION['privilage'] = NULL;
 
 if(!isset($_SESSION_ID)){
     if($_SESSION['privilage'] == 'admin'){
@@ -34,7 +34,7 @@ if(!isset($_SESSION_ID)){
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title> TEST Login | Rest-o-Matic</title>
+  <title>Login | Rest-o-Matic</title>
   <link rel="icon" type="image/x-icon" href="images/icon/web_icon.png" />
   <link rel="stylesheet" href="bootstrap-5.2.2/css/bootstrap.min.css" />
   <link rel="stylesheet" href="css/general.css" />
@@ -82,7 +82,7 @@ document.getElementById('buttonss').append(signup_btn);
 <div class="container-fluid" style="
         background-color: #8ecdda;
         height: 100vh;
-        width: 100vw;
+        width: 100%;
   
       ">
       
@@ -109,7 +109,7 @@ document.getElementById('buttonss').append(signup_btn);
         <div class="col-lg-5 col-12">
           <div class="panel panel-basic border rounded" style="background-color: white; height: 100%">
             <div class="row">
-              <img src="images/yeji.jpg" class="img img-responsive rounded-circle mx-auto d-block myprof" alt="avatar_logo"
+              <img src="images/shop_logo2.png" class="img img-responsive rounded-circle mx-auto d-block myprof" alt="avatar_logo"
                 style="
                     height: 35vw;
                     width: 40vw;
@@ -121,7 +121,25 @@ document.getElementById('buttonss').append(signup_btn);
                     
                    />
             </div>
+ 
+            <div class = "text-center">
 
+              <h5 style = "">LOGIN!</h5>
+              <?php
+                $full_url = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+                // echo $full_url;
+                if(strpos($full_url,"acc=null") == true ){
+                   echo "<p class = 'error'>
+                   <span> <img src='images/icon/error.png' alt='error_icon' class = 'icon_img'></span>
+                   Account does not exists.</p>";
+
+                }else if(strpos($full_url,"credencial=mismatch") == true ){
+                  echo "<p class = 'error'>
+                  <span> <img src='images/icon/error.png' alt='error_icon' class = 'icon_img'></span>
+                  Wrong password. Please try again.</p>";
+                }
+              ?>
+            </div>
             
     
             <div class="row">
@@ -129,26 +147,48 @@ document.getElementById('buttonss').append(signup_btn);
        
                 <div class="mb-2">
                   <!-- <label for="exampleInputEmail1" class="form-label">Email address</label> -->
-                  <input type="text" class="form-control text-muted hotdog1" placeholder="Username" id=""
-                    aria-describedby="emailHelp" name = "login_username"/>
+                  <?php
+                    if(isset($_GET['user'])){
+                      $user = $_GET['user'];
+                      echo  '<input type="text" class="form-control text-muted hotdog1" placeholder="Username" id=""
+                      aria-describedby="emailHelp" name = "login_username" value = '.$user.' required/>';
+
+                    }else{
+                      echo  '<input type="text" class="form-control text-muted hotdog1" placeholder="Username" id=""
+                      aria-describedby="emailHelp" name = "login_username" required/>';
+
+
+                    }
+                  ?>
+                  <!-- <input type="text" class="form-control text-muted hotdog1" placeholder="Username" id=""
+                    aria-describedby="emailHelp" name = "login_username" required/> -->
                   <hr class="stick" />
                   <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
                 </div>
                 <div class="mb-2">
                   <!-- <label for="exampleInputPassword1" class="form-label">Password</label> -->
-                  <input type="password" class="form-control text-muted hotdog1" placeholder="Password" id="" name = "login_password" />
+                  <input type="password" class="form-control text-muted hotdog1" placeholder="Password"
+                   id="" name = "login_password" required/>
                   <hr class="stick" />
                 </div>
                 <!-- <div class="mb-3 form-check">
                                       <input type="checkbox" class="form-check-input" id="exampleCheck1">
                                       <label class="form-check-label" for="exampleCheck1">Check me out</label>
                                     </div> -->
-                    <p><input type="checkbox" name="remember" /> Remember me</p>
-                <div class="text-center">
-                  <a href="#password_reset" style="color: black">
-                    <h5>forgot password?</h5>
+                    <div style = "margin-left:10%;">
+                       <p><input type="checkbox" name="remember" /> Remember me</p>
+                    
+            
+                  <a href="password_reset.php" style="color: black">
+                    <p>Forgot password?</p>
                   </a>
-                  <button type="submit" class="btn btn-primary" style="
+                  </div>
+                  <div style = "display: flex;
+  justify-content: center;
+  align-items: center;
+
+">
+                  <button type="submit" class="btn btn-primary text-center" style="
                         margin-top: 20px;
                         width: 80%;
                         background-color: #ff5757;

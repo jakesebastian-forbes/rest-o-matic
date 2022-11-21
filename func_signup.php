@@ -23,6 +23,7 @@ if($conn->connect_error){
 
      $stmt->bind_param("ssssssss",$firstname,$lastname,$username,$hash_password,$email,$phonenumber,$address,$birthday);
      $stmt->execute();
+     
      echo "registration successfully";
      $stmt->close();
      $conn->close();
