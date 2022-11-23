@@ -23,15 +23,7 @@ if(isset($_SESSION['privilage'])){
 <html lang="en">
 
 <head>
-  <!-- <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TEST6 MENU | Client</title>
 
-  <link rel="icon" type="image/x-icon" href="images/icon/web_icon.png" /> -->
-  <!-- <link rel="stylesheet" href="bootstrap-5.2.2/css/bootstrap.min.css" />
-  <script src="bootstrap-5.2.2/js/bootstrap.bundle.min.js"></script>
-  <link rel="stylesheet" href="css/general.css" /> -->
   <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
 
 </head>
@@ -55,7 +47,7 @@ if(isset($_SESSION['privilage'])){
                           ?>
                    
     <?php $menu_id = $rows['menu_id']?>
-    <div class="col-lg-2 col-md-3 col-sm-5 col-11 m-1 mb-1 15vw" style="">
+    <div class="col-lg-2 col-md-3 col-sm-5 col-11 m-1 mb-1 15vw" >
       <div class="card h-100" id = "<?php echo $menu_id; ?>">
         
         <div class="img_overlay">

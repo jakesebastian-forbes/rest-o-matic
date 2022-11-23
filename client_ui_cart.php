@@ -133,7 +133,7 @@ include 'db_connection.php';
 
 
 <body>
-   <div class="container-fluid">
+   <div class="container-fluid p-0">
     
 <?php
     $title_sidebar = "MY CART";
@@ -301,7 +301,7 @@ include 'db_connection.php';
 
 <script>
 var active = document.getElementById('nav_cart');
-active.setAttribute('class','nav-link my-nav-link active',);
+active.setAttribute('class','nav-link my-nav-link my-active',);
 </script>
 </body>
 </html>

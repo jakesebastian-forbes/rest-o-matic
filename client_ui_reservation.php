@@ -1,15 +1,18 @@
+<?php
+session_start();
+?> 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="bootstrap-5.2.2/css/bootstrap.min.css"/>
+  <?php
+  $title = "Home | Client";
+  require('must_haves.php');
+  ?>
     <script src="https://kit.fontawesome.com/1c020da525.js" crossorigin="anonymous"></script>  
 
 
-    <title>Orders</title>
 </head>
 
     
@@ -77,7 +80,7 @@
             color: black;
         }
 
-        .nav-item :hover{
+        .nav-item my-nav-item :hover{
             
             background-color: white;
             color: black;
@@ -100,56 +103,37 @@
 
 
 <body>
-    <div class="container-fluid">
-        <div class="row">
-            <nav class="navbar mynavbar" style="width: 100vw; min-width: fit-content; max-height: 86px; background-color: black;">
-                <div class="d-flex justify-content-start">
-                  <img src="images/icon/web_icon.png" class="px-3" alt="web_icon.png" style="max-height: 70px">
-                  <h1 class="myheading1" style="padding-top: 7px; color: white;">REST-O-MATIC</h1>
-                 
-               <!-- <div class="dropdown">
-                <button class="dropbtn" style="background-color: black;"><i class="fa-solid fa-bars" style="color:white ; font-size:32px; float: right;"></i>
-                  <div class="dropdown-content">
-                    <ul>
-                      <li> <a href="#">ACCOUNT</a></li>
-                      <li><a href="#">ORDERS</a></li>
-                      <li><a href="#">RESERVATION</a></li>
-                      <li><a href="#">REVIEWS</a></li>
-                      <li><a href="#">CART</a></li>
-                      <li> <a href="#">GOTO</a></li>
-                    </ul> 
-                  </div>
-                </button>
-               </div> -->
-
-              
+    <div class="container-fluid" style= "padding:0px;">
+        
+                     
+  <?php 
+  $title_sidebar = "MY RESERVATIONS";
+  include('client_sidebar.php');?>
 
 
-              </div>   
-            </nav>
-      </div>
+      
 
       <div class="container">
         <div class="panel" style="background-color:black ; margin-top:10px; color:white">
             <h2 style="padding-top:5px ; margin-left:10px;"><i class="fa-solid fa-list"></i> ORDERS</h2>
             
             <ul class="nav orderNavbar">
-                <li class="nav-item">
+                <li class="nav-item my-nav-item">
                     <a class="nav-link active" href="#">ALL</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item my-nav-item">
                     <a class="nav-link active" href="#">TO PAY</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item my-nav-item">
                     <a class="nav-link active" href="#">TO RECIEVE</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item my-nav-item">
                     <a class="nav-link active" href="#">COMPLETED</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item my-nav-item">
                     <a class="nav-link active" href="#">CANCELLED</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item my-nav-item">
                     <a class="nav-link active" href="#">RETURN/REFUND</a>
                 </li>
             </ul>
@@ -230,5 +214,10 @@
       </div>
 
     </div>
+
+    <script>
+    var active = document.getElementById('nav_reservation');
+active.setAttribute('class','nav-link my-nav-link my-active',);
+</script>s
 </body>
 </html>

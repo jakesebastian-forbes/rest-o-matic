@@ -253,6 +253,14 @@ opacity: 1;
 
 }
 
+.my-lg-banner{
+    background-color: #DF8F27;
+    margin: auto;
+    border-radius: 10px;
+
+
+}
+
 /* .class:hover{} */
 /* .btn_add {
 background-color: #B96A59;
