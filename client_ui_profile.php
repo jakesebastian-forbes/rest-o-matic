@@ -1,7 +1,7 @@
 <?php
 session_start();
 // print_r($_SESSION);
-
+$client_id= $_SESSION['client_id'];
 $username1 = $_SESSION['username'];
 $firstname = $_SESSION['firstname'];
 $lastname = $_SESSION['lastname'];
@@ -9,6 +9,7 @@ $fullname = $firstname. ' '. $lastname;
 $email = $_SESSION['email'];
 $phone_number = $_SESSION['mobile_number'];
 $address = $_SESSION['address'];
+$birthdate = $_SESSION['birthdate'];
 
 
 
@@ -76,131 +77,117 @@ $address = $_SESSION['address'];
         text-align: center;
     }
 
+    td{
+    word-wrap: break-word;
+    }
+
+
+
 </style>
 
 <body>
-    <div class="container-fluid">
+    <div class="container-fluid p-0">
       <?php 
       $title_sidebar = "MY PROFILE";
       include('client_sidebar.php');?>
 
         <!-- <div class="container"> -->
-            <div class="panel">
-                <nav>
-                    <div class="navbar accNavbar">
-                      <h2><img src="images/yeji.jpg" alt="avatar" class="img-fluid rounded-circle" style="width: 50px; height: 50px; border-radius: 50%;"> My Profile</h2>
-                        <ul>
-                            <li><i class="fa fa-gear" style="font-size: 24px"></i></li>
-                             <li><i class="fa fa-shopping-cart" style="font-size: 24px;"></i></li>
-                             <li><i class="fa-solid fa-star" style="font-size:24px ;"></i></li>
-                        </ul> 
-                    </div>
-                </nav>
-                <div class="panel-body" style="background-color:#EEEDE7 ;">
-                   <div class="row" >
-                        <div class="col-lg-6 col-md-6 col-sm-6" style="padding: 2%;" >
-                          <div class="container">
-                            <div class="panel" style="background-color:white;">
-                                <div class="panel-body">
-                                      <div class="row">
-                                        <div class="col-lg-12 col-md-12 col-sm-12">
-                                        <a href="acc_settings_ui.php" style="text-decoration: none; color:black;">
-                                            <button type="button" class="btn btn-secondary btn-sm" style="float: right; width: 140px; margin-top: 2%; margin-right: 2%;">
-                                            <span>
-
-                                            <img src="images/icon/pencil_icon.png" alt="pencil_icon" class ="icon_img">
-                                            </span> 
-                                            Edit Profile</button>
-                                          </a>
-                                        </div>
-                                      </div>
-                                      <div class="row">
-                                        <div class="col-lg-12 col-md-12 col-sm-12">
-                                            <div class="row" style="margin-left:2px ;" >
-                                                <div class="col-md-6 col-sm-3">
-                                                    <h5 >Username</h5>
-                                                </div>
-                                                <div class="col-md-6 col-sm-3 text-secondary">
-                                                    <h5 id = 'val_username'>xxxxxxx</h5>
-                                                </div>
-                                             
-                                            </div>
-                                            <div class="row" style="margin-left:2px ;">
-                                                <div class="col-md-6 col-sm-3">
-                                                    <h5>Full Name</h5>
-                                                </div>
-                                                <div class="col-md-6 col-sm-3 text-secondary">
-                                                    <h5 id = 'val_fullname'>xxxxxxx</h5>
-                                                </div>
-                                            </div>
-                                            <div class="row" style="margin-left:2px ;">
-                                                <div class="col-md-6 col-sm-3">
-                                                    <h5>Email</h5>
-                                                </div>
-                                                <div class="col-md-6 col-sm-3 text-secondary">
-                                                    <h5 id = 'val_email'>xxxxxxx</h5>
-                                                </div>
-                                                
-                                            </div>
-                                            <div class="row" style="margin-left:2px ;">
-                                                <div class="col-md-6 col-sm-3">
-                                                    <h5>Phone Number</h5>
-                                                </div>
-                                                <div class="col-md-6 col-sm-3 text-secondary">
-                                                    <h5 id = 'val_phone'>xxxxxxx</h5>
-                                                </div>
-                                              
-                                            </div>
-                                            <div class="row" style="margin-left:2px ;">
-                                                <div class="col-md-6 col-sm-3">
-                                                    <h5>Address</h5>
-                                                </div>
-                                                <div class="col-md-6 col-sm-3 text-secondary">
-                                                    <h5 id = 'val_address'>xxxxxxx</h5>
-                                                </div>
-                                               
-                                            </div>
-                                        </div>
-                                      </div>
-
-
-
-
-
-                                </div>
-                            </div>
-                          </div>
-                           
-                          
-                        </div>
-                      
-                  <!-- </div> -->
+            <div >
+                
+                <div >
+                   <div class="row m-0" >
                         
-                        <div class="col-lg-6 col-md-6 col-md-3" style="padding: 6%; justify-content: center;">
-                            <div class="panel">
-                                <div class="panel-body">
-                            <div class="row row1">
-                                <div class="col-lg-6 col-md-6 col-sm-3">
-                                   <button class="btn btn-light" style="background-color: #FFA500; border: none; height: 120px; max-height: 100%; width: 240px; max-width: 100%;">
-                                    <a href="client_ui_order.php" style="text-decoration: none; color: black;">
-                                        <h1 style="font-size: 200%; text-align: center; margin-top: 5px;" id = "orders_cnt">3</h1>
-                                        ORDERS</a>
-                                    </button>   
-                                </div>
-                                <div class="col-lg-6 col-md-6 col-sm-3">
-                                <button class="btn btn-light" style="background-color: #FFA500; border: none; height: 120px; max-height: 100%; width: 240px; max-width: 100%;">
-                                    <a href="/reservation.html" style="text-decoration: none; color: black;">
-                                        <h1 style="font-size: 200%; text-align: center; margin-top: 5px;" id = "reservation_cnt">5</h1>
-                                        RESERVATION</a>
-                                </button>
-                                </div>
-                            </div>
-                            </div>
+                    <div class="col m-auto">
+                      <div class= ""
+                      style = "
+                      display:block;
+                      margin-left:auto;margin-right:auto;
+                      ">
+                        <img src="images/yeji.jpg" alt=""
+                        style = "border-radius: 15px;
+                        width:190px; height:190px;
+                        object-fit:cover;
+                      
+                      ">
                         </div>
+
+                    </div>
+
+                   <div class="col-6 m-3">
+                        <div class="panel border p-4 py-2"
+                              style = "background-color:whitesmoke;
+                                        border-radius:8px;">
+                            <div class="panel-heading">
+                              <form action="">
+                                <input type="text" value = "<?php echo $client_id?>" hidden>
+                                  <a href="acc_settings_ui.php" style = "float:right; margin-right:15px;">
+                                        <span><img src="images/icon/pencil_icon.png" alt="edit" 
+                                        class ="icon_img" style= "display:inline"></span>
+                                       <h6 style= "display:inline">Edit</h6>
+                                  </a>
+                              </form>
+                            </div>
+                            <div class="panel-body">
+
+                            <table class="table table-responsive table-borderless" 
+                            style =" table-layout: fixed;">
+                              
+                                 <tr>
+                                    <td class = "text-start">Username</td>
+                                    <td class = "text-start"><?php echo $username1?></td>
+                                 </tr>
+                                 <tr>
+                                    <td class = "text-start">Fullname</td>
+                                    <td class = "text-start"><?php echo $fullname?></td>
+                                 </tr>
+                                 <tr>
+                                    <td class = "text-start">Birthdate</td>
+                                    <td class = "text-start"><?php echo $birthdate?></td>
+                                 </tr>
+                                 <tr>
+                                    <td class = "text-start">Mobile Number</td>
+                                    <td class = "text-start"><?php echo $phone_number?></td>
+                                 </tr>
+                                 <tr>
+                                    <td class = "text-start">E-mail</td>
+                                    <td class = "text-start"><?php echo $email?></td>
+                                 </tr>
+                                 <tr>
+                                    <td class = "text-start">Address</td>
+                                    <td class = "text-start"><?php echo $address?></td>
+                                 </tr>
+
+
+                            </table>
+
+                            </div>
+
+                        </div>
+
                    </div>
+             
+                   <div class="col m-auto">
+
+                   <div class = "m-auto">
+                        <div class = "text-center my-lg-banner">
+                            <h3 class = "">5</h3>
+                            <h6>Orders</h6>
+                        </div>
+                        <br>
+                        <div class = "text-center my-lg-banner">
+                            <h3>1</h3>
+                            <h6>Reservations</h6>
+
+                        </div>
+
+                   </div>
+
+
+                   </div>
+                        
                 </div>
                 
-                <div class="row row2">
+                <div class="row row2 m-0">
                   <div class="col">
                     <div class="panel" style="margin: 50PX;background-color:white ;">
                         <div class="panel-body">
@@ -351,14 +338,19 @@ document.getElementById('val_address').innerHTML = '$address' ;
 
 document.getElementById('orders_cnt').innerHTML = '$count' ; 
 
-var active = document.getElementById('nav_account');
-active.setAttribute('class','nav-link my-nav-link active',);
-
 </script>";
 
 
 ?>
 
+
+<script>
+
+var active = document.getElementById('nav_account');
+active.setAttribute('class','nav-link my-nav-link my-active',);
+
+
+</script>
 
 
 

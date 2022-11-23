@@ -1,17 +1,7 @@
-<head>
-<style>
-/* .nav-item:hover{
-  background-color: #df8f279e;
-    border-radius: 7px;
-    width:80%;
 
-} */
 
-</style>
-</head>
-
-<div class="row">
-      <nav class="navbar mynavbar" style="">
+<div class="row m-0" style="width:100%;">
+      <nav class="navbar mynavbar" >
         
           <div class="d-flex flex-row mx-51" style="color:white">
             <a href="index.php">
@@ -36,12 +26,20 @@
                 <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
               </div>
               <div class="offcanvas-body">
-                <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                <ul class="navbar-nav justify-content-end flex-grow-1 p-0">
+                <li class="nav-item">
+                    <!-- <a class="nav-link active" aria-current="page" href="#">ACCOUNT</a> -->
+                    
+                    <a class="nav-link my-nav-link" aria-current="" href="client_ui.php" 
+                    id = "nav_home">
+                    <span><img src="images/icon/home_icon.png" alt="home_icon" class = "nav_icon"></span>
+                    HOME</a>
+                  </li>
                   <li class="nav-item">
                     <!-- <a class="nav-link active" aria-current="page" href="#">ACCOUNT</a> -->
                     
                     <a class="nav-link my-nav-link" aria-current="" href="client_ui_profile.php" 
-                    id = "nav_account" style ="">
+                    id = "nav_account" >
                     <span><img src="images/icon/account_icon.png" alt="account_icon" class = "nav_icon"></span>
                     ACCOUNT</a>
                   </li>
@@ -49,31 +47,32 @@
                   
                     <a class="nav-link my-nav-link" href="client_ui_cart.php"
                     id = "nav_cart">
-                    <span><img src="images/icon/cart_icon.png" alt="account_icon" class = "nav_icon"></span>
+                    <span><img src="images/icon/cart_icon.png" alt="cart_icon" class = "nav_icon"></span>
                     CART</a>
                   </li>
                   <li class="nav-item">
                   
                     <a class="nav-link my-nav-link" href="client_ui_order.php"
                     id = "nav_orders">
-                    <span><img src="images/icon/purchases_icon.png" alt="account_icon" class = "nav_icon"></span>  
+                    <span><img src="images/icon/purchases_icon.png" alt="order_icon" class = "nav_icon"></span>  
                     PURCHASES?</a>
                   </li>
                   <li class="nav-item">
                   
-                    <a class="nav-link my-nav-link" href="client_ui_reservation.php">
-                    <span><img src="images/icon/reservation_icon.png" alt="account_icon" class = "nav_icon"></span>  
+                    <a class="nav-link my-nav-link" href="client_ui_reservation.php"
+                    id = "nav_reservation">
+                    <span><img src="images/icon/reservation_icon.png" alt="reservation_icon" class = "nav_icon"></span>  
                     RESERVATION</a>
                   </li>
                   <li class="nav-item">
                   
                     <a class="nav-link my-nav-link" href="client_ui_review.php"
                     id = "nav_review" >
-                    <span><img src="images/icon/review_icon.png" alt="account_icon" class = "nav_icon"></span>
+                    <span><img src="images/icon/review_icon.png" alt="review_icon" class = "nav_icon"></span>
                     REVIEWS</a>
                   </li>
                
-                  <li class="nav-item dropdown">
+                  <li class="nav-item dropdown" id = "bookmark" hidden>
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                       aria-expanded="false">
                       GO TO

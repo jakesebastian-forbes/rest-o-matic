@@ -1,11 +1,11 @@
 <?php
 session_start();
-echo "Session Array:";
-print_r($_SESSION);
-echo "\n";
-echo "Sess_ID ";
-echo SESSION_ID();
-
+// echo "Session Array:";
+// print_r($_SESSION);
+// echo "\n";
+// echo "Sess_ID ";
+// echo SESSION_ID();
+// echo "asdadss";
 if ($_SESSION["privilage"] == 'guest'){
   // echo "GUESTTTTTTTTTTT";
  
@@ -20,21 +20,22 @@ require "func_client_priv.php";
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 
-  <?php
-  $title = "Home | Client";
-  require('must_haves.php');
-  ?>
+    <script src="https://kit.fontawesome.com/1c020da525.js" crossorigin="anonymous"></script>  
 
+    <?php
+        $title = "Orders | Client | Restomatic";
+        require 'must_haves.php';
+    ?>
 </head>
-
 <body>
-  <div class="container-fluid" style="background-color: white; height:100vh; width:100%; ">
+  <div class="container-fluid" style="background-color: white; height:100vh; width:100%; padding:0px;">
+<!-- ASDASDA -->
 
-
-  <?php include('client_sidebar.php');?>
+  <?php 
+  $title_sidebar = "MENU";
+  require('client_sidebar.php');?>
 
 
     <h1 id="classics">CLASSICS</h1>
@@ -129,7 +130,6 @@ require "func_client_priv.php";
     var menu_id = value;
     // console.log('user ' +user);
     // console.log('ordered '+menu_id);
-  
   //  alert('added to cart!');
   $.ajax({
 		url: "func_add_cart.php",
@@ -142,7 +142,9 @@ require "func_client_priv.php";
 		success: function(dataResult){
 			var dataResult = JSON.parse(dataResult);
 			if(dataResult.statusCode==200){
-        alert("Added to Cart!");
+        alert("Added to Cart!" + user + menu_id);
+        console.log(dataResult);
+
 				// $("#butsave").removeAttr("disabled");
 				// $('#fupForm').find('input:text').val('');
 				// $("#success").show();
@@ -179,8 +181,17 @@ require "func_client_priv.php";
 
 
 
-
       </script>
+
+<script>
+
+var active = document.getElementById('nav_home');
+active.setAttribute('class','nav-link my-nav-link my-active',);
+
+var bookmark = document.getElementById('bookmark');
+bookmark.removeAttribute('hidden');
+</script>
+
 </body>
 
 </html>
