@@ -140,15 +140,21 @@ include 'db_connection.php';
     require('client_sidebar.php');
 ?>
 
-  <div class="container">
-    <div class="panel" style="margin-bottom: 50px;">
-        <div class="navbar cartNavbar">
-            <h2><i class="fa-solid fa-cart-shopping"> </i> CART </h2>
+  <div class="container-fluid m-0 p-0">
+    <div class="panel" style="margin:0px; width:100%">
+        <div class="navbar cartNavbar d-flex flex-row-reverse mt-1">
+            <!-- <h2><i class="fa-solid fa-cart-shopping"> </i> CART </h2> -->
             <ul>
               <li>
                 <button class="btn"><i class="fa-solid fa-trash" style="color:white ; font-size: 24px;"></i></button>
               </li>
-              <li><button class="btn" style="width: 250px; background-color:#FFA500;">PLACE ORDER</button></li>
+              <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#place_orders"
+style="width: 250px; background-color:#FFA500; border:0px;">
+PLACE ORDER
+</button>
+
+              <!-- <li><button class="btn" style="width: 250px; background-color:#FFA500;">PLACE ORDER</button></li> -->
             </ul> 
         </div>
 
@@ -179,27 +185,36 @@ include 'db_connection.php';
                 die('Connection failed : ' . $conn->connect_error);
             }else{
                 // echo " uyyy". $category;
-            $query = "SELECT * FROM `my_cart` WHERE `client_id` = $client_id ;";
+            $query = "SELECT * FROM `my_cart` WHERE `client_id` = $client_id ORDER BY date_added DESC;";
 
             $result_orderID = mysqli_query($conn,$query);
 
+            if(mysqli_num_rows($result_orderID) > 0){
+
+            
             while($rows = mysqli_fetch_assoc($result_orderID))
                 {
                 // $order_id =  $rows_orderID['order_id']
             ?>
 
             
-                <ul class="itemRow">
+                <ul class="itemRow" id="<?php echo  'cart_id_'.$rows['cart_id']?>" >
                 
-                    <div class="row">
+                    <div class="row m-0">
                         <div class="col-sm-3" style="align-content:center">
-                            <input type="checkbox" id="item1" name="item1" value="item1" style="width:20px ; height:20px; margin-right: 10px;">
+                        <input type="text" value = "<?php echo  $rows['menu_id']?>" hidden>
+                            <input type="checkbox" id="<?php echo  $rows['cart_id']?>" 
+                            name="item1" value="<?php echo $rows['item_name']?>
+                            "style="width:20px;height:20px; margin-right: 10px;" 
+                            onclick = "ischecked(this.id,this.value)"
+                            class = "my-checkbox">
+                         
                          <?php  echo '<img src=" data:image/jpeg;base64,'.base64_encode($rows['image']) .'" 
                          alt="corndog" width="100" height="100">' ?>
                         </div>
                         
-                        <div class="col-sm-3">
-                            <h5 style="float: left; margin-top: 20px;"><?php echo $rows['item_name']?></h5>
+                        <div class="col-sm-3 item-name">
+                            <h5 style="float: left; margin-top: 20px;" ><?php echo $rows['item_name']?></h5>
                         </div>
                         <div class="col-sm-2">
                            <h5 style="margin-top: 20px;" ><?php echo $rows['item_price']?></h5>
@@ -220,7 +235,10 @@ include 'db_connection.php';
                 </ul>
                 <?php 
                         }
-                        } 
+                        } else{
+                            echo "YOUR CART IS EMPTY";
+                        }
+                    }
                             ?>
                 
             </div>
@@ -235,73 +253,82 @@ include 'db_connection.php';
 
 
 </div>
-<footer>
-    <div class="footer container-fluid" style="background-color:black ;margin-top: 20px; color: white; padding-bottom: 10px ; ">
-        <div class="row" style="padding-top:5% ;">
-            <div class="col-6" >
-                <div class="row">
-                    <h2>ABOUT US</h2>
-                </div>
-                <div class="row">
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Corrupti, atque? <br> Libero odit illum dolor odio cumque at harum eius debitis aliquam aliquid. <br> Odit porro veritatis molestias quo libero labore dolore?</p>
-                </div>
-                
-            </div>
-            <div class="col-2">
-                <div class="row">
-                    <center>
-                        <h4>FOLLOW US</h4>
-                    </center>
-                    
-                </div>
-                <div class="row"  >
-                    <div class="col">
-                        <center>
-                            <div class="socialmedia" >
-                                <a href="#"><i class="fa-brands fa-facebook"></i></a>
-                                <a href="#"><i class="fa-brands fa-instagram"></i></a>
-                                <a href="#"><i class="fa-brands fa-twitter"></i></a>
-                            </div>
-                        </center>
-                       
-                    </div> 
-                </div>
-            </div>
-            
-            <div class="col-4">
-                <center>
-                    <h5>CALL US</h5>
-                    <p>09123456789</p>
-                </center>
-            </div>
-            
-            
-        </div>
-        <div class="footerline"></div>
-        <div class="row">
-            <div class="col-8">
-                <small>@2021 cornpups kenan's korean Corndog, Nasugbu Batangas, All Rights Reserved</small>
-            </div>
 
-            <div class="col-2">
-                <small style="float:right;">PRIVACY POLICY</small>
-                
-            </div>
-            <div class="col-2">
-               
-                <small style="float: left">TERMS OF USE</small>
-            </div>
-           
-           
-            
-        </div>
+
+<!-- Modal -->
+<div class="modal fade" id="place_orders" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
     </div>
-    
-</footer>
+  </div>
+</div>
+
+<div class = "row"
+style = "background-color:#c1bdbd; 
+              border:1px solid gray;
+              min-width:320px;
+              max-width:700px;
+              width:700px;
+              height:97px;
+              position:fixed;
+              bottom:0px;
+              right:0px;">
+
+<div id = "total_preview">
+
+</div>
+
+</div>
+
 
 <script>
 var active = document.getElementById('nav_cart');
 active.setAttribute('class','nav-link my-nav-link my-active',);
+
+function ischecked(id,name){
+
+//    var id = '#' + id;
+var chk = $("#"+id).is(":checked");
+   if($('#' + id).is(":checked")) {
+
+        console.log(chk + " :"+ id);
+
+    $("ul").filter("#cart_id_"+id).css("color", "yellow");
+
+    $("#total_preview").append("<h6 class = cart_"+id+">"+name+"</h6>");
+
+   }else{
+    // console.log("Not checked");
+    console.log(chk+ " :"+ id);
+    
+    $("h6").remove(".cart_"+id);
+    $("ul").filter("#cart_id_"+id).css("color", "black");
+
+
+   }
+
+
+    
+
+//    $(id).css("color", "yellow");
+
+}
+
+$(document).ready(function(){
+ 
+});
+
 </script>
 </body>
 </html>

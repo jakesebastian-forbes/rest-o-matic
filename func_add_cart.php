@@ -3,27 +3,53 @@ include ('db_connection.php');
 
 $client_id=$_POST['client_id'];
 $menu_id=$_POST['menu_id'];
-
+// $menu_id = 16;
 // $stmt->bind_param("ssssssss",$firstname,$lastname,$username,$hash_password,$email,$phonenumber,$address,$birthday);
 $sql = "INSERT INTO `cart`( `client_id`, `menu_id`) 
-VALUES ('$client_id','10')";
-if($conn->connect_error){
-    die('Connection failed:'. $conn->connect_error);
+VALUES ('$client_id','$menu_id')";
 
-}else{
+if(!$conn){
+    die('Connection failed:'. mysqli_connect_error());
+    echo"
+<script>
+
+// console.log('$sql');
+console.log('Conncetion unsuccessful');
+
+</script>
+";
+
+}
+else{
     
 
-if (mysqli_query($conn, $sql)) {
-    echo json_encode(array("statusCode"=>200));
-    // $sql->execute();
-    // echo "wow";
-} 
-else {
-    echo json_encode(array("statusCode"=>201));
-    // echo 'sad';
-}
-mysqli_close($conn);
-
+    if (mysqli_query($conn, $sql)) {
+        echo json_encode(array("statusCode"=>200));
+        // $sql->execute();
+        // echo "wow";
+        // echo"
+        // <script>
+        
+        // // console.log('$sql');
+        // console.log('Recrod inserted');
+        
+        // </script>
+        // ";
+    } 
+    else {
+        echo json_encode(array("statusCode"=>201));
+        // echo 'sad';
+        // echo"
+        // <script>
+        
+        // // console.log('$sql');
+        // console.log('insertion error');
+        
+        // </script>
+        // ";
+    }
+    mysqli_close($conn);
+    
 
 }
 

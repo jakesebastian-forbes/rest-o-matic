@@ -1,11 +1,6 @@
 <?php
 session_start();
-// echo "Session Array:";
-// print_r($_SESSION);
-// echo "\n";
-// echo "Sess_ID ";
-// echo SESSION_ID();
-// echo "asdadss";
+
 if ($_SESSION["privilage"] == 'guest'){
   // echo "GUESTTTTTTTTTTT";
  
@@ -33,6 +28,15 @@ require "func_client_priv.php";
   <div class="container-fluid" style="background-color: white; height:100vh; width:100%; padding:0px;">
 <!-- ASDASDA -->
 
+<?php
+
+echo "Session Array:";
+print_r($_SESSION);
+echo "\n";
+echo "Sess_ID ";
+echo SESSION_ID();
+echo "asdadss";
+?>
   <?php 
   $title_sidebar = "MENU";
   require('client_sidebar.php');?>
@@ -128,7 +132,7 @@ require "func_client_priv.php";
     function add_to_cart(value){
     var user = parseInt(<?php echo $_SESSION['client_id']; ?>) ; 
     var menu_id = value;
-    // console.log('user ' +user);
+    console.log('user ' +user);
     // console.log('ordered '+menu_id);
   //  alert('added to cart!');
   $.ajax({

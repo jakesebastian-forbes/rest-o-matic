@@ -1,0 +1,33 @@
+SELECT * FROM `my_cart` WHERE `client_id` = '10' ORDER BY 'date_added' ASC;
+
+
+
+SELECT
+    `restomatic_db`.`cart`.`cart_id` AS `cart_id`,
+    `restomatic_db`.`menu`.`item_name` AS `item_name`,
+    `restomatic_db`.`menu`.`item_price` AS `item_price`,
+    `restomatic_db`.`client_account`.`client_id` AS `client_id`,
+    `restomatic_db`.`client_account`.`username` AS `username`,
+    `restomatic_db`.`client_account`.`address` AS `address`,
+    `restomatic_db`.`menu`.`img` AS `image`,
+    COUNT(`restomatic_db`.`menu`.`item_name`) AS `qnt`,
+    `restomatic_db`.`cart`.`date_added` AS `date_added`
+FROM
+    (
+        (
+            `restomatic_db`.`cart`
+        JOIN `restomatic_db`.`menu` ON
+            (
+                `restomatic_db`.`cart`.`menu_id` = `restomatic_db`.`menu`.`menu_id`
+            )
+        )
+    JOIN `restomatic_db`.`client_account` ON
+        (
+            `restomatic_db`.`client_account`.`client_id` = `restomatic_db`.`cart`.`client_id`
+        )
+    )
+GROUP BY
+    `restomatic_db`.`client_account`.`client_id`,
+    `restomatic_db`.`menu`.`item_name`
+ORDER BY
+    `restomatic_db`.`cart`.`date_added`

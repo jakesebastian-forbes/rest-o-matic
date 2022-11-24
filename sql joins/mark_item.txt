@@ -1,0 +1,21 @@
+SELECT * FROM `my_cart` WHERE client_id = '10' AND item_name = 'Cheesy Squid';
+
+
+mark item
+get id of the marked item
+retrieve data
+	SELECT * FROM `my_cart` WHERE client_id = $_SESSION['client_id'] 
+	AND menu_id= 'menu_id';
+print data
+compute data
+SUBMIT
+	transfer to client_order
+		generate order_id
+		insert order_detail
+			INSERT INTO order_details
+			(order_id,menu_id,quantity)
+
+	delete data
+	DELETE FROM `cart` WHERE client_id = $_SESSION['client_id']
+	AND menu_id = 'menu_id';
+
