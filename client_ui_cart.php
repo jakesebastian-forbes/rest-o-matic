@@ -16,33 +16,6 @@ include 'db_connection.php';
     ?>
     <script src="https://kit.fontawesome.com/1c020da525.js" crossorigin="anonymous"></script> 
     <script data-require="jquery@3.1.1" data-semver="3.1.1" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script>
-    //     function wcqib_refresh_quantity_increments() {
-    // jQuery("div.quantity:not(.buttons_added), td.quantity:not(.buttons_added)").each(function(a, b) {
-    //     var c = jQuery(b);
-    //     c.addClass("buttons_added"), c.children().first().before('<input type="button" value="-" class="minus" />'), c.children().last().after('<input type="button" value="+" class="plus" />')
-    //     })
-    //     }
-    //     String.prototype.getDecimals || (String.prototype.getDecimals = function() {
-    //         var a = this,
-    //             b = ("" + a).match(/(?:\.(\d+))?(?:[eE]([+-]?\d+))?$/);
-    //         return b ? Math.max(0, (b[1] ? b[1].length : 0) - (b[2] ? +b[2] : 0)) : 0
-    //     }), jQuery(document).ready(function() {
-    //         wcqib_refresh_quantity_increments()
-    //     }), jQuery(document).on("updated_wc_div", function() {
-    //         wcqib_refresh_quantity_increments()
-    //     }), jQuery(document).on("click", ".plus, .minus", function() {
-    //         var a = jQuery(this).closest(".quantity").find(".qty"),
-    //             b = parseFloat(a.val()),
-    //             c = parseFloat(a.attr("max")),
-    //             d = parseFloat(a.attr("min")),
-    //             e = a.attr("step");
-    //         b && "" !== b && "NaN" !== b || (b = 0), "" !== c && "NaN" !== c || (c = ""), "" !== d && "NaN" !== d || (d = 0), "any" !== e && "" !== e && void 0 !== e && "NaN" !== parseFloat(e) || (e = 1), jQuery(this).is(".plus") ? c && b >= c ? a.val(c) : a.val((b + parseFloat(e)).toFixed(e.getDecimals())) : d && b <= d ? a.val(d) : b > 0 && a.val((b - parseFloat(e)).toFixed(e.getDecimals())), a.trigger("change")
-    //     });
-    </script>
-
-
-
 </head>
 
     <style>
@@ -131,7 +104,6 @@ include 'db_connection.php';
     </style>
     
 
-
 <body>
    <div class="container-fluid p-0">
     
@@ -150,8 +122,9 @@ include 'db_connection.php';
               </li>
               <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#place_orders"
-style="width: 250px; background-color:#FFA500; border:0px;">
-PLACE ORDER
+style="width: 250px; background-color:#FFA500; border:0px;" onclick="place_order()"
+id = "check_out_btn" disabled>
+CHECKOUT
 </button>
 
               <!-- <li><button class="btn" style="width: 250px; background-color:#FFA500;">PLACE ORDER</button></li> -->
@@ -191,7 +164,6 @@ PLACE ORDER
 
             if(mysqli_num_rows($result_orderID) > 0){
 
-            
             while($rows = mysqli_fetch_assoc($result_orderID))
                 {
          
@@ -219,27 +191,29 @@ PLACE ORDER
                             <h5 style="float: left; margin-top: 20px;" ><?php echo $rows['item_name']?></h5>
                         </div>
                         <div class="col-sm-2">
-                           <h5 style="margin-top: 20px;" ><?php echo $rows['item_price']?></h5>
+                           <h5 style="margin-top: 20px;" id = "price_<?php echo  $rows['menu_id']?>">
+                           <?php echo $rows['item_price']?></h5>
                         </div>
                         <div class="col-sm-2">
                             
                             <div class="quantity quantity_btn" style="display: flex; margin-top: 20px;">       
-                            <input type="button" value="-" class="minus" name = <?php echo  $rows['menu_id']?> 
-                            onclick = "less(this.name)">
+                            <button type="button" value="<?php echo $rows['item_name']?>" class="minus" name = <?php echo  $rows['menu_id']?> 
+                            onclick = "less(this.name,this.value)">-</button>
                             
                             <input type="number" step="1" min="1" max="" name="quantity" value="<?php echo $rows['qnt']?>"
-                                 title="Qty" class="input-text qty text" size="40" pattern="" inputmode="" style="width: 40px;"
-                                id = "qnty_counter_<?php echo  $rows['menu_id']?>"
-                                 >       
-                                 <input type="button" value="+" class="plus" 
-                                 name = <?php echo  $rows['menu_id']?>
-                                 onclick = "more(this.name)">
+                                title="Qty" class="input-text qty text" size="40" pattern="" inputmode="" style="width: 40px;"
+                            id = "qnty_counter_<?php echo  $rows['menu_id']?>"> 
+
+                            <button type="button" value="<?php echo $rows['item_name']?>" class="plus" 
+                            name = <?php echo  $rows['menu_id']?>
+                            onclick = "more(this.name,this.value)">+</button>
                             
                                 </div>
                             
                         </div>
                         <div class="col-sm-2">
-                            <h5 style="margin-top: 20px;"><?php echo $rows['item_price'] * $rows['qnt']?></h5>    
+                            <h5 style="margin-top: 20px;" id = "row_total<?php echo  $rows['menu_id']?>">
+                            <?php echo $rows['item_price'] * $rows['qnt']?></h5>    
                         </div>
                     </div>
                    
@@ -274,15 +248,17 @@ PLACE ORDER
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Checkout</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body">
-        ...
+      <div class="modal-body" id = "modal_list_selected">
+        
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <h6>note : display username, address, mode of payment, (optional) message</h6>
+        <p>also consider transferring this to a new page</p>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary">Place Order</button>
       </div>
     </div>
   </div>
@@ -307,6 +283,8 @@ style = "background-color:#c1bdbd;
 
 </div>
 
+<button onclick="if_check()">press me</button>
+            
 </div>
 
 
@@ -317,9 +295,15 @@ var my_total_price = 0;
 
 function ischecked(item_name,id){
 //    var id = '#' + id;
+// $("#"+id).setAttribute('ischecked','true');
 var chk = $("#"+id).is(":checked");
-
-   if($('#' + id).is(":checked")) {
+   console.log('id' + id);
+//    if($('#' + id).is(":checked")) 
+//    document.getElementById(id).setAttribute('checked','true');
+if($('#' + id).is(":checked")) {
+        // document.getElementById(id).setAttribute('checked','true');
+        // $("#"+id).;
+       
 
         console.log(chk + " :"+ item_name + "name" +"sess" + <?php echo $_SESSION['client_id']?>);
 
@@ -336,64 +320,201 @@ var chk = $("#"+id).is(":checked");
         myArr = data.split("--");
         // alert("Data: " + data + "\nStatus: " + status);
         var cart_id = "cart_id_" +id;
-        $("#total_preview").append("<div class = 'row' id ="+cart_id+ ">"+
-           "<h6 class = 'col mx-auto'>" + myArr[0]+ "</h6>" +
-           "<h6 class = 'col'>" + myArr[1]+ "</h6>" +
-           "<h6 class = 'col'>" + myArr[2]+ "</h6>" +
-           "<h6 class = 'col' id = total_"+id+">" + myArr[3]+ "</h6>" 
-        +"</div>");
 
-        // console.log($('h6').html);
-        // console.log(typeof(data));
-        my_total_price += parseFloat($("#total_" + id).text());
+        my_total_price =  place_to_card(cart_id);
+       
 
-        $("#total_price").text(my_total_price);
-        // console.log(typeof(myArr));
-        // console.log(myArr[2]);
 
     });
 
    }else{
     // console.log("Not checked");
+    document.getElementById(id).removeAttribute('checked');
+    // $("#"+id).removeAttribute("checked");
     console.log(chk+ " :"+ item_name);
     
     // $("div").remove("#cart_id_"+id);
+    my_total_price = remove_from_card(id,my_total_price);
     
-    my_total_price -= parseFloat($("#total_" + id).text());
-
-$("#total_price").text(my_total_price);
-    $("#cart_id_" + id).remove();
-    $("ul").filter("#cart_id_"+id).css("color", "black");
+    // $("ul").filter("#cart_id_"+id).css("color", "black");
 
    }
-
+   if_check();
 }
 
 
-function more(id){
+function more(id,name){
     // console.log(id);
+
+    // if($('#' + id).is(":checked")){
+    //     document.getElementById(id).setAttribute('checked','true');
+    //     ischecked(name,id);
+    // }else{
+        
+    // }
+    // place_to_card("cart_id_"+id);
+    // if_check();
     var qnty = parseInt($("#qnty_counter_"+id).val());
     // console.log("q" + qnty);
     $("#qnty_counter_"+id).val(qnty+1);
+    // var elem = document.getElementById(id);
+    // elem.setAttribute('checked','');
 // console.log($("#qnty_counter_"+id).val(qnty+1));
+console.log("id : " + id)
+
+$.post("func_add_cart.php",
+    {
+        menu_id: id,
+        client_id: <?php echo $_SESSION['client_id']?>
+    },
+    function(data, status){
+     
+        console.log(data);
+        console.log(status);
+  
+    });
+
+    update_total(id);
+    update_card(id);
+    if_check();
+
 
 }
 
-function less(id){
+function less(id,name){
 
     var qnty = parseInt($("#qnty_counter_"+id).val());
     // console.log("q" + qnty);
-    if(qnty <= 0){
+    if(qnty <= 1){
 
     }else{
         $("#qnty_counter_"+id).val(qnty-1);
+
+        
+$.post("func_delete_cart.php",
+    {
+        menu_id: id,
+        client_id: <?php echo $_SESSION['client_id']?>
+    },
+    function(data, status){
+        // myArr = data.split("--");
+        console.log(data);
+        console.log(status);
+      
+    });
+
     }
     // $("#qnty_counter_"+id).val(qnty-1);
+
+    update_total(id);
+    update_card(id);
+    if_check();
+}
+
+function update_total(id){
+    var price = parseFloat($('#price_' + id).text());
+
+    var qnt = parseInt($("#qnty_counter_" + id).val());
+console.log(id +" :"+ price +" :"+ qnt + ":"+ price*qnt);
+$('#row_total'+id).text(price*qnt);
 }
 
 $(document).ready(function(){
- 
+    $('.my-checkbox')
+
+    // if(){
+        
+
+    // }
 });
+
+function place_to_card(id){
+
+    $("#total_preview").append("<div class = 'row' id ="+id+ ">"+
+           "<h6 class = 'col mx-auto m_id' hidden>" + myArr[0]+ "</h6>" +
+           "<h6 class = 'col mx-auto m_name'>" + myArr[1]+ "</h6>" +
+           "<h6 class = 'col m_price' >" + myArr[2]+ "</h6>" +
+           "<h6 class = 'col m_qnt'>" + myArr[3]+ "</h6>" +
+           "<h6 class = 'col m_total' id = total_"+id+">" + myArr[4]+ "</h6>" 
+        +"</div>");
+
+
+        my_total_price += parseFloat($("#total_" + id).text());
+
+        $("#total_price").text("Total : " + my_total_price);
+
+        return my_total_price;
+
+}
+
+function remove_from_card(id,my_total_price){
+    console.log(parseFloat($("#total_cart_id_" + id).text()));
+    my_total_price -= parseFloat($("#total_cart_id_" + id).text());
+
+$("#total_price").text("Total : " + my_total_price);
+$("#cart_id_" + id).remove();
+return my_total_price;
+
+}
+
+function update_card(id){
+        var childs = $("#cart_id_"+id);
+
+        console.log("the childs"+childs.children(".m_name").text());
+        console.log($("#qnty_counter_" + id).val());
+        console.log($("#row_total" + id).text());
+        childs.children(".m_qnt").text($("#qnty_counter_" + id).val() +"x");
+        childs.children(".m_total").text($("#row_total" + id).text());
+        
+}
+
+function if_check(){
+    console.log('if_check');
+    
+    var nodeList = document.getElementsByClassName("m_total");
+    var total = 0;
+    console.log("length "+nodeList.length);
+console.log(nodeList);
+console.log("total :" + total);
+    for (var i = 0; i < nodeList.length; i++) {
+    // total =+ parseInt(nodeList[i].val());
+     total += parseFloat(nodeList[i].innerHTML);
+        console.log("i:"+i+":"+nodeList[i].innerHTML);
+}
+console.log("length "+nodeList.length);
+console.log(nodeList);
+console.log("total :" + total);
+document.getElementById("total_price").innerHTML = "Total : " + total;
+
+if(nodeList.length > 0){
+
+}else{
+    document.getElementById("check_out_btn").setAttribute('disabled','');
+
+}
+
+
+}
+
+
+function place_order(){
+
+    var final_order = document.getElementById("total_preview");
+    console.log(final_order);
+
+    var final_total = document.getElementById("total_price");
+    console.log(final_total);
+
+    $("#modal_list_selected").append(final_order);
+    $("#modal_list_selected").append(final_total);
+
+
+}
+
+
+//WRONG LOOP IN RETRIEVING TOTAL
+// FIX CHECKOUT BUTTON
+
 
 </script>
 </body>

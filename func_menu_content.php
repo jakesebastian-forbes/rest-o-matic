@@ -58,7 +58,7 @@ if(isset($_SESSION['privilage'])){
       
           <div class="" style="margin-left: auto; margin-top: 47px;"> 
          
-              <!-- <button class="mybtn1 my-auto" style = "margin-left: 15px;" action= "func_add_cart.php">ADD ITEM TO CART</button>  -->
+              <!-- <button class="mybtn1 my-auto" style = "margin-left: 15px;" action= "func_a dd_cart.php">ADD ITEM TO CART</button>  -->
               <!-- <button type="submit" class="mybtn1 my-auto" name="insert" value="<?php //echo $menu_id?>">Submit</button> -->
               <button type="submit" class="mybtn1 my-auto" name="insert" 
               id = "add_cart" onclick=add_to_cart(this.value)

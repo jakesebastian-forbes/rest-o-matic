@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.descendants * { 
+  display: block;
+  border: 2px solid lightgrey;
+  color: lightgrey;
+  padding: 5px;
+  margin: 15px;
+}
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
+</head>
+<body>
+<!-- 
+<div class="descendants" style="width:500px;">div (current element) 
+  <p>p (child)
+    <span>span (grandchild)</span>   
+  </p>
+  <p>p (child)
+    <span>span (grandchild)</span>
+  </p> 
+</div> -->
+
+
+<div class = 'row' id ="cart_90">
+    <h6 class = 'col mx-auto m_name'>myArr[0]</h6>
+    <h6 class = 'col m_price' >myArr[1]</h6>
+    <h6 class = 'col m_qnt'>myArr[2]</h6>
+    <h6 class = 'col m_total' id = "total_">myArr[3]</h6>
+</div>
+
+
+
+<script>
+    $(document).ready(function(){
+        var childs = $("#cart_90")
+        console.log(childs.children(".m_name").text());
+    });
+    </script>
+</body>
+</html>
