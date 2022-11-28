@@ -2,27 +2,13 @@
 <html>
 <head>
 <style>
-.descendants * { 
-  display: block;
-  border: 2px solid lightgrey;
-  color: lightgrey;
-  padding: 5px;
-  margin: 15px;
-}
+
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 
 </head>
 <body>
-<!-- 
-<div class="descendants" style="width:500px;">div (current element) 
-  <p>p (child)
-    <span>span (grandchild)</span>   
-  </p>
-  <p>p (child)
-    <span>span (grandchild)</span>
-  </p> 
-</div> -->
+
 
 
 <div class = 'row' id ="cart_90">
@@ -32,13 +18,23 @@
     <h6 class = 'col m_total' id = "total_">myArr[3]</h6>
 </div>
 
+<button id = 'mybtn' onclick="doit()">HANASANAI</button>
 
+<div id = "here"></div>
 
 <script>
-    $(document).ready(function(){
-        var childs = $("#cart_90")
-        console.log(childs.children(".m_name").text());
-    });
-    </script>
+  function doit(){
+      var duh = document.getElementById("total_").outerHTML;
+      var duh2 = duh;
+
+      console.log(duh);
+
+      document.getElementById("here").append(duh);
+
+
+
+  }
+
+</script>
 </body>
 </html>

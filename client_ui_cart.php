@@ -118,11 +118,19 @@ include 'db_connection.php';
             <!-- <h2><i class="fa-solid fa-cart-shopping"> </i> CART </h2> -->
             <ul>
               <li>
-                <button class="btn"><i class="fa-solid fa-trash" style="color:white ; font-size: 24px;"></i></button>
+                
+            <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#my_modal_delete"
+            id = "delete_btn" style="border: 0;" disabled onclick="delete_order()">
+            <i class="fa-solid fa-trash" style="color:white ; font-size: 24px;"></i>
+            <!-- DELETE -->
+            </button>
+
+                <!-- <button class="btn" > -->
+                    <!-- <i class="fa-solid fa-trash" style="color:white ; font-size: 24px;"></i></button> -->
               </li>
               <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#place_orders"
-style="width: 250px; background-color:#FFA500; border:0px;" onclick="place_order()"
+style="width: 250px; background-color:#FFA500; border:0px;" onclick="checkout()"
 id = "check_out_btn" disabled>
 CHECKOUT
 </button>
@@ -244,12 +252,13 @@ CHECKOUT
 
 
 <!-- Modal -->
+<div name = "modal_checkout">
 <div class="modal fade" id="place_orders" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <h1 class="modal-title fs-5" id="exampleModalLabel">Checkout</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" ></button>
       </div>
       <div class="modal-body" id = "modal_list_selected">
         
@@ -257,19 +266,43 @@ CHECKOUT
       <div class="modal-footer">
         <h6>note : display username, address, mode of payment, (optional) message</h6>
         <p>also consider transferring this to a new page</p>
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-primary">Place Order</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="cancel_checkout()">Cancel</button>
+        <button type="button" class="btn btn-primary" id = "btn_place_order" onclick="place_order_final()">Place Order</button>
       </div>
     </div>
   </div>
+</div>
+</div>
+
+
+<!-- Modal -->
+<div name = "modal_delete">
+<div class="modal fade" id="my_modal_delete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" id="modal_delete_body">
+     
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="cancel_checkout()">
+        Cancel</button>
+        <button type="button" class="btn btn-danger" onclick="confirm_delete()" data-bs-dismiss="modal">Confirm</button>
+      </div>
+    </div>
+  </div>
+</div>
 </div>
 
 <div class = "row overflow-auto"
 style = "background-color:#c1bdbd; 
               border:1px solid gray;
-              min-width:320px;
+              min-width:500px;
               max-width:700px;
-              width:700px;
+              width:100%;
               height:97px;
               position:fixed;
               bottom:0px;
@@ -297,18 +330,12 @@ function ischecked(item_name,id){
 //    var id = '#' + id;
 // $("#"+id).setAttribute('ischecked','true');
 var chk = $("#"+id).is(":checked");
-   console.log('id' + id);
+//    console.log('id' + id);
 //    if($('#' + id).is(":checked")) 
 //    document.getElementById(id).setAttribute('checked','true');
 if($('#' + id).is(":checked")) {
-        // document.getElementById(id).setAttribute('checked','true');
-        // $("#"+id).;
-       
-
-        console.log(chk + " :"+ item_name + "name" +"sess" + <?php echo $_SESSION['client_id']?>);
-
-        $("ul").filter("#cart_id_"+id).css("color", "yellow");
-
+   
+        // console.log(chk + " :"+ item_name + "name" +"sess" + <?php echo $_SESSION['client_id']?>);
         // $("#total_preview").append("<h6 class = cart_"+menu_id+">"+menu_id +"asda"+"</h6>");
 
         $.post("select_items.php",
@@ -320,26 +347,24 @@ if($('#' + id).is(":checked")) {
         myArr = data.split("--");
         // alert("Data: " + data + "\nStatus: " + status);
         var cart_id = "cart_id_" +id;
-
         my_total_price =  place_to_card(cart_id);
-       
-
-
+        if_check();
     });
 
    }else{
     // console.log("Not checked");
     document.getElementById(id).removeAttribute('checked');
     // $("#"+id).removeAttribute("checked");
-    console.log(chk+ " :"+ item_name);
+    // console.log(chk+ " :"+ item_name);
     
     // $("div").remove("#cart_id_"+id);
     my_total_price = remove_from_card(id,my_total_price);
     
     // $("ul").filter("#cart_id_"+id).css("color", "black");
-
+    if_check();
    }
-   if_check();
+  
+
 }
 
 
@@ -391,7 +416,7 @@ function less(id,name){
         $("#qnty_counter_"+id).val(qnty-1);
 
         
-$.post("func_delete_cart.php",
+$.post("func_less_cart.php",
     {
         menu_id: id,
         client_id: <?php echo $_SESSION['client_id']?>
@@ -419,14 +444,6 @@ console.log(id +" :"+ price +" :"+ qnt + ":"+ price*qnt);
 $('#row_total'+id).text(price*qnt);
 }
 
-$(document).ready(function(){
-    $('.my-checkbox')
-
-    // if(){
-        
-
-    // }
-});
 
 function place_to_card(id){
 
@@ -437,7 +454,6 @@ function place_to_card(id){
            "<h6 class = 'col m_qnt'>" + myArr[3]+ "</h6>" +
            "<h6 class = 'col m_total' id = total_"+id+">" + myArr[4]+ "</h6>" 
         +"</div>");
-
 
         my_total_price += parseFloat($("#total_" + id).text());
 
@@ -469,51 +485,214 @@ function update_card(id){
 }
 
 function if_check(){
-    console.log('if_check');
+    // console.log('if_check');
     
-    var nodeList = document.getElementsByClassName("m_total");
+    // var nodeList = document.getElementsByClassName("m_total");
+    var nodeList = document.getElementById("total_preview").children;
     var total = 0;
-    console.log("length "+nodeList.length);
-console.log(nodeList);
-console.log("total :" + total);
-    for (var i = 0; i < nodeList.length; i++) {
+//     console.log("length "+nodeList.length);
+// console.log(nodeList);
+// console.log("total :" + total);
+var i = 0;
+    for (i ; i < nodeList.length; i++) {
     // total =+ parseInt(nodeList[i].val());
-     total += parseFloat(nodeList[i].innerHTML);
-        console.log("i:"+i+":"+nodeList[i].innerHTML);
+        // total += parseFloat(nodeList[i].innerHTML);
+        // console.log("i:"+i+":"+nodeList[i].innerHTML);
+        // console.log(i);
 }
-console.log("length "+nodeList.length);
-console.log(nodeList);
-console.log("total :" + total);
-document.getElementById("total_price").innerHTML = "Total : " + total;
+// console.log("length "+nodeList.length);
+// console.log(nodeList);
+// console.log("total :" + total);
+// document.getElementById("total_price").innerHTML = "Total : " + total;
 
 if(nodeList.length > 0){
-
+    document.getElementById("check_out_btn").removeAttribute('disabled');
+    document.getElementById("delete_btn").removeAttribute('disabled');
+    
 }else{
     document.getElementById("check_out_btn").setAttribute('disabled','');
+    document.getElementById("delete_btn").setAttribute('disabled','');
 
 }
 
 
 }
 
+function checkout(){
 
-function place_order(){
-
-    var final_order = document.getElementById("total_preview");
+    var final_order = document.getElementById("total_preview").innerHTML;
     console.log(final_order);
 
-    var final_total = document.getElementById("total_price");
+    var final_total = document.getElementById("total_price").innerHTML;
     console.log(final_total);
-
+    
     $("#modal_list_selected").append(final_order);
     $("#modal_list_selected").append(final_total);
 
+}
 
+function cancel_checkout(){
+    console.log("cancelled");
+    $("#modal_list_selected").empty();
+    $("#modal_delete_body").empty(); 
 }
 
 
-//WRONG LOOP IN RETRIEVING TOTAL
-// FIX CHECKOUT BUTTON
+function delete_order(){
+    
+    var final_order = document.getElementById("total_preview").innerHTML;
+    // console.log(final_order);
+
+    var final_total = document.getElementById("total_price").innerHTML;
+    // console.log(final_total);
+    
+    $("#modal_delete_body").append(final_order);
+    $("#modal_delete_body").append(final_total);
+
+}
+
+// sleep time expects milliseconds
+function sleep (time) {
+  return new Promise((resolve) => setTimeout(resolve, time));
+}
+
+function confirm_delete(){
+    console.log("confirmed deleting");
+   var a = $("#modal_delete_body").children();
+ 
+
+        for(var i = 0; i < a.length; i++){
+           id = a[i].firstChild.innerHTML;
+           console.log(id);
+
+           $.post("func_delete_cart.php",
+    {
+        menu_id: id,
+        client_id: <?php echo $_SESSION['client_id']?>
+    },
+    function(data, status){
+        // myArr = data.split("--");
+        console.log(data);
+        console.log(status);
+      
+    });
+
+}
+
+//sleep because the page is reloading too fast
+    sleep(500).then(() => {
+
+    window.location.reload(true);
+});
+
+
+        }
+
+    
+function place_order_final(){
+    console.log("place_order_final");
+    var order_id;
+
+    $.ajax({
+		url: "func_place_order.php",
+		type: "POST",
+		data: {
+			"client_id": <?php echo $_SESSION['client_id']?>
+		},
+		cache: false,
+        async : false,
+		success: function(dataResult){
+
+            var status = JSON.parse(dataResult.split(" ")[1]);
+
+			if(status.statusCode==200){
+
+            console.log(dataResult);
+            order_id = JSON.parse(dataResult.split(" ")[0]);
+						
+			}
+			else if(status.statusCode==201){
+				alert("Error occurred !");
+			}
+			
+		}
+	});
+
+    console.log(order_id);
+
+    //putting order details inside the order id
+    //we need order_id,menu_id,quantity
+
+    var a = $("#modal_list_selected").children();
+    var b = a.children();
+    // console.log(b[0]);
+    
+    var menu_id = [];
+    var quantity = [];
+
+    for(i = 0; i < a.length; i++){
+        //menu_id
+        // console.log(a[i].childNodes[0].innerHTML);
+        menu_id.push(a[i].childNodes[0].innerHTML);
+        //quantity
+        // console.log(a[i].childNodes[3].innerHTML);
+        b = a[i].childNodes[3].innerHTML;
+        b = b.replace("x","");
+        // console.log(b);
+        quantity.push(b);
+
+        console.log("inserting order_detail");
+        
+        $.post("func_insert_order_details.php",
+            {
+            order_id : order_id,
+            menu_id: a[i].childNodes[0].innerHTML,
+            qnty: b
+            },
+            function(data, status){
+            // myArr = data.split("--");
+            console.log(data);
+            console.log(status);
+
+            });
+
+}
+
+console.log(menu_id);
+console.log(quantity);
+
+//delete the content
+console.log("Deleting content");
+
+var a = $("#modal_list_selected").children();
+ 
+
+        for(var i = 0; i < a.length; i++){
+           id = a[i].firstChild.innerHTML;
+           console.log(id);
+
+           $.post("func_delete_cart.php",
+    {
+        menu_id: id,
+        client_id: <?php echo $_SESSION['client_id']?>
+    },
+    function(data, status){
+        // myArr = data.split("--");
+        console.log(data);
+        console.log(status);
+      
+    });
+
+
+}
+//sleep because the page is reloading too fast
+sleep(500).then(() => {
+
+window.location.reload(true);
+});
+
+
+}
 
 
 </script>

@@ -3,6 +3,7 @@ session_start();
 
 if ($_SESSION["privilage"] == 'guest'){
   // echo "GUESTTTTTTTTTTT";
+  echo "add button for login or back to index";
  
 }else{
   require "func_check_sess.php";
@@ -144,6 +145,7 @@ echo "asdadss";
 		},
 		cache: false,
 		success: function(dataResult){
+      console.log("1" + dataResult);
 			var dataResult = JSON.parse(dataResult);
 			if(dataResult.statusCode==200){
         alert("Added to Cart!" + user + menu_id);

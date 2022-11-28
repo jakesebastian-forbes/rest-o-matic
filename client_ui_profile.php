@@ -169,16 +169,40 @@ $birthdate = $_SESSION['birthdate'];
                    <div class="col m-auto">
 
                    <div class = "m-auto">
+                        
+                        <?php
+                        $client = $_SESSION['client_id'];
+                          $conn = new mysqli('localhost','root','','restomatic_db');
+
+                          if($conn->connect_error){
+                            die('Connection failed : ' . $conn->connect_error);
+                           }else{
+                          $query = "SELECT * FROM `order_count` WHERE client_id =  $client;";
+                        
+                          $result = mysqli_query($conn,$query);
+
+                          while($rows = mysqli_fetch_assoc($result))
+                              {
+                             
+                          ?>
+                          <a href="client_ui_order.php"  style = "text-decoration:none;color:black;">
                         <div class = "text-center my-lg-banner">
-                            <h3 class = "">5</h3>
+                            <h3 class = ""><?php echo $rows['count']?></h3>
                             <h6>Orders</h6>
                         </div>
+                        </a>
                         <br>
+                        <a href="client_ui_reservation.php" style = "text-decoration:none;color:black;">
                         <div class = "text-center my-lg-banner">
                             <h3>1</h3>
                             <h6>Reservations</h6>
 
                         </div>
+                        </a>
+                        <?php 
+                         } 
+                          }
+                        ?>
 
                    </div>
 

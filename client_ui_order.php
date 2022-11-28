@@ -210,8 +210,8 @@ $client_id = $_SESSION['client_id'] ;
                                         ?>
                                         <div class="row">
                                         <div class="col-sm-3">
-                                            <img src="/images/2dogs.jpg" alt="pfp" width="90px" height="90px" style="float:left;"
-                                            id = "order_menu_img">
+                                        <?php echo '<img class="card-img-top img img-responsive" src = "data:image/jpeg;base64,'.base64_encode($rows['img']) .'" 
+        style ="width : 50px; height:50px; object-fit: cover;"/>';?>
                                             <div class="row">
                                                 <h6 id = "order_menu_item"><?php echo $rows['item_name']?></h6>
                                             </div>
