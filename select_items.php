@@ -12,10 +12,10 @@ if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
 
-$item_name = $_POST['item_name'];
+$item_id = $_POST['item_id'];
 $client_id = $_POST['client_id'];
 
-$sql = "SELECT * FROM `my_cart` WHERE item_name = '$item_name' AND client_id = '$client_id' ;";
+$sql = "SELECT * FROM `my_cart` WHERE menu_id = '$item_id' AND client_id = '$client_id' ;";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {

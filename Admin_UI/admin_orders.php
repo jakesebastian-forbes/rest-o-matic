@@ -1,22 +1,14 @@
-<?php
-require "func_session.php";
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  
-    <script src="https://kit.fontawesome.com/1c020da525.js" crossorigin="anonymous"></script>  
-
-    <?php
-        $title = "Orders | Client | Restomatic";
-        require('must_haves.php');
-    ?>
-</head>
-
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Orders | Restomatic</title>
     
-
+    <link rel="icon" type="image/x-icon" href="images/icon/web_icon.png"/> 
+    <link rel="stylesheet" href="../bootstrap-5.2.2/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../css/general.css"/>
 
     <style>
         .dropdown {
@@ -141,18 +133,21 @@ require "func_session.php";
 
 
     </style>
-
-
-
+</head>
 <body>
-    <div class="container-fluid p-0">
-            
-<?php
-    $title_sidebar = "MY ORDERS";
-    require('client_sidebar.php');
-?>
 
-      
+<div class="container-fluid">
+
+<div>
+
+<?php
+include '../db_connection.php';
+$page_title = "ORDER";
+
+require "admin_sidebar.php";
+?>
+</div>
+
 <div class="panel" style="margin-top:10px;">
             <!-- <nav class="navbar nav-pills  d-inline-flex  navbar-expand-lg align-content:vertical "style=" background-color: #FFA500; border-radius:10px;width: 100vw; border-radius:10px;"> -->
             <nav class="navbar nav-pills navbar-expand-lg mt-4 "  style="background-color:#FFA500; border-radius: 10px;" >
@@ -202,11 +197,10 @@ require "func_session.php";
         </div> 
       </nav>
     </div>
-    </div>
-    
-    
+
+       
 <?php
-$client_id = $_SESSION['client_id'] ;
+// $client_id = $_SESSION['client_id'] ;
 ?>
 
     <div class="tab-content" id="pills-tabContent">
@@ -215,8 +209,8 @@ $client_id = $_SESSION['client_id'] ;
 
 <?php
 //all
-    $qry_statement = "SELECT * FROM `client_order` WHERE `client_id` = $client_id";
-    include "func_pill_content.php";
+    $qry_statement = "SELECT * FROM `client_order` ";
+    include "func_admin_orders.php";
 ?>
   
   </div>
@@ -225,8 +219,8 @@ $client_id = $_SESSION['client_id'] ;
   
 <?php
 
-$qry_statement = "SELECT * FROM `client_order` WHERE `client_id` = $client_id AND `status` = 'pending';";
-include "func_pill_content.php";
+$qry_statement = "SELECT * FROM `client_order` WHERE `status` = 'pending'";
+    include "func_admin_orders.php";
 
 ?>
   </div>
@@ -235,8 +229,10 @@ include "func_pill_content.php";
   
   <?php
 
-$qry_statement = "SELECT * FROM `client_order` WHERE `client_id` = $client_id AND `status` = 'approved';";
-include "func_pill_content.php";
+
+$qry_statement = "SELECT * FROM `client_order` WHERE `status` = 'approved'";
+    include "func_admin_orders.php";
+
 
 ?>
   
@@ -246,8 +242,9 @@ include "func_pill_content.php";
     
     <?php
   
-      $qry_statement = "SELECT * FROM `client_order` WHERE `client_id` = $client_id AND `status` = 'delivered';";
-      include "func_pill_content.php";
+$qry_statement = "SELECT * FROM `client_order` WHERE `status` = 'delivered'";
+include "func_admin_orders.php";
+
   
   ?>
     
@@ -257,8 +254,10 @@ include "func_pill_content.php";
     
     <?php
   
-      $qry_statement = "SELECT * FROM `client_order` WHERE `client_id` = $client_id AND `status` = 'cancelled';";
-      include "func_pill_content.php";
+   
+$qry_statement = "SELECT * FROM `client_order` WHERE `status` = 'cancelled'";
+include "func_admin_orders.php";
+
   
   ?>
     
@@ -269,22 +268,19 @@ include "func_pill_content.php";
     
     <?php
   
-      $qry_statement = "SELECT * FROM `client_order` WHERE `client_id` = $client_id AND `status` = 'retured';";
-      include "func_pill_content.php";
+    
+$qry_statement = "SELECT * FROM `client_order` WHERE `status` = 'returned'";
+include "func_admin_orders.php";
+
   
   ?>
     
     </div>
   
 
-
 </div>
 
-    
-<script>
-var active = document.getElementById('nav_orders');
-active.setAttribute('class','nav-link my-nav-link my-active',);
-</script>
+
+<script src = "../bootstrap-5.2.2/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
-

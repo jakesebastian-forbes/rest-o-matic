@@ -1,18 +1,5 @@
 <?php
-session_start();
-// print_r($_SESSION);
-$client_id= $_SESSION['client_id'];
-$username1 = $_SESSION['username'];
-$firstname = $_SESSION['firstname'];
-$lastname = $_SESSION['lastname'];
-$fullname = $firstname. ' '. $lastname;
-$email = $_SESSION['email'];
-$phone_number = $_SESSION['mobile_number'];
-$address = $_SESSION['address'];
-$birthdate = $_SESSION['birthdate'];
-
-
-
+require "func_session.php";
 
 ?>
 
@@ -132,29 +119,30 @@ $birthdate = $_SESSION['birthdate'];
                             <table class="table table-responsive table-borderless" 
                             style =" table-layout: fixed;">
                               
+
                                  <tr>
                                     <td class = "text-start">Username</td>
-                                    <td class = "text-start"><?php echo $username1?></td>
+                                    <td class = "text-start"><?php echo  $_SESSION['username'];?></td>
                                  </tr>
                                  <tr>
                                     <td class = "text-start">Fullname</td>
-                                    <td class = "text-start"><?php echo $fullname?></td>
+                                    <td class = "text-start"><?php echo $_SESSION['firstname'] . ' ' . $_SESSION['lastname'] ;?></td>
                                  </tr>
                                  <tr>
                                     <td class = "text-start">Birthdate</td>
-                                    <td class = "text-start"><?php echo $birthdate?></td>
+                                    <td class = "text-start"><?php echo $_SESSION['birthdate'];?></td>
                                  </tr>
                                  <tr>
                                     <td class = "text-start">Mobile Number</td>
-                                    <td class = "text-start"><?php echo $phone_number?></td>
+                                    <td class = "text-start"><?php echo $_SESSION['mobile_number'];?></td>
                                  </tr>
                                  <tr>
                                     <td class = "text-start">E-mail</td>
-                                    <td class = "text-start"><?php echo $email?></td>
+                                    <td class = "text-start"><?php echo $_SESSION['email'];?></td>
                                  </tr>
                                  <tr>
                                     <td class = "text-start">Address</td>
-                                    <td class = "text-start"><?php echo $address?></td>
+                                    <td class = "text-start"><?php echo $_SESSION['address'];?></td>
                                  </tr>
 
 

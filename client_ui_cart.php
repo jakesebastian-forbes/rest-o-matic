@@ -1,8 +1,5 @@
 <?php
-session_start();
-// print_r($_SESSION);
-include 'db_connection.php';
-
+require "func_session.php";
 ?>
 
 
@@ -316,7 +313,7 @@ style = "background-color:#c1bdbd;
 
 </div>
 
-<button onclick="if_check()">press me</button>
+<!-- <button onclick="if_check()">press me</button> -->
             
 </div>
 
@@ -335,12 +332,12 @@ var chk = $("#"+id).is(":checked");
 //    document.getElementById(id).setAttribute('checked','true');
 if($('#' + id).is(":checked")) {
    
-        // console.log(chk + " :"+ item_name + "name" +"sess" + <?php echo $_SESSION['client_id']?>);
+        // console.log(chk + " :"+ item_name + "name" +"sess" + <?php //echo $_SESSION['client_id']?>);
         // $("#total_preview").append("<h6 class = cart_"+menu_id+">"+menu_id +"asda"+"</h6>");
 
         $.post("select_items.php",
     {
-        item_name: item_name,
+        item_id: id,
         client_id: <?php echo $_SESSION['client_id']?>
     },
     function(data, status){
