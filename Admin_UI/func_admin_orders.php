@@ -11,16 +11,47 @@ $qry_statement;
   if($conn->connect_error){
     die('Connection failed : ' . $conn->connect_error);
    }else{
-    // echo " uyyy". $category;
-  $query = $qry_statement;
+
+  $query = $qry_statement; //GET ORDERS
 
   $result_orderID = mysqli_query($conn,$query);
 
   while($rows_orderID = mysqli_fetch_assoc($result_orderID))
       {
        $order_id =  $rows_orderID['order_id'];
-       
-  ?><div class="row mt-2 m-0">
+       $client_id = $rows_orderID['client_id'];
+
+       if($conn->connect_error){
+        die('Connection failed : ' . $conn->connect_error);
+       }else{
+    
+      $query = "SELECT * FROM `client_account` WHERE client_id = $client_id"; //GET ORDER CLIENT
+    
+      $result_client = mysqli_query($conn,$query);
+
+       }
+       while($rows_client = mysqli_fetch_assoc($result_client))
+      {
+        echo $rows_client['username'];
+      }
+    
+        ?>
+        <div class="row">
+    <!-- <h1>adasd</h1> -->
+        <h6><?php //echo $rows_client['username']; ?> </h6>
+        <h6><?php //echo $rows_client['firstname'] . ' '. $rows_client['lastname']; ?> </h6>
+        <h6><?php //echo $rows_client['address']; ?> </h6>
+
+</div>
+
+
+
+  
+
+
+  
+  
+  <div class="row mt-2 m-0">
   <div class="row">
       <center>
                             <div class="card" style="width:inherit; margin:2%;">
@@ -51,12 +82,13 @@ $qry_statement;
                                             {
                                             
                                         ?>
-                                        <div class="row mb-2">
-                                        <div class="col">
+                                          <div class="row">
                                         <?php
                                         echo $rows_orderID['client_id'];
                                         ?>
                                         </div>
+                                        <div class="row mb-2">
+                                      
                                         <div class="col">
                                         <?php echo '<img class="card-img-top img img-responsive" src = "data:image/jpeg;base64,'.base64_encode($rows['img']) .'" 
                                         style ="width : 50px; height:50px; object-fit: cover;"/>';?>
