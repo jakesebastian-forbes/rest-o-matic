@@ -123,9 +123,6 @@ require "func_session.php";
         }
 
         @media only screen and ((max-width: 992px)) {
-  body {
-    
-  }
 
   #pills-tab{
     display: block;

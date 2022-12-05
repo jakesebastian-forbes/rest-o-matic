@@ -21,10 +21,10 @@
                         <div class="offcanvas-body">
                           <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                             <li class="nav-item">
-                              <a class="nav-link active"  href="idk_admin_dashboard.php">DASHBOARD</a>
+                              <a class="nav-link active"  href="admin_ui_dashboard.php">DASHBOARD</a>
                             </li>
                             <li class="nav-item">
-                              <a class="nav-link" href="admin_orders.php">ORDERS</a>
+                              <a class="nav-link" href="admin_ui_orders.php">ORDERS</a>
                             </li>
                             <li class="nav-item">
                               <a class="nav-link" href="#">RESERVATION</a>
@@ -55,3 +55,6 @@
                 </nav>
             </nav>
           </div>
+
+          
+    <script src = "../bootstrap-5.2.2/js/bootstrap.bundle.min.js"></script>

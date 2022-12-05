@@ -13,6 +13,7 @@ require "func_session.php";
     ?>
     <script src="https://kit.fontawesome.com/1c020da525.js" crossorigin="anonymous"></script> 
     <script data-require="jquery@3.1.1" data-semver="3.1.1" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
 </head>
 
     <style>

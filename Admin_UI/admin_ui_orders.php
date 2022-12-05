@@ -49,12 +49,11 @@
         <div class="d-flex justify-content-start">
         
         <div class="col">
-                <label for="filter_status">Status</label>
+                <label for="status">Status</label>
 
-                <select name="filter_status" id="" onchange="filter_status(this.value)" style= "width:70%">
+                <select name="status" id="status" >
                 <option value="all">All</option>
                 <option value="pending">Pending</option>
-                <option value="approved">Approved</option>
                 <option value="confirmed">Confirmed</option>
                 <option value="on delivery">On delivery</option>
                 <option value="delivered">Delivered</option>
@@ -64,49 +63,19 @@
         </div>
         <div class="col">
             <label for="date">Date</label>
-       
-            <select name="date" id="date" onchange="date_filter(this.value,this.id)" style= "width:70%">
-            <option value="" id = "all_time">All</option>
-            <option value="" id = "date_today">Today</option>
-            <option value="" id = "date_yesterday">Yesterday</option>
-            <option value="Search">Search</option>
-            <!-- <option value="">Last week</option>
-            <option value="audi">Last month</option> -->
+
+            <select name="date" id="date">
+            <option value="">Today</option>
+            <option value="saab">Yesterday</option>
+            <option value="mercedes">Last week</option>
+            <option value="audi">Last month</option>
             </select>
 
-            <script>
-
-            var new_date = new Date();
-
-            var date,y_date;
-
-
-            if(new_date.getDate() < 10){
-  
-                date = "0" + new_date.getDate();
-                y_date  = "0" + parseInt(new_date.getDate()-1);
-            }
-
-            var curr_date = new_date.getFullYear() + "-" + parseInt(new_date.getMonth()+1) + "-"+ date;
-            var yesterday = new_date.getFullYear() + "-" + parseInt(new_date.getMonth()+1) + "-"+ y_date;
-
-            $("#date_today").val(curr_date);
-            $("#date_yesterday").val(yesterday);
-            
-
-            </script>
-
        
     </div>
 
-    <div class="col" id = "div_date_search" hidden>
-
-    <input type="date" id = "date_search" placeholder="yyyy-mm-dd" onchange="date_search(this.value)"  style= "width:70%">
-
-    </div>
-
-    <div class="col" id = ""  >
-             <input type="text" placeholder="Search order" onchange="order_search(this)"  style= "width:80%">
+    <div class="col">
+             <input type="text" placeholder="Search">
     </div>
 </div>
     </div>
@@ -122,7 +91,7 @@
 
 
     <div class="panel m-3">
-    <div class="accordion" id="accordionPanelsStayOpenExample" style = "border-radius:10px;">
+    <div class="accordion" id="accordionPanelsStayOpenExample">
 
     <?php
       $row_count = 0;
@@ -154,58 +123,29 @@
                     }
                     ?>
 
-        <div class="accordion-item border" id ="acc-item-<?php echo $rows['order_id']?>" >
+        <div class="accordion-item">
           <h2 class="accordion-header" id="#row<?php echo $row_count?>">
 
         
             <button class="accordion-button <?php echo $highlight;?>" type="button" data-bs-toggle="collapse" data-bs-target="#row<?php echo $row_count?>" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
               <div class="row" style = "width:100%">
                
-                <div class="d-flex justify-content-evenly text-center">
+                <div class="d-flex justify-content-evenly">
                     
-                      <?php 
+                      <?php echo $row_count;
                       $order_id = $rows['order_id'];
                       ?>
-                    <div class="col">
-                      <div> Order No. </div> 
-                      <h5 id = "order_no<?php echo $rows['order_id'];?>"name = "order_no" value = "<?php echo $rows['order_id'];?>"><?php echo $rows['order_id'];?></h5>
-                      
-                    
-                    </div>
-                    <div class="col"><?php echo $rows['firstname'] . ' ' . $rows['lastname'];?></div>
-                    <div class="col"><?php echo $rows['mobile_number'];?></div>
-                    <div class="col"><?php echo $rows['address'];?></div>
-                    <div class="col text-center">
-                      
-                    <div id = "time<?php echo $rows['order_id'];?>"></div>
-                    <h6 id = "date1<?php echo $rows['order_id'];?>" 
-                    name = "order_date"class="text-muted" style="font-size: smaller;"></h6>
-                    
-
-                    <script>
-                      var date = "<?php echo $rows['timestamp'];?>";
-                      date = date.split(" ");
-
-                      var time = date[1];
-                      date = date[0];
-                      document.getElementById("time<?php echo $rows['order_id'];?>").innerHTML = time;
-                      document.getElementById("date1<?php echo $rows['order_id'];?>").innerHTML = date;
-
-                      var date_id = $("#date1<?php echo $rows['order_id'];?>");
-                      date_id.val(date);
-                      // console.log(bruhh.val());
-           
-
-
-                    </script>
-                  
-                    </div>
+                    <div class="col">Order ID  <?php echo $rows['order_id'];?></div>
+                    <div class="col">Client Name <?php echo $rows['firstname'] . ' ' . $rows['lastname'];?></div>
+                    <div class="col">Contact <?php echo $rows['mobile_number'];?></div>
+                    <div class="col">Address <?php echo $rows['address'];?></div>
+                    <div class="col">Date <?php echo $rows['timestamp'];?></div>
                     <div class="col">
                         
                   
                         <label for="status">Status</label>
 
-                        <select name="status" id="status<?php echo $order_id?>" onchange="updateStatus(this.value,this.id,this)">
+                        <select name="status" id="status<?php echo $order_id?>" onchange="updateStatus(this.value,this.id)">
                             <option value="Pending">Pending</option>
                             <option value="Approved">Approved</option>
                             <option value="On Delivery">On delivery</option>
@@ -226,7 +166,13 @@
 
           <div id="row<?php echo $row_count?>" class="accordion-collapse collapse <?php echo $content;?>" aria-labelledby="panelsStayOpen-headingOne">
             <div class="accordion-body panel-body m-2 pt-2 mt-0">
-        
+              <!-- <strong>This is the first item's accordion body.</strong>
+               It is shown by default, until the collapse plugin adds the appropriate
+                classes that we use to style each element. These classes control the overall 
+                appearance, as well as the showing and hiding via CSS transitions. You can modify
+                 any of this with custom CSS or overriding our default variables. It's also 
+                 worth noting that just about any HTML can go within the <code>.accordion-body</code>, 
+                 though the transition does limit overflow. -->
                <div class="row text-muted mt-0" style = "font-size: medium;"> <!--LABEL -->
                 <div class="col">IMG</div>
                 <div class="col">Item name</div>
@@ -336,12 +282,7 @@
     }
                  
                   ?>
-
-        <div class="row text-center text-muted">
-          <h4>This is the end of the list.</h4>
-
-        </div>
-        <!-- <div class="accordion-item">
+        <div class="accordion-item">
           <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
               Accordion Item #2
@@ -352,23 +293,21 @@
               <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
             </div>
           </div>
-        </div> -->
+        </div>
     </div>
 
 
     </div>
     <!-- <script src="../bootstrap-5.2.2/js/bootstrap.min.js"></script> -->
 
-
-
     <script>
 
     function updateStatus(value,id){
-        // console.log("updateStatus  " + value +":" +id);
+        console.log("updateStatus  " + value +":" +id);
 
         var order_id = id.replace("status","");
         // var new_stat = value;
-        // console.log(order_id);
+        console.log(order_id);
 
         $.ajax({
         url: "func_update_order_status.php",
@@ -395,122 +334,10 @@
           
         }
       });
-    }
 
- 
-
-    var accordion_items = $('[name="status"]'); //get all accordion item
-    
-   function show_items(){
-    var hidden_accordion = $("div").find(`[hidden = 'hidden']`); //get hidden accordion items
-      //unhide all elements
-      for(var j = 0; j < hidden_accordion.length ; j++){
-                      var ids = hidden_accordion[j].id;
-                      $("#"+ids).removeAttr("hidden");
-                      
-                  }
-
-   }
-
-   function hide_items(loop,if_item){
-
-    for (var i = 0 ;i<loop.length; i++){ //loop over the items
-          if(loop[i].value.toLowerCase() != if_item.toLowerCase()){
-   
-           b = loop[i].parentElement.parentElement.parentElement.parentElement.parentElement.parentElement;
-          //  console.log(b.id);
-
-           $('#' + b.id).attr("hidden","");
-
-        }
-      }
-    
-   }
-
-    function filter_status(value){
- 
-        if(value == "all"){
-     
-          show_items();
-       
-        }
-        else {
-    
-          show_items();
-          hide_items(accordion_items,value);
-
-    }
-  }
-    
-      var order_dates = $('[name="order_date"]');
-
-        function date_filter(value,id,sel){
-        var selected = $("#"+id +" option:selected").text();
-
-        var date2 = new Date();
-        
-
-        if(selected == "All"){
-            show_items();
-
-        }else if(selected == "Today"){
-            show_items();
-            hide_items(order_dates,value);
-
-        }else if(selected == "Yesterday"){
-
-          show_items();
-          hide_items(order_dates,value);
-        }
-        
-        else if(selected == "Search"){
-            $("#div_date_search").removeAttr("hidden");
-
-        }
 
 
     }
-
-
-
-  function date_search(value){
-    // console.log(value);
-    show_items();
-    hide_items(order_dates,value);
-
-  }
-
-
-  var order_nos = $('[name="order_no"]'); //get all 
-
-  function order_search(x){
-
-    console.log(x.value);
-
-    if(x.value == ""){
-
-    show_items();
-    }else{
-    show_items();
- 
-    for (var i = 0 ;i<order_nos.length; i++){ //loop over the items
-          console.log(order_nos.innerHTML);
-          if(order_nos[i].innerHTML != x.value){
-   
-           b = order_nos[i].parentElement.parentElement.parentElement.parentElement.parentElement.parentElement;
-           console.log(b.id);
-
-           $('#' + b.id).attr("hidden","");
-  
-  
-          
-        }
-      }
-    }
-
-
-  }
-
 
     </script>
 
