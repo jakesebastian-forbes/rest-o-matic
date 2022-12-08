@@ -1,3 +1,9 @@
+<?php 
+
+$emp_id = $_POST['emp_id_upd'];
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,11 +11,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="bootstrap-5.2.2/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../bootstrap-5.2.2/css/bootstrap.min.css"/>
     <script src="https://kit.fontawesome.com/1c020da525.js" crossorigin="anonymous"></script> 
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
-    <script src="bootstrap-5.2.2/js/bootstrap.bundle.min.js"></script> 
+    <script src="../bootstrap-5.2.2/js/bootstrap.bundle.min.js"></script> 
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
 
@@ -153,7 +159,7 @@ body {
                 <nav class="navbar bg-dark">
                   <div class="container-fluid">
                     <a class="navbar-brand" href="#"></a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" title="Dropdown">
                       <span class="navbar-toggler-icon"></span>
                     </button>
                       <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
@@ -203,15 +209,30 @@ body {
               <div class="navbar accNavbar">
                     <div class="col-lg-12 col-md-12 col-sm-12">
                       <h2><b>Employee Management</b></h2>
-                      <a href="#" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#addNewEmployee"><i class="material-icons" data-toggle="tooltip" title="Add">person_add</i> <span>Add New Employee</span></a>
+                      <a href="#" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#addEmployee"><i class="material-icons" data-toggle="tooltip" title="Add">person_add</i> <span>Add New Employee</span></a>
                       <a href="#" class="btn btn-secondary"><i class="material-icons">file_download</i> <span>Export to Excel</span></a>
                   </div>
               </div>
             </nav>
+            <?php
+                            $conn = new mysqli('localhost','root','','restomatic_db');
+
+                            if($conn->connect_error){
+                              die('Connection failed : ' . $conn->connect_error);
+                            }else{
+
+                            $query = "SELECT * FROM `employee`";
+                          
+                            $result = mysqli_query($conn,$query);
+
+                            while($rows = $result->fetch_assoc())
+                                {
+                                  
+                            ?> 
             <div class="card" style="width: inherit">
               <div class="row g-0">
                 <div class="col-md-4">
-                  <img src="images/yeji.jpg" class="card-img-top" alt="...">
+                <?php echo '<img src = "data:image/jpeg;base64,'.base64_encode($rows['emp_image']) .'" class="card-img-top" alt="...">' ?>
                 </div>
                 <div class="col-md-8">
                   <div class="card-body">
@@ -221,7 +242,7 @@ body {
                               <h5><b>Name</b></h5>
                           </div>
                           <div class="col-md-6 col-sm-3 text-secondary">
-                              <h6>Michael Holz</h6>
+                              <h6><?php echo $rows['emp_name'] ?></h6>
                           </div>
                       </div>
                       <div class="row" style="margin-left:2px ;">
@@ -229,7 +250,7 @@ body {
                               <h5><b>Status</b></h5>
                           </div>
                           <div class="col-md-6 col-sm-3 text-secondary">
-                              <h6><span class="status text-success">•</span> Active</h6>
+                              <h6><?php echo $rows['emp_status'] ?></h6>
                           </div>
                       </div>
                       <div class="row" style="margin-left:2px ;">
@@ -237,7 +258,7 @@ body {
                               <h5><b>Email</b></h5>
                           </div>
                           <div class="col-md-6 col-sm-3 text-secondary">
-                              <h6>mich@gmail.com</h6>
+                              <h6><?php echo $rows['emp_email'] ?></h6>
                           </div> 
                       </div>
                       <div class="row" style="margin-left:2px ;">
@@ -245,7 +266,7 @@ body {
                               <h5><b>Address</b></h5>
                           </div>
                           <div class="col-md-6 col-sm-3 text-secondary">
-                              <h6>jan lang sa tabi tabi</h6>
+                              <h6><?php echo $rows['emp_address'] ?></h6>
                           </div>
                       </div>
                       <div class="row" style="margin-left:2px ;">
@@ -253,7 +274,7 @@ body {
                               <h5><b>Age</b></h5>
                           </div>
                           <div class="col-md-6 col-sm-3 text-secondary">
-                              <h6>40</h6>
+                              <h6><?php echo $rows['emp_age'] ?></h6>
                           </div> 
                       </div>
                       <div class="row" style="margin-left:2px ;">
@@ -261,7 +282,7 @@ body {
                             <h5><b>Contact Number</b></h5>
                         </div>
                         <div class="col-md-6 col-sm-3 text-secondary">
-                            <h6>(+63) 912 3456 789</h6>
+                            <h6><?php echo $rows['emp_contact_num'] ?></h6>
                         </div>
                     </div>
                     <div class="row" style="margin-left:2px ;">
@@ -269,403 +290,301 @@ body {
                             <h5><b>Position</b></h5>
                         </div>
                         <div class="col-md-6 col-sm-3 text-secondary">
-                            <h6>Manager</h6>
+                            <h6><?php echo $rows['emp_position'] ?></h6>
                         </div> 
                     </div>
                   </div>
                   </div>
-                  <div class="card-footer">
+                  <div class = "card-footer">
+                    <!-- <form action = "func_update_employee.php"> -->
                     <a href="#" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#editEmployee"><i class="bi-pencil-square" data-toggle="tooltip" title="Edit" style="color: #2196F3;"></i> <span>Edit Employee</span></a>
-                    <a href="#" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#deleteEmployee"><i class="bi-trash3-fill" data-toggle="tooltip" title="Delete" style="color: #F44336;"></i> <span>Delete Employee</span></a>	
+                    <a href="#" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#deleteEmployee"><i class="bi-trash3-fill" data-toggle="tooltip" title="Delete" style="color: #F44336;"></i> <span>Delete Employee</span></a>
+                      <!-- <button type = "button" class = "btn btn-secondary" name = 'updateBtn' data-bs-toggle = "modal" data-bs-target = "#editEmployee " id = "update_btn">
+                      <i class = "bi-pencil-square" data-toggle = "tooltip" title = "Edit" style = "color: #2196F3;"></i>
+                      <span> Edit Employee </span></button> -->
+                    <!-- </form>
+                    <form action = ""> -->
+                      <!-- <button type = "button" class = "btn btn-secondary" name = 'deleteBtn' data-bs-toggle = "modal" data-bs-target = "#deleteEmployee" id = "delete_btn">
+                      <i class = "bi-trash3-fill" data-toggle = "tooltip" title = "Delete" style = "color: #2196F3;"></i>
+                      <span> Delete Employee </span></button> -->
+                    <!-- </form> -->
+                    <!-- <a href="#" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#editEmployee"><i class="bi-pencil-square" data-toggle="tooltip" title="Edit" style="color: #2196F3;"></i> <span>Edit Employee</span></a>
+                    <a href="#" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#deleteEmployee"><i class="bi-trash3-fill" data-toggle="tooltip" title="Delete" style="color: #F44336;"></i> <span>Delete Employee</span></a>	 -->
                   </div>
                 </div>
               </div>
             </div>
-            <div class="card" style="width: inherit">
-              <div class="row g-0">
-                <div class="col-md-4">
-                  <img src="images/yeji.jpg" class="card-img-top" alt="...">
-                </div>
-                <div class="col-md-8">
-                  <div class="card-body">
-                    <div class="col-lg-12 col-md-12 col-sm-12">
-                      <div class="row" style="margin-left:2px ;" >
-                          <div class="col-md-6 col-sm-3">
-                              <h5><b>Name</b></h5>
+            <?php 
+                                }
+                              }
+                            
+                      ?>
+          </div>
+    </div>
+    <div class="modal fade " id="addEmployee" tabindex="-1" aria-labelledby="modal-add-emp" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="modal-title"><b>ADD NEW EMPLOYEE</b></h5>
+                    <button class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body p-4">
+                    <div class="text-center">
+                    <form action = "func_insert_employee.php" method="post" >  
+                      <div class="row mb-2">
+                          <div class="col">
+                            <input type="text" class="form-control" id="modal-name" placeholder="Employee Name" name="emp_name" />
                           </div>
-                          <div class="col-md-6 col-sm-3 text-secondary">
-                              <h6>Paula Wilson</h6>
+                          <div class="col">
+                            <!-- <input type="text" class="form-control" id="modal-status" placeholder="Employee Status" name="emp_status" /> -->
+                         
+                            <!-- <form action="func_insert_employee.php" method="POST"> -->
+                              
+                              <select name="emp_status_post" id="selected_status" onChange="myFunction()">
+                            <?php
+                            $conn = new mysqli('localhost','root','','restomatic_db');
+
+                            if($conn->connect_error){
+                              die('Connection failed : ' . $conn->connect_error);
+                            }else{
+
+                            $query = "SELECT * FROM `status`";
+                          
+                            $result = mysqli_query($conn,$query);
+
+                            while($rows = mysqli_fetch_assoc($result))
+                                {
+                                  echo $rows['id'];
+                                  echo $rows['description'];
+                                    // echo "<option value = $rows['description'] > $rows['description'] </option>";
+                                    // <input type="text" value="<?php $rows['status_id']; ?>" name="stats_id" hidden />
+                            ?> 
+                            
+                            <option value = <?php echo  $rows['description']; ?>><?php echo  $rows['description']; ?></option>
+                            
+                            <?php
+                                }
+                              }
+                            ?>
+                                
+                                </select>
+                            <!-- </form> -->
+                         
                           </div>
                       </div>
-                      <div class="row" style="margin-left:2px ;">
-                          <div class="col-md-6 col-sm-3">
-                              <h5><b>Status</b></h5>
-                          </div>
-                          <div class="col-md-6 col-sm-3 text-secondary">
-                              <h6><span class="status text-success">•</span> Active</h6>
-                          </div>
-                      </div>
-                      <div class="row" style="margin-left:2px ;">
-                          <div class="col-md-6 col-sm-3">
-                              <h5><b>Email</b></h5>
-                          </div>
-                          <div class="col-md-6 col-sm-3 text-secondary">
-                              <h6>paula@gmail.com</h6>
-                          </div> 
-                      </div>
-                      <div class="row" style="margin-left:2px ;">
-                          <div class="col-md-6 col-sm-3">
-                              <h5><b>Address</b></h5>
-                          </div>
-                          <div class="col-md-6 col-sm-3 text-secondary">
-                              <h6>jan lang sa tabi tabi</h6>
-                          </div>
-                      </div>
-                      <div class="row" style="margin-left:2px ;">
-                          <div class="col-md-6 col-sm-3">
-                              <h5><b>Age</b></h5>
-                          </div>
-                          <div class="col-md-6 col-sm-3 text-secondary">
-                              <h6>38</h6>
-                          </div> 
-                      </div>
-                      <div class="row" style="margin-left:2px ;">
-                        <div class="col-md-6 col-sm-3">
-                            <h5><b>Contact Number</b></h5>
+                      <div class="row mb-2 my-0 py-0 gx-0">
+                      <div class="col">
+                            <input type="text" class="form-control" id="modal-email" placeholder="Email" name="emp_email" />
                         </div>
-                        <div class="col-md-6 col-sm-3 text-secondary">
-                            <h6>(+63) 912 3456 789</h6>
+                      </div>
+                      <div class="row mb-2 my-0 py-0 gx-0">
+                      <div class="col">
+                            <input type="text" class="form-control" id="modal-address" placeholder="Address" name="emp_address" />
                         </div>
+                      </div>
+                      <div class="row mb-2 my-0 py-0 gx-0">
+                        <input type="number" class="form-control" id="modal-age" placeholder="Age" name="emp_age" />
+                      </div>
+                      <div class="row mb-2 my-0 py-0 gx-0">
+                        <input type="tel" class="form-control" id="modal-contact_num" placeholder="Contact Number" name="emp_contact_num" />
+                      </div>
+                      <div class="row mb-2 my-0 py-0 gx-0">
+                      <select name="emp_position_post" id="selected_position" onChange="myFunction()">
+                            <?php
+                            $conn = new mysqli('localhost','root','','restomatic_db');
+
+                            if($conn->connect_error){
+                              die('Connection failed : ' . $conn->connect_error);
+                            }else{
+
+                            $query = "SELECT * FROM `position`";
+                          
+                            $result = mysqli_query($conn,$query);
+
+                            while($rows = mysqli_fetch_assoc($result))
+                                {
+                                 echo  $rows['description'];
+                                    
+                            ?> 
+                            <option value = <?php echo  $rows['description']; ?>><?php echo  $rows['description']; ?></option>
+
+                            <?php
+                                }
+                              }
+                            ?>
+                                
+                                </select>
+                      </div>
+                      <div class="row mb-2 my-0 py-0 gx-0">
+                        <input placeholder="Image" type="file" class="file-upload-input" id="modal-image" 
+                          name="emp_image" onchange="readURL(this) accept = image/*"/>
+                      </div>
+                      <!-- </div>
+                        </div> -->
+                    <div class="modal-footer">
+                      <button type="submit" class="btn btn-primary rounded" name = "add_btn" method="post" title="Add Employee"> Add Employee</button>    
                     </div>
-                    <div class="row" style="margin-left:2px ;">
-                        <div class="col-md-6 col-sm-3">
-                            <h5><b>Position</b></h5>
-                        </div>
-                        <div class="col-md-6 col-sm-3 text-secondary">
-                            <h6>Cook</h6>
-                        </div> 
-                    </div>
-                  </div>
-                  </div>
-                  <div class="card-footer">
-                    <a href="#" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#editEmployee"><i class="bi-pencil-square" data-toggle="tooltip" title="Edit" style="color: #2196F3;"></i> <span>Edit Employee</span></a>
-                    <a href="#" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#deleteEmployee"><i class="bi-trash3-fill" data-toggle="tooltip" title="Delete" style="color: #F44336;"></i> <span>Delete Employee</span></a>	
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="card" style="width: inherit">
-              <div class="row g-0">
-                <div class="col-md-4">
-                  <img src="images/yeji.jpg" class="card-img-top" alt="...">
-                </div>
-                <div class="col-md-8">
-                  <div class="card-body">
-                    <div class="col-lg-12 col-md-12 col-sm-12">
-                      <div class="row" style="margin-left:2px ;" >
-                          <div class="col-md-6 col-sm-3">
-                              <h5><b>Name</b></h5>
-                          </div>
-                          <div class="col-md-6 col-sm-3 text-secondary">
-                              <h6>Antonio Moreno</h6>
-                          </div>
-                      </div>
-                      <div class="row" style="margin-left:2px ;">
-                          <div class="col-md-6 col-sm-3">
-                              <h5><b>Status</b></h5>
-                          </div>
-                          <div class="col-md-6 col-sm-3 text-secondary">
-                              <h6><span class="status text-danger">•</span> Suspended</h6>
-                          </div>
-                      </div>
-                      <div class="row" style="margin-left:2px ;">
-                          <div class="col-md-6 col-sm-3">
-                              <h5><b>Email</b></h5>
-                          </div>
-                          <div class="col-md-6 col-sm-3 text-secondary">
-                              <h6>anton@gmail.com</h6>
-                          </div> 
-                      </div>
-                      <div class="row" style="margin-left:2px ;">
-                          <div class="col-md-6 col-sm-3">
-                              <h5><b>Address</b></h5>
-                          </div>
-                          <div class="col-md-6 col-sm-3 text-secondary">
-                              <h6>jan lang sa tabi tabi</h6>
-                          </div>
-                      </div>
-                      <div class="row" style="margin-left:2px ;">
-                          <div class="col-md-6 col-sm-3">
-                              <h5><b>Age</b></h5>
-                          </div>
-                          <div class="col-md-6 col-sm-3 text-secondary">
-                              <h6>28</h6>
-                          </div> 
-                      </div>
-                      <div class="row" style="margin-left:2px ;">
-                        <div class="col-md-6 col-sm-3">
-                            <h5><b>Contact Number</b></h5>
-                        </div>
-                        <div class="col-md-6 col-sm-3 text-secondary">
-                            <h6>(+63) 912 3456 789</h6>
-                        </div>
-                    </div>
-                    <div class="row" style="margin-left:2px ;">
-                        <div class="col-md-6 col-sm-3">
-                            <h5><b>Position</b></h5>
-                        </div>
-                        <div class="col-md-6 col-sm-3 text-secondary">
-                            <h6>Cashier</h6>
-                        </div> 
-                    </div>
-                  </div>
-                  </div>
-                  <div class="card-footer">
-                    <a href="#" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#editEmployee"><i class="bi-pencil-square" data-toggle="tooltip" title="Edit" style="color: #2196F3;"></i> <span>Edit Employee</span></a>
-                    <a href="#" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#deleteEmployee"><i class="bi-trash3-fill" data-toggle="tooltip" title="Delete" style="color: #F44336;"></i> <span>Delete Employee</span></a>	
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="card" style="width: inherit">
-              <div class="row g-0">
-                <div class="col-md-4">
-                  <img src="images/yeji.jpg" class="card-img-top" alt="...">
-                </div>
-                <div class="col-md-8">
-                  <div class="card-body">
-                    <div class="col-lg-12 col-md-12 col-sm-12">
-                      <div class="row" style="margin-left:2px ;" >
-                          <div class="col-md-6 col-sm-3">
-                              <h5><b>Name</b></h5>
-                          </div>
-                          <div class="col-md-6 col-sm-3 text-secondary">
-                              <h6>Mary Saveley</h6>
-                          </div>
-                      </div>
-                      <div class="row" style="margin-left:2px ;">
-                          <div class="col-md-6 col-sm-3">
-                              <h5><b>Status</b></h5>
-                          </div>
-                          <div class="col-md-6 col-sm-3 text-secondary">
-                              <h6><span class="status text-success">•</span> Active</h6>
-                          </div>
-                      </div>
-                      <div class="row" style="margin-left:2px ;">
-                          <div class="col-md-6 col-sm-3">
-                              <h5><b>Email</b></h5>
-                          </div>
-                          <div class="col-md-6 col-sm-3 text-secondary">
-                              <h6>mary@gmail.com</h6>
-                          </div> 
-                      </div>
-                      <div class="row" style="margin-left:2px ;">
-                          <div class="col-md-6 col-sm-3">
-                              <h5><b>Address</b></h5>
-                          </div>
-                          <div class="col-md-6 col-sm-3 text-secondary">
-                              <h6>jan lang sa tabi tabi</h6>
-                          </div>
-                      </div>
-                      <div class="row" style="margin-left:2px ;">
-                          <div class="col-md-6 col-sm-3">
-                              <h5><b>Age</b></h5>
-                          </div>
-                          <div class="col-md-6 col-sm-3 text-secondary">
-                              <h6>25</h6>
-                          </div> 
-                      </div>
-                      <div class="row" style="margin-left:2px ;">
-                        <div class="col-md-6 col-sm-3">
-                            <h5><b>Contact Number</b></h5>
-                        </div>
-                        <div class="col-md-6 col-sm-3 text-secondary">
-                            <h6>(+63) 912 3456 789</h6>
-                        </div>
-                    </div>
-                    <div class="row" style="margin-left:2px ;">
-                        <div class="col-md-6 col-sm-3">
-                            <h5><b>Position</b></h5>
-                        </div>
-                        <div class="col-md-6 col-sm-3 text-secondary">
-                            <h6>Cashier</h6>
-                        </div> 
-                    </div>
-                  </div>
-                  </div>
-                  <div class="card-footer">
-                    <a href="#" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#editEmployee"><i class="bi-pencil-square" data-toggle="tooltip" title="Edit" style="color: #2196F3;"></i> <span>Edit Employee</span></a>
-                    <a href="#" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#deleteEmployee"><i class="bi-trash3-fill" data-toggle="tooltip" title="Delete" style="color: #F44336;"></i> <span>Delete Employee</span></a>	
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="card" style="width: inherit">
-              <div class="row g-0">
-                <div class="col-md-4">
-                  <img src="images/yeji.jpg" class="card-img-top" alt="...">
-                </div>
-                <div class="col-md-8">
-                  <div class="card-body">
-                    <div class="col-lg-12 col-md-12 col-sm-12">
-                      <div class="row" style="margin-left:2px ;" >
-                          <div class="col-md-6 col-sm-3">
-                              <h5><b>Name</b></h5>
-                          </div>
-                          <div class="col-md-6 col-sm-3 text-secondary">
-                              <h6>Martin Sommer</h6>
-                          </div>
-                      </div>
-                      <div class="row" style="margin-left:2px ;">
-                          <div class="col-md-6 col-sm-3">
-                              <h5><b>Status</b></h5>
-                          </div>
-                          <div class="col-md-6 col-sm-3 text-secondary">
-                              <h6><span class="status text-warning">•</span> Inactive</h6>
-                          </div>
-                      </div>
-                      <div class="row" style="margin-left:2px ;">
-                          <div class="col-md-6 col-sm-3">
-                              <h5><b>Email</b></h5>
-                          </div>
-                          <div class="col-md-6 col-sm-3 text-secondary">
-                              <h6>martin@gmail.com</h6>
-                          </div> 
-                      </div>
-                      <div class="row" style="margin-left:2px ;">
-                          <div class="col-md-6 col-sm-3">
-                              <h5><b>Address</b></h5>
-                          </div>
-                          <div class="col-md-6 col-sm-3 text-secondary">
-                              <h6>jan lang sa tabi tabi</h6>
-                          </div>
-                      </div>
-                      <div class="row" style="margin-left:2px ;">
-                          <div class="col-md-6 col-sm-3">
-                              <h5><b>Age</b></h5>
-                          </div>
-                          <div class="col-md-6 col-sm-3 text-secondary">
-                              <h6>30</h6>
-                          </div> 
-                      </div>
-                      <div class="row" style="margin-left:2px ;">
-                        <div class="col-md-6 col-sm-3">
-                            <h5><b>Contact Number</b></h5>
-                        </div>
-                        <div class="col-md-6 col-sm-3 text-secondary">
-                            <h6>(+63) 912 3456 789</h6>
-                        </div>
-                    </div>
-                    <div class="row" style="margin-left:2px ;">
-                        <div class="col-md-6 col-sm-3">
-                            <h5><b>Position</b></h5>
-                        </div>
-                        <div class="col-md-6 col-sm-3 text-secondary">
-                            <h6>Cook</h6>
-                        </div> 
-                    </div>
-                  </div>
-                  </div>
-                  <div class="card-footer">
-                    <a href="#" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#editEmployee"><i class="bi-pencil-square" data-toggle="tooltip" title="Edit" style="color: #2196F3;"></i> <span>Edit Employee</span></a>
-                    <a href="#" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#deleteEmployee"><i class="bi-trash3-fill" data-toggle="tooltip" title="Delete" style="color: #F44336;"></i> <span>Delete Employee</span></a>	
+                    </form>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-    </div>
-    <div id="addNewEmployee" class="modal fade">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <form>
-            <div class="modal-header">						
-              <h4 class="modal-title">Add New Employee</h4>
-              <button type="button" class="close" data-bs-dismiss="modal" aria-hidden="true">×</button>
-            </div>
-            <div class="modal-body">					
-              <div class="form-group">
-                <label>Name</label>
-                <input type="text" class="form-control" required>
+
+              <!-- update -->
+
+
+              <div class="modal fade " id="editEmployee" tabindex="-1" aria-labelledby="modal-edit-emp" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="modal-title"><b>EDIT EMPLOYEE</b></h5>
+                    <button class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body p-4">
+                    <div class="text-center">
+
+                    <?php 
+                    
+                     
+                    $conn = new mysqli('localhost','root','','restomatic_db');
+
+                    if($conn->connect_error){
+                        die('Connection failed : ' . $conn->connect_error);
+                    }else{
+                      
+                        $query = "SELECT * FROM `employee` WHERE `emp_id` = $emp_id";
+                    
+                        $result = mysqli_query($conn,$query);
+            
+                        while($rows = mysqli_fetch_assoc($result)) {
+                  
+                  ?>
+
+                    <form action = "func_update_employee.php" method="post" >  
+                      <div class="row mb-2">
+                          <div class="col">
+                            <input type="text" value="<?php echo $rows['emp_name']?>" class="form-control" id="modal-name" />
+                          </div>
+                          <div class="col">
+                            <select value="<?php echo $rows['emp_status_post']?>" id="selected-status" onChange="myFunction()">
+                            <?php 
+                              $conn = new mysqli('localhost','root','','restomatic_db');
+                              if($conn->connect_error){
+                                  die('Connection failed : ' . $conn->connect_error);
+                              }else{
+                                
+                                  $query = "SELECT * FROM `status`";
+                              
+                                  $result = mysqli_query($conn,$query);
+                      
+                                  while($rows = mysqli_fetch_assoc($result)) {
+                                    echo "<option value='". $rows['id'] ."' name='id' hidden>" . $rows['id'] ."</option>" ;
+                                    echo "<option value= '".  $rows['description'] ."'>" . $rows['description']." </option>" ;
+                                    
+                            ?>
+                                
+                            <?php 
+                                  }
+                                }
+                            ?>
+                            
+                            </div>
+                          </div>
+                      <div class="row mb-2 my-0 py-0 gx-0">
+                      <div class="col">
+                            <input type="text" value="<?php echo $rows['emp_email']?>" class="form-control" id="modal-email" />
+                        </div>
+                      </div>
+                      <div class="row mb-2 my-0 py-0 gx-0">
+                      <div class="col">
+                            <input type="text" value="<?php echo $rows['emp_address']?>" class="form-control" id="modal-address" />
+                        </div>
+                      </div>
+                      <div class="row mb-2 my-0 py-0 gx-0">
+                        <input type="number" value="<?php echo $rows['emp_age']?>" class="form-control" id="modal-age" />
+                      </div>
+                      <div class="row mb-2 my-0 py-0 gx-0">
+                        <input type="tel" value="<?php echo $rows['emp_contact_num']?>" class="form-control" id="modal-contact_num" />
+                      </div>
+                      <div class="row mb-2 my-0 py-0 gx-0">
+                        <select value="<?php echo $rows['emp_position_post']?>" id="selected_position" onChange="myFunction()">
+                        <?php 
+                              $conn = new mysqli('localhost','root','','restomatic_db');
+                              if($conn->connect_error){
+                                  die('Connection failed : ' . $conn->connect_error);
+                              }else{
+                                
+                                  $query = "SELECT * FROM `position`";
+                              
+                                  $result = mysqli_query($conn,$query);
+                      
+                                  while($rows = mysqli_fetch_assoc($result)) {
+                                    echo "<option value='". $rows['id'] ."' name='id' hidden>" . $rows['id'] ."</option>" ;
+                                    echo "<option value= '".  $rows['description'] ."'>" . $rows['description']." </option>" ;
+                                    
+                            ?>
+                                
+                            <?php 
+                                  }
+                                }
+                            ?>
+                      </div>
+                      <div class="row mb-2 my-0 py-0 gx-0">
+                        <input type="file" value="<?php echo $rows['emp_image']?>" class="file-upload-input" id="modal-image" 
+                          name="emp_image" onchange="readURL(this) accept = image/*"/>
+                      </div>
+                      </div>
+                        </div>
+                    <div class="modal-footer">
+                      <input type="button" class="btn btn-default" data-bs-dismiss="modal" value="Cancel">
+                      <input type="submit" class="btn btn-info" value="Save">   
+                    </div>
+                    </form>
+                    <?php 
+                          }
+                        }
+                      ?>  
+                  </div>
+                </div>
               </div>
-              <div class="form-group">
-                <label>Email</label>
-                <input type="email" class="form-control" required>
-              </div>
-              <div class="form-group">
-                <label>Address</label>
-                <input type="address" class="form-control" required>
-              </div>
-              <div class="form-group">
-                <label>Age</label>
-                <textarea class="form-control" required></textarea>
-              </div>
-              <div class="form-group">
-                <label>Contact Number</label>
-                <input type="tel" class="form-control" required>
-              </div>
-              <div class="form-group">
-                <label>Position</label>
-                <input type="text" class="form-control" required>
-              </div>					
-            </div>
-            <div class="modal-footer">
-              <input type="button" class="btn btn-default" data-bs-dismiss="modal" value="Cancel">
-              <input type="submit" class="btn btn-info" value="Save">
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-    <div id="editEmployee" class="modal fade">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <form>
-            <div class="modal-header">						
-              <h4 class="modal-title">Edit Employee</h4>
-              <button type="button" class="close" data-bs-dismiss="modal" aria-hidden="true">×</button>
-            </div>
-            <div class="modal-body">					
-              <div class="form-group">
-                <label>Name</label>
-                <input type="text" class="form-control" required>
-              </div>
-              <div class="form-group">
-                <label>Email</label>
-                <input type="email" class="form-control" required>
-              </div>
-              <div class="form-group">
-                <label>Address</label>
-                <input type="address" class="form-control" required>
-              </div>
-              <div class="form-group">
-                <label>Age</label>
-                <textarea class="form-control" required></textarea>
-              </div>
-              <div class="form-group">
-                <label>Contact Number</label>
-                <input type="tel" class="form-control" required>
-              </div>
-              <div class="form-group">
-                <label>Position</label>
-                <input type="text" class="form-control" required>
-              </div>					
-            </div>
-            <div class="modal-footer">
-              <input type="button" class="btn btn-default" data-bs-dismiss="modal" value="Cancel">
-              <input type="submit" class="btn btn-info" value="Save">
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
+           </div>
+         </div>
+            
+
+          <!-- delete -->
+
     <div id="deleteEmployee" class="modal fade">
       <div class="modal-dialog">
         <div class="modal-content">
-          <form>
+        <?php
+         if(isset($_POST['delete'])) {
+
+            $conn = new mysqli('localhost','root','','restomatic_db');
+            
+            if(! $conn ) {
+               die('Could not connect: ' . mysql_error());
+            }
+				
+            $emp_id = $_POST['emp_id'];
+            
+            $sql = "DELETE FROM `employee` WHERE `emp_id` = $emp_id" ;
+            mysql_select_db('test_db');
+            $retval = mysql_query( $sql, $conn );
+            
+            if(! $retval ) {
+               die('Could not delete data: ' . mysql_error());
+            }
+            
+            echo "Deleted data successfully\n";
+            
+            mysql_close($conn);
+         }else {
+            ?>
+          <form action="func_del_employee.php" method="post">
             <div class="modal-header">						
-              <h4 class="modal-title">Delete Employee</h4>
-              <button type="button" class="close" data-bs-dismiss="modal" aria-hidden="true">×</button>
+              <h4 class="modal-delete-emp">Delete Employee</h4>
+              <button class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">					
               <p>Are you sure you want to delete these Record?</p>
@@ -676,8 +595,18 @@ body {
               <input type="submit" class="btn btn-danger" value="Delete">
             </div>
           </form>
+          <?php
+         }
+      ?>
         </div>
       </div>
     </div>
+
+    <script>
+      function myFunction(){
+        var result = document.getElementById("selected_status").value;
+        console.log(result);
+      }
+    </script>
 </body>
 </html>

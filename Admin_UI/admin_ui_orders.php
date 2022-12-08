@@ -202,17 +202,20 @@
                     </div>
                     <div class="col">
                         
-                    <div>Status : <?php echo $rows['status']?></div>
-<!--                   
-                        <label for="status">Status</label>
+                    <div>Status : <b id = "status<?php echo $order_id?>"><?php echo $rows['status']?></b></div>
+                  <script>
+                    var order_status_edit = '<label for="status">Status</label><select name="status" id="status_edit<?php echo $order_id?>"'+ 
+                   ' onchange="updateStatus(this.value,this.id,this)">'+
+                        '<option value="Pending">Pending</option>'+
+                        '<option value="Approved">Approved</option>'+
+                        '<option value="On Delivery">On delivery</option>' +
+                        '<option value="Delivered">Delivered</option>' +
+                        // '<option value="Cancelled">Cancelled</option>' +
+                   ' </select>'
+                  
 
-                        <select name="status" id="status<?php echo $order_id?>" onchange="updateStatus(this.value,this.id,this)">
-                            <option value="Pending">Pending</option>
-                            <option value="Approved">Approved</option>
-                            <option value="On Delivery">On delivery</option>
-                            <option value="Delivered">Delivered</option>
-                            <option value="Cancelled">Cancelled</option>
-                        </select> -->
+                    </script>
+                        
                     
                     </div>
                   
@@ -313,25 +316,38 @@
                     echo $total;?></p>
                 </div>
             </div>
+                  <hr>
+                  <div id = "stat_edit<?php echo $order_id?>">
+                  </div>
+                  <script>
+                     <?php 
+
+$stats = $rows['status'];
+?>
+                    var anothera = $("#stat_edit<?php echo $order_id?>");
+                    anothera.append(order_status_edit); 
+                    document.getElementById('status<?php echo $order_id?>').value = '<?php echo $stats?>' ;
+                    // console.log(anothera[0].innerHTML);
+                    console.log($("#status_edit<?php echo $order_id?>").val('<?php echo $stats?>'));
+                    </script>
+                  
+
             
             </div>
           </div>
         </div>
 
         <?php 
-        //  echo $row_count;
-        //  $row_count =+1;
-        //  echo $row_count;
-       
-              
 
         $stats = $rows['status'];
-        echo "<script> 
+
+        // echo "<script> 
+        // console.log('$stats');
         
-        document.getElementById('status$order_id').value = '$stats';
+        // document.getElementById('status$order_id').value = '$stats';
         
         
-        </script>"; 
+        // </script>"; 
         $row_count+= 1;
       }
     }
@@ -365,9 +381,9 @@
     <script>
 
     function updateStatus(value,id){
-        // console.log("updateStatus  " + value +":" +id);
+        console.log("updateStatus  " + value +":" +id);
 
-        var order_id = id.replace("status","");
+        var order_id = id.replace("status_edit","");
         // var new_stat = value;
         // console.log(order_id);
 
@@ -382,11 +398,20 @@
         async : true,
         success: function(dataResult){
 
- 
-          console.log(dataResult);
+          
+          // console.log(dataResult);
+          // console.log(order_id);
+          // console.log($("#status"+order_id)[0].innerHTML);
+         
+          $("#status"+order_id)[0].innerHTML = value; 
+
+                
           if(status.statusCode==200){
 
                 console.log(dataResult);
+                console.log(order_id);
+                $("#status"+order_id).innerHTML = value; 
+                
           
                 
           }

@@ -1,6 +1,7 @@
 <?php
 
 $qry_statement;
+$cat;
 
 ?>
 
@@ -40,7 +41,11 @@ $qry_statement;
                          
                                     <h6 style="color: black ; float:left;">Order ID : </h6>
                                     <h6 id = "order_id" style="color: black ;  float:left;"><?php echo $rows_orderID['order_id']?> </h6>
-                                    <h5 style="color: black ; float: right;"><?php echo $rows_orderID['status']?></h5>
+                                    <h5 style="color: black ; float: right;"><?php 
+                                    
+                                    $status =  $rows_orderID['status'];
+                                    echo $status;
+                                    ?></h5>
                         
                                 </div>
                                 <div class="card-body cardbody">
@@ -112,12 +117,16 @@ $qry_statement;
                                                     $rows = mysqli_fetch_assoc($result_total);
 
                                                     ?>
-                                                    <h6 id = "order_total">TOTAL: <?php 
+                                                    <h6 id = "order_total">ORDER TOTAL: <?php 
                                                     if($rows == NULL){
                                                         echo "0.00";
 
                                                     }else{
-                                                        echo $rows['total'];
+                                                        $total = $rows['total'];
+                                                        echo $total;
+                                                        echo "<h6> SHIPPING FEE : 50.00 </h6> ";
+                                                        echo "<h6> DISCOUNT: 0.00</h6> ";
+                                                        echo "<h6> TOTAL : " . $total + 50.00 ."</h6> ";
                                                     }
 
                                                     
@@ -132,16 +141,36 @@ $qry_statement;
                                                 </div>
                                    
                                             </div> 
-                                            <br> 
-                                            <div class="row" style="justify-content: right; margin: 5px;">
-                                                <div class="col-sm-3"> 
-                                                    <button class="btn" style="width:100px ;background-color:#FFA500 ; font-size:small">BUY AGAIN</button>
-                                                    
-                                                </div>
+                                            <hr> 
+                                            <div class="row" style="justify-content: right; margin-right:-2px;">
+                                            <?php
+                                            // echo "console.log('$status')";
+                                            if(strtolower($status) == 'pending' || strtolower($status) == 'approved' ){
                                                 
+                                                echo '   <div class="col-sm-3"> 
+                                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                                                 id ="cancel_'.$order_id.' " onclick ="cancel_order(this.id)">CANCEL</button>
+                                                
+                                            </div>';
+                                           
+
+                                            }elseif($status.CASE_LOWER == 'delivered'){
+                                            //     echo '   <div class="col-sm-3"> 
+                                            //     <button class="btn" style="width:100px ;background-color:#FFA500 ; 
+                                            //     font-size:small" id ="review_'.$order_id.' ">CANCEL</button>
+                                                
+                                            // </div>';
+
+                                            }
+
+                                              
+                                            
+                                            ?>
+                                         
+<!--                                                 
                                                 <div class="col-sm-3">
                                                     <button class="btn" style="width:100px ;background-color:#FFA500 ; font-size:small">CONTACT</button>
-                                                </div>
+                                                </div> -->
                                                  </div>
                                         </div>
                                     </div>
