@@ -5,8 +5,6 @@
 // include 'admin_home_json.php';
 ?>
 
-
-
 <!DOCTYPE html>
 <html class="no-js" lang="en">
 <head>
@@ -19,9 +17,9 @@
     <link rel="icon" type="image/x-icon" href="images/icon/web_icon.png"/> 
     <link rel="stylesheet" href="../bootstrap-5.2.2/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../css/general.css"/>
-    <link rel="stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <style>
         /* Style the buttons */
@@ -75,34 +73,34 @@ require "admin_sidebar.php";
             <div class="card" style="width:100%;max-width:700px; background-color: #F8DC88;">
                 <div class="card-body rounded">
                 <p class="statistics-title">TODAY SALES</p>
-                <h3 class="rate-percentage text-center">32.53%</h3>
+                <h3 class="rate-percentage text-center" id = "today_sales">32.53%</h3>
                 </div>
             </div>
             </div>
         <div class="col-lg-3 col-6 py-1">
             <div class="card" style="width:100%;max-width:700px;background-color: #FCC945;">
                 <div class="card-body rounded" >
-                <p class="statistics-title">ORDER</p>
-                <h3 class="rate-percentage text-center">58.00%</h3>
-                <!-- <canvas id="customer_report" ></canvas> -->
+                <p class="statistics-title">PENDING ORDERS</p>
+                <h3 class="rate-percentage text-center" id = "pending_total">58.00%</h3>
+              
                 </div>
             </div>
         </div>
         <div class="col-lg-3 col-6 py-1">
             <div class="card" style="width:100%;max-width:700px;background-color: #F39A27;">
                 <div class="card-body rounded">
-                <p class="statistics-title">RESERVATION</p>
-                <h3 class="rate-percentage text-center">32.53%</h3>    
-                <!-- <canvas id="employee_report"></canvas> -->
+                <p class="statistics-title">DELIVERED TODAY</p>
+                <h3 class="rate-percentage text-center" id = "d_today">32.53%</h3>    
+             
                 </div>
             </div>
         </div>
         <div class="col-lg-3 col-6 py-1">
             <div class="card " style="width:100%;max-width:700px;background-color: #FF9D4F;">
                 <div class="card-body rounded">
-                <p class="statistics-title">TOTAL ORDER FOR THE DAY</p>
-                <h3 class="rate-percentage text-center">32.53%</h3>
-                    <!-- <canvas id="chubanes_report" ></canvas> -->
+                <p class="statistics-title">TOTAL ACTIVE USERS</p>
+                <h3 class="rate-percentage text-center" id="active_user">32.53%</h3>
+                
                 </div>
             </div>
         </div>
@@ -114,41 +112,15 @@ require "admin_sidebar.php";
                         <div class="card" style="width:100%;max-width:1500px;min-height: 500px;background-color: #FFB347;">
                             <h4>MARKETING SALES</h4>
                            
-                            <!-- <div class="col-1 align-items-end py-1 mx-5"> -->
-                            <!-- <div class="dropdown" id="dataSales">
-                            
-                                      <button class="btn btn-secondary dropdown-toggle toggle-dark btn-SM mb-0 me-0" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> This month </button> 
-                                      -->
-                          <!-- <select name="" id="dataSales">
-                           
-                            <option value="" >Data 1</option>
-                            <option value="">Data 2</option>
-                            <option value="">Data 3</option>
-                            
-                          </select> -->
                           <div id="myDIV">
                             <button class="btn active" onclick="changeData(0)">This Day</button>
                             <button class="btn" onclick="changeData(1)">This Week</button>
                             <button class="btn" onclick="changeData(2)">This Month</button>
                         </div>
                          
-                                      <!-- <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2" >
-                                        
-                                        <h6 class="dropdown-header">Corndog</h6>
-                                       
-                                        <a class="dropdown-item" href="#" value="echo $rows['data1'];">Data 1</a>
-                                        <a class="dropdown-item" href="#" value="echo $rows['data2'];">Data 2</a>
-                                        <a class="dropdown-item" href="#" value="echo $rows['ID'];">Data 3</a>
-                                        
-                                    </div> -->
-                              
-                             <!-- </div> -->
-                            
-                             <!-- </div> -->
-                             
-                             
+                                  
                             <div class="card-body" >
-                                <canvas id="multipleLinesChart1" height="71" width="200"></canvas>
+                                <canvas id="sales_per_item" height="71" width="200"></canvas>
                             </div>
                             
                         </div>
@@ -156,13 +128,18 @@ require "admin_sidebar.php";
                    
                     <div class="col-md-3 py-1">
                         <div class="card" >
-                            <div class="card-body" style="width:100%;max-width:700px;min-height:500px;background-color: #F49C1B; object: fit">
-                               <p>DOUGHNUT</p>
-                            <canvas id="donut3" height="103"  width="90" >
-                                    
-                                </canvas>
-                                <p class="my-3 text-center">bdown of total sales of item</p>
-                            </div>
+                            <div class="card-body" style="width:100%;max-width:700px;min-height:500px;background-color: #F49C1B;">
+                               <p>TOP CUSTOMERS</p>
+                                    <div class="row text-center" style ="font-weight:bold;">
+                                            <div class="col">Username</div>
+                                            <div class="col">Orders</div>
+                                            <div class="col">Total</div>
+                                    </div>
+                                    <div id = "top_customers" class="text-center">
+                                        
+
+                                    </div>
+                            </div>  
                         </div>
                     </div>
                 </div>
@@ -171,16 +148,238 @@ require "admin_sidebar.php";
             </div>
 
     <script src = "../bootstrap-5.2.2/js/bootstrap.bundle.min.js"></script>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js'></script>
-  <script src = "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"> </script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@0.7.0"></script>
-
-     <script src="jquery.min.js.js"></script>
-     <script src='Chart.min.js'></script>
-     <script src = "lineChart_ajax.js"> </script>
-    <script src = "doughnut_ajax.js"> </script>
     
+    <script>
+
+  const context = document.getElementById('sales_per_item').getContext('2d');
+
+ var my_bar_chart = new Chart(context, {
+    type: 'bar',
+    data: {
+      labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+      datasets: [{
+        label: '# of Sales',
+        data: [12, 190, 3, 500, 20, 10000],
+        backgroundColor: [
+            "rgba(253, 7, 77, 0.19)", 
+            "rgba(253, 7, 225, 0.19)", 
+            "rgba(143, 7, 253, 0.19)",
+            "rgba(7, 30, 253, 0.19)",
+            "rgba(7, 163, 253, 0.19)",
+            "rgba(7, 253, 250, 0.19)", 
+            "rgba(7, 253, 138, 0.19)",
+            "rgba(253, 245, 7, 0.19)",
+            "rgba(253, 153, 7, 0.19)",
+            "rgba(253, 92, 7, 0.19)"
+        ],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+
+  
+function get_data(){
+    $.ajax({
+		url: "func_get_chart_data.php",
+		type: "GET",
+		// data: {
+		// 	"client_id": <?php //echo $_SESSION['client_id']?>
+		// },
+		cache: false,
+        async : true,
+		success: function(dataResult){
+
+            // var data_entry = JSON.parse(dataResult.split(":"));
+            // console.log(dataResult);
+            // console.log(data_entry);
+
+            let item_name = dataResult;
+            let item_array = item_name.split('/');
+            item_array.pop();
+
+
+            // console.log(item_array);
+            var item = [];
+            var quantity = [];
+
+            // item.push();
+
+            for(var i = 0 ; i < item_array.length ; i++){
+                item.push(item_array[i].split(':')[0]);
+                quantity.push(item_array[i].split(":")[1]);
+            }
+            
+            // quantity =  quantity.sort();
+            my_bar_chart.data.labels = item;
+            my_bar_chart.data.datasets[0].data = quantity;
+            // console.log(item);
+            // console.log(quantity);
+            my_bar_chart.update();
+
+			if(status.statusCode==200){
+
+            // console.log(dataResult);
+            order_id = JSON.parse(dataResult.split(" ")[0]);
+						
+			}
+			else if(status.statusCode==201){
+				alert("Error occurred !");
+			}
+			
+		}
+	});
+
+  
+
+
+}
+
+var new_date = new Date();
+
+
+if(new_date.getDate() < 10){
+
+    date = "0" + new_date.getDate();
+    y_date  = "0" + parseInt(new_date.getDate()-1);
+}
+
+var curr_date = new_date.getFullYear() + "-" + parseInt(new_date.getMonth()+1) + "-"+ date;
+
+
+
+function get_sales(){
+
+$.ajax({
+    url: "func_get_total_sales.php",
+    type: "POST",
+    cache: false,
+    async : true,
+    data : {"tdate" : curr_date},
+    success: function(dataResult){
+        // console.log(dataResult);
+        if(dataResult == "" || dataResult == "0"){
+
+        var t_sales = document.getElementById("today_sales");
+        t_sales.innerHTML = "₱0.00";
+
+        }else{
+            var t_sales = document.getElementById("today_sales");
+        t_sales.innerHTML = "₱"+ dataResult+".00";
+
+        }
+     
+        // if(status.statusCode==200){
+        //     console.log("asdas",dataResult);
+          
+         
+        // }
+        // else if(status.statusCode==201){
+        //     alert("Error occurred !");
+        // }
+        
+    }
+});
+}
+
+
+function get_pending(){
+
+$.ajax({
+    url: "func_get_total_pending.php",
+    type: "POST",
+    cache: false,
+    async : true,
+    data : {"tdate" : curr_date},
+    success: function(dataResult){
+        // console.log("1111",dataResult);
+        var p_orders = document.getElementById("pending_total");
+        p_orders.innerHTML = dataResult;    
+    }
+});
+}
+
+
+function get_delivered(){
+
+$.ajax({
+    url: "func_get_total_delivered.php",
+    type: "POST",
+    cache: false,
+    async : true,
+    data : {"tdate" : curr_date},
+    success: function(dataResult){
+        // console.log("1111",dataResult);
+        var d_today = document.getElementById("d_today");
+        d_today.innerHTML = dataResult;    
+    }
+});
+}
+
+
+function get_users(){
+
+$.ajax({
+    url: "func_get_total_users.php",
+    type: "POST",
+    cache: false,
+    async : true,
+    data : {"tdate" : curr_date},
+    success: function(dataResult){
+        // console.log("1111",dataResult);
+        var a_users = document.getElementById("active_user");
+        a_users.innerHTML = dataResult;    
+    }
+});
+}
+
+function get_top_users(){
+
+$.ajax({
+    url: "func_get_top_customers.php",
+    type: "POST",
+    cache: false,
+    async : true,
+    data : {"tdate" : curr_date},
+    success: function(dataResult){
+        // console.log(dataResult);
+        var a_users = document.getElementById("top_customers");
+        a_users.innerHTML = dataResult; 
+    }
+});
+}
+
+
+
+
+
+update();
+  function update(){
+
+    // console.log('updated');
+
+        get_data();
+        get_sales();
+        get_pending();
+        get_delivered();
+        get_users();
+        get_top_users();
+  }
+
+
+var intervalId = window.setInterval(function(){ //update every 2 seconds
+ 
+update();
+
+}, 2000);
+
+</script>
 
 
 

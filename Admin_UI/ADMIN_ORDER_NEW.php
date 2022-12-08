@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <link rel="stylesheet" href="../css/general.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/1c020da525.js" crossorigin="anonymous"></script> 
@@ -30,6 +30,29 @@
         }
     }
 
+    .nav-pills .nav-link.active {
+             background-color:white;
+            color: black;}
+           
+    .myBtn { 
+            
+        text-align: center;
+        cursor: pointer;
+        outline: none;
+        color: #fff;
+        background-color: white;
+        border: none;
+    }
+
+        .myBtn:hover {
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .myBtn:active {
+            background-color:white;
+            transform: translateY(4px);
+        }
+
 </style>
 
 <body>
@@ -37,7 +60,12 @@
 </body>
 
     <div class="container-fluid">
-        <div class="row">
+    <?php
+    $page_title = "ADMIN";
+    require('admin_sidebar.php');
+    ?>
+
+        <!-- <div class="row">
             <nav class="navbar mynavbar" style="width: 100vw; min-width: fit-content; max-height: 86px; background-color: black;">
                 <div class="d-flex justify-content-start">
                   <img src="images/icon/web_icon.png" class="px-3" alt="web_icon.png" style="max-height: 70px">
@@ -50,7 +78,7 @@
                 <div class="container-fluid">
                   <a class="navbar-brand" href="#"></a>
                   <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
-                    <span ><i class="fa-solid fa-bars" style="color: white; font-size:32px"></i></span>
+                    <span ><i class="fa-solid fa-bars" style="color: white; font-size:40px"></i></span>
                   </button>
                     <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
                       <div class="offcanvas-header">
@@ -94,7 +122,7 @@
               </nav>
             </nav>
             
-        </div>
+        </div> -->
 
         <div class="panel" style="margin-top:10px;">
             <!-- <nav class="navbar nav-pills  d-inline-flex  navbar-expand-lg align-content:vertical "style=" background-color: #FFA500; border-radius:10px;width: 100vw; border-radius:10px;"> -->
@@ -110,24 +138,24 @@
         
                     <ul class="nav nav-pills nav-justified" id="pills-tab" role="tablist" style="align-items: center;">
 
-                      <li class="nav-item my-auto myheading1 pl-3" role="presentation" >
-                        <button class="nav-link" id="pills-pending-tab" data-bs-toggle="pill" data-bs-target="#pills-pending" type="button" role="tab" aria-controls="pills-pending" aria-selected="true"
-                        style="color:white"><span>
+                      <li class="nav-item my-auto myheading1 mx-2" role="presentation" >
+                        <button class="nav-link active myBtn" id="pills-pending-tab" data-bs-toggle="pill" data-bs-target="#pills-pending" type="button" role="tab" aria-controls="pills-pending" aria-selected="true"
+                        style="color:black"><span>
                         </span>PENDING</button>
                       </li>
-                      <li class="nav-item my-auto myheading1 pl-3" role="presentation">
-                        <button class="nav-link" id="pills-approved-tab" data-bs-toggle="pill" data-bs-target="#pills-approved" type="button" role="tab" aria-controls="pills-approved" aria-selected="false"
-                        style="color:white"><span>
+                      <li class="nav-item my-auto myheading1 mx-2" role="presentation">
+                        <button class="nav-link myBtn" id="pills-approved-tab" data-bs-toggle="pill" data-bs-target="#pills-approved" type="button" role="tab" aria-controls="pills-approved" aria-selected="false"
+                        style="color:black"><span>
                         </span>APPROVED</button>
                       </li>
-                      <li class="nav-item my-auto myheading1 pl-3" role="presentation">
-                        <button class="nav-link" id="pills-done-tab" data-bs-toggle="pill" data-bs-target="#pills-done" type="button" role="tab" aria-controls="pills-done" aria-selected="false"
-                        style="color:white"><span>
+                      <li class="nav-item my-auto myheading1 mx-2" role="presentation">
+                        <button class="nav-link myBtn" id="pills-done-tab" data-bs-toggle="pill" data-bs-target="#pills-done" type="button" role="tab" aria-controls="pills-done" aria-selected="false"
+                        style="color:black"><span>
                         </span>DONE</button>
                       </li>
-                      <li class="nav-item my-auto myheading1  pl-3" role="presentation">
-                        <button class="nav-link" id="pills-cancelled-tab" data-bs-toggle="pill" data-bs-target="#pills-cancelled" type="button" role="tab" aria-controls="pills-cancelled" aria-selected="false"
-                        style="color:white"><span>
+                      <li class="nav-item my-auto myheading1 mx-2" role="presentation">
+                        <button class="nav-link myBtn" id="pills-cancelled-tab" data-bs-toggle="pill" data-bs-target="#pills-cancelled" type="button" role="tab" aria-controls="pills-cancelled" aria-selected="false"
+                        style="color: black"><span>
                         </span>CANCELLED</button>
                       </li>
                     </ul> 

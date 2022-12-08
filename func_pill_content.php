@@ -4,8 +4,8 @@ $qry_statement;
 
 ?>
 
-<div class="panel-body" style="background-color: #EEEDE7;border-radius:10px;">
-                <div class="row mt-2 m-0">
+<div class="panel-body" style="background-color: #f7dd4424;">
+                <div class="row m-0">
                     <div class="col">
                         <center>
                         <?php
@@ -17,6 +17,19 @@ $qry_statement;
   $query = $qry_statement;
 
   $result_orderID = mysqli_query($conn,$query);
+
+  $result1 = mysqli_query($conn,$query);
+                                      
+  if($rows1 = mysqli_fetch_assoc($result1)){
+      
+    //   echo "<div class = 'row text-cente'> MAY LAMAN </div>";
+
+  }
+  else{
+    echo "<div class = 'row text-center p-2' style = 'display:block; float:center;'>--EMPTY--</div>";
+
+  }
+ 
 
   while($rows_orderID = mysqli_fetch_assoc($result_orderID))
       {
@@ -42,7 +55,7 @@ $qry_statement;
                                         $query = "SELECT * FROM `orders_content` WHERE `client_id` = $client_id AND `order_id` = $order_id;";
 
                                         $result = mysqli_query($conn,$query);
-
+                                      
                                         while($rows = mysqli_fetch_assoc($result))
                                             {
                                             

@@ -150,10 +150,10 @@ require "func_session.php";
 ?>
 
       
-<div class="panel" style="margin-top:10px;">
+<div class="panel" style="margin-top:2px;">
             <!-- <nav class="navbar nav-pills  d-inline-flex  navbar-expand-lg align-content:vertical "style=" background-color: #FFA500; border-radius:10px;width: 100vw; border-radius:10px;"> -->
-            <nav class="navbar nav-pills navbar-expand-lg mt-4 "  style="background-color:#FFA500; border-radius: 10px;" >
-                <a class="navbar-brand" href="#"></a>
+            <nav class="navbar nav-pills navbar-expand-lg mt-1 "  style="background-color:#FFA500; border-radius: 10px 10px 0px 0px;" >
+                <!-- <a class="navbar-brand" href="#"></a> -->
                 <button class="navbar-toggler" type="button"  data-bs-toggle="collapse" data-bs-target="#demo"  aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation" style="margin-right: 10px;">
                     <i class="fa-solid fa-bars"></i>
                 </button>

@@ -42,7 +42,7 @@ echo "asdadss";
   $title_sidebar = "MENU";
   require('client_sidebar.php');?>
 
-
+<div class= "p-2">
     <h1 id="classics">CLASSICS</h1>
   <?php
   $category = "classics";
@@ -67,6 +67,7 @@ echo "asdadss";
   include('func_menu_content.php');
   ?>
 
+</div>
 
 
 </div>

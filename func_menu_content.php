@@ -54,7 +54,8 @@ if(isset($_SESSION['privilage'])){
         <?php echo '<img class="card-img-top img img-responsive" src = "data:image/jpeg;base64,'.base64_encode($rows['img']) .'" 
         style ="width : 100%; height:200px; object-fit: cover;"/>';?>
         
-        <div class="img_title" style="color: white; text-align: center;">ADD TO CART 
+        <div class="img_title" style="color: white; text-align: center;">
+        <!-- ADD TO CART  -->
       
           <div class="" style="margin-left: auto; margin-top: 47px;"> 
          
@@ -86,24 +87,25 @@ if(isset($_SESSION['privilage'])){
 
         <div class="card-footer">
           <?php
-          $item_price = $rows['item_price']
+           $item_price = $rows['item_price']
           ?>
-          <small class="text-muted" id = "item_price<?php echo $menu_id?>" value = "<?php echo $item_price?>"> 
-          <?php echo $item_price.'.00' ?></small> <br>
+          <small class="text-muted" id = "item_price<?php echo $menu_id?>" value = "<?php echo $item_price?>" 
+          style = "float:right;"> 
+          <?php echo '₱'.$item_price.'.00' ?></small> <br>
 
-          <div class="form-check form-switch">
-        <input class="form-check-input" type="checkbox" id="with_fries_sw<?php echo $menu_id?>" value = <?php echo $menu_id?> onclick = "switches(this.value)">
+          <!-- <div class="form-check form-switch">
+        <input class="form-check-input" type="checkbox" id="with_fries_sw<?php //echo $menu_id?>" value = <?php //echo $menu_id?> onclick = "switches(this.value)">
         <label class="form-check-label" for="flexSwitchCheckDefault" name = "with_fries" id ="with_fries_label" >With Fries</label>
-      </div>
+      </div> -->
 
-          <div>
+          <!-- <div>
             <label for="with_fries_lbl2"></label>
-          </div>
+          </div> -->
           
 
-          <!-- dropdown addons -->
-          <?php include('func_addons.php');?>
-        </div>
+       
+          <?php //include('func_addons.php');?>
+        </div> 
      
       </div>
     </div>

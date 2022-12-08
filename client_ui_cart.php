@@ -111,8 +111,8 @@ require "func_session.php";
 ?>
 
   <div class="container-fluid m-0 p-0">
-    <div class="panel" style="margin:0px; width:100%">
-        <div class="navbar cartNavbar d-flex flex-row-reverse mt-1">
+    <div class="panel p-2" style="margin:0px; width:100%;">
+        <div class="navbar cartNavbar d-flex flex-row-reverse mt-1" style="border-radius:10px 10px 0px 0px;">
             <!-- <h2><i class="fa-solid fa-cart-shopping"> </i> CART </h2> -->
             <ul>
               <li>
@@ -128,7 +128,7 @@ require "func_session.php";
               </li>
               <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#place_orders"
-style="width: 250px; background-color:#FFA500; border:0px;" onclick="checkout()"
+style="width: 250px; background-color:#FFA500; border:0px; margin-right:2%;" onclick="checkout()"
 id = "check_out_btn" disabled>
 CHECKOUT
 </button>
@@ -227,10 +227,12 @@ CHECKOUT
                     
                     
                 </ul>
+
+                
                 <?php 
                         }
                         } else{
-                            echo "YOUR CART IS EMPTY";
+                            echo "<div style = 'padding:2%' class = 'text-center'>YOUR CART IS EMPTY</div>";
                         }
                     }
                             ?>
@@ -256,7 +258,7 @@ CHECKOUT
     <div class="modal-content">
       <div class="modal-header">
         <h1 class="modal-title fs-5" id="exampleModalLabel">Checkout</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" ></button>
+        <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" ></button> -->
       </div>
       <div class="modal-body" id = "modal_list_selected">
         

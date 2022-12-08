@@ -1,3 +1,22 @@
+<head>
+  <style>
+.my-side-banner{
+    display: inline-flex;
+    background-color: #ff6e6e;
+    border-radius: 30px;
+    padding-left: 2%;
+    padding-right: 2%;
+}
+
+#sidebar-btn-1:hover {
+    background:#9a382d;
+
+  }
+
+
+
+  </style>
+</head>
 
 
 <div class="row m-0" style="width:100%;">
@@ -9,14 +28,14 @@
             </a>
             <h1 class="myheading2 px-3 my=2" style="padding-bottom: 0 "><?php echo $title_sidebar;?></h1>
           </div>
-        <div id = "sidebar-btn" style="margin-right: 20px;"> 
-        <nav class="navbar bg-dark" >
-
+        <div id="sidebar-btn" style="margin-right: 20px;"> 
+        <nav class="navbar" >
           <div class="container-fluid">
-            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
-              aria-controls="offcanvasNavbar">
-              <span class="navbar-toggler-icon"></span>
+            <button class="navbar-toggler toggleBtn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+              aria-controls="offcanvasNavbar" id = "sidebar-btn-1" >
+              <span ><i class="fa-solid fa-bars" style="color: white; font-size:40px"></i></span>
             </button>
+
             <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"
               aria-labelledby="offcanvasNavbarLabel">
               <div class="offcanvas-header">
@@ -49,15 +68,58 @@
                     id = "nav_cart">
                     <span><img src="images/icon/cart_icon.png" alt="cart_icon" class = "nav_icon"></span>
                     CART</a>
+
+                    <div class = "my-side-banner">
+
+                        <?php
+                        $client = $_SESSION['client_id'];
+                          $conn = new mysqli('localhost','root','','restomatic_db');
+
+                          if($conn->connect_error){
+                            die('Connection failed : ' . $conn->connect_error);
+                           }else{
+                          $query = "SELECT SUM(`qnt`) AS `qnty` FROM`my_cart` WHERE `client_id` = '$client' ;";
+                        
+                          $result = mysqli_query($conn,$query);
+
+                          if($rows = mysqli_fetch_assoc($result))
+                              {
+                                echo $rows['qnty'];
+                              }
+                            }
+                          ?>
+                          </div>
                   </li>
                   <li class="nav-item">
                   
                     <a class="nav-link my-nav-link" href="client_ui_order.php"
                     id = "nav_orders">
                     <span><img src="images/icon/purchases_icon.png" alt="order_icon" class = "nav_icon"></span>  
-                    PURCHASES?</a>
+                    ORDERS
+                  </a>
+                  
+                  <div class = "my-side-banner">
+
+                        <?php
+                        $client = $_SESSION['client_id'];
+                          $conn = new mysqli('localhost','root','','restomatic_db');
+
+                          if($conn->connect_error){
+                            die('Connection failed : ' . $conn->connect_error);
+                           }else{
+                          $query = "SELECT * FROM `order_count` WHERE client_id =  $client;";
+                        
+                          $result = mysqli_query($conn,$query);
+
+                          if($rows = mysqli_fetch_assoc($result))
+                              {
+                                echo $rows['count'];
+                              }
+                            }
+                          ?>
+                          </div>
                   </li>
-                  <li class="nav-item">
+                  <li class="nav-item" hidden>
                   
                     <a class="nav-link my-nav-link" href="client_ui_reservation.php"
                     id = "nav_reservation">

@@ -169,7 +169,7 @@ require "func_session.php";
                         
                           $result = mysqli_query($conn,$query);
 
-                          while($rows = mysqli_fetch_assoc($result))
+                          if($rows = mysqli_fetch_assoc($result))
                               {
                              
                           ?>
@@ -339,18 +339,18 @@ if($conn->connect_error){
 
     }
 
-echo "
-<script>
+// echo "
+// <script>
 
-document.getElementById('val_username').innerHTML = '$username1' ; 
-document.getElementById('val_fullname').innerHTML = '$fullname' ; 
-document.getElementById('val_email').innerHTML = '$email' ; 
-document.getElementById('val_phone').innerHTML = '$phone_number' ; 
-document.getElementById('val_address').innerHTML = '$address' ; 
+// document.getElementById('val_username').innerHTML = '$username1' ; 
+// document.getElementById('val_fullname').innerHTML = '$fullname' ; 
+// document.getElementById('val_email').innerHTML = '$email' ; 
+// document.getElementById('val_phone').innerHTML = '$phone_number' ; 
+// document.getElementById('val_address').innerHTML = '$address' ; 
 
-document.getElementById('orders_cnt').innerHTML = '$count' ; 
+// document.getElementById('orders_cnt').innerHTML = '$count' ; 
 
-</script>";
+// </script>";
 
 
 ?>
