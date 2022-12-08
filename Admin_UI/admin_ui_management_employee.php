@@ -1,6 +1,6 @@
 <?php 
 
-$emp_id = $_POST['emp_id_upd'];
+// $emp_id = $_POST['emp_id_upd'];
 
 ?>
 
@@ -19,7 +19,7 @@ $emp_id = $_POST['emp_id_upd'];
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script> -->
 
-    <title>EMPLOYEE | MANAGEMENT</title>
+    <title>MANAGEMENT | EMPLOYEE</title>
 </head>
 
 <style>
@@ -146,12 +146,14 @@ body {
 .modal form label {
 	font-weight: normal;
 }	
+
+
 </style>
 
 <body>
     <div class="container-fluid">
       <?php
-       $page_title = "MANAGEMENT | EMPLOYEE | Restomatic";
+       $page_title = "MANAGEMENT | EMPLOYEE ";
 
        require "admin_sidebar.php";
       ?>
@@ -159,7 +161,7 @@ body {
           <div class="panel">
             <nav>
               <div class="navbar accNavbar">
-                    <div class="col-lg-12 col-md-12 col-sm-12">
+                    <div class="col-lg-12 col-md-12 col-sm-12 mx-2">
                       <h2><b>Employee Management</b></h2>
                       <a href="#" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#addEmployee"><i class="material-icons" data-toggle="tooltip" title="Add">person_add</i> <span>Add New Employee</span></a>
                       <a href="#" class="btn btn-secondary"><i class="material-icons">file_download</i> <span>Export to Excel</span></a>
@@ -173,7 +175,7 @@ body {
                               die('Connection failed : ' . $conn->connect_error);
                             }else{
 
-                            $query = "SELECT * FROM `employee`";
+                            $query = "SELECT * FROM `staff_account`";
                           
                             $result = mysqli_query($conn,$query);
 
@@ -184,17 +186,25 @@ body {
             <div class="card" style="width: inherit">
               <div class="row g-0">
                 <div class="col-md-4">
-                <?php echo '<img src = "data:image/jpeg;base64,'.base64_encode($rows['emp_image']) .'" class="card-img-top" alt="...">' ?>
+                <?php echo '<img src = "data:image/jpeg;base64,'.base64_encode($rows['img']) .'" class="card-img-top" alt="...">' ?>
                 </div>
                 <div class="col-md-8">
                   <div class="card-body">
                     <div class="col-lg-12 col-md-12 col-sm-12">
                       <div class="row" style="margin-left:2px ;" >
                           <div class="col-md-6 col-sm-3">
-                              <h5><b>Name</b></h5>
+                              <h5><b>Firstname</b></h5>
                           </div>
                           <div class="col-md-6 col-sm-3 text-secondary">
-                              <h6><?php echo $rows['emp_name'] ?></h6>
+                              <h6 id="fname_<?php echo $rows['staff_id']?>"><?php echo $rows['firstname'] ?></h6>
+                          </div>
+                      </div>
+                      <div class="row" style="margin-left:2px ;" >
+                          <div class="col-md-6 col-sm-3">
+                              <h5 ><b>Lastname</b></h5>
+                          </div>
+                          <div class="col-md-6 col-sm-3 text-secondary">
+                              <h6 id="lname_<?php echo $rows['staff_id']?>"><?php echo $rows['lastname'] ?></h6>
                           </div>
                       </div>
                       <div class="row" style="margin-left:2px ;">
@@ -202,7 +212,7 @@ body {
                               <h5><b>Status</b></h5>
                           </div>
                           <div class="col-md-6 col-sm-3 text-secondary">
-                              <h6><?php echo $rows['emp_status'] ?></h6>
+                              <h6 id="status_<?php echo $rows['staff_id']?>"><?php echo $rows['status'] ?></h6>
                           </div>
                       </div>
                       <div class="row" style="margin-left:2px ;">
@@ -210,58 +220,57 @@ body {
                               <h5><b>Email</b></h5>
                           </div>
                           <div class="col-md-6 col-sm-3 text-secondary">
-                              <h6><?php echo $rows['emp_email'] ?></h6>
+                              <h6 id="email_<?php echo $rows['staff_id']?>"><?php echo $rows['email'] ?></h6>
                           </div> 
                       </div>
                       <div class="row" style="margin-left:2px ;">
                           <div class="col-md-6 col-sm-3">
-                              <h5><b>Address</b></h5>
+                              <h5><b>username</b></h5>
                           </div>
                           <div class="col-md-6 col-sm-3 text-secondary">
-                              <h6><?php echo $rows['emp_address'] ?></h6>
+                              <h6 id="username_<?php echo $rows['staff_id']?>"><?php echo $rows['username'] ?></h6>
                           </div>
                       </div>
                       <div class="row" style="margin-left:2px ;">
                           <div class="col-md-6 col-sm-3">
-                              <h5><b>Age</b></h5>
+                              <h5><b>Contact Number</b></h5>
                           </div>
                           <div class="col-md-6 col-sm-3 text-secondary">
-                              <h6><?php echo $rows['emp_age'] ?></h6>
+                              <h6 id="contact_<?php echo $rows['staff_id']?>"><?php echo $rows['contact_number'] ?></h6>
                           </div> 
                       </div>
                       <div class="row" style="margin-left:2px ;">
                         <div class="col-md-6 col-sm-3">
-                            <h5><b>Contact Number</b></h5>
+                            <h5><b>privilage</b></h5>
                         </div>
                         <div class="col-md-6 col-sm-3 text-secondary">
-                            <h6><?php echo $rows['emp_contact_num'] ?></h6>
+                            <h6 id="priv_<?php echo $rows['staff_id']?>"><?php echo $rows['privilage'] ?></h6>
                         </div>
-                    </div>
-                    <div class="row" style="margin-left:2px ;">
-                        <div class="col-md-6 col-sm-3">
-                            <h5><b>Position</b></h5>
-                        </div>
-                        <div class="col-md-6 col-sm-3 text-secondary">
-                            <h6><?php echo $rows['emp_position'] ?></h6>
-                        </div> 
                     </div>
                   </div>
                   </div>
-                  <div class = "card-footer">
-                    <!-- <form action = "func_update_employee.php"> -->
-                    <a href="#" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#editEmployee"><i class="bi-pencil-square" data-toggle="tooltip" title="Edit" style="color: #2196F3;"></i> <span>Edit Employee</span></a>
-                    <a href="#" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#deleteEmployee"><i class="bi-trash3-fill" data-toggle="tooltip" title="Delete" style="color: #F44336;"></i> <span>Delete Employee</span></a>
-                      <!-- <button type = "button" class = "btn btn-secondary" name = 'updateBtn' data-bs-toggle = "modal" data-bs-target = "#editEmployee " id = "update_btn">
-                      <i class = "bi-pencil-square" data-toggle = "tooltip" title = "Edit" style = "color: #2196F3;"></i>
-                      <span> Edit Employee </span></button> -->
-                    <!-- </form>
-                    <form action = ""> -->
-                      <!-- <button type = "button" class = "btn btn-secondary" name = 'deleteBtn' data-bs-toggle = "modal" data-bs-target = "#deleteEmployee" id = "delete_btn">
-                      <i class = "bi-trash3-fill" data-toggle = "tooltip" title = "Delete" style = "color: #2196F3;"></i>
-                      <span> Delete Employee </span></button> -->
-                    <!-- </form> -->
-                    <!-- <a href="#" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#editEmployee"><i class="bi-pencil-square" data-toggle="tooltip" title="Edit" style="color: #2196F3;"></i> <span>Edit Employee</span></a>
-                    <a href="#" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#deleteEmployee"><i class="bi-trash3-fill" data-toggle="tooltip" title="Delete" style="color: #F44336;"></i> <span>Delete Employee</span></a>	 -->
+                  <div class = "row mb-2">
+
+                        <div style= "display: inline; width: fit-content;">
+                        <form action="" method="get">
+                          <input type="text" value="<?php echo $rows['staff_id']?>" hidden>
+                          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editEmployee"
+                          onclick="update_employee(this.value)" value = "<?php echo $rows['staff_id']?>">
+                          <i class="bi-pencil-square" data-toggle="tooltip" title="Edit" style="color: #2196F3;">
+                          </i> <span>Edit Employee</span>
+                          </button>
+                        
+                      </form>  
+                      </div>
+                      
+                          <div style= "display: inline; width: fit-content;">
+                          <form action="" method="get">
+                          <input type="text" value="<?php echo $rows['staff_id']?>" hidden>
+                          <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteEmployee">
+                          <i class="bi-trash3-fill" data-toggle="tooltip" title="Delete" style="color: #F44336;">
+                          </i> <span>Delete Employee</span>
+                          </form> 
+                          </div> 
                   </div>
                 </div>
               </div>
@@ -273,6 +282,7 @@ body {
                       ?>
           </div>
     </div>
+    <!-- ADD EMPLOYEE -->
     <div class="modal fade " id="addEmployee" tabindex="-1" aria-labelledby="modal-add-emp" aria-hidden="true">
               <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
@@ -282,46 +292,18 @@ body {
                   </div>
                   <div class="modal-body p-4">
                     <div class="text-center">
-                    <form action = "func_insert_employee.php" method="post" >  
+                    <form action = "../func/func_insert_employee.php" method="post" >  
                       <div class="row mb-2">
                           <div class="col">
-                            <input type="text" class="form-control" id="modal-name" placeholder="Employee Name" name="emp_name" />
+                            <input type="text" class="form-control" placeholder="Firstname" name="emp_fname" />
                           </div>
                           <div class="col">
                             <!-- <input type="text" class="form-control" id="modal-status" placeholder="Employee Status" name="emp_status" /> -->
                          
                             <!-- <form action="func_insert_employee.php" method="POST"> -->
-                              
-                              <select name="emp_status_post" id="selected_status" onChange="myFunction()">
-                            <?php
-                            $conn = new mysqli('localhost','root','','restomatic_db');
-
-                            if($conn->connect_error){
-                              die('Connection failed : ' . $conn->connect_error);
-                            }else{
-
-                            $query = "SELECT * FROM `status`";
-                          
-                            $result = mysqli_query($conn,$query);
-
-                            while($rows = mysqli_fetch_assoc($result))
-                                {
-                                  echo $rows['id'];
-                                  echo $rows['description'];
-                                    // echo "<option value = $rows['description'] > $rows['description'] </option>";
-                                    // <input type="text" value="<?php $rows['status_id']; ?>" name="stats_id" hidden />
-                            ?> 
-                            
-                            <option value = <?php echo  $rows['description']; ?>><?php echo  $rows['description']; ?></option>
-                            
-                            <?php
-                                }
-                              }
-                            ?>
-                                
-                                </select>
+                            <input type="text" class="form-control" placeholder="Lastname" name="emp_lname" />
+                             
                             <!-- </form> -->
-                         
                           </div>
                       </div>
                       <div class="row mb-2 my-0 py-0 gx-0">
@@ -330,50 +312,41 @@ body {
                         </div>
                       </div>
                       <div class="row mb-2 my-0 py-0 gx-0">
-                      <div class="col">
+                      <!-- <div class="col">
                             <input type="text" class="form-control" id="modal-address" placeholder="Address" name="emp_address" />
-                        </div>
+                        </div> -->
                       </div>
                       <div class="row mb-2 my-0 py-0 gx-0">
-                        <input type="number" class="form-control" id="modal-age" placeholder="Age" name="emp_age" />
+                        <input type="text" class="form-control" id="modal-age" placeholder="username" name="emp_username" />
                       </div>
                       <div class="row mb-2 my-0 py-0 gx-0">
                         <input type="tel" class="form-control" id="modal-contact_num" placeholder="Contact Number" name="emp_contact_num" />
                       </div>
                       <div class="row mb-2 my-0 py-0 gx-0">
-                      <select name="emp_position_post" id="selected_position" onChange="myFunction()">
-                            <?php
-                            $conn = new mysqli('localhost','root','','restomatic_db');
-
-                            if($conn->connect_error){
-                              die('Connection failed : ' . $conn->connect_error);
-                            }else{
-
-                            $query = "SELECT * FROM `position`";
-                          
-                            $result = mysqli_query($conn,$query);
-
-                            while($rows = mysqli_fetch_assoc($result))
-                                {
-                                 echo  $rows['description'];
-                                    
-                            ?> 
-                            <option value = <?php echo  $rows['description']; ?>><?php echo  $rows['description']; ?></option>
-
-                            <?php
-                                }
-                              }
-                            ?>
-                                
-                                </select>
+                        <input type="password" class="form-control" id="modal-password" placeholder="Enter Password" name="emp_password" />
                       </div>
                       <div class="row mb-2 my-0 py-0 gx-0">
-                        <input placeholder="Image" type="file" class="file-upload-input" id="modal-image" 
-                          name="emp_image" onchange="readURL(this) accept = image/*"/>
+                      
+                              <select class = "my-auto"name="emp_status_post" id="selected_status" style = "font-size:18px;">
+                              <option value="Active">Active</option>
+                              <option value="Inactive">Inactive</option>
+                              <option value="Suspended">Suspended</option>
+                              </select>
+                      </div>
+                      
+                      <div class="row mb-2 my-0 py-0 gx-0 mx-auto" >
+                        <!-- <input placeholder="Image" type="file" class="file-upload-input" id="modal-image" 
+                          name="emp_image" onchange="readURL(this) accept = image/*"/> -->
+                          <div class="col" style ="float:left;">
+                          <p>Profile picture</p>
+                          </div>
+                          <div class="col" style ="float:right;">
+                          <input type="file" id="myFile" onchange="readURL(this)" name="profile1">
+                          </div>
                       </div>
                       <!-- </div>
                         </div> -->
-                    <div class="modal-footer">
+                    <div class="" style ="float:right;">
                       <button type="submit" class="btn btn-primary rounded" name = "add_btn" method="post" title="Add Employee"> Add Employee</button>    
                     </div>
                     </form>
@@ -382,6 +355,9 @@ body {
               </div>
             </div>
           </div>
+
+
+
 
               <!-- update -->
 
@@ -396,95 +372,70 @@ body {
                   <div class="modal-body p-4">
                     <div class="text-center">
 
-                    <?php 
-                    
-                     
-                    $conn = new mysqli('localhost','root','','restomatic_db');
+                    <?php
+                    $servername = "localhost";
+                    $username = "root";
+                    $password = "";
+                    $dbname = "restomatic_db";
 
-                    if($conn->connect_error){
-                        die('Connection failed : ' . $conn->connect_error);
-                    }else{
-                      
-                        $query = "SELECT * FROM `employee` WHERE `emp_id` = $emp_id";
-                    
-                        $result = mysqli_query($conn,$query);
-            
-                        while($rows = mysqli_fetch_assoc($result)) {
-                  
-                  ?>
+                    // Create connection
+                    $conn = mysqli_connect($servername, $username, $password, $dbname);
+                    // Check connection
+                    if (!$conn) {
+                      die("Connection failed: " . mysqli_connect_error());
+                    }
 
+                    $sql = "SELECT * FROM `staff_account` WHERE `staff_id` = ''";
+                    $result = mysqli_query($conn, $sql);
+
+                    if (mysqli_num_rows($result) > 0) {
+                      // output data of each row
+                      while($row = mysqli_fetch_assoc($result)) {
+                        echo "id: " . $row["id"]. " - Name: " . $row["firstname"]. " " . $row["lastname"]. "<br>";
+                      }
+                    } else {
+                      echo "0 results";
+                    }
+
+                    mysqli_close($conn);
+                    ?>
                     <form action = "func_update_employee.php" method="post" >  
                       <div class="row mb-2">
                           <div class="col">
-                            <input type="text" value="<?php echo $rows['emp_name']?>" class="form-control" id="modal-name" />
+                            <input type="text" value="<?php //echo $rows['emp_name']?>" class="form-control" id="modal-name" />
                           </div>
                           <div class="col">
-                            <select value="<?php echo $rows['emp_status_post']?>" id="selected-status" onChange="myFunction()">
-                            <?php 
-                              $conn = new mysqli('localhost','root','','restomatic_db');
-                              if($conn->connect_error){
-                                  die('Connection failed : ' . $conn->connect_error);
-                              }else{
-                                
-                                  $query = "SELECT * FROM `status`";
-                              
-                                  $result = mysqli_query($conn,$query);
-                      
-                                  while($rows = mysqli_fetch_assoc($result)) {
-                                    echo "<option value='". $rows['id'] ."' name='id' hidden>" . $rows['id'] ."</option>" ;
-                                    echo "<option value= '".  $rows['description'] ."'>" . $rows['description']." </option>" ;
-                                    
-                            ?>
-                                
-                            <?php 
-                                  }
-                                }
-                            ?>
-                            
+                            <select value="<?php //echo $rows['emp_status_post']?>" id="selected-status" >
+                              <option value="Active">Active</option>
+                              <option value="Inactive">Inactive</option>
+                              <option value="Suspended">Suspended</option>
                             </div>
                           </div>
                       <div class="row mb-2 my-0 py-0 gx-0">
-                      <div class="col">
-                            <input type="text" value="<?php echo $rows['emp_email']?>" class="form-control" id="modal-email" />
-                        </div>
-                      </div>
-                      <div class="row mb-2 my-0 py-0 gx-0">
-                      <div class="col">
-                            <input type="text" value="<?php echo $rows['emp_address']?>" class="form-control" id="modal-address" />
-                        </div>
-                      </div>
-                      <div class="row mb-2 my-0 py-0 gx-0">
-                        <input type="number" value="<?php echo $rows['emp_age']?>" class="form-control" id="modal-age" />
-                      </div>
-                      <div class="row mb-2 my-0 py-0 gx-0">
-                        <input type="tel" value="<?php echo $rows['emp_contact_num']?>" class="form-control" id="modal-contact_num" />
-                      </div>
-                      <div class="row mb-2 my-0 py-0 gx-0">
-                        <select value="<?php echo $rows['emp_position_post']?>" id="selected_position" onChange="myFunction()">
-                        <?php 
-                              $conn = new mysqli('localhost','root','','restomatic_db');
-                              if($conn->connect_error){
-                                  die('Connection failed : ' . $conn->connect_error);
-                              }else{
-                                
-                                  $query = "SELECT * FROM `position`";
-                              
-                                  $result = mysqli_query($conn,$query);
                       
-                                  while($rows = mysqli_fetch_assoc($result)) {
-                                    echo "<option value='". $rows['id'] ."' name='id' hidden>" . $rows['id'] ."</option>" ;
-                                    echo "<option value= '".  $rows['description'] ."'>" . $rows['description']." </option>" ;
-                                    
-                            ?>
-                                
-                            <?php 
-                                  }
-                                }
-                            ?>
+                            <input type="text" value="<?php //echo $rows['emp_email']?>" class="form-control" id="modal_email" />
+                       
+                      </div>
+                      <div class="row mb-2 my-0 py-0 gx-0">
+                      <div class="col">
+                            <input type="text" value="<?php //echo $rows['emp_address']?>" class="form-control" id="modal_address" />
+                        </div>
+                      </div>
+                      <!-- <div class="row mb-2 my-0 py-0 gx-0">
+                        <input type="number" value="<?php //echo $rows['emp_age']?>" class="form-control" id="modal-age" />
+                      </div> -->
+                      <div class="row mb-2 my-0 py-0 gx-0">
+                        <input type="tel" value="<?php //echo $rows['emp_contact_num']?>" class="form-control" id="modal_contact_num" />
+                      </div>
+                      <div class="row mb-2 my-0 py-0 gx-0">
+                        <select value="<?php //echo $rows['emp_position_post']?>" id="selected_position" >
+                        <option value="Admin">Admin</option>
+                        <option value="Staff">Staff</option>
+                        <option value="Delivery">Delivery</option>
                       </div>
                       <div class="row mb-2 my-0 py-0 gx-0">
                         <input type="file" value="<?php echo $rows['emp_image']?>" class="file-upload-input" id="modal-image" 
-                          name="emp_image" onchange="readURL(this) accept = image/*"/>
+                          name="emp_image" onchange="readURL(this)"/>
                       </div>
                       </div>
                         </div>
@@ -493,10 +444,7 @@ body {
                       <input type="submit" class="btn btn-info" value="Save">   
                     </div>
                     </form>
-                    <?php 
-                          }
-                        }
-                      ?>  
+              
                   </div>
                 </div>
               </div>
@@ -509,30 +457,7 @@ body {
     <div id="deleteEmployee" class="modal fade">
       <div class="modal-dialog">
         <div class="modal-content">
-        <?php
-         if(isset($_POST['delete'])) {
-
-            $conn = new mysqli('localhost','root','','restomatic_db');
-            
-            if(! $conn ) {
-               die('Could not connect: ' . mysql_error());
-            }
-				
-            $emp_id = $_POST['emp_id'];
-            
-            $sql = "DELETE FROM `employee` WHERE `emp_id` = $emp_id" ;
-            mysql_select_db('test_db');
-            $retval = mysql_query( $sql, $conn );
-            
-            if(! $retval ) {
-               die('Could not delete data: ' . mysql_error());
-            }
-            
-            echo "Deleted data successfully\n";
-            
-            mysql_close($conn);
-         }else {
-            ?>
+       
           <form action="func_del_employee.php" method="post">
             <div class="modal-header">						
               <h4 class="modal-delete-emp">Delete Employee</h4>
@@ -547,18 +472,76 @@ body {
               <input type="submit" class="btn btn-danger" value="Delete">
             </div>
           </form>
-          <?php
-         }
-      ?>
+     
         </div>
       </div>
     </div>
 
+
+
+
     <script>
+
+
+function update_employee(value){
+
+// console.log(value);
+
+var fname = $("#fname_"+value)[0].innerHTML;
+var lname = $("#lname_"+value)[0].innerHTML;
+var status = $("#status_"+value)[0].innerHTML;
+var email = $("#email_"+value)[0].innerHTML;
+var username = $("#username_"+value)[0].innerHTML;
+var contact = $("#contact_"+value)[0].innerHTML;
+var privilage = $("#priv_"+value)[0].innerHTML;
+
+console.log(fname);
+console.log(lname);
+console.log(status);
+console.log(email);
+console.log(username);
+console.log(contact);
+console.log(privilage);
+
+$("#modal-name").val(fname);
+$("#selected-status").val(status);
+$("#modal_email").val(email);
+// $("#modal-address").val(address);
+$("#modal_contact_num").val(contact);
+$("#selected-position").val(privilage);
+
+
+
+
+
+
+
+}
+
       function myFunction(){
         var result = document.getElementById("selected_status").value;
         console.log(result);
       }
-    </script>
+
+         function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#profile_pic')
+                        .attr('src', e.target.result)
+                        .width(150)
+                        .height(200);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        $("#page_footer").css("position","");
+
+    
+
+  </script>
 </body>
 </html>

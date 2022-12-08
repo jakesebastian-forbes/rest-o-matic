@@ -28,14 +28,14 @@
             <a href="index.php">
             <img src="../images/icon/web_icon.png" alt="web_icon.png" style="max-height: 70px;" >
             </a>
-            <h1 class="myheading2 px-3 my=2" style="padding-bottom: 0 "><?php echo $title_sidebar;?></h1>
+            <h1 class="myheading2 px-3 my-2" style="padding-bottom: 0 "><?php echo $title_sidebar;?></h1>
           </div>
         <div id="sidebar-btn" style="margin-right: 20px;"> 
         <nav class="navbar" >
           <div class="container-fluid">
             <button class="navbar-toggler toggleBtn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
               aria-controls="offcanvasNavbar" id = "sidebar-btn-1" >
-              <span ><i class="fa-solid fa-bars" style="color: white; font-size:40px"></i></span>
+              <span class="tooltip-text"><i class="fa-solid fa-bars" style="color: white; font-size:40px"></i></span>
             </button>
 
             <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"
@@ -152,7 +152,10 @@
                 </ul>
                 <div class="position-absolute bottom-0 end-0 m-3">
                   
-                <a href="../func/func_logout.php">LOGOUT</a>
+                <a href="../func/func_logout.php">
+                <button type="button" class="btn btn-danger btn-lg text-black" style="border-radius: 24px;"> 
+                LOGOUT </button>
+                </a>
                </div>
                </div>
         </nav>

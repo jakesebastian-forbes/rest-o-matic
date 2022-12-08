@@ -124,7 +124,7 @@ document.getElementById('buttonss').append(signup_btn);
  
             <div class = "text-center">
 
-              <h5 style = "">LOGIN!</h5>
+              <h5>LOGIN!</h5>
               <?php
                 $full_url = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
                 // echo $full_url;
@@ -213,7 +213,7 @@ document.getElementById('buttonss').append(signup_btn);
                   <div class="modal-body p-4">
                     <div class="text-center">
 
-                    <form method="post" action = "func_signup.php">  
+                    <form method="post" action = "func/func_signup.php">  
                       <div class="row mb-2">
                           <div class="col">
                             <input type="text" class="form-control" id="modal-firstname" placeholder="First name" name="firstname" required />
@@ -230,13 +230,13 @@ document.getElementById('buttonss').append(signup_btn);
                       </div>
 
                       <div class="row mb-2 my-0 py-0 gx-0">
-                        <input type="number" class="form-control" id="modal-mobile_number" placeholder="Mobile number"
+                        <input type="tel" pattern="[0-9]{11}" class="form-control" id="modal-mobile_number" placeholder="Mobile number"
                           name="mobile_number" required/>
                       </div>
 
                       <div class="row mb-2 my-0 py-0 gx-0">
                         <input type="email" class="form-control" id="modal-email" placeholder="E-mail"
-                          name="email" />
+                          name="email" required/>
                       </div>
 
                       <div class="row mb-2 my-0 py-0 gx-0">
@@ -247,7 +247,7 @@ document.getElementById('buttonss').append(signup_btn);
           
                       <div class="row mb-2 my-0 py-0 gx-0">
                         <input type="text" class="form-control" id="modal-address" placeholder="Address"
-                          name="address" />
+                          name="address"  />
                       </div>
 
 
@@ -263,14 +263,17 @@ document.getElementById('buttonss').append(signup_btn);
                           max = "<?php  echo date("Y")-16 . "-" . date("m") . "-" .date("d");?>"
                           required />
                         </div>
+                        <input type="file" id="myfile" name ="profile1" >
 
+                        <!-- <img src="images/icon/customer.png" alt="" name= "profile1" hidden> -->
                       </div>
                         
-
+                      
                     <div class="modal-footer">
 
                       <!-- <a href="login.php"></a><a href='login.php?hello=true'>Submit</a> -->
-                    <button class="btn btn-primary" name = "signup_btn" method="post">Signup</button> 
+                      <!-- <button ></button> -->
+                    <button type="submit" class="btn btn-primary">Signup</button> 
     
                     </div>
 

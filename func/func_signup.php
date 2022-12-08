@@ -8,6 +8,12 @@ $email =$_POST['email'];
 $phonenumber = $_POST['mobile_number'];
 $address = $_POST['address'];
 $birthday = $_POST['birthdate'];
+$profile = $_POST['profile1'];
+$firstname = ucfirst($firstname);
+$lastname = ucfirst($lastname);
+$username = strtolower($username);
+
+
 
 $hash_password = password_hash($password, PASSWORD_DEFAULT);
 //db connection
@@ -18,13 +24,14 @@ if($conn->connect_error){
     die('Connection failed : ' . $conn->connect_error);
 }else{
     $stmt = $conn->prepare("INSERT INTO `client_account`(`firstname`, `lastname`, `username`, `password`, `email`,
-     `mobile_number`, `address`, `birthdate`) VALUES
-     (?,?,?,?,?,?,?,?)");
+     `mobile_number`, `address`, `birthdate`,`profile_picture`) VALUES
+     (?,?,?,?,?,?,?,?,?)");
 
-     $stmt->bind_param("ssssssss",$firstname,$lastname,$username,$hash_password,$email,$phonenumber,$address,$birthday);
+     $stmt->bind_param("sssssssss",$firstname,$lastname,$username,$hash_password,$email,$phonenumber,$address,$birthday,$profile);
      $stmt->execute();
      
      echo "registration successfully";
+     header("Location: ../login.php");
      $stmt->close();
      $conn->close();
 

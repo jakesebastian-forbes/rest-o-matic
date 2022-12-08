@@ -31,7 +31,7 @@
             <nav class="navbar mynavbar" style="width: 100vw; min-width: fit-content; max-height: 86px; background-color: black;">
                 <div class="d-flex justify-content-start">
                   <img src="../images/icon/web_icon.png" class="px-3" alt="web_icon.png" style="max-height: 70px">
-                    <h1 class="myheading1" style="padding-top: 7px; color: white;"><?php echo $page_title; ?></h1>
+                    <h1 class="myheading1 mt-2" style="padding-top: 7px; color: white;"><?php echo $page_title; ?></h1>
                 </div>
                 <nav class="navbar">
                   <div class="container-fluid">
@@ -64,7 +64,7 @@
                               <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                               <span><img src="../images/icon/purchases_icon.png" alt="order_icon" class = "nav_icon">REPORTS</a>
                               <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="admin_logs.html">LOGS</a>
+                                <li><a class="dropdown-item" href="admin_logs.php">LOGS</a>
                                </li>
                               </ul>
                             </li>

@@ -387,13 +387,23 @@ $stats = $rows['status'];
         </div> -->
     </div>
 
-
+ 
     </div>
+  
+  </div>
+  <footer>
+    <?php
+require('../func/func_footer.php')
+?>
+</footer>
+  
     <!-- <script src="../bootstrap-5.2.2/js/bootstrap.min.js"></script> -->
 
 
-
     <script>
+
+$("#page_footer").css("bottom","");
+$("#page_footer").css("margin","0px");
 
     function updateStatus(value,id){
         console.log("updateStatus  " + value +":" +id);
@@ -554,6 +564,7 @@ $stats = $rows['status'];
 
 
     </script>
+  <footer>
 
 </body>
 </html>

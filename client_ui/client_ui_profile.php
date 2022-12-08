@@ -11,7 +11,8 @@ require "../func/func_session.php";
     $title = "Home | Client";
     require('../func/func_must_haves.php');
   ?>
-  
+   <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+
 </head>
 
 <style>
@@ -68,6 +69,10 @@ require "../func/func_session.php";
     word-wrap: break-word;
     }
 
+    .success{
+      background-color: #beffa85e;
+
+    }
 
 
 </style>
@@ -79,9 +84,22 @@ require "../func/func_session.php";
       include('client_sidebar.php');?>
 
         <!-- <div class="container"> -->
-            <div >
-                
-                <div >
+          <div>
+          <?php
+                $full_url = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+                // echo $full_url;
+                if(strpos($full_url,"update=success") == true ){
+                   echo "<p class = 'success'>
+                   
+                   Account update successful!.</p>";
+
+                }else if(strpos($full_url,"update=failed") == true ){
+                  echo "<p class = 'error'>
+                  <span> <img src='images/icon/error.png' alt='error_icon' class = 'icon_img'></span>
+                  Account update failed!</p>";
+                }
+              ?>
+          </div>
                    <div class="row m-0" >
                         
                     <div class="col m-auto">
@@ -90,12 +108,32 @@ require "../func/func_session.php";
                       display:block;
                       margin-left:auto;margin-right:auto;
                       ">
-                        <img src="images/yeji.jpg" alt=""
-                        style = "border-radius: 15px;
-                        width:190px; height:190px;
-                        object-fit:cover;
+                        <?php
+                        $client = $_SESSION['client_id'];
+                          $conn = new mysqli('localhost','root','','restomatic_db');
+
+                          if($conn->connect_error){
+                            die('Connection failed : ' . $conn->connect_error);
+                           }else{
+                          $query = "SELECT * FROM `client_account` WHERE client_id =  $client;";
+                        
+                          $result = mysqli_query($conn,$query);
+
+                          if($rows = mysqli_fetch_assoc($result))
+                              {
+                             
+                         
+                  echo '<img class="card-img-top img img-responsive" src = "data:image/jpeg;base64,'.base64_encode($rows['profile_picture']) .'" 
+                  style ="object-fit: cover;
+                  aspect-ratio: 4/3;
+                  border-radius: 10px;
+                  "/>';
+    
                       
-                      ">
+                      
+                              }
+                            }
+                      ?>
                         </div>
 
                     </div>
@@ -200,10 +238,12 @@ require "../func/func_session.php";
                         
                 </div>
                 
+                     
                 <div class="row row2 m-0">
+                
                   <div class="col">
                     <div class="panel" style="margin: 50PX;background-color:white ;">
-                        <div class="panel-body">
+                        <div class="panel-body">            
                             <table class="table orderTable">
                                 <thead>
                                   <tr>
@@ -213,49 +253,55 @@ require "../func/func_session.php";
                                     <th>TOTAL</th>
                                   </tr>
                                 </thead>
+                                <?php
+                                  $count = 0;
+                                  $client = $_SESSION['client_id'];
+                                    $conn = new mysqli('localhost','root','','restomatic_db');
+
+                                    if($conn->connect_error){
+                                      die('Connection failed : ' . $conn->connect_error);
+                                    }else{
+                                    $query = "SELECT * FROM `orders_content` WHERE client_id =  $client;";
+                                  
+                                    $result = mysqli_query($conn,$query);
+
+                                    while($rows = mysqli_fetch_assoc($result))
+                                        {
+                                      
+                                    ?>
                                 <tbody>
-                                  <tr>
-                                    <th scope="row">123456</th>
-                                    <td>October 1, 2022</td>
-                                    <td>Item 6</td>
-                                    <td>250</td>
+                                  <tr name = "tbl_row" id="row_<?php echo $count ?>">
+                                    <td scope=""><?php echo $rows['order_id']; ?></td>
+                                    <td hidden><?php echo $rows['client_id']; ?></td>
+                                    <td><?php echo $rows['timestamp']; ?></td>
+                                    <td><?php echo $rows['item_name']; ?></td>
+                                    <td><?php echo $rows['sub_total']; ?></td>
+                                    
                                   </tr>
                                 </tbody>
-                                <tbody>
-                                  <tr>
-                                    <th scope="row">456789</th>
-                                    <td>October 2, 2022</td>
-                                    <td>Item 7</td>
-                                    <td>475</td>
-                                  </tr>
-                                </tbody>
-                                <tbody>
-                                  <tr>
-                                    <th scope="row">678901</th>
-                                    <td>October 6, 2022</td>
-                                    <td>Item 6</td>
-                                    <td>236</td>
-                                  </tr>
-                                </tbody>
-                                <tbody>
-                                  <tr>
-                                    <th scope="row">245678</th>
-                                    <td>October 17, 2022</td>
-                                    <td>Item 3</td>
-                                    <td>490</td>
-                                  </tr>
-                                </tbody>
+                                <?php 
+                                      $count = $count + 1;
+                                      // echo "console.log('$count');";
+                                        }
+                                        
+                                     }
+              
+                                       ?>
                               </table>
+                              <button class = "btn btn-warning" onclick="show_all_orders()" id = "show">SHOW ALL ORDERS</button>
+                              <button class = "btn btn-warning" onclick="minimize_orders()" id = "hide" hidden>MINIMIZE ORDERS</button>
+                              
+                              
                         </div>
                     </div>
                      
                     
                   </div>
+                 
               </div>
+        
+             
             
-                
-    </div>
-  </div>
 
           <footer>
               <?php
@@ -267,6 +313,50 @@ require "../func/func_session.php";
 
 var active = document.getElementById('nav_account');
 active.setAttribute('class','nav-link my-nav-link my-active',);
+// $("#page_footer").css("position","")
+
+
+var table_row = $('[name="tbl_row"]');
+function minimize_orders(){
+for(var i = 0 ; i < table_row.length ; i++){
+  console.log(table_row[i].id);
+    if(i < 5){
+      // console.log("if");
+
+    }else{
+      // console.log("else");
+        $("#"+table_row[i].id).attr("hidden","");
+
+    }
+
+
+}
+$("#page_footer").css("position","absolute");
+$("#show").removeAttr("hidden","");
+  $("#hide").attr("hidden","");
+}
+
+minimize_orders();
+
+function show_all_orders(){
+
+
+for(var i = 0 ; i < table_row.length ; i++){
+  console.log(table_row[i].id);
+    if(i < 5){
+      // console.log("if");
+
+    }else{
+      // console.log("else");
+        $("#"+table_row[i].id).removeAttr("hidden","");
+
+    }
+  
+  }
+  $("#page_footer").css("position","");
+  $("#hide").removeAttr("hidden","");
+  $("#show").attr("hidden","");
+}
 
 
 </script>

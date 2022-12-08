@@ -106,7 +106,7 @@ require "admin_sidebar.php";
                         <div class="card" style="width:100%;max-width:1500px;min-height: 500px;background-color: #FFB347;">
                             <h4>MARKETING SALES</h4>
                            
-                          <div id="myDIV">
+                          <div id="myDIV" hidden>
                             <button class="btn active" onclick="changeData(0)">This Day</button>
                             <button class="btn" onclick="changeData(1)">This Week</button>
                             <button class="btn" onclick="changeData(2)">This Month</button>
@@ -137,9 +137,14 @@ require "admin_sidebar.php";
                         </div>
                     </div>
                 </div>
-                
+
             
             </div>
+            <footer>
+<?php
+require('../func/func_footer.php')
+?>
+</footer>
 
     <!-- <script src = "../bootstrap-5.2.2/js/bootstrap.bundle.min.js"></script> -->
     
@@ -180,6 +185,7 @@ require "admin_sidebar.php";
 
   
 function get_data(){
+    console.log("asdasd");
     $.ajax({
 		url: "../func/func_get_chart_data.php",
 		type: "GET",

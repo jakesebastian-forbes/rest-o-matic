@@ -31,12 +31,12 @@ require "../func/func_client_priv.php";
 
 <?php
 
-echo "Session Array:";
-print_r($_SESSION);
-echo "\n";
-echo "Sess_ID ";
-echo SESSION_ID();
-echo "asdadss";
+// echo "Session Array:";
+// print_r($_SESSION);
+// echo "\n";
+// echo "Sess_ID ";
+// echo SESSION_ID();
+// echo "asdadss";
 ?>
   <?php 
   $title_sidebar = "MENU";

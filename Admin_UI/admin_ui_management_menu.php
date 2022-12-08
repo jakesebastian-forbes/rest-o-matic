@@ -156,9 +156,9 @@ body {
                                   
                             ?> 
             <div class="card" style="width: inherit">
-              <div class="row g-0">
+              <div class="row g-0 mb-1">
                 <div class="col-md-4">
-                  <?php echo '<img src = "data:image/jpeg;base64,'.base64_encode($rows['img']) .'" class="card-img-top" alt="...">' ?> 
+                  <?php echo '<img src = "data:image/jpeg;base64,'.base64_encode($rows['img']) .'" class="card-img-top m-auto" alt="...">' ?> 
                 </div>
                 <div class="col-md-8">
                   <div class="card-body"> 
@@ -259,7 +259,7 @@ body {
 
                           <div class="row mb-2 my-0 py-0 gx-0">
                                 <input placeholder="Image" type="file" class="file-upload-input" id="modal-img" 
-                                  name="item_img" onchange="readURL(this) accept = image/*" />
+                                  name="item_img" onchange="readURL(this)" />
                                 
                                   <!-- <?php echo '<img src = "data:image/jpeg;base64,'.base64_encode($rows['img']) .'" class="card-img-top" alt="...">' ?> -->
                   
