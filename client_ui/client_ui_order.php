@@ -1,5 +1,5 @@
 <?php
-require "func_session.php";
+require "../func/func_session.php";
 
 ?>
 
@@ -12,7 +12,7 @@ require "func_session.php";
 
     <?php
         $title = "Orders | Client | Restomatic";
-        require('must_haves.php');
+        require('../func/func_must_haves.php');
     ?>
 </head>
 
@@ -200,6 +200,9 @@ require "func_session.php";
         </div> 
       </nav>
     </div>
+
+
+
     </div>
     
     
@@ -215,7 +218,7 @@ $client_id = $_SESSION['client_id'] ;
 //all
     $cat = "all";
     $qry_statement = "SELECT * FROM `client_order` WHERE `client_id` = $client_id";
-    include "func_pill_content.php";
+    include "../func/func_pill_content.php";
 ?>
   
   </div>
@@ -225,7 +228,7 @@ $client_id = $_SESSION['client_id'] ;
 <?php
 $cat = "pending";
 $qry_statement = "SELECT * FROM `client_order` WHERE `client_id` = $client_id AND `status` = 'pending';";
-include "func_pill_content.php";
+include "../func/func_pill_content.php";
 
 ?>
   </div>
@@ -235,7 +238,7 @@ include "func_pill_content.php";
   <?php
 $cat = "approved";
 $qry_statement = "SELECT * FROM `client_order` WHERE `client_id` = $client_id AND `status` = 'approved';";
-include "func_pill_content.php";
+include "../func/func_pill_content.php";
 
 ?>
   
@@ -246,7 +249,7 @@ include "func_pill_content.php";
     <?php
       $cat = "delivered";
       $qry_statement = "SELECT * FROM `client_order` WHERE `client_id` = $client_id AND `status` = 'delivered';";
-      include "func_pill_content.php";
+      include "../func/func_pill_content.php";
   
   ?>
     
@@ -257,7 +260,7 @@ include "func_pill_content.php";
     <?php
       $cat = "cancelled";
       $qry_statement = "SELECT * FROM `client_order` WHERE `client_id` = $client_id AND `status` = 'cancelled';";
-      include "func_pill_content.php";
+      include "../func/func_pill_content.php";
   
   ?>
     
@@ -269,11 +272,17 @@ include "func_pill_content.php";
     <?php
       $cat = "returned";
       $qry_statement = "SELECT * FROM `client_order` WHERE `client_id` = $client_id AND `status` = 'returned';";
-      include "func_pill_content.php";
+      include "../func/func_pill_content.php";
   
   ?>
     
     </div>
+
+    <footer>
+<?php
+require('../func/func_footer.php')
+?>
+</footer>
 
     <!-- Button trigger modal -->
 <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -325,6 +334,8 @@ include "func_pill_content.php";
 
     
 <script>
+$("#page_footer").css("bottom","");
+
 var active = document.getElementById('nav_orders');
 active.setAttribute('class','nav-link my-nav-link my-active',);
 

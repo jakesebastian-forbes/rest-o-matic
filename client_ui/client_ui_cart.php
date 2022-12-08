@@ -1,5 +1,5 @@
 <?php
-require "func_session.php";
+require "../func/func_session.php";
 ?>
 
 
@@ -9,7 +9,7 @@ require "func_session.php";
 <head>
     <?php
         $title = "Cart | Client | Restomatic";
-        require('must_haves.php');
+        require('../func/func_must_haves.php');
     ?>
     <script src="https://kit.fontawesome.com/1c020da525.js" crossorigin="anonymous"></script> 
     <script data-require="jquery@3.1.1" data-semver="3.1.1" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -252,7 +252,7 @@ CHECKOUT
 
 
 <!-- Modal -->
-<div name = "modal_checkout">
+<div name = "modal_checkout" >
 <div class="modal fade" id="place_orders" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -321,10 +321,26 @@ style = "background-color:#c1bdbd;
 </div>
 
 
+
 <script>
 var active = document.getElementById('nav_cart');
 active.setAttribute('class','nav-link my-nav-link my-active',);
 var my_total_price = 0;
+
+
+$('#place_orders').on('hidden.bs.modal', function () {
+//   window.alert('hidden event fired!');
+  $("#modal_list_selected").empty();
+
+
+});
+
+$('#my_modal_delete').on('hidden.bs.modal', function () {
+//   window.alert('hidden event fired!');
+  $("#modal_delete_body").empty();
+
+
+});
 
 function ischecked(item_name,id){
 //    var id = '#' + id;
@@ -338,7 +354,7 @@ if($('#' + id).is(":checked")) {
         // console.log(chk + " :"+ item_name + "name" +"sess" + <?php //echo $_SESSION['client_id']?>);
         // $("#total_preview").append("<h6 class = cart_"+menu_id+">"+menu_id +"asda"+"</h6>");
 
-        $.post("select_items.php",
+        $.post("../func/func_select_items.php",
     {
         item_id: id,
         client_id: <?php echo $_SESSION['client_id']?>
@@ -387,7 +403,7 @@ function more(id,name){
 // console.log($("#qnty_counter_"+id).val(qnty+1));
 console.log("id : " + id)
 
-$.post("func_add_cart.php",
+$.post("../func/func_add_cart.php",
     {
         menu_id: id,
         client_id: <?php echo $_SESSION['client_id']?>
@@ -594,7 +610,7 @@ function place_order_final(){
     var order_id;
 
     $.ajax({
-		url: "func_place_order.php",
+		url: "../func/func_place_order.php",
 		type: "POST",
 		data: {
 			"client_id": <?php echo $_SESSION['client_id']?>
@@ -643,7 +659,7 @@ function place_order_final(){
 
         console.log("inserting order_detail");
         
-        $.post("func_insert_order_details.php",
+        $.post("../func/func_insert_order_details.php",
             {
             order_id : order_id,
             menu_id: a[i].childNodes[0].innerHTML,
@@ -671,7 +687,7 @@ var a = $("#modal_list_selected").children();
            id = a[i].firstChild.innerHTML;
            console.log(id);
 
-           $.post("func_delete_cart.php",
+           $.post("../func/func_delete_cart.php",
     {
         menu_id: id,
         client_id: <?php echo $_SESSION['client_id']?>
@@ -696,5 +712,11 @@ window.location.reload(true);
 
 
 </script>
+
+<footer>
+              <?php
+                require('../func/func_footer.php')
+              ?>
+          </footer>
 </body>
 </html>

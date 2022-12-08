@@ -1,5 +1,5 @@
 <?php
-require "func_session.php";
+require "../func/func_session.php";
 
 ?>
 
@@ -9,9 +9,9 @@ require "func_session.php";
 <head>
   <?php
     $title = "Home | Client";
-    require('must_haves.php');
+    require('../func/func_must_haves.php');
   ?>
-   <script src="https://kit.fontawesome.com/1c020da525.js" crossorigin="anonymous"></script> 
+  
 </head>
 
 <style>
@@ -105,14 +105,15 @@ require "func_session.php";
                               style = "background-color:whitesmoke;
                                         border-radius:8px;">
                             <div class="panel-heading">
-                              <form action="">
-                                <input type="text" value = "<?php echo $client_id?>" hidden>
-                                  <a href="acc_settings_ui.php" style = "float:right; margin-right:15px;">
-                                        <span><img src="images/icon/pencil_icon.png" alt="edit" 
+                              <!-- <form action="client_acc_setting.php" method="POST"> -->
+                                <!-- <input type="text" value = "<?php //echo $client_id?>" hidden> -->
+                                
+                                  <a href="client_acc_settings_ui.php" style = "float:right; margin-right:15px;">
+                                        <span><img src="../images/icon/pencil_icon.png" alt="edit" 
                                         class ="icon_img" style= "display:inline"></span>
                                        <h6 style= "display:inline">Edit</h6>
                                   </a>
-                              </form>
+                              <!-- </form> -->
                             </div>
                             <div class="panel-body">
 
@@ -180,13 +181,13 @@ require "func_session.php";
                         </div>
                         </a>
                         <br>
-                        <a href="client_ui_reservation.php" style = "text-decoration:none;color:black;">
+                        <!-- <a href="client_ui_reservation.php" style = "text-decoration:none;color:black;"> -->
                         <div class = "text-center my-lg-banner">
-                            <h3>1</h3>
+                            <h4>Coming Soon!</h4>
                             <h6>Reservations</h6>
 
                         </div>
-                        </a>
+                        <!-- </a> -->
                         <?php 
                          } 
                           }
@@ -252,109 +253,15 @@ require "func_session.php";
                   </div>
               </div>
             
-                <footer>
-                  <div class="footer container-fluid" style="background-color:black ;margin-top: 20px; color: white;">
-                    <div class="row" style="padding-top:1%;">
-                        <div class="col-lg-6 col-md-6 col-sm-6" >
-                            <div class="row">
-                                <h2>ABOUT US</h2>
-                            </div>
-                            <div class="row">
-                                <p>HOT DOG DIGIDIDOG HOT DOG DIGIDIDOG<br>HOT DOG DIGIDIDOG HOT DOG DIGIDIDOG<br>HOT DOG DIGIDIDOG HOT DOG DIGIDIDOG<br>HOT DOG DIGIDIDOG HOT DOG DIGIDIDOG</p>
-                            </div>
-                            
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6" style="display: flex; justify-content: space-evenly">
-                        <div class="col-lg-3">
-                            <div class="row">
-                                <center>
-                                    <h4>FOLLOW US</h4>
-                                </center>
-                                
-                            </div>
-                            <div class="row"  >
-                                <div class="col">
-                                    <center>
-                                        <div class="socialmedia" >
-                                            <a href="https://www.facebook.com/kcorndognasugbu/"><i class="fa-brands fa-facebook"></i></a>
-                                            <a href="#"><i class="fa-brands fa-instagram"></i></a>
-                                            <a href="#"><i class="fa-brands fa-twitter"></i></a>
-                                        </div>
-                                    </center>
-                                   
-                                </div> 
-                            </div>
-                        </div>
-                    
-                        
-                        <div class="col-lg-3">
-                            <center>
-                                <h5>CALL US</h5>
-                                <p>(+63) 916 987 4623</p>
-                            </center>
-                        </div>
-                    </div>
-                    </div>
-                    <hr>
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <small>@2021 cornpups kenan's korean Corndog, Nasugbu Batangas, All Rights Reserved</small>
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6" style="display: flex; justify-content:space-evenly;">
-                        <div class="col-4">
-                            <small style="float:right;">PRIVACY POLICY</small>
-                        </div>
-                        <div class="col-4">
-                            <small style="float: left">TERMS OF USE</small>
-                        </div>    
-                    </div>
-                </div>
-                </div>
-            </footer>
+                
     </div>
   </div>
 
-  <?php
-
-include ('db_connection.php');
-$client_id = $_SESSION['client_id'];
-
-if($conn->connect_error){
-    die('Connection failed : ' . $conn->connect_error);
-   }else{
-    // echo " uyyy". $category;
-  $query = "SELECT `count` FROM `order_count` WHERE client_id = $client_id ;";
-
-  $result = mysqli_query($conn,$query);
-  
-
-  while($rows = mysqli_fetch_assoc($result))
-      {
-        $count = $rows['count'];
-
-        
-
-      }
-    //   echo 'count ' . $count;
-
-    }
-
-// echo "
-// <script>
-
-// document.getElementById('val_username').innerHTML = '$username1' ; 
-// document.getElementById('val_fullname').innerHTML = '$fullname' ; 
-// document.getElementById('val_email').innerHTML = '$email' ; 
-// document.getElementById('val_phone').innerHTML = '$phone_number' ; 
-// document.getElementById('val_address').innerHTML = '$address' ; 
-
-// document.getElementById('orders_cnt').innerHTML = '$count' ; 
-
-// </script>";
-
-
-?>
-
+          <footer>
+              <?php
+                require('../func/func_footer.php')
+              ?>
+          </footer>
 
 <script>
 

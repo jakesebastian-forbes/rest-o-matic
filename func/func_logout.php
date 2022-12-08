@@ -25,7 +25,7 @@ echo "\n";
 echo "Sess_ID ";
 echo SESSION_ID();
 
-header("Location: login.php");
+header("Location: ../login.php");
 echo "redirecting";
 
 

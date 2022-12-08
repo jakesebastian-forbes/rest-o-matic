@@ -16,6 +16,8 @@
 
 
   </style>
+
+<script src="https://kit.fontawesome.com/1c020da525.js" crossorigin="anonymous"></script> 
 </head>
 
 
@@ -24,7 +26,7 @@
         
           <div class="d-flex flex-row mx-51" style="color:white">
             <a href="index.php">
-            <img src="images/icon/web_icon.png" alt="web_icon.png" style="max-height: 70px;" >
+            <img src="../images/icon/web_icon.png" alt="web_icon.png" style="max-height: 70px;" >
             </a>
             <h1 class="myheading2 px-3 my=2" style="padding-bottom: 0 "><?php echo $title_sidebar;?></h1>
           </div>
@@ -51,7 +53,7 @@
                     
                     <a class="nav-link my-nav-link" aria-current="" href="client_ui.php" 
                     id = "nav_home">
-                    <span><img src="images/icon/home_icon.png" alt="home_icon" class = "nav_icon"></span>
+                    <span><img src="../images/icon/home_icon.png" alt="home_icon" class = "nav_icon"></span>
                     HOME</a>
                   </li>
                   <li class="nav-item">
@@ -59,14 +61,14 @@
                     
                     <a class="nav-link my-nav-link" aria-current="" href="client_ui_profile.php" 
                     id = "nav_account" >
-                    <span><img src="images/icon/account_icon.png" alt="account_icon" class = "nav_icon"></span>
+                    <span><img src="../images/icon/account_icon.png" alt="account_icon" class = "nav_icon"></span>
                     ACCOUNT</a>
                   </li>
                   <li class="nav-item">
                   
                     <a class="nav-link my-nav-link" href="client_ui_cart.php"
                     id = "nav_cart">
-                    <span><img src="images/icon/cart_icon.png" alt="cart_icon" class = "nav_icon"></span>
+                    <span><img src="../images/icon/cart_icon.png" alt="cart_icon" class = "nav_icon"></span>
                     CART</a>
 
                     <div class = "my-side-banner">
@@ -94,7 +96,7 @@
                   
                     <a class="nav-link my-nav-link" href="client_ui_order.php"
                     id = "nav_orders">
-                    <span><img src="images/icon/purchases_icon.png" alt="order_icon" class = "nav_icon"></span>  
+                    <span><img src="../images/icon/purchases_icon.png" alt="order_icon" class = "nav_icon"></span>  
                     ORDERS
                   </a>
                   
@@ -107,7 +109,8 @@
                           if($conn->connect_error){
                             die('Connection failed : ' . $conn->connect_error);
                            }else{
-                          $query = "SELECT * FROM `order_count` WHERE client_id =  $client;";
+                          $query = "SELECT count(order_id) AS `count` FROM `orders_content` 
+                          WHERE `client_id` = $client AND (status != 'delivered' AND status != 'cancelled') ";
                         
                           $result = mysqli_query($conn,$query);
 
@@ -123,14 +126,14 @@
                   
                     <a class="nav-link my-nav-link" href="client_ui_reservation.php"
                     id = "nav_reservation">
-                    <span><img src="images/icon/reservation_icon.png" alt="reservation_icon" class = "nav_icon"></span>  
+                    <span><img src="../images/icon/reservation_icon.png" alt="reservation_icon" class = "nav_icon"></span>  
                     RESERVATION</a>
                   </li>
-                  <li class="nav-item">
+                  <li class="nav-item" hidden>
                   
                     <a class="nav-link my-nav-link" href="client_ui_review.php"
                     id = "nav_review" >
-                    <span><img src="images/icon/review_icon.png" alt="review_icon" class = "nav_icon"></span>
+                    <span><img src="../images/icon/review_icon.png" alt="review_icon" class = "nav_icon"></span>
                     REVIEWS</a>
                   </li>
                
@@ -149,7 +152,7 @@
                 </ul>
                 <div class="position-absolute bottom-0 end-0 m-3">
                   
-                <a href="func_logout.php">LOGOUT</a>
+                <a href="../func/func_logout.php">LOGOUT</a>
                </div>
                </div>
         </nav>

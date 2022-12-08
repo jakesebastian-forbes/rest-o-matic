@@ -14,13 +14,7 @@
     <meta name = "description" content="">
     <title>HOME | ADMIN</title>
 
-    <link rel="icon" type="image/x-icon" href="images/icon/web_icon.png"/> 
-    <link rel="stylesheet" href="../bootstrap-5.2.2/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="../css/general.css"/>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
+  
     <style>
         /* Style the buttons */
 /* .btn {
@@ -147,7 +141,7 @@ require "admin_sidebar.php";
             
             </div>
 
-    <script src = "../bootstrap-5.2.2/js/bootstrap.bundle.min.js"></script>
+    <!-- <script src = "../bootstrap-5.2.2/js/bootstrap.bundle.min.js"></script> -->
     
     <script>
 
@@ -187,7 +181,7 @@ require "admin_sidebar.php";
   
 function get_data(){
     $.ajax({
-		url: "func_get_chart_data.php",
+		url: "../func/func_get_chart_data.php",
 		type: "GET",
 		// data: {
 		// 	"client_id": <?php //echo $_SESSION['client_id']?>
@@ -257,7 +251,7 @@ var curr_date = new_date.getFullYear() + "-" + parseInt(new_date.getMonth()+1) +
 function get_sales(){
 
 $.ajax({
-    url: "func_get_total_sales.php",
+    url: "../func/func_get_total_sales.php",
     type: "POST",
     cache: false,
     async : true,
@@ -292,7 +286,7 @@ $.ajax({
 function get_pending(){
 
 $.ajax({
-    url: "func_get_total_pending.php",
+    url: "../func/func_get_total_pending.php",
     type: "POST",
     cache: false,
     async : true,
@@ -309,7 +303,7 @@ $.ajax({
 function get_delivered(){
 
 $.ajax({
-    url: "func_get_total_delivered.php",
+    url: "../func/func_get_total_delivered.php",
     type: "POST",
     cache: false,
     async : true,
@@ -326,7 +320,7 @@ $.ajax({
 function get_users(){
 
 $.ajax({
-    url: "func_get_total_users.php",
+    url: "../func/func_get_total_users.php",
     type: "POST",
     cache: false,
     async : true,
@@ -342,7 +336,7 @@ $.ajax({
 function get_top_users(){
 
 $.ajax({
-    url: "func_get_top_customers.php",
+    url: "../func/func_get_top_customers.php",
     type: "POST",
     cache: false,
     async : true,

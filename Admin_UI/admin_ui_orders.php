@@ -202,9 +202,9 @@
                     </div>
                     <div class="col">
                         
-                    <div>Status : <b id = "status<?php echo $order_id?>"><?php echo $rows['status']?></b></div>
+                    <div>Status : <b id = "status<?php echo $order_id?>" name = "status_real" value = "<?php echo $rows['status']?>"><?php echo $rows['status']?></b></div>
                   <script>
-                    var order_status_edit = '<label for="status">Status</label><select name="status" id="status_edit<?php echo $order_id?>"'+ 
+                    var order_status_edit = '<hr><label for="status">Status</label><select name="status" id="status_edit<?php echo $order_id?>"'+ 
                    ' onchange="updateStatus(this.value,this.id,this)">'+
                         '<option value="Pending">Pending</option>'+
                         '<option value="Approved">Approved</option>'+
@@ -301,7 +301,7 @@
                 </div>
                 <div class="row ">
                     <p class="m-0 text-muted my-fit-content">SHIPPING : </p> 
-                    <p class="m-0 my-fit-content"> P <?php $subtotal =  $subtotal + 30.00; echo $subtotal;?></p>
+                    <p class="m-0 my-fit-content"> P <?php $subtotal =  $subtotal + 30.00; echo 30.00;?></p>
                 </div>
                 <div class="row ">
                     <p class="m-0 text-muted my-fit-content">DISCOUNT : </p> 
@@ -311,24 +311,39 @@
                     echo $discount;?></p>
                 </div>
                 <div class="row">
-                    <p class="m-0 text-muted my-fit-content">TOTAL : </p> 
+                    <p class="m-0 text-muted my-fit-content"><b>TOTAL : </b> </p> 
                     <p class="m-0 my-fit-content"> P <?php $total = $subtotal;
                     echo $total;?></p>
                 </div>
             </div>
-                  <hr>
+                  
                   <div id = "stat_edit<?php echo $order_id?>">
                   </div>
                   <script>
                      <?php 
 
 $stats = $rows['status'];
-?>
+
+?>  
+                    var status = "<?php echo $stats?>";
+                    if(status.toLowerCase() == "cancelled" || status.toLowerCase() == "delivered" ){
+
+                        console.log("wahh");
+                    }
+                    else{
+
                     var anothera = $("#stat_edit<?php echo $order_id?>");
                     anothera.append(order_status_edit); 
                     document.getElementById('status<?php echo $order_id?>').value = '<?php echo $stats?>' ;
-                    // console.log(anothera[0].innerHTML);
-                    console.log($("#status_edit<?php echo $order_id?>").val('<?php echo $stats?>'));
+                    console.log("<?php echo $order_id.":".$stats?>");
+                    $("#status_edit<?php echo $order_id?>").val("<?php echo $stats?>");
+
+                    }
+                    
+                    // $("#status_edit139").val("Delivered");
+                    
+
+                   
                     </script>
                   
 
@@ -388,7 +403,7 @@ $stats = $rows['status'];
         // console.log(order_id);
 
         $.ajax({
-        url: "func_update_order_status.php",
+        url: "../func/func_update_order_status.php",
         type: "POST",
         data: {
           "order_id": order_id,
@@ -425,7 +440,7 @@ $stats = $rows['status'];
 
  
 
-    var accordion_items = $('[name="status"]'); //get all accordion item
+    var accordion_items = $('[name="status_real"]'); //get all accordion item
     
    function show_items(){
     var hidden_accordion = $("div").find(`[hidden = 'hidden']`); //get hidden accordion items

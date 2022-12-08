@@ -18,7 +18,7 @@ if(!isset($_SESSION_ID)){
       # code...
     }
     elseif($_SESSION['privilage'] == 'client'){
-        header("Location: client_ui.php");
+        header("Location: client_ui/client_ui.php");
         
     }
 
@@ -143,7 +143,7 @@ document.getElementById('buttonss').append(signup_btn);
             
     
             <div class="row">
-              <form method="post" action="func_login_validation.php">  
+              <form method="post" action="func/func_login_validation.php">  
        
                 <div class="mb-2">
                   <!-- <label for="exampleInputEmail1" class="form-label">Email address</label> -->

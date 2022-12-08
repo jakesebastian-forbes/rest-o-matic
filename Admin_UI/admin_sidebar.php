@@ -1,6 +1,15 @@
 
 <?php //echo $page_title; ?>
 <head>
+
+<link rel="icon" type="image/x-icon" href="images/icon/web_icon.png"/> 
+    <link rel="stylesheet" href="../bootstrap-5.2.2/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../css/general.css"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://kit.fontawesome.com/1c020da525.js" crossorigin="anonymous"></script> 
+
   <style>
 .my-side-banner{
     display: inline-flex;
@@ -45,12 +54,12 @@
                               DASHBOARD</a>
                             </li>
                             <li class="nav-item">
-                              <a class="nav-link" href="ADMIN_ORDER_NEW.php">
+                              <a class="nav-link" href="admin_ui_orders.php">
                               <span><img src="../images/icon/cart_icon.png" alt="cart_icon" class = "nav_icon"></span>ORDERS</a>
                             </li>
-                            <!-- <li class="nav-item">
+                            <li class="nav-item" hidden>
                               <a class="nav-link" href="#">RESERVATION</a>
-                            </li> -->
+                            </li>
                             <li class="nav-item dropdown">
                               <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                               <span><img src="../images/icon/purchases_icon.png" alt="order_icon" class = "nav_icon">REPORTS</a>
@@ -64,20 +73,20 @@
                               <span><img src="../images/icon/management.png" alt="order_icon" class = "nav_icon">
                              MANAGEMENT</a>
                               <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="admin_employee_management.php">EMPLOYEE
+                                <li><a class="dropdown-item" href="admin_ui_management_employee.php">EMPLOYEE
                              
                                 </a>
                                 </li>
-                                <li><a class="dropdown-item" href="admin_menu_1.php">INVENTORY
+                                <li><a class="dropdown-item" href="admin_ui_management_menu.php">INVENTORY
                                 </a>
                                 </li>
                               </ul>
                               <li class="nav-item">
-                                <a class="nav-link" href="#">
+                                <a class="nav-link" href="admin_account.php">
                                 <span><img src="../images/icon/account_icon.png" alt="account_icon" class = "nav_icon">ACCOUNTS</a>
                               </li>
                               <li class="nav-item">
-                                <a href="func_logout.php">
+                                <a href="../func/func_logout.php">
                                 <button type="button" class="btn btn-danger btn-lg text-black" style="border-radius: 24px;"> 
                                 LOGOUT </button>
                                 </a>

@@ -10,7 +10,7 @@ session_start();
 
     <?php
     $title = "Review | Client | Restomatic";
-      require('must_haves.php');
+      require('../func/func_must_haves.php');
     ?>
 </head>
 
@@ -204,7 +204,7 @@ session_start();
             <!-- </div> -->
             <footer>
               <?php
-                require('footer.php')
+                require('../func/func_footer.php')
               ?>
           </footer>
         </div>

@@ -34,7 +34,7 @@ if($conn->connect_error){
 
             // echo "I am sorry. It seems you haven't created an account. Please create an account and then try again.";
             // echo "Client";
-            header("Location: login.php?acc=null");
+            header("Location: ../login.php?acc=null");
             exit();
         }
         else{  
@@ -75,12 +75,12 @@ if($conn->connect_error){
                 $_SESSION["birthdate"] = $C_credencials['birthdate'];
                 // $_SESSION["profile_picture"] = $C_credencials['profile_picture'];
 
-                header("Location: client_ui.php");
+                header("Location: ../client_ui/client_ui.php");
                 die;
 
         }else{
             echo "Wrong password!";
-            header("Location: login.php?credencial=mismatch&user=$login_username");
+            header("Location: ../login.php?credencial=mismatch&user=$login_username");
             exit();
 
         }
@@ -110,7 +110,7 @@ if($conn->connect_error){
             $_SESSION["username"] = $S_credencials['username'];
             $_SESSION["password"] = $S_credencials['password'];
             $_SESSION["privilage"] = $S_credencials['privilage'];
-            header("Location: admin_home.php");
+            header("Location: ../admin_ui/admin_ui_dashboard.php");
             die;
     
         }

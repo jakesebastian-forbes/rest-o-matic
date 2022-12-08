@@ -5,15 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="bootstrap-5.2.2/css/bootstrap.min.css"/>
+    <!-- <link rel="stylesheet" href="bootstrap-5.2.2/css/bootstrap.min.css"/>
     <script src="https://kit.fontawesome.com/1c020da525.js" crossorigin="anonymous"></script> 
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"> -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
-    <script src="bootstrap-5.2.2/js/bootstrap.bundle.min.js"></script> 
+    <!-- <script src="bootstrap-5.2.2/js/bootstrap.bundle.min.js"></script> 
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script> -->
 
-    <title>MENU | MANAGEMENT</title>
+    <title>MANAGEMENT | MENU | Restomatic</title>
 </head>
 
 <style>
@@ -78,13 +78,13 @@ body {
 .panel-body h7{
   color: #212529;
 }
-.card-img-top {
-  width: 15vw;
-  height: 15vw;
-  /* border-radius: 50%; */
+.card .card-img-top {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
   object-fit: cover;
-  margin-top: 15px;
-  margin-left: 105px;
+  margin-top: 7px;
+  margin-left: 300px;
 }
 .card-footer{
   position: static;
@@ -125,66 +125,18 @@ body {
 
 <body>
     <div class="container-fluid">
-        <div class="row">
-            <nav class="navbar mynavbar" style="width: 100vw; min-width: fit-content; max-height: 86pfix                                  ; background-color: black;">
-                <div class="d-flex justify-content-start">
-                  <img src="images/icon/web_icon.png" class="px-3" alt="web_icon.png" style="max-height: 70px">
-                    <h1 class="myheading1" style="padding-top: 7px; color: white;">REST-O-MATIC</h1>
-                </div>
-                <nav class="navbar bg-dark">
-                  <div class="container-fluid">
-                    <a class="navbar-brand" href="#"></a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
-                      <span class="navbar-toggler-icon"></span>
-                    </button>
-                      <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-                        <div class="offcanvas-header">
-                          <h5 class="offcanvas-title" id="offcanvasNavbarLabel">USERNAME</h5>
-                          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                        </div>
-                        <div class="offcanvas-body">
-                          <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                            <li class="nav-item">
-                              <a class="nav-link"  href="#">DASHBOARD</a>
-                            </li>
-                            <li class="nav-item">
-                              <a class="nav-link" href="#">ORDERS</a>
-                            </li>
-                            <li class="nav-item">
-                              <a class="nav-link" href="#">RESERVATION</a>
-                            </li>
-                            <li class="nav-item dropdown">
-                              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">REPORTS</a>
-                              <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="admin_logs.html">LOGS</a></li>
-                              </ul>
-                            </li>
-                            <li class="nav-item dropdown">
-                              <a class="nav-link active dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">MANAGEMENT</a>
-                              <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="admin_employee_management.html">EMPLOYEE</a></li>
-                                <li><a class="dropdown-item" href="#">MENU</a></li>
-                              </ul>
-                              <li class="nav-item">
-                                <a class="nav-link" href="#">ACCOUNTS</a>
-                              </li>
-                              <li class="nav-item">
-                                <button type="button" class="btn btn-danger btn-lg text-black" style="border-radius: 24px;"> LOGOUT </button>
-                            </li>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                  </div>
-                </nav>
-            </nav>
-          </div>
+        <?php
+        $page_title = "MANAGEMENT | MENU";
+
+        require "admin_sidebar.php";
+        
+        ?>
           <div class="panel">
             <nav>
               <div class="navbar accNavbar">
                     <div class="col-lg-12 col-md-12 col-sm-12">
                       <h2><b>Menu Management</b></h2>
-                      <a href="#" class="btn btn-secondary"><i class="material-icons">file_download</i> <span>Export to Excel</span></a>
+                      <a href="#" class="btn btn-secondary"><i class="material-icons">file_download</i> <span>Export to Excel</span></a><a href="#" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#reg-modal"><i class="fa-sharp fa-solid fa-circle-plus" data-toggle="tooltip" title="Add"></i> <span>Add New Item</span></a>
                   </div>
               </div>
             </nav>
@@ -247,7 +199,6 @@ body {
                   </div>
                   
                   <div class="card-footer">
-                  <a href="#" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#reg-modal"><i class="fa-sharp fa-solid fa-circle-plus" data-toggle="tooltip" title="Add"></i> <span>Add New Item</span></a>
                     <a href="#" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#editItem"><i class="bi-pencil-square" data-toggle="tooltip" title="Edit" style="color: #2196F3;"></i> <span>Edit Item</span></a>
                     <a href="#" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#deleteItem"><i class="bi-trash3-fill" data-toggle="tooltip" title="Delete" style="color: #F44336;"></i> <span>Delete Item</span></a>	
                   </div>

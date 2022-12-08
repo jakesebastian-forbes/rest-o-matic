@@ -6,11 +6,11 @@ if ($_SESSION["privilage"] == 'guest'){
   echo "add button for login or back to index";
  
 }else{
-  require "func_check_sess.php";
+  require "../func/func_check_sess.php";
 
 }
 
-require "func_client_priv.php";
+require "../func/func_client_priv.php";
 
 ?>
 
@@ -22,7 +22,7 @@ require "func_client_priv.php";
 
     <?php
         $title = "Orders | Client | Restomatic";
-        require 'must_haves.php';
+        require '../func/func_must_haves.php';
     ?>
 </head>
 <body>
@@ -46,39 +46,44 @@ echo "asdadss";
     <h1 id="classics">CLASSICS</h1>
   <?php
   $category = "classics";
-  include('func_menu_content.php');
+  include('../func/func_menu_content.php');
   ?>
 
   <h1 id="wholeMozza">Whole Mozzarella</h1>
   <?php
   $category = "Whole Mozzarella";
-  include('func_menu_content.php');
+  include('../func/func_menu_content.php');
   ?>
 
   <h1 id="halfMozza_halfSausge">Half Mozza Plus Half Sausage</h1>
   <?php
   $category = "Half Mozza Plus Half Sausage";
-  include('func_menu_content.php');
+  include('../func/func_menu_content.php');
   ?>
 
   <h1 id="specials">Specials</h1>
   <?php
   $category = "Specials";
-  include('func_menu_content.php');
+  include('../func/func_menu_content.php');
   ?>
 
 </div>
+<footer>
+<?php
+require('../func/func_footer.php')
+?>
+</footer>
 
 
 </div>
+
+<!-- 
 </div>
 </div>
+</div> -->
 
 
-</div>
 
-
-  
 
 <div class="modal fade " id="reg-modal" tabindex="-1" aria-labelledby="modal-title" aria-hidden="true">
               <div class="modal-dialog modal-dialog-centered">
@@ -112,7 +117,8 @@ echo "asdadss";
                 </div>
               </div>
         </div>
-
+</div>
+       
 
 
 
@@ -138,7 +144,7 @@ echo "asdadss";
     // console.log('ordered '+menu_id);
   //  alert('added to cart!');
   $.ajax({
-		url: "func_add_cart.php",
+		url: "../func/func_add_cart.php",
 		type: "POST",
 		data: {
 			"client_id": user,
@@ -197,7 +203,11 @@ active.setAttribute('class','nav-link my-nav-link my-active',);
 
 var bookmark = document.getElementById('bookmark');
 bookmark.removeAttribute('hidden');
+
+$("#page_footer").css("bottom","");
 </script>
+
+
 
 </body>
 

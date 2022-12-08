@@ -1,11 +1,12 @@
 <?php
-include ('db_connection.php');
+include ('func_db_connection.php');
 
 $client_id=$_POST['client_id'];
 $menu_id=$_POST['menu_id'];
 // $menu_id = 16;
 // $stmt->bind_param("ssssssss",$firstname,$lastname,$username,$hash_password,$email,$phonenumber,$address,$birthday);
-$sql = "DELETE FROM `cart` WHERE menu_id = '$menu_id' AND client_id = '$client_id'";
+$sql = "INSERT INTO `cart`( `client_id`, `menu_id`) 
+VALUES ('$client_id','$menu_id')";
 
 if(!$conn){
     die('Connection failed:'. mysqli_connect_error());

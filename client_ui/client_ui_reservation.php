@@ -8,7 +8,7 @@ session_start();
 
   <?php
   $title = "Home | Client";
-  require('must_haves.php');
+  require('../func/func_must_haves.php');
   ?>
     <script src="https://kit.fontawesome.com/1c020da525.js" crossorigin="anonymous"></script>  
 
