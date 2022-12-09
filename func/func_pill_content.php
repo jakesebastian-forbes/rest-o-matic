@@ -141,7 +141,7 @@ $cat;
                                                 </div>
                                    
                                             </div> 
-                                            <hr> 
+                                            <!-- <hr>  -->
                                             <div class="row" style="justify-content: right; margin-right:-2px;">
                                             <?php
                                             // echo "console.log('$status')";
@@ -149,7 +149,10 @@ $cat;
                                                 
                                                 echo '   <div class="col-sm-3"> 
                                                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"
-                                                 id ="cancel_'.$order_id.' " onclick ="cancel_order(this.id)">CANCEL</button>
+                                                 id ="cancel_'.$order_id.' " onclick ="cancel_order(this.id)" style="
+                                                 display: block;
+                                                 float: right;
+                                             ">CANCEL</button>
                                                 
                                             </div>';
                                            

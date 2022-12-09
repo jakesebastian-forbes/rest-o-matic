@@ -409,18 +409,19 @@ body {
                               <option value="Active">Active</option>
                               <option value="Inactive">Inactive</option>
                               <option value="Suspended">Suspended</option>
+                            </select>
                             </div>
-                          </div>
+                        </div>
                       <div class="row mb-2 my-0 py-0 gx-0">
                       
                             <input type="text" value="<?php //echo $rows['emp_email']?>" class="form-control" id="modal_email" />
                        
                       </div>
-                      <div class="row mb-2 my-0 py-0 gx-0">
+                      <!-- <div class="row mb-2 my-0 py-0 gx-0">
                       <div class="col">
                             <input type="text" value="<?php //echo $rows['emp_address']?>" class="form-control" id="modal_address" />
                         </div>
-                      </div>
+                      </div> -->
                       <!-- <div class="row mb-2 my-0 py-0 gx-0">
                         <input type="number" value="<?php //echo $rows['emp_age']?>" class="form-control" id="modal-age" />
                       </div> -->
@@ -434,7 +435,8 @@ body {
                         <option value="Delivery">Delivery</option>
                       </div>
                       <div class="row mb-2 my-0 py-0 gx-0">
-                        <input type="file" value="<?php echo $rows['emp_image']?>" class="file-upload-input" id="modal-image" 
+                      <?php echo '<img src = "data:image/jpeg;base64,'.base64_encode($rows['img']) .'" class="card-img-top" alt="...">' ?>
+                        <input type="file" value="<?php //echo $rows['img']?>" class="file-upload-input" id="modal-image" 
                           name="emp_image" onchange="readURL(this)"/>
                       </div>
                       </div>
@@ -540,7 +542,7 @@ $("#selected-position").val(privilage);
 
         $("#page_footer").css("position","");
 
-    
+        $("#link_management").addClass("active");
 
   </script>
 </body>

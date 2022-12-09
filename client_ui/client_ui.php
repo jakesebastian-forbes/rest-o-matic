@@ -3,7 +3,8 @@ session_start();
 
 if ($_SESSION["privilage"] == 'guest'){
   // echo "GUESTTTTTTTTTTT";
-  echo "add button for login or back to index";
+  // echo "add button for login or back to index";
+  
  
 }else{
   require "../func/func_check_sess.php";
@@ -11,7 +12,7 @@ if ($_SESSION["privilage"] == 'guest'){
 }
 
 require "../func/func_client_priv.php";
-
+// echo "HELLO";
 ?>
 
 <!DOCTYPE html>
@@ -39,38 +40,45 @@ require "../func/func_client_priv.php";
 // echo "asdadss";
 ?>
   <?php 
+  
+
   $title_sidebar = "MENU";
-  require('client_sidebar.php');?>
+  include('client_sidebar.php');
+
+
+  
+  ?>
 
 <div class= "p-2">
     <h1 id="classics">CLASSICS</h1>
   <?php
   $category = "classics";
-  include('../func/func_menu_content.php');
+  // echo $category;
+  require('../func/func_menu_content.php');
   ?>
 
   <h1 id="wholeMozza">Whole Mozzarella</h1>
   <?php
   $category = "Whole Mozzarella";
-  include('../func/func_menu_content.php');
+  require('../func/func_menu_content.php');
   ?>
 
   <h1 id="halfMozza_halfSausge">Half Mozza Plus Half Sausage</h1>
   <?php
   $category = "Half Mozza Plus Half Sausage";
-  include('../func/func_menu_content.php');
+  require('../func/func_menu_content.php');
   ?>
 
   <h1 id="specials">Specials</h1>
   <?php
   $category = "Specials";
-  include('../func/func_menu_content.php');
+  require('../func/func_menu_content.php');
   ?>
 
 </div>
 <footer>
 <?php
-require('../func/func_footer.php')
+require('../func/func_footer.php');
 ?>
 </footer>
 
@@ -106,7 +114,7 @@ require('../func/func_footer.php')
 
                     <div class="modal-footer">
 
-                    <a href="login.php"> <!-- <a href="login.php"></a><a href='login.php?hello=true'>Submit</a> -->
+                    <a href="../login.php"> <!-- <a href="login.php"></a><a href='login.php?hello=true'>Submit</a> -->
                     <button class="btn btn-primary" name = "">Go to login</button> 
                     </a>
                     </div>
@@ -129,8 +137,8 @@ require('../func/func_footer.php')
     // echo "GUESTTTTTTTTTTT";
     echo"<script>
   
-  
     document.getElementById('sidebar-btn').setAttribute('hidden','true'); 
+
    
   </script>";
   }
@@ -138,9 +146,13 @@ require('../func/func_footer.php')
 
 <script>
     function add_to_cart(value){
-    var user = parseInt(<?php echo $_SESSION['client_id']; ?>) ; 
+    var user = parseInt(<?php 
+       if($_SESSION['privilage'] == 'client'){
+        echo $_SESSION['client_id'];
+       }
+       ?>) ; 
     var menu_id = value;
-    console.log('user ' +user);
+    // console.log('user ' +user);
     // console.log('ordered '+menu_id);
   //  alert('added to cart!');
   $.ajax({
@@ -155,7 +167,7 @@ require('../func/func_footer.php')
       console.log("1" + dataResult);
 			var dataResult = JSON.parse(dataResult);
 			if(dataResult.statusCode==200){
-        alert("Added to Cart!" + user + menu_id);
+        alert("Added to Cart!");
         console.log(dataResult);
 
 				// $("#butsave").removeAttr("disabled");
@@ -175,24 +187,42 @@ require('../func/func_footer.php')
 
 
  <script>
-        function switches(x){
-        var element = document.getElementById("with_fries_sw" + x);
-        var price = document.getElementById("item_price" + x);
+  //       function switches(x){
+  //       var element = document.getElementById("with_fries_sw" + x);
+  //       var price = document.getElementById("item_price" + x);
     
-        if (event.target.checked) {
-          console.log("ON");
-          console.log(parseInt(price.innerHTML) + 10 );
+  //       if (event.target.checked) {
+  //         console.log("ON");
+  //         console.log(parseInt(price.innerHTML) + 10 );
 
     
-        } else {
-            console.log("OFF");
+  //       } else {
+  //           console.log("OFF");
         
-        }
-        console.log(x);
+  //       }
+  //       console.log(x);
 
-  };
+  // };
+//  
+ var session = "<?php echo $_SESSION['privilage']?>"; 
+
+// console.log(session);
+
+if(session == 'guest'){
+  var bruh = $('[name="insert"]');
+
+for (var i = 0; i < bruh.length; i++) {
+    // var currentEl = bruh[i];                          
+    bruh[i].setAttribute('data-bs-toggle','modal');
+    bruh[i].setAttribute('data-bs-target','#reg-modal');
+    bruh[i].removeAttribute('onclick'); 
 
 
+//  console.log(i);
+}
+
+
+}
 
       </script>
 
@@ -205,6 +235,10 @@ var bookmark = document.getElementById('bookmark');
 bookmark.removeAttribute('hidden');
 
 $("#page_footer").css("bottom","");
+
+
+// var bruh = $('[name="insert"]');
+// console.log(bruh);
 </script>
 
 

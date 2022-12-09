@@ -246,7 +246,7 @@ body {
                   </div>
                   <div class="row mb-2 my-0 py-0 gx-0">
                     <input placeholder="Image" type="file" class="file-upload-input" id="modal-img" 
-                    name="item_img" onchange="readURL(this) accept = image/*"/>
+                    name="item_img" onchange="readURL(this)"/>
                   </div>
                 </form>			
             </div>
@@ -258,5 +258,8 @@ body {
         </div>
       </div>
     </div>
+    <script>
+        $("#link_account").addClass("active");
+    </script>
 </body>
 </html>

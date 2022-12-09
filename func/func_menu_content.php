@@ -1,23 +1,3 @@
-<?php
-
-if(isset($_SESSION['privilage'])){
-  if($_SESSION['privilage'] == 'guest'){
-    // $is_guest = 1;
-    echo"<script>
- 
-
-    var el = document.querySelectorAll('#add_cart');
-
-    for (var i = 0; i < el.length; i++) {
-        var currentEl = el[i];                          
-        currentEl.setAttribute('data-bs-toggle','modal');
-        currentEl.setAttribute('data-bs-target','#reg-modal');
-        currentEl.removeAttribute('onclick'); 
-    }
-    </script>";
-  }
-}
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -156,6 +136,7 @@ $(this).on('change', function() {
     }
 });
 }
+
 
 
   </script>

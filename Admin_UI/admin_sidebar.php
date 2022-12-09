@@ -48,19 +48,19 @@
                         </div>
                         <div class="offcanvas-body">
                           <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                            <li class="nav-item">
-                              <a class="nav-link active"  href="admin_ui_dashboard.php">
+                            <li class="nav-item" id = "link_dashboard">
+                              <a class="nav-link"  href="admin_ui_dashboard.php">
                               <span><img src="../images/icon/dashboard.png" alt="home_icon" class = "nav_icon"></span>
                               DASHBOARD</a>
                             </li>
-                            <li class="nav-item">
+                            <li class="nav-item"  id = "link_orders">
                               <a class="nav-link" href="admin_ui_orders.php">
                               <span><img src="../images/icon/cart_icon.png" alt="cart_icon" class = "nav_icon"></span>ORDERS</a>
                             </li>
-                            <li class="nav-item" hidden>
+                            <li class="nav-item"  id = "link_reservation" hidden>
                               <a class="nav-link" href="#">RESERVATION</a>
                             </li>
-                            <li class="nav-item dropdown">
+                            <li class="nav-item dropdown"  id = "link_reports">
                               <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                               <span><img src="../images/icon/purchases_icon.png" alt="order_icon" class = "nav_icon">REPORTS</a>
                               <ul class="dropdown-menu">
@@ -68,7 +68,7 @@
                                </li>
                               </ul>
                             </li>
-                            <li class="nav-item dropdown">
+                            <li class="nav-item dropdown"  id = "link_management">
                               <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                               <span><img src="../images/icon/management.png" alt="order_icon" class = "nav_icon">
                              MANAGEMENT</a>
@@ -81,7 +81,7 @@
                                 </a>
                                 </li>
                               </ul>
-                              <li class="nav-item">
+                              <li class="nav-item"  id = "link_account" hidden>
                                 <a class="nav-link" href="admin_account.php">
                                 <span><img src="../images/icon/account_icon.png" alt="account_icon" class = "nav_icon">ACCOUNTS</a>
                               </li>

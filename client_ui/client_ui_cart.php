@@ -264,8 +264,8 @@ CHECKOUT
         
       </div>
       <div class="modal-footer">
-        <h6>note : display username, address, mode of payment, (optional) message</h6>
-        <p>also consider transferring this to a new page</p>
+        <!-- <h6>note : display username, address, mode of payment, (optional) message</h6> -->
+        <!-- <p>also consider transferring this to a new page</p> -->
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="cancel_checkout()">Cancel</button>
         <button type="button" class="btn btn-primary" id = "btn_place_order" onclick="place_order_final()">Place Order</button>
       </div>

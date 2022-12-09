@@ -317,6 +317,8 @@ active.setAttribute('class','nav-link my-nav-link my-active',);
 
 
 var table_row = $('[name="tbl_row"]');
+
+
 function minimize_orders(){
 for(var i = 0 ; i < table_row.length ; i++){
   console.log(table_row[i].id);
@@ -331,12 +333,12 @@ for(var i = 0 ; i < table_row.length ; i++){
 
 
 }
-$("#page_footer").css("position","absolute");
+// $("#page_footer").css("position","absolute");
 $("#show").removeAttr("hidden","");
   $("#hide").attr("hidden","");
 }
 
-minimize_orders();
+
 
 function show_all_orders(){
 
@@ -358,6 +360,9 @@ for(var i = 0 ; i < table_row.length ; i++){
   $("#show").attr("hidden","");
 }
 
+
+minimize_orders();
+$("#page_footer").css("position","");
 
 </script>
 

@@ -199,8 +199,14 @@ body {
                   </div>
                   
                   <div class="card-footer">
-                    <a href="#" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#editItem"><i class="bi-pencil-square" data-toggle="tooltip" title="Edit" style="color: #2196F3;"></i> <span>Edit Item</span></a>
-                    <a href="#" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#deleteItem"><i class="bi-trash3-fill" data-toggle="tooltip" title="Delete" style="color: #F44336;"></i> <span>Delete Item</span></a>	
+                    <a href="#" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#editItem">
+                      <i class="bi-pencil-square" data-toggle="tooltip" title="Edit" style="color: #2196F3;">
+                    </i> <span>Edit Item</span></a>
+
+
+                    <a href="#" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#deleteItem">
+                      <i class="bi-trash3-fill" data-toggle="tooltip" title="Delete" style="color: #F44336;">
+                    </i> <span>Delete Item</span></a>	
                   </div>
                 </div>
               </div>
@@ -343,6 +349,8 @@ body {
             var result = document.getElementById("selected_category").value; 
             console.log(result);
         } 
+
+        $("#link_management").addClass("active");
     </script>
 
 

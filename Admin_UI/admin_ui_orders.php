@@ -393,7 +393,7 @@ $stats = $rows['status'];
   </div>
   <footer>
     <?php
-require('../func/func_footer.php')
+// require('../func/func_footer.php')
 ?>
 </footer>
   

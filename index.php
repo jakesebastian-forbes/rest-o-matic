@@ -31,8 +31,8 @@ session_start();
                     <div class="d-flex flex-row mx-5"> 
                         <img src="images/icon/web_icon.png" alt="web_icon.png" style="max-height: 70px;">  
                         <!-- <span class="navbar-brand mb-0 myheading1"></span> --> 
-                        <a type ="button" class ="btn mybtn1" href = "login.php">LOGIN</a>
-                        <a type ="button" class ="btn mybtn1" href="about_us.php">ABOUT US</a>
+                        <a type ="button" class ="mybtn4" href = "login.php">LOGIN</a>
+                        <a type ="button" class ="mybtn4" href="about_us.php">ABOUT US</a>
                     </div>
                 </nav>      
             </div>         
@@ -46,9 +46,9 @@ session_start();
                 </div>    
                   
                 <div style = "float:right;">
-            <a type = "button" class ="mybtn1 myfixedbtn"
-            href = "func_set_guest.php"
-            action = ""
+            <a type = "button" class ="mybtn4 myfixedbtn"
+            href = "func/func_set_guest.php"
+    
             >BROWSE</a> 
             </div>
 

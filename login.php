@@ -1,13 +1,15 @@
 <?php
 
 session_start();
-echo "Session Array:";
-print_r($_SESSION);
-echo "\n";
-echo "Sess_ID ";
-echo SESSION_ID();
+// echo "Session Array:";
+// print_r($_SESSION);
+// echo "\n";
+// echo "Sess_ID ";
+// echo SESSION_ID();
 // $_SESSION['privilage'] = NULL;
 
+
+$_SESSION['privilage'] = 'guest';
 if(!isset($_SESSION_ID)){
     if($_SESSION['privilage'] == 'admin'){
         header("Location: admin_home.php");
@@ -42,23 +44,6 @@ if(!isset($_SESSION_ID)){
 
 <body>
 
-    <!-- <div class="row">
-      <nav class="navbar mynavbar" style="">
-        <div class="d-flex justify-content-start">
-          <img src="images/icon/web_icon.png" class="px-3" alt="web_icon.png" style="max-height: 70px" />
-
-          <h1 class="myheading1" style="padding-bottom: 0">LOGIN</h1>
-
-        </div>
-        <div class="d-flex justify-content-end">
-          <a type="button" class="mybtn1 mx-4" data-bs-toggle="modal" data-bs-target="#reg-modal" id="mybtn" style="
-                padding-bottom: 10px;
-                background-color: #7ed957;
-                color: black;
-              ">SIGN UP</a>
-        </div>
-      </nav>
-    </div> -->
     
 <?php 
 $page_title = "login";
@@ -69,11 +54,11 @@ let signup_btn = document.createElement('a');
 signup_btn.textContent ='SIGNUP';
 
 signup_btn.setAttribute('type','button');
-signup_btn.setAttribute('class','mybtn1 my-auto');
+signup_btn.setAttribute('class','mybtn3 my-auto');
 signup_btn.setAttribute('data-bs-toggle','modal');
 signup_btn.setAttribute('data-bs-target','#reg-modal');
 signup_btn.setAttribute('id','mybtn');
-signup_btn.setAttribute('style','background-color:#7ed957;color:black;display:inline;');
+// signup_btn.setAttribute('style','background-color:#7ed957;color:black;display:inline;');
 document.getElementById('buttonss').append(signup_btn);
 
 </script>";

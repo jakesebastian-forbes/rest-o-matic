@@ -56,7 +56,7 @@ require "admin_sidebar.php";
         </div> -->
         <div class="text-left">
             <div class="btn-wrapper">
-            <a href="#" class="btn btn-otline-dark btn-sm align-items-center pull-right"><i class="material-icons">share</i><span>Share</span></a>
+            <a href="#" class="btn btn-otline-dark btn-sm align-items-center pull-right" hidden><i class="material-icons">share</i><span>Share</span></a>
             <a href="#" class="btn btn-otline-dark btn-sm pull-right" onclick="window.print()"><i class="material-icons">print</i><span>Print</span></a>
             </div>
         </div>
@@ -150,6 +150,7 @@ require('../func/func_footer.php')
     
     <script>
 
+    $("#link_dashboard").addClass("active");
   const context = document.getElementById('sales_per_item').getContext('2d');
 
  var my_bar_chart = new Chart(context, {
@@ -242,7 +243,7 @@ function get_data(){
 }
 
 var new_date = new Date();
-
+$("#page_footer").css("bottom","");
 
 if(new_date.getDate() < 10){
 

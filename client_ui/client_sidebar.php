@@ -14,7 +14,6 @@
   }
 
 
-
   </style>
 
 <script src="https://kit.fontawesome.com/1c020da525.js" crossorigin="anonymous"></script> 
@@ -25,7 +24,7 @@
       <nav class="navbar mynavbar" >
         
           <div class="d-flex flex-row mx-51" style="color:white">
-            <a href="index.php">
+            <a href="../index.php">
             <img src="../images/icon/web_icon.png" alt="web_icon.png" style="max-height: 70px;" >
             </a>
             <h1 class="myheading2 px-3 my-2" style="padding-bottom: 0 "><?php echo $title_sidebar;?></h1>
@@ -42,7 +41,14 @@
               aria-labelledby="offcanvasNavbarLabel">
               <div class="offcanvas-header">
                 <h5 class="offcanvas-title" id="offcanvasNavbarLabel">
-                  <?php echo $_SESSION["username"];?>
+                  )
+                  <?php 
+                  if($_SESSION['privilage'] == 'client'){
+
+                    echo $_SESSION["username"];
+                  }
+                  
+                  ;?>
                 </h5>
                 <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
               </div>
@@ -74,6 +80,10 @@
                     <div class = "my-side-banner">
 
                         <?php
+                          if($_SESSION['privilage'] == 'client'){
+
+                          
+                                                  
                         $client = $_SESSION['client_id'];
                           $conn = new mysqli('localhost','root','','restomatic_db');
 
@@ -89,6 +99,7 @@
                                 echo $rows['qnty'];
                               }
                             }
+                          }
                           ?>
                           </div>
                   </li>
@@ -103,6 +114,7 @@
                   <div class = "my-side-banner">
 
                         <?php
+                         if($_SESSION['privilage'] == 'client'){
                         $client = $_SESSION['client_id'];
                           $conn = new mysqli('localhost','root','','restomatic_db');
 
@@ -119,7 +131,9 @@
                                 echo $rows['count'];
                               }
                             }
+                          }
                           ?>
+                          
                           </div>
                   </li>
                   <li class="nav-item" hidden>
