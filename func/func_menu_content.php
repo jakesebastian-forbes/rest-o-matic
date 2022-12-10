@@ -45,7 +45,7 @@
               id = "add_cart" onclick=add_to_cart(this.value)
                value="<?php echo $menu_id?>"  >Add To Cart</button>
             <!-- for maybe buy now -->
-              <button type="submit" formaction="/action_page2.php" class="mybtn1 my-auto p-auto">Buy Item</button>
+              <button type="submit" formaction="/action_page2.php" class="mybtn1 my-auto p-auto" hidden>Buy Item</button>
            
             </div>
 

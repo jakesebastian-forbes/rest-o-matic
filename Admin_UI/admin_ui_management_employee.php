@@ -14,6 +14,7 @@
     <!-- <link rel="stylesheet" href="../bootstrap-5.2.2/css/bootstrap.min.css"/>
     <script src="https://kit.fontawesome.com/1c020da525.js" crossorigin="anonymous"></script> 
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"> -->
+    <link rel="stylesheet" href="../css/general.css" >
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
     <!-- <script src="../bootstrap-5.2.2/js/bootstrap.bundle.min.js"></script> 
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
@@ -158,6 +159,28 @@ body {
        require "admin_sidebar.php";
       ?>
        
+       <?php
+                $full_url = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+                // echo $full_url;
+                if(strpos($full_url,"update=success") == true ){
+                   echo "<p class = 'success'>
+                   <span> <img src='../images/icon/error.png' alt='error_icon' class = 'icon_img'></span>
+                   Successfully Updated.</p>";
+
+                }else if(strpos($full_url,"update=error") == true ){
+                  echo "<p class = 'error'>
+                  <span> <img src='images/icon/error.png' alt='error_icon' class = 'icon_img'></span>
+                  Failed to update Record.</p>";
+                }elseif(strpos($full_url,"added=success") == true ){
+                  echo "<p class = 'success'>
+                   <span> <img src='../images/icon/error.png' alt='error_icon' class = 'icon_img'></span>
+                   Successfully Added Employee.</p>";
+                }elseif(strpos($full_url,"delete=success") == true ){
+                  echo "<p class = 'success'>
+                   <span> <img src='../images/icon/error.png' alt='error_icon' class = 'icon_img'></span>
+                   Successfully Deleted Record.</p>";
+                }
+              ?>
           <div class="panel">
             <nav>
               <div class="navbar accNavbar">
@@ -186,7 +209,7 @@ body {
             <div class="card" style="width: inherit">
               <div class="row g-0">
                 <div class="col-md-4">
-                <?php echo '<img src = "data:image/jpeg;base64,'.base64_encode($rows['img']) .'" class="card-img-top" alt="...">' ?>
+                <?php echo '<img src = "data:image/jpeg;base64,'.base64_encode($rows['img']) .'" class="card-img-top" alt="..." id="image_'.$rows['staff_id'].'">' ?>
                 </div>
                 <div class="col-md-8">
                   <div class="card-body">
@@ -196,6 +219,7 @@ body {
                               <h5><b>Firstname</b></h5>
                           </div>
                           <div class="col-md-6 col-sm-3 text-secondary">
+                              <h6 id="id_<?php echo $rows['staff_id']?>" hidden><?php echo $rows['staff_id'] ?></h6>
                               <h6 id="fname_<?php echo $rows['staff_id']?>"><?php echo $rows['firstname'] ?></h6>
                           </div>
                       </div>
@@ -225,7 +249,7 @@ body {
                       </div>
                       <div class="row" style="margin-left:2px ;">
                           <div class="col-md-6 col-sm-3">
-                              <h5><b>username</b></h5>
+                              <h5><b>Username</b></h5>
                           </div>
                           <div class="col-md-6 col-sm-3 text-secondary">
                               <h6 id="username_<?php echo $rows['staff_id']?>"><?php echo $rows['username'] ?></h6>
@@ -292,7 +316,7 @@ body {
                   </div>
                   <div class="modal-body p-4">
                     <div class="text-center">
-                    <form action = "../func/func_insert_employee.php" method="post" >  
+                    <form action = "../func/func_insert_employee.php" method="post"enctype="multipart/form-data" >  
                       <div class="row mb-2">
                           <div class="col">
                             <input type="text" class="form-control" placeholder="Firstname" name="emp_fname" />
@@ -307,14 +331,20 @@ body {
                           </div>
                       </div>
                       <div class="row mb-2 my-0 py-0 gx-0">
+                      
+                        <select class = "my-auto" name="emp_status_post" id="selected_status" style = "font-size:18px;">
+                          <option value="Active">Active</option>
+                          <option value="Inactive">Inactive</option>
+                          <option value="Suspended">Suspended</option>
+                        </select>
+                      </div>
+                      <div class="row mb-2 my-0 py-0 gx-0">
                       <div class="col">
                             <input type="text" class="form-control" id="modal-email" placeholder="Email" name="emp_email" />
                         </div>
                       </div>
                       <div class="row mb-2 my-0 py-0 gx-0">
-                      <!-- <div class="col">
-                            <input type="text" class="form-control" id="modal-address" placeholder="Address" name="emp_address" />
-                        </div> -->
+                      
                       </div>
                       <div class="row mb-2 my-0 py-0 gx-0">
                         <input type="text" class="form-control" id="modal-age" placeholder="username" name="emp_username" />
@@ -323,16 +353,15 @@ body {
                         <input type="tel" class="form-control" id="modal-contact_num" placeholder="Contact Number" name="emp_contact_num" />
                       </div>
                       <div class="row mb-2 my-0 py-0 gx-0">
-                        <input type="password" class="form-control" id="modal-password" placeholder="Enter Password" name="emp_password" />
+                        <select value="<?php //echo $rows['emp_position_post']?>" id="selected_position" name="position">
+                        <option value="Admin">Admin</option>
+                        <option value="Staff">Staff</option>
+                        <option value="Delivery">Delivery</option>
                       </div>
                       <div class="row mb-2 my-0 py-0 gx-0">
-                      
-                              <select class = "my-auto"name="emp_status_post" id="selected_status" style = "font-size:18px;">
-                              <option value="Active">Active</option>
-                              <option value="Inactive">Inactive</option>
-                              <option value="Suspended">Suspended</option>
-                              </select>
+                        <input type="password" class="form-control" id="modal-password" placeholder="Enter Password" name="password" />
                       </div>
+                    
                       
                       <div class="row mb-2 my-0 py-0 gx-0 mx-auto" >
                         <!-- <input placeholder="Image" type="file" class="file-upload-input" id="modal-image" 
@@ -341,7 +370,7 @@ body {
                           <p>Profile picture</p>
                           </div>
                           <div class="col" style ="float:right;">
-                          <input type="file" id="myFile" onchange="readURL(this)" name="profile1">
+                          <input type="file" id="profile_pic" onchange="readURL(this)" name="profile1">
                           </div>
                       </div>
                       <!-- </div>
@@ -355,9 +384,6 @@ body {
               </div>
             </div>
           </div>
-
-
-
 
               <!-- update -->
 
@@ -391,7 +417,7 @@ body {
                     if (mysqli_num_rows($result) > 0) {
                       // output data of each row
                       while($row = mysqli_fetch_assoc($result)) {
-                        echo "id: " . $row["id"]. " - Name: " . $row["firstname"]. " " . $row["lastname"]. "<br>";
+                        echo "id: " . $row["staff_id"]. " - Name: " . $row["firstname"]. " " . $row["lastname"]. "<br>";
                       }
                     } else {
                       echo "0 results";
@@ -399,22 +425,32 @@ body {
 
                     mysqli_close($conn);
                     ?>
-                    <form action = "func_update_employee.php" method="post" >  
+                    <form action = "../func/func_edit_employee.php" method="post" enctype="multipart/form-data">  
                       <div class="row mb-2">
                           <div class="col">
-                            <input type="text" value="<?php //echo $rows['emp_name']?>" class="form-control" id="modal-name" />
+                            <input type="text" value="<?php //echo $rows['staff_id']?>" name="id" id="modal-id" hidden>
+                            <input type="text" value="<?php //echo $rows['emp_name']?>" class="form-control" id="modal-name" name="fname"/>
                           </div>
                           <div class="col">
-                            <select value="<?php //echo $rows['emp_status_post']?>" id="selected-status" >
+                            <input type="text" value="<?php //echo $rows['emp_name']?>" class="form-control" id="modal-lname" name="lname"/>
+                           
+                            </div>
+                        </div>
+                        <div class="row mb-2 my-0 py-0 gx-0">
+                           <select value="<?php //echo $rows['emp_status_post']?>" id="selected-status" name="status">
                               <option value="Active">Active</option>
                               <option value="Inactive">Inactive</option>
                               <option value="Suspended">Suspended</option>
                             </select>
-                            </div>
                         </div>
                       <div class="row mb-2 my-0 py-0 gx-0">
                       
-                            <input type="text" value="<?php //echo $rows['emp_email']?>" class="form-control" id="modal_email" />
+                            <input type="text" value="<?php //echo $rows['emp_email']?>" class="form-control" id="modal_email" name="email"/>
+                       
+                      </div>
+                      <div class="row mb-2 my-0 py-0 gx-0">
+                      
+                            <input type="text" value="<?php //echo $rows['emp_email']?>" class="form-control" id="modal_username" name="username"/>
                        
                       </div>
                       <!-- <div class="row mb-2 my-0 py-0 gx-0">
@@ -426,18 +462,30 @@ body {
                         <input type="number" value="<?php //echo $rows['emp_age']?>" class="form-control" id="modal-age" />
                       </div> -->
                       <div class="row mb-2 my-0 py-0 gx-0">
-                        <input type="tel" value="<?php //echo $rows['emp_contact_num']?>" class="form-control" id="modal_contact_num" />
+                        <input type="tel" value="<?php //echo $rows['emp_contact_num']?>" class="form-control" id="modal_contact_num" name="number"/>
                       </div>
                       <div class="row mb-2 my-0 py-0 gx-0">
-                        <select value="<?php //echo $rows['emp_position_post']?>" id="selected_position" >
+                        <select value="<?php //echo $rows['emp_position_post']?>" id="selected_position" name="position">
                         <option value="Admin">Admin</option>
                         <option value="Staff">Staff</option>
                         <option value="Delivery">Delivery</option>
                       </div>
                       <div class="row mb-2 my-0 py-0 gx-0">
-                      <?php echo '<img src = "data:image/jpeg;base64,'.base64_encode($rows['img']) .'" class="card-img-top" alt="...">' ?>
-                        <input type="file" value="<?php //echo $rows['img']?>" class="file-upload-input" id="modal-image" 
-                          name="emp_image" onchange="readURL(this)"/>
+                      <?php //echo '<img src = "data:image/jpeg;base64,'.base64_encode($rows['img']) .'" class="card-img-top" alt="..." id="image_">' ?>
+                      <label for="inputImage" class="form-label">
+                        <?php               
+                        echo '<img class="card-img-top img img-responsive" src = "data:image/jpeg;base64,'.base64_encode($rows['image']) .'" 
+                        style ="height: 200px;
+                        object-fit: cover;
+                        aspect-ratio: 4/3;
+                        border-radius: 10px;"
+                        id = "profile_pic"
+                        name = "profile1"
+
+                        />';
+                        ?>
+                      <br>
+                      <input type="file" id="modal-image" onchange="readURL(this)" name="profile1">
                       </div>
                       </div>
                         </div>
@@ -460,12 +508,49 @@ body {
       <div class="modal-dialog">
         <div class="modal-content">
        
-          <form action="func_del_employee.php" method="post">
+          <form action="../func/func_del_employee.php" method="post">
             <div class="modal-header">						
               <h4 class="modal-delete-emp">Delete Employee</h4>
               <button class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">					
+            <div class="modal-body">	
+            <?php
+                    $servername = "localhost";
+                    $username = "root";
+                    $password = "";
+                    $dbname = "restomatic_db";
+
+                    // Create connection
+                    $conn = mysqli_connect($servername, $username, $password, $dbname);
+                    // Check connection
+                    if (!$conn) {
+                      die("Connection failed: " . mysqli_connect_error());
+                    }
+
+                    $sql = "SELECT * FROM `staff_account` WHERE `staff_id` = ''";
+                    $result = mysqli_query($conn, $sql);
+
+                    if (mysqli_num_rows($result) > 0) {
+                      // output data of each row
+                      while($row = mysqli_fetch_assoc($result)) {
+                      
+                      }
+                    } 
+
+                    mysqli_close($conn);
+                    ?>
+              <div class="row mb-2 my-0 py-0 gx-0">
+                <div class="col">
+                    <input type="text" value="<?php //echo $rows['staff_id']?>" name="id" id="modal-id" hidden>
+                    <input type="text" class="form-control" placeholder="Firstname" name="emp_fname" />
+                </div>	
+              </div>	
+              <div class="row mb-2 my-0 py-0 gx-0">
+                <div class="col">
+                    <input type="text" class="form-control" placeholder="Lastname" name="emp_lname" />
+                </div>	
+              </div>
+              <hr>
               <p>Are you sure you want to delete these Record?</p>
               <p class="text-danger"><medium>This action cannot be undone.</medium></p>
             </div>
@@ -488,7 +573,7 @@ body {
 function update_employee(value){
 
 // console.log(value);
-
+var id = $("#id_"+value)[0].innerHTML;
 var fname = $("#fname_"+value)[0].innerHTML;
 var lname = $("#lname_"+value)[0].innerHTML;
 var status = $("#status_"+value)[0].innerHTML;
@@ -496,7 +581,9 @@ var email = $("#email_"+value)[0].innerHTML;
 var username = $("#username_"+value)[0].innerHTML;
 var contact = $("#contact_"+value)[0].innerHTML;
 var privilage = $("#priv_"+value)[0].innerHTML;
+var image = $("#image_"+value)[0].innerHTML;
 
+console.log(id);
 console.log(fname);
 console.log(lname);
 console.log(status);
@@ -504,13 +591,18 @@ console.log(email);
 console.log(username);
 console.log(contact);
 console.log(privilage);
+console.log(image);
 
+$("#modal-id").val(id);
 $("#modal-name").val(fname);
+$("#modal-lname").val(lname);
 $("#selected-status").val(status);
 $("#modal_email").val(email);
+$("#modal_username").val(username);
 // $("#modal-address").val(address);
 $("#modal_contact_num").val(contact);
 $("#selected-position").val(privilage);
+$("#modal-image").val(image);
 
 
 
@@ -545,5 +637,6 @@ $("#selected-position").val(privilage);
         $("#link_management").addClass("active");
 
   </script>
+
 </body>
 </html>

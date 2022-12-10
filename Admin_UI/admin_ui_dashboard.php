@@ -64,7 +64,7 @@ require "admin_sidebar.php";
               
     <div class="row my-2 mx1">
         <div class="col-lg-3 col-6 py-1">
-            <div class="card" style="width:100%;max-width:700px; background-color: #F8DC88;">
+            <div class="card" style="width:100%;max-width:700px; background-color: beige;">
                 <div class="card-body rounded">
                 <p class="statistics-title">TODAY SALES</p>
                 <h3 class="rate-percentage text-center" id = "today_sales">32.53%</h3>
@@ -72,7 +72,7 @@ require "admin_sidebar.php";
             </div>
             </div>
         <div class="col-lg-3 col-6 py-1">
-            <div class="card" style="width:100%;max-width:700px;background-color: #FCC945;">
+            <div class="card" style="width:100%;max-width:700px;background-color: beige;">
                 <div class="card-body rounded" >
                 <p class="statistics-title">PENDING ORDERS</p>
                 <h3 class="rate-percentage text-center" id = "pending_total">58.00%</h3>
@@ -81,7 +81,7 @@ require "admin_sidebar.php";
             </div>
         </div>
         <div class="col-lg-3 col-6 py-1">
-            <div class="card" style="width:100%;max-width:700px;background-color: #F39A27;">
+            <div class="card" style="width:100%;max-width:700px;background-color: beige;">
                 <div class="card-body rounded">
                 <p class="statistics-title">DELIVERED TODAY</p>
                 <h3 class="rate-percentage text-center" id = "d_today">32.53%</h3>    
@@ -90,7 +90,7 @@ require "admin_sidebar.php";
             </div>
         </div>
         <div class="col-lg-3 col-6 py-1">
-            <div class="card " style="width:100%;max-width:700px;background-color: #FF9D4F;">
+            <div class="card " style="width:100%;max-width:700px;background-color: beige;">
                 <div class="card-body rounded">
                 <p class="statistics-title">TOTAL ACTIVE USERS</p>
                 <h3 class="rate-percentage text-center" id="active_user">32.53%</h3>
@@ -103,7 +103,7 @@ require "admin_sidebar.php";
    
                   <div class="row py-2">
                     <div class="col-lg-9 py-1 ">
-                        <div class="card" style="width:100%;max-width:1500px;min-height: 500px;background-color: #FFB347;">
+                        <div class="card" style="width:100%;max-width:1500px;min-height: 500px;background-color: beige;">
                             <h4>MARKETING SALES</h4>
                            
                           <div id="myDIV" hidden>
@@ -122,7 +122,7 @@ require "admin_sidebar.php";
                    
                     <div class="col-md-3 py-1">
                         <div class="card" >
-                            <div class="card-body" style="width:100%;max-width:700px;min-height:500px;background-color: #F49C1B;">
+                            <div class="card-body" style="width:100%;max-width:700px;min-height:500px;background-color: beige;">
                                <p>TOP CUSTOMERS</p>
                                     <div class="row text-center" style ="font-weight:bold;">
                                             <div class="col">Username</div>

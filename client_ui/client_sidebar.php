@@ -41,7 +41,7 @@
               aria-labelledby="offcanvasNavbarLabel">
               <div class="offcanvas-header">
                 <h5 class="offcanvas-title" id="offcanvasNavbarLabel">
-                  )
+                  
                   <?php 
                   if($_SESSION['privilage'] == 'client'){
 

@@ -240,13 +240,20 @@ background-color: rgba(139, 139, 139, 0.423);
     margin:10px 20px;
 
 }
+.success{
+    background-color:rgba(104, 247, 76, 0.4);
+    padding:2% ;
+    border-radius:6px;
+    margin:10px 20px;
 
+}
 .icon_img{
     width: 30px;
     height: 30px;
 
 
 }
+
 
 .my-active{
     background-color: #df8f27ec;
