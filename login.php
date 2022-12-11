@@ -40,6 +40,7 @@ if(!isset($_SESSION_ID)){
   <link rel="icon" type="image/x-icon" href="images/icon/web_icon.png" />
   <link rel="stylesheet" href="bootstrap-5.2.2/css/bootstrap.min.css" />
   <link rel="stylesheet" href="css/general.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -123,6 +124,16 @@ document.getElementById('buttonss').append(signup_btn);
                   <span> <img src='images/icon/error.png' alt='error_icon' class = 'icon_img'></span>
                   Wrong password. Please try again.</p>";
                 }
+                else if(strpos($full_url,"registration=success") == true ){
+                  echo '<script>
+                 
+                  $( document ).ready(function() {
+                    $("#show_regstat_modal").click();
+                });
+                
+                  </script>
+                  ';
+                }
               ?>
             </div>
             
@@ -198,7 +209,7 @@ document.getElementById('buttonss').append(signup_btn);
                   <div class="modal-body p-4">
                     <div class="text-center">
 
-                    <form method="post" action = "func/func_signup.php">  
+                    <form method="post" action = "func/func_signup.php" enctype="multipart/form-data">  
                       <div class="row mb-2">
                           <div class="col">
                             <input type="text" class="form-control" id="modal-firstname" placeholder="First name" name="firstname" required />
@@ -248,7 +259,7 @@ document.getElementById('buttonss').append(signup_btn);
                           max = "<?php  echo date("Y")-16 . "-" . date("m") . "-" .date("d");?>"
                           required />
                         </div>
-                        <input type="file" id="myfile" name ="profile1" >
+                        <input type="file" id="myprofile" name ="myprofile" >
 
                         <!-- <img src="images/icon/customer.png" alt="" name= "profile1" hidden> -->
                       </div>
@@ -270,6 +281,30 @@ document.getElementById('buttonss').append(signup_btn);
             </div>
 
 
+            <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#registration_result" id = "show_regstat_modal" hidden>
+  Launch demo modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="registration_result" tabindex="-1" aria-labelledby="registration_result" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">REGISTRATION STATUS</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <h2> <span><img src="images/icon/check_success.png" alt="" class = 'icon_img'></span> REGISTRATION SUCCESSFUL!</h2>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+      </div>
+    </div>
+  </div>
+</div>
+
 
           </div>
         </div>
@@ -280,6 +315,16 @@ document.getElementById('buttonss').append(signup_btn);
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
     crossorigin="anonymous"></script>
+
+
+    <script>
+//      $( document ).ready(function() {
+//     console.log( "ready!" );
+// });
+
+      
+
+    </script>
 </body>
 
 </html>

@@ -450,7 +450,7 @@ $("#page_footer").css("margin","0px");
 
  
 
-    var accordion_items = $('[name="status_real"]'); //get all accordion item
+    var accordion_items = $('b[name="status_real"]'); //get all accordion item
     
    function show_items(){
     var hidden_accordion = $("div").find(`[hidden = 'hidden']`); //get hidden accordion items
@@ -478,20 +478,45 @@ $("#page_footer").css("margin","0px");
     
    }
 
-    function filter_status(value){
- 
-        if(value == "all"){
-     
-          show_items();
-       
-        }
-        else {
+
+  function hide_items1(loop,if_item){
+
+for (var i = 0 ;i<loop.length; i++){ //loop over the items
     
-          show_items();
-          hide_items(accordion_items,value);
+      if(loop[i].innerHTML.toLowerCase() == if_item.toLowerCase()){
+        console.log("show");
+       
 
     }
+    else{
+      console.log("item:" ,loop[i].innerHTML.toLowerCase());
+      console.log("case",if_item.toLowerCase());
+        console.log("hide");
+       b = loop[i].parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement;
+      //  console.log(b.id);
+        console.log("b---",b.id);
+       $("#"+b.id).attr("hidden","");
+      
+    }
   }
+
+}
+
+function filter_status(value){
+ 
+ if(value == "all"){
+
+   show_items();
+
+ }
+ else {
+
+   show_items();
+   hide_items1(accordion_items,value);
+
+}
+}
+
     
       var order_dates = $('[name="order_date"]');
 
@@ -562,7 +587,7 @@ $("#page_footer").css("margin","0px");
 
   }
 
-
+ 
     </script>
   <footer>
 

@@ -88,7 +88,7 @@ require "admin_sidebar.php";
               <div class="navbar accNavbar">
                     <div class="col-lg-12 col-md-12 col-sm-12">
                       <h2><b>Logs</b></h2>
-                      <a href="#" class="btn btn-secondary" style="margin-right: 15px"><i class="material-icons">file_download</i> <span>Export to Excel</span></a>
+                      <a href="#" hidden class="btn btn-secondary" style="margin-right: 15px"><i class="material-icons">file_download</i> <span>Export to Excel</span></a>
                   </div>
               </div>
             </nav>

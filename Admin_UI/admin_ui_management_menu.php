@@ -163,11 +163,11 @@ body {
                 }elseif(strpos($full_url,"added=success") == true ){
                   echo "<p class = 'success'>
                    <span> <img src='../images/icon/error.png' alt='error_icon' class = 'icon_img'></span>
-                   Successfully Added Menu.</p>";
+                   Successfully Added Item.</p>";
                 }elseif(strpos($full_url,"delete=success") == true ){
                   echo "<p class = 'success'>
                    <span> <img src='../images/icon/error.png' alt='error_icon' class = 'icon_img'></span>
-                   Successfully Deleted Menu.</p>";
+                   Successfully Deleted Item.</p>";
                 }
               ?>
           <div class="panel">
@@ -239,7 +239,7 @@ body {
                   </div>
                   </div>
                   
-                  <div class = "row mb-2">
+                  <div class = "row mb-2" style = "margin-right:0px;">
                         <div style= "display: inline; width: fit-content;">
                           <form action="" method="post">
                           <input type="text" value="<?php echo $rows['menu_id']?>" hidden>
@@ -265,12 +265,13 @@ body {
                   </div>
                 </div>
               </div>
-            </div>
+            
             <?php 
                                 }
                               }
                             
                       ?>
+                      </div>
           </div>
     </div>
     <!-- ADD ITEM MODAL -->
@@ -283,7 +284,7 @@ body {
                   </div>
                   <div class="modal-body p-4">
                     <div class="text-center">
-                    <form method="post" action = "../func/func_insert_item.php" id="add_form" enctype="multipart/form-data">  
+                    <form method="post" action = "../func/func_insert_item.php" enctype="multipart/form-data">  
                     <div class="row mb-2">
                           <div class="col">
                               <input name="menu_id" value = "" hidden> 
@@ -324,7 +325,7 @@ body {
                           </div>
                           
                           <div class="col" style ="float:right;">
-                          <input type="file" id="menu_image" onchange="readURL(this)" name="profile1_add">
+                          <input type="file" id="menu_profile" onchange="readURL(this)" name="menu_profile">
                           </div>
                                 
                             
@@ -332,7 +333,7 @@ body {
                          
                             <div class="">
                                 <button class="btn btn-primary rounded" type="submit" name = "add_btn">
-                                  ADD Item</button>    
+                                  ADD ITEM</button>    
                             </div>   
                     </form>
                   </div>
@@ -353,10 +354,10 @@ body {
                   <div class="modal-body p-4">
                     <div class="text-center">
                 
-                    <form method="post" action = "../func/func_insert_item.php" id="add_form" enctype="multipart/form-data">  
+                    <form method="post" action = "../func/func_edit_menu.php" enctype="multipart/form-data">  
                     <div class="row mb-2">
                           <div class="col">
-                              <input name="menu_id" value = "" id="update_id"hidden> 
+                              <!-- <input name="menu_id" value = "" id="update_id" hidden>  -->
                               <!-- <input type="text" class="form-control" placeholder="Category" name="category" 
                               value="" /> -->
                                 <select name="category" id="selected_category_edit" onchange="myFunction()" class="width: 100%; m-1 py-2">
@@ -369,7 +370,7 @@ body {
 
                           </div>
                               <div class="col">
-                              <input type="text" class="form-control" id="modal_item_edit" placeholder="Item Name" name="item_name" 
+                              <input type="text" class="form-control" id="modal-item_edit" placeholder="Item Name" name="item_name" 
                               value=""/>
                               </div>
                         </div>
@@ -393,15 +394,18 @@ body {
                           <p>Profile Image Menu</p>
                           </div>
                           <div class="col" style ="float:right;">
-                          <input type="file" id="profile_pic_edit" onchange="readURL(this)" name="profile1_edit">
+                          <input type="file" id="new_img_menu" onchange="readURL(this)" name="new_img_menu">
                           </div>
                                 
                             
                           </div>
-                         
+                              <input type="text" id = "menu_id_from_this_button" name = "menu_id_from_this_button">
                             <div class="modal-footer">
-                                <button class="btn btn-primary rounded" type="submit" name = "add_btn" method="post">
-                                  add item</button>    
+                            <button type="button" class="btn btn-danger rounded" data-bs-dismiss="modal">
+                                  CANCEL</button>  
+                                <button class="btn btn-primary rounded" type="submit" method="post">
+                                  EDIT ITEM</button>   
+                                  
                             </div>   
                     </form>
                   </div>
@@ -463,13 +467,14 @@ console.log(value);
           console.log(description);
           console.log(price);
           // console.log(image);
-         
-
-          $("#update_id_edit").val(menu_id);
+          
+          $("#menu_id_from_this_button").val(menu_id);
+          $("#menu_id_from_this_button")[0].innerHTML = menu_id;
           $("#selected_category_edit").val(category);
           $("#modal-item_edit").val(item_name);
           $("#modal_description_edit").val(description);
           $("#modal_price_edit").val(price);
+          console.log($("#menu_id_from_this_button")[0].val)
           // $("#profile_pic").val(image);
         
 
