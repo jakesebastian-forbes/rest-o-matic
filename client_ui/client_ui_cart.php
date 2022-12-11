@@ -82,6 +82,23 @@ require "../func/func_session.php";
             -moz-appearance: textfield;
         }
 
+        .mybtn{
+            font-size: large;
+            font-weight: bold;
+            color: #ffcc01;
+            width: 200px;
+            background-color: #fffcee;
+            border-radius: 30px;
+            padding: 9px 20px;
+            margin: 10px 10px;
+            margin-right: 2%;
+        }
+        .mybtn:hover{
+            color: red;
+            margin-top: 10px;
+            background-color: #fffae5;
+        }
+
         .socialmedia{
             
             display: flex;
@@ -118,7 +135,7 @@ require "../func/func_session.php";
               <li>
                 
             <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#my_modal_delete"
-            id = "delete_btn" style="border: 0;" disabled onclick="delete_order()">
+            id = "delete_btn" style="border: 0; margin-top: 17px;" disabled onclick="delete_order()">
             <i class="fa-solid fa-trash" style="color:white ; font-size: 24px;"></i>
             <!-- DELETE -->
             </button>
@@ -127,11 +144,7 @@ require "../func/func_session.php";
                     <!-- <i class="fa-solid fa-trash" style="color:white ; font-size: 24px;"></i></button> -->
               </li>
               <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#place_orders"
-style="width: 250px; background-color:#FFA500; border:0px; margin-right:2%;" onclick="checkout()"
-id = "check_out_btn" disabled>
-CHECKOUT
-</button>
+<button type="button" class="mybtn" data-bs-toggle="modal" data-bs-target="#place_orders" onclick="checkout()" id = "check_out_btn" disabled>CHECKOUT</button>
 
               <!-- <li><button class="btn" style="width: 250px; background-color:#FFA500;">PLACE ORDER</button></li> -->
             </ul> 

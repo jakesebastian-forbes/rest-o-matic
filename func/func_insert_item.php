@@ -1,16 +1,18 @@
 <?php
 
+$conn = new mysqli('localhost','root','','restomatic_db');
+
 $item_name = $_POST['item_name'];
 $item_category = $_POST['category'];
 $short_desc =$_POST['short_desc'];
 $item_price = $_POST['item_price'];
 // $item_w_fries = $_POST['with_fries'];
-$item_img = $_POST['item_img'];
+$item_img = mysqli_real_escape_string($conn,file_get_contents($_FILES['profile1_add']["tmp_name"]));
 
-
+// echo $item_img;
 //db connection
 
-$conn = new mysqli('localhost','root','','restomatic_db');
+
 
 if($conn->connect_error){
     die('Connection failed : ' . $conn->connect_error);
@@ -18,7 +20,7 @@ if($conn->connect_error){
     $stmt = $conn->prepare("INSERT INTO `menu`(`item_name`, `item_category`, `item_desc`, `item_price`,  `img`) 
     VALUES (?,?,?,?,?)");
 
-     $stmt->bind_param("ssssss",$item_name,$item_category, $short_desc,$item_price,$item_img);
+     $stmt->bind_param("sssss",$item_name,$item_category, $short_desc,$item_price,$item_img);
      $stmt->execute();
      echo "Added successfully";
      $stmt->close();
@@ -27,6 +29,6 @@ if($conn->connect_error){
      
 }
 
-// header("Location: admin_management.php");
+header("Location: ../admin_ui/admin_ui_management_menu.php?added=success");
 
 ?>

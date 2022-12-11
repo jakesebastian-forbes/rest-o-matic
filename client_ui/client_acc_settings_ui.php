@@ -31,14 +31,20 @@ session_start();
   ?>
 
 <style>
-.footer{
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  background-color: black;
-  color: white;
-  text-align: center;
-}
+.mybtn{
+      font-size: small;
+      font-weight: bold;
+      color: #FFCC01;
+      width: 190px;
+      background-color: #FFFCEE;
+      border-radius: 30px;
+      padding: 9px 20px;
+    }
+    .mybtn:hover{
+      color: red;
+      margin-top: 10px;
+      background-color: #fffae5;
+    }
 </style>
 
 </head>
@@ -65,11 +71,10 @@ session_start();
                 </li>
                 <form method="POST" action = "../func/func_update_profile.php" enctype="multipart/form-data">
                 <li class="nav-item my-4 text-end" role="presentation">
-                  <button type="submit" class="btn btn-warning btn-lg text-white mx-3" style="border-radius: 24px; " > SAVE CHANGES </button>
+                  <button type="submit" class="mybtn"> SAVE CHANGES </button>
                
                   <a href = "client_ui_profile.php">
-                  <button type="button" class="btn btn-warning btn-lg text-white" style="border-radius: 24px;"
-                   > CANCEL</button>
+                  <button type="button" class="mybtn"> CANCEL</button>
                    </a>
                 </li>
               </ul>

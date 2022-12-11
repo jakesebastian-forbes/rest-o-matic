@@ -5,6 +5,24 @@ $cat;
 
 ?>
 
+<style>
+    .cancelBtn{
+    display: block;
+    float: right;
+    background-color: white;
+    color: #ffcc02;
+    font-family: league system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: medium;
+    font-weight: bold;
+    border-color: black
+    }
+    .cancelBtn:hover{
+        color: red;
+        border-color: black
+    }
+</style>
+
+
 <div class="panel-body" style="background-color: #f7dd4424;">
                 <div class="row m-0">
                     <div class="col">
@@ -101,8 +119,9 @@ $cat;
                                                     <span class="fa fa-star"></span> -->
                                         </div>
                                         <div class="col-6">
-                                            <div class="row" style="float: right;">
-                                                <div class="col">
+                                            <div class="row" style="justify-content: right; margin-right:-2px;">  
+                                            
+                                                <div class="col" style="text-align: right;">
                                                 <?php
 
                                                                                         
@@ -148,10 +167,8 @@ $cat;
                                             if(strtolower($status) == 'pending' || strtolower($status) == 'approved' ){
                                                 
                                                 echo '   <div class="col-sm-3"> 
-                                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"
-                                                 id ="cancel_'.$order_id.' " onclick ="cancel_order(this.id)" style="
-                                                 display: block;
-                                                 float: right;
+                                                <button type="button" class="btn cancelBtn" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                                                 id ="cancel_'.$order_id.' " onclick ="cancel_order(this.id)"
                                              ">CANCEL</button>
                                                 
                                             </div>';
@@ -165,9 +182,7 @@ $cat;
                                             // </div>';
 
                                             }
-
-                                              
-                                            
+                                     
                                             ?>
                                          
 <!--                                                 

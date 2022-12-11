@@ -137,6 +137,28 @@ require "../func/func_session.php";
   }
 }
 
+.nav-pills .nav-link.active {
+    background-color:white;
+    color: black;}
+    
+.myBtn { 
+    
+    text-align: center;
+    cursor: pointer;
+    outline: none;
+    color: #fff;
+    background-color: white;
+    border: none;
+    }
+
+.myBtn:hover {
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.myBtn:active {
+    background-color: white;
+    transform: translateY(4px);
+}
 
     </style>
 
@@ -165,34 +187,34 @@ require "../func/func_session.php";
         
                     <ul class="nav nav-pills nav-justified" id="pills-tab" role="tablist" style="align-items: center;">
                         
-                      <li class="nav-item my-auto  pl-3 " role="presentation" >
-                        <button class="nav-link active" id="pills-all-tab" data-bs-toggle="pill" data-bs-target="#pills-all" type="button" role="tab" aria-controls="pills-all" aria-selected="true"
-                        style="color:white"><span>
+                      <li class="nav-item my-auto  mx-2 " role="presentation" >
+                        <button class="nav-link active myBtn" id="pills-all-tab" data-bs-toggle="pill" data-bs-target="#pills-all" type="button" role="tab" aria-controls="pills-all" aria-selected="true"
+                        style="color:black"><span>
                         </span>ALL</button>
                       </li>
-                      <li class="nav-item my-auto  pl-3" role="presentation" >
-                        <button class="nav-link" id="pills-pending-tab" data-bs-toggle="pill" data-bs-target="#pills-pending" type="button" role="tab" aria-controls="pills-pending" aria-selected="true"
-                        style="color:white"><span>
+                      <li class="nav-item my-auto  mx-2" role="presentation" >
+                        <button class="nav-link myBtn" id="pills-pending-tab" data-bs-toggle="pill" data-bs-target="#pills-pending" type="button" role="tab" aria-controls="pills-pending" aria-selected="true"
+                        style="color:black"><span>
                         </span>PENDING</button>
                       </li>
-                      <li class="nav-item my-auto  pl-3" role="presentation">
-                        <button class="nav-link" id="pills-receive-tab" data-bs-toggle="pill" data-bs-target="#pills-receive" type="button" role="tab" aria-controls="pills-receive" aria-selected="false"
-                        style="color:white"><span>
+                      <li class="nav-item my-auto  mx-2" role="presentation">
+                        <button class="nav-link myBtn" id="pills-receive-tab" data-bs-toggle="pill" data-bs-target="#pills-receive" type="button" role="tab" aria-controls="pills-receive" aria-selected="false"
+                        style="color:black"><span>
                         </span>APPROVED</button>
                       </li>
-                      <li class="nav-item my-auto  pl-3" role="presentation">
-                        <button class="nav-link" id="pills-completed-tab" data-bs-toggle="pill" data-bs-target="#pills-completed" type="button" role="tab" aria-controls="pills-completed" aria-selected="false"
-                        style="color:white"><span>
+                      <li class="nav-item my-auto  mx-2" role="presentation">
+                        <button class="nav-link myBtn" id="pills-completed-tab" data-bs-toggle="pill" data-bs-target="#pills-completed" type="button" role="tab" aria-controls="pills-completed" aria-selected="false"
+                        style="color:black"><span>
                         </span>COMPLETED</button>
                       </li>
-                      <li class="nav-item my-auto   pl-3" role="presentation">
-                        <button class="nav-link" id="pills-cancelled-tab" data-bs-toggle="pill" data-bs-target="#pills-cancelled" type="button" role="tab" aria-controls="pills-cancelled" aria-selected="false"
-                        style="color:white"><span>
+                      <li class="nav-item my-auto   mx-2 role="presentation">
+                        <button class="nav-link myBtn" id="pills-cancelled-tab" data-bs-toggle="pill" data-bs-target="#pills-cancelled" type="button" role="tab" aria-controls="pills-cancelled" aria-selected="false"
+                        style="color:black"><span>
                         </span>CANCELLED</button>
                       </li>
-                      <li class="nav-item my-auto   pl-3" role="presentation">
-                        <button class="nav-link" id="pills-return-tab" data-bs-toggle="pill" data-bs-target="#pills-return" type="button" role="tab" aria-controls="pills-return" aria-selected="false"
-                        style="color:white"><span>
+                      <li class="nav-item my-auto   mx-2" role="presentation">
+                        <button class="nav-link myBtn" id="pills-return-tab" data-bs-toggle="pill" data-bs-target="#pills-return" type="button" role="tab" aria-controls="pills-return" aria-selected="false"
+                        style="color:black"><span>
                         </span>RETURN/REFUND</button>
                       </li>
                     </ul> 

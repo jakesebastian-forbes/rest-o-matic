@@ -51,16 +51,14 @@ body {
     cursor: pointer;
 }
 .accNavbar .btn {
+    font-size: small;
+    font-weight: bold;
+    color: #FFCC01;
+    background-color: #FFFCEE;
+    border-radius: 10px;
     color: #566787;
     float: right;
-    font-size: 13px;
-    background: #fff;
-    border: none;
-    min-width: 50px;
-    border-radius: 2px;
-    border: none;
-    outline: none !important;
-    margin-left: 10px;
+    margin-left: 10px; 
 }
 .accNavbar .btn:hover, .accNavbar .btn:focus {
     color: #566787;
@@ -90,7 +88,7 @@ require "admin_sidebar.php";
               <div class="navbar accNavbar">
                     <div class="col-lg-12 col-md-12 col-sm-12">
                       <h2><b>Logs</b></h2>
-                      <a href="#" class="btn btn-secondary"><i class="material-icons">file_download</i> <span>Export to Excel</span></a>
+                      <a href="#" class="btn btn-secondary" style="margin-right: 15px"><i class="material-icons">file_download</i> <span>Export to Excel</span></a>
                   </div>
               </div>
             </nav>

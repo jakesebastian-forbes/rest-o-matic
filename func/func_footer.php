@@ -1,3 +1,10 @@
+<style>
+    .socialmedia a{
+        font-size: 24px;
+        color: white;
+        margin: 5px;
+    }
+</style>
 
     <div class="footer container-fluid" style="background-color:black;
     position: absolute;color: white;margin-bottom: 0px; bottom:0;" id = "page_footer">
@@ -7,7 +14,7 @@
                 <h2>ABOUT US</h2>
             </div>
             <div class="row">
-                <p>HOT DOG DIGIDIDOG HOT DOG DIGIDIDOG<br>HOT DOG DIGIDIDOG HOT DOG DIGIDIDOG<br>HOT DOG DIGIDIDOG HOT DOG DIGIDIDOG<br>HOT DOG DIGIDIDOG HOT DOG DIGIDIDOG</p>
+                <p>F. Castro St., Brgy. 10<br>Nasugbu, batangas, Philippines</p>
             </div>
             
         </div>
@@ -24,8 +31,8 @@
                     <center>
                         <div class="socialmedia" >
                             <a href="https://www.facebook.com/kcorndognasugbu/"><i class="fa-brands fa-facebook"></i></a>
-                            <a href="#"><i class="fa-brands fa-instagram"></i></a>
-                            <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                            <a href="https://www.instagram.com/"><i class="fa-brands fa-instagram"></i></a>
+                            <a href="https://twitter.com/i/flow/login"><i class="fa-brands fa-twitter"></i></a>
                         </div>
                     </center>
                     

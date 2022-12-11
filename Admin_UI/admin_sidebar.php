@@ -85,12 +85,12 @@
                                 <a class="nav-link" href="admin_account.php">
                                 <span><img src="../images/icon/account_icon.png" alt="account_icon" class = "nav_icon">ACCOUNTS</a>
                               </li>
-                              <li class="nav-item">
+                              <div class="position-absolute bottom-0 end-0 m-3">
                                 <a href="../func/func_logout.php">
                                 <button type="button" class="btn btn-danger btn-lg text-black" style="border-radius: 24px;"> 
                                 LOGOUT </button>
                                 </a>
-                            </li>
+                            </div>
                             </li>
                           </ul>
                         </div>

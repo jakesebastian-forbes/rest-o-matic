@@ -8,7 +8,7 @@
     <!-- <link rel="stylesheet" href="bootstrap-5.2.2/css/bootstrap.min.css"/>
     <script src="https://kit.fontawesome.com/1c020da525.js" crossorigin="anonymous"></script> 
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"> -->
-    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css"> -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
     <!-- <script src="bootstrap-5.2.2/js/bootstrap.bundle.min.js"></script> 
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script> -->
@@ -32,7 +32,8 @@ body {
 .accNavbar h2{
     float: left; color:white;
     padding-top: 5px; 
-    margin-left:10px;
+    margin-left: 15px;
+    margin-right: 20px;
     margin: 5px 0 0;
     font-size: 24px;
 }
@@ -51,16 +52,14 @@ body {
     cursor: pointer;
 }
 .accNavbar .btn {
+    font-size: small;
+    font-weight: bold;
+    color: #FFCC01;
+    background-color: #FFFCEE;
+    border-radius: 10px;
     color: #566787;
     float: right;
-    font-size: 13px;
-    background: #fff;
-    border: none;
-    min-width: 50px;
-    border-radius: 2px;
-    border: none;
-    outline: none !important;
-    margin-left: 10px;
+    margin-left: 10px; 
 }
 .accNavbar .btn:hover, .accNavbar .btn:focus {
     color: #566787;
@@ -121,6 +120,24 @@ body {
 .modal form label {
 	font-weight: normal;
 }	
+.mybtn{
+  font-size: large;
+  font-weight: bold;
+  color: #FFCC01;
+  width: 190px;
+  background-color: #FFFCEE;
+  border-radius: 30px;
+  padding: 10px;
+  margin: 10px 10px;
+  margin-right: 2%;
+}
+.mybtn:hover{
+  color: red;
+  margin-top: 10px;
+  background-color: #fffae5;
+}
+
+
 </style>
 
 <body>
@@ -131,12 +148,35 @@ body {
         require "admin_sidebar.php";
         
         ?>
+        <?php
+                $full_url = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+                // echo $full_url;
+                if(strpos($full_url,"update=success") == true ){
+                   echo "<p class = 'success'>
+                   <span> <img src='../images/icon/error.png' alt='error_icon' class = 'icon_img'></span>
+                   Successfully Updated.</p>";
+
+                }else if(strpos($full_url,"update=error") == true ){
+                  echo "<p class = 'error'>
+                  <span> <img src='images/icon/error.png' alt='error_icon' class = 'icon_img'></span>
+                  Failed to update Record.</p>";
+                }elseif(strpos($full_url,"added=success") == true ){
+                  echo "<p class = 'success'>
+                   <span> <img src='../images/icon/error.png' alt='error_icon' class = 'icon_img'></span>
+                   Successfully Added Menu.</p>";
+                }elseif(strpos($full_url,"delete=success") == true ){
+                  echo "<p class = 'success'>
+                   <span> <img src='../images/icon/error.png' alt='error_icon' class = 'icon_img'></span>
+                   Successfully Deleted Menu.</p>";
+                }
+              ?>
           <div class="panel">
             <nav>
               <div class="navbar accNavbar">
                     <div class="col-lg-12 col-md-12 col-sm-12">
                       <h2><b>Menu Management</b></h2>
-                      <a href="#" class="btn btn-secondary"><i class="material-icons">file_download</i> <span>Export to Excel</span></a><a href="#" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#add-item"><i class="fa-sharp fa-solid fa-circle-plus" data-toggle="tooltip" title="Add"></i> <span>Add New Item</span></a>
+                      <a href="#" class="btn btn-secondary" style="margin-right: 15px"><i class="material-icons">file_download</i> <span>Export to Excel</span></a>
+                      <a href="#" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#add-item"><i class="fa-sharp fa-solid fa-circle-plus" data-toggle="tooltip" title="Add"></i> <span>Add New Item</span></a>
                   </div>
               </div>
             </nav>
@@ -199,12 +239,12 @@ body {
                   </div>
                   </div>
                   
-                  <div class="card-footer">
+                  <div class = "row mb-2">
                         <div style= "display: inline; width: fit-content;">
-                          <form action="" method="get">
+                          <form action="" method="post">
                           <input type="text" value="<?php echo $rows['menu_id']?>" hidden>
-                          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#edit-item"
-                          onclick="update_menu(this.value)" value = "<?php echo $rows['menu_id']?>">
+                          <button type="button" class="mybtn" data-bs-toggle="modal" data-bs-target="#edit-item"
+                          onclick="update_menu(this.value)" value = "<?php echo $rows['menu_id']?>" >
                           <i class="bi-pencil-square" data-toggle="tooltip" title="Edit" style="color: #2196F3;">
                           </i> <span>Edit Menu</span>
                           </button>
@@ -213,13 +253,15 @@ body {
                           </div>
 
                       <div style= "display: inline; width: fit-content;">
-                          <form action="" method="get">
-                          <input type="text" value="<?php echo $rows['menu_id']?>" hidden>
-                          <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteEmployee">
+                          <form action="../func/func_del_item.php" method="post" id="delete_id_<?php echo $rows['menu_id']?>">
+                          <input type="text" value="<?php echo $rows['menu_id']?>" name="id" hidden>
+                          <button type="button" class="mybtn" data-bs-toggle="modal" data-bs-target="#deleteItem"
+                          onclick="delete_menu(this.value)" value = "<?php echo $rows['menu_id']?>">
                           <i class="bi-trash3-fill" data-toggle="tooltip" title="Delete" style="color: #F44336;">
                           </i> <span>Delete Menu</span>
                           </form> 
                           </div> 
+                    </div>
                   </div>
                 </div>
               </div>
@@ -241,15 +283,15 @@ body {
                   </div>
                   <div class="modal-body p-4">
                     <div class="text-center">
-                    <form method="post" action = "func_insert_item.php" id="add_form">  
+                    <form method="post" action = "../func/func_insert_item.php" id="add_form" enctype="multipart/form-data">  
                     <div class="row mb-2">
                           <div class="col">
                               <input name="menu_id" value = "" hidden> 
                               <!-- <input type="text" class="form-control" placeholder="Category" name="category" 
                               value="" /> -->
                                 <select name="category" id="selected_category" onchange="myFunction()" class="width: 100%; m-1 py-2">
-                                  <option value="Classic">Classic</option>
-                                  <option value="Whole Mozarella">Whole Mozarella</option>
+                                  <option value="Classics">Classics</option>
+                                  <option value="Whole Mozzarella">Whole Mozzarella</option>
                                   <option value="Half Mozza Plus Half Sausage">Half Mozza Plus Half Sausage</option>
                                   <option value="Specials">Specials</option>
                                 </select>
@@ -280,15 +322,16 @@ body {
                           <div class="col" style ="float:left;">
                           <p>Profile Image Menu</p>
                           </div>
+                          
                           <div class="col" style ="float:right;">
-                          <input type="file" id="profile_pic" onchange="readURL(this)" name="profile1">
+                          <input type="file" id="menu_image" onchange="readURL(this)" name="profile1_add">
                           </div>
                                 
                             
                           </div>
                          
-                            <div class="modal-footer">
-                                <button class="btn btn-primary rounded" name = "add_btn" method="post">
+                            <div class="">
+                                <button class="btn btn-primary rounded" type="submit" name = "add_btn">
                                   ADD Item</button>    
                             </div>   
                     </form>
@@ -309,40 +352,16 @@ body {
                   </div>
                   <div class="modal-body p-4">
                     <div class="text-center">
-                    <?php
-                    $servername = "localhost";
-                    $username = "root";
-                    $password = "";
-                    $dbname = "restomatic_db";
-
-                    // Create connection
-                    $conn = mysqli_connect($servername, $username, $password, $dbname);
-                    // Check connection
-                    if (!$conn) {
-                      die("Connection failed: " . mysqli_connect_error());
-                    }
-
-                    $sql = "SELECT * FROM `staff_account` WHERE `menu_id` = ' '";
-                    $result = mysqli_query($conn, $sql);
-
-                    if (mysqli_num_rows($result) > 0) {
-                      // output data of each row
-                      while($row = mysqli_fetch_assoc($result)) {
-
-                      }
-                    }
-
-                    mysqli_close($conn);
-                    ?>
+                
                     <form method="post" action = "../func/func_insert_item.php" id="add_form" enctype="multipart/form-data">  
                     <div class="row mb-2">
                           <div class="col">
                               <input name="menu_id" value = "" id="update_id"hidden> 
                               <!-- <input type="text" class="form-control" placeholder="Category" name="category" 
                               value="" /> -->
-                                <select name="category" id="selected_category" onchange="myFunction()" class="width: 100%; m-1 py-2">
-                                  <option value="Classic">Classic</option>
-                                  <option value="Whole Mozarella">Whole Mozarella</option>
+                                <select name="category" id="selected_category_edit" onchange="myFunction()" class="width: 100%; m-1 py-2">
+                                  <option value="Classics">Classics</option>
+                                  <option value="Whole Mozzarella">Whole Mozarella</option>
                                   <option value="Half Mozza Plus Half Sausage">Half Mozza Plus Half Sausage</option>
                                   <option value="Specials">Specials</option>
                                 </select>
@@ -350,12 +369,12 @@ body {
 
                           </div>
                               <div class="col">
-                              <input type="text" class="form-control" id="modal-item" placeholder="Item Name" name="item_name" 
+                              <input type="text" class="form-control" id="modal_item_edit" placeholder="Item Name" name="item_name" 
                               value=""/>
                               </div>
                         </div>
                           <div class="row mb-2 my-0 py-0 gx-0">
-                            <input type="text" class="form-control" id="modal-description" placeholder="Description"
+                            <input type="text" class="form-control" id="modal_description_edit" placeholder="Description"
                               name="short_desc" value=""/>
                           </div>
                           <!-- <div class="row mb-2 my-0 py-0 gx-0">
@@ -363,7 +382,7 @@ body {
                               name="with_fries" value=""/>
                           </div> -->
                           <div class="row mb-2 my-0 py-0 gx-0">
-                            <input type="number" class="form-control" id="modal-price" placeholder="Price" name="item_price"  
+                            <input type="number" class="form-control" id="modal_price_edit" placeholder="Price" name="item_price"  
                             value="">
                             <!-- <textarea 
                             ></textarea> -->
@@ -374,15 +393,15 @@ body {
                           <p>Profile Image Menu</p>
                           </div>
                           <div class="col" style ="float:right;">
-                          <input type="file" id="profile_pic" onchange="readURL(this)" name="profile1">
+                          <input type="file" id="profile_pic_edit" onchange="readURL(this)" name="profile1_edit">
                           </div>
                                 
                             
                           </div>
                          
                             <div class="modal-footer">
-                                <button class="btn btn-primary rounded" name = "add_btn" method="post">
-                                  ADD Item</button>    
+                                <button class="btn btn-primary rounded" type="submit" name = "add_btn" method="post">
+                                  add item</button>    
                             </div>   
                     </form>
                   </div>
@@ -400,15 +419,25 @@ body {
           <form>
             <div class="modal-header">						
               <h4 class="modal-title">Delete Item</h4>
-              <button type="button" class="close" data-bs-dismiss="modal" aria-hidden="true">×</button>
+              <button type="button" class="close" data-bs-dismiss="modal" aria-hidden="true">x</button>
             </div>
-            <div class="modal-body">					
+            <div class="modal-body">
+            <div class="row mb-2 my-0 py-0 gx-0">
+                <div class="col">
+                    <input type="text" value="<?php //echo $rows['staff_id']?>" id="modal-id_delete" hidden>
+                    <!-- <input type="text" class="form-control" placeholder="Item Name" name="item_name" id="modal-itemName_add"/> -->
+                    <h4 id="modal-itemName_add1"> </h4>
+                </div>	
+              </div>	
+              <hr>					
               <p>Are you sure you want to delete these Item?</p>
               <p class="text-danger"><medium>This action cannot be undone.</medium></p>
             </div>
             <div class="modal-footer">
               <input type="button" class="btn btn-default" data-bs-dismiss="modal" value="Cancel">
-              <input type="submit" class="btn btn-danger" value="Delete">
+              <button type="button" class="btn btn-danger" value="" id="delete_confirm" onclick="on_deletes(this.value)">
+              DELETE
+              </button>
             </div>
           </form>
         </div>
@@ -419,32 +448,65 @@ body {
 // console.log('value');
 function update_menu(value){
 
-// console.log(value);
+console.log(value);
           var menu_id = $("#id_"+value)[0].innerHTML;
           var category = $("#category_"+value)[0].innerHTML;
           var item_name = $("#itemName_"+value)[0].innerHTML;
           var description = $("#description_"+value)[0].innerHTML;
           var price = $("#price_"+value)[0].innerHTML;
-          var image = $("#image_"+value)[0].innerHTML;
+          // var image = $("#image_"+value)[0].innerHTML;
          
 
-          console.log(id);
+          console.log(menu_id);
           console.log(category);
           console.log(item_name);
           console.log(description);
           console.log(price);
-          console.log(image);
+          // console.log(image);
          
 
-          $("#menu_id").val(id);
-          $("#selected_category").val(category);
-          $("#modal-name").val(item_name);
-          $("#modal-description").val(description);
-          $("#modal_price").val(price);
-          $("#profile_pic").val(image);
+          $("#update_id_edit").val(menu_id);
+          $("#selected_category_edit").val(category);
+          $("#modal-item_edit").val(item_name);
+          $("#modal_description_edit").val(description);
+          $("#modal_price_edit").val(price);
+          // $("#profile_pic").val(image);
         
 
 
+}
+
+function delete_menu(value){
+
+console.log(value);
+          var menu_id = $("#id_"+value)[0].innerHTML;
+          var itemName = $("#itemName_"+value)[0].innerHTML;
+        
+          
+         
+
+          console.log(menu_id);
+          console.log(itemName);
+ 
+         
+
+          $("#modal-id_delete").val(menu_id);
+          // $("#modal-itemName_add").innerHTML = itemName;
+          $("#modal-itemName_add").val(itemName);
+          $("#delete_confirm").val(value);
+
+          $("#modal-itemName_add1")[0].innerHTML = itemName;
+      
+      
+         
+        
+
+
+}
+
+function on_deletes(value){
+  console.log(this.value);
+  document.getElementById("delete_id_"+value).submit();
 }
 
 

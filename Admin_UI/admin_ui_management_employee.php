@@ -58,16 +58,14 @@ body {
     cursor: pointer;
 }
 .accNavbar .btn {
+    font-size: small;
+    font-weight: bold;
+    color: #FFCC01;
+    background-color: #FFFCEE;
+    border-radius: 10px;
     color: #566787;
     float: right;
-    font-size: 13px;
-    background: #fff;
-    border: none;
-    min-width: 50px;
-    border-radius: 2px;
-    border: none;
-    outline: none !important;
-    margin-left: 10px;
+    margin-left: 10px; 
 }
 .accNavbar .btn:hover, .accNavbar .btn:focus {
     color: #566787;
@@ -81,6 +79,22 @@ body {
 .accNavbar .btn span {
     float: left;
     margin-top: 2px;
+}
+.mybtn{
+  font-size: large;
+  font-weight: bold;
+  color: #FFCC01;
+  width: 190px;
+  background-color: #FFFCEE;
+  border-radius: 30px;
+  padding: 10px;
+  margin: 10px 10px;
+  margin-right: 2%;
+}
+.mybtn:hover{
+  color: red;
+  margin-top: 10px;
+  background-color: #fffae5;
 }
 .panel-body h7{
   color: #212529;
@@ -186,7 +200,7 @@ body {
               <div class="navbar accNavbar">
                     <div class="col-lg-12 col-md-12 col-sm-12 mx-2">
                       <h2><b>Employee Management</b></h2>
-                      <a href="#" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#addEmployee"><i class="material-icons" data-toggle="tooltip" title="Add">person_add</i> <span>Add New Employee</span></a>
+                      <a href="#" class="btn btn-secondary" style="margin-right: 15px" data-bs-toggle="modal" data-bs-target="#addEmployee"><i class="material-icons" data-toggle="tooltip" title="Add">person_add</i> <span>Add New Employee</span></a>
                       <a href="#" class="btn btn-secondary"><i class="material-icons">file_download</i> <span>Export to Excel</span></a>
                   </div>
               </div>
@@ -278,7 +292,7 @@ body {
                         <div style= "display: inline; width: fit-content;">
                         <form action="" method="get">
                           <input type="text" value="<?php echo $rows['staff_id']?>" hidden>
-                          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editEmployee"
+                          <button type="button" class="mybtn" data-bs-toggle="modal" data-bs-target="#editEmployee"
                           onclick="update_employee(this.value)" value = "<?php echo $rows['staff_id']?>">
                           <i class="bi-pencil-square" data-toggle="tooltip" title="Edit" style="color: #2196F3;">
                           </i> <span>Edit Employee</span>
@@ -288,9 +302,10 @@ body {
                       </div>
                       
                           <div style= "display: inline; width: fit-content;">
-                          <form action="" method="get">
-                          <input type="text" value="<?php echo $rows['staff_id']?>" hidden>
-                          <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteEmployee">
+                          <form action="../func/func_del_employee.php" method="post" id="emp_delete_id_<?php echo $rows['staff_id']?>">
+                          <input type="text" value="<?php echo $rows['staff_id']?>" name="emp_id" hidden>
+                          <button type="button" class="mybtn" data-bs-toggle="modal" data-bs-target="#deleteEmployee"
+                          onclick="delete_employee(this.value)" value = "<?php echo $rows['staff_id']?>">
                           <i class="bi-trash3-fill" data-toggle="tooltip" title="Delete" style="color: #F44336;">
                           </i> <span>Delete Employee</span>
                           </form> 
@@ -398,33 +413,7 @@ body {
                   <div class="modal-body p-4">
                     <div class="text-center">
 
-                    <?php
-                    $servername = "localhost";
-                    $username = "root";
-                    $password = "";
-                    $dbname = "restomatic_db";
-
-                    // Create connection
-                    $conn = mysqli_connect($servername, $username, $password, $dbname);
-                    // Check connection
-                    if (!$conn) {
-                      die("Connection failed: " . mysqli_connect_error());
-                    }
-
-                    $sql = "SELECT * FROM `staff_account` WHERE `staff_id` = ''";
-                    $result = mysqli_query($conn, $sql);
-
-                    if (mysqli_num_rows($result) > 0) {
-                      // output data of each row
-                      while($row = mysqli_fetch_assoc($result)) {
-                        echo "id: " . $row["staff_id"]. " - Name: " . $row["firstname"]. " " . $row["lastname"]. "<br>";
-                      }
-                    } else {
-                      echo "0 results";
-                    }
-
-                    mysqli_close($conn);
-                    ?>
+                 
                     <form action = "../func/func_edit_employee.php" method="post" enctype="multipart/form-data">  
                       <div class="row mb-2">
                           <div class="col">
@@ -465,7 +454,7 @@ body {
                         <input type="tel" value="<?php //echo $rows['emp_contact_num']?>" class="form-control" id="modal_contact_num" name="number"/>
                       </div>
                       <div class="row mb-2 my-0 py-0 gx-0">
-                        <select value="<?php //echo $rows['emp_position_post']?>" id="selected_position" name="position">
+                        <select value="<?php //echo $rows['emp_position_post']?>" id="selected_position_update" name="position">
                         <option value="Admin">Admin</option>
                         <option value="Staff">Staff</option>
                         <option value="Delivery">Delivery</option>
@@ -514,40 +503,16 @@ body {
               <button class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">	
-            <?php
-                    $servername = "localhost";
-                    $username = "root";
-                    $password = "";
-                    $dbname = "restomatic_db";
-
-                    // Create connection
-                    $conn = mysqli_connect($servername, $username, $password, $dbname);
-                    // Check connection
-                    if (!$conn) {
-                      die("Connection failed: " . mysqli_connect_error());
-                    }
-
-                    $sql = "SELECT * FROM `staff_account` WHERE `staff_id` = ''";
-                    $result = mysqli_query($conn, $sql);
-
-                    if (mysqli_num_rows($result) > 0) {
-                      // output data of each row
-                      while($row = mysqli_fetch_assoc($result)) {
-                      
-                      }
-                    } 
-
-                    mysqli_close($conn);
-                    ?>
+           
               <div class="row mb-2 my-0 py-0 gx-0">
                 <div class="col">
-                    <input type="text" value="<?php //echo $rows['staff_id']?>" name="id" id="modal-id" hidden>
-                    <input type="text" class="form-control" placeholder="Firstname" name="emp_fname" />
+                    <input type="text" value="<?php //echo $rows['staff_id']?>" name="id" id="emp_id_delete" hidden>
+                    <input type="text" class="form-control" placeholder="Firstname" name="emp_fname" id="modal_fname_delete"/>
                 </div>	
               </div>	
               <div class="row mb-2 my-0 py-0 gx-0">
                 <div class="col">
-                    <input type="text" class="form-control" placeholder="Lastname" name="emp_lname" />
+                    <input type="text" class="form-control" placeholder="Lastname" name="emp_lname" id="model_lname_delete"/>
                 </div>	
               </div>
               <hr>
@@ -556,7 +521,7 @@ body {
             </div>
             <div class="modal-footer">
               <input type="button" class="btn btn-default" data-bs-dismiss="modal" value="Cancel">
-              <input type="submit" class="btn btn-danger" value="Delete">
+              <button type="button" class="btn btn-danger" value="Delete" id="delete_confirm_emp" onclick="on_deletes(this.value)">DELETE</button>
             </div>
           </form>
      
@@ -601,16 +566,51 @@ $("#modal_email").val(email);
 $("#modal_username").val(username);
 // $("#modal-address").val(address);
 $("#modal_contact_num").val(contact);
-$("#selected-position").val(privilage);
+$("#selected_position_update").val(privilage);
 $("#modal-image").val(image);
 
 
 
+}
 
+function delete_employee(value){
 
+console.log(value);
+          var staff_id = $("#id_"+value)[0].innerHTML;
+          var firstname = $("#fname_"+value)[0].innerHTML;
+          var lastname = $("#lname_"+value)[0].innerHTML;
+        
+          
+         
+
+          console.log(staff_id);
+          console.log(firstname);
+          console.log(lastname);
+ 
+         
+
+          $("#emp_id_delete").val(staff_id);
+          $("#modal_fname_delete").val(firstname);
+          $("#model_lname_delete").val(lastname);
+          $("#delete_confirm_emp").val(value);
+      
+         
+        
 
 
 }
+
+
+
+
+function on_deletes(value){
+  console.log(this.value);
+  document.getElementById("emp_delete_id_"+value).submit();
+}
+
+
+
+
 
       function myFunction(){
         var result = document.getElementById("selected_status").value;

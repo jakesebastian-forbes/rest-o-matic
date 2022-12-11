@@ -41,14 +41,31 @@ require "../func/func_session.php";
         cursor: pointer;
     }
 
-    .footer{
+    .mybtn{
+      font-size: small;
+      font-weight: bold;
+      color: #FFCC01;
+      width: 190px;
+      background-color: #FFFCEE;
+      border-radius: 30px;
+      padding: 10px;
+      margin: 10px 10px;
+      margin-right: 2%;
+    }
+    .mybtn:hover{
+      color: red;
+      margin-top: 10px;
+      background-color: #fffae5;
+    }
+
+    /* .footer{
       left: 0;
       bottom: 0;
       width: 100%;
       background-color: black;
       color: white;
       text-align: center;
-    }
+    } */
     .socialmedia{
             
             display: flex;
@@ -288,8 +305,8 @@ require "../func/func_session.php";
               
                                        ?>
                               </table>
-                              <button class = "btn btn-warning" onclick="show_all_orders()" id = "show">SHOW ALL ORDERS</button>
-                              <button class = "btn btn-warning" onclick="minimize_orders()" id = "hide" hidden>MINIMIZE ORDERS</button>
+                              <button class = "mybtn" onclick="show_all_orders()" id = "show">SHOW ALL ORDERS</button>
+                              <button class = "mybtn" onclick="minimize_orders()" id = "hide" hidden>MINIMIZE ORDERS</button>
                               
                               
                         </div>
