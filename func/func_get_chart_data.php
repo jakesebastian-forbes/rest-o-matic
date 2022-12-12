@@ -11,7 +11,7 @@ if (!$conn) {
   die("Connection failed: " . mysqli_connect_error());
 }
 
-$sql = "SELECT SUM(`quantity`) as `qnt`,item_name FROM `orders_content` WHERE `status` = 'delivered' GROUP BY item_name; ";
+$sql = "SELECT SUM(`quantity`) as `qnt`,item_name FROM `orders_content` WHERE `status` = 'delivered' GROUP BY item_name ORDER BY `qnt` DESC; ";
 $result = mysqli_query($conn, $sql);
 
 if (mysqli_num_rows($result) > 0) {

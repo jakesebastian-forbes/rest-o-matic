@@ -97,20 +97,22 @@
             <div class="flip-card-front py-5 text-center " style="font-family: 'Courier New', monospace;contain:; font-size: large">
                 <div class = "text-responsive my-auto" style ="">
                   <h2 class="p-1" style="font-size: vw; margin-top: 3%;">Rest-o-Matic</h2>
-                  <h1 class="p-1" style="font-size: vw;font-weight:bold">09-XXX-XXX-XXX</h1>
+                  <h1 class="p-1" style="font-size: vw;font-weight:bold">0910-8439-532</h1>
                   <h4 class="p-1" style="font-size: vw;">CONTACT NUMBER</h4>
-                  <h1 class="p-1" style="font-size: vw;font-weight:bold">BRGY. SAMPLE, NASUGBU</h1>
+                  <h1 class="p-1" style="font-size: vw;font-weight:bold">F. Castro st. Brgy. 10 Nasugbu, Batangas</h1>
                   <h4 class="p-1" style="font-size: vw;"><a onclick="" href="" 
                       style="text-decoration: none; color:inherit">ADDRESS</a> </h4>
                 </div>
     
             </div>
             <div class="flip-card-back">
-    
+<!--     
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d967.5875798701267!2d120.63969!3d14.056479!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x29f6cee62947d4f5!2sWaltermart%20Nasugbu!5e0!3m2!1sen!2sph!4v1666085008834!5m2!1sen!2sph"
                 width="100%" height="100%" style="border:0;" allowfullscreen="true" loading="lazy" 
-                referrerpolicy="no-referrer-when-downgrade"></iframe>  
+                referrerpolicy="no-referrer-when-downgrade"></iframe>   -->
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3870.1033495605725!2d120.63111520000001!3d14.071074!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33bd96a5526d4957%3A0x64216a1051cfb60a!2sF%20Castro%20St%2C%20Nasugbu%2C%20Batangas!5e0!3m2!1sen!2sph!4v1670733950405!5m2!1sen!2sph" 
+                  width="100%" height="100%" style="border:0;" allowfullscreen="true" loading="lazy"></iframe>
     
             </div>
           </div>

@@ -201,7 +201,7 @@ body {
                     <div class="col-lg-12 col-md-12 col-sm-12 mx-2">
                       <h2><b>Employee Management</b></h2>
                       <a href="#" class="btn btn-secondary" style="margin-right: 15px" data-bs-toggle="modal" data-bs-target="#addEmployee"><i class="material-icons" data-toggle="tooltip" title="Add">person_add</i> <span>Add New Employee</span></a>
-                      <a href="#" class="btn btn-secondary"><i class="material-icons">file_download</i> <span>Export to Excel</span></a>
+                      <a href="#" class="btn btn-secondary" hidden><i class="material-icons">file_download</i> <span>Export to Excel</span></a>
                   </div>
               </div>
             </nav>
@@ -334,20 +334,20 @@ body {
                     <form action = "../func/func_insert_employee.php" method="post"enctype="multipart/form-data" >  
                       <div class="row mb-2">
                           <div class="col">
-                            <input type="text" class="form-control" placeholder="Firstname" name="emp_fname" />
+                            <input type="text" class="form-control" placeholder="Firstname" name="emp_fname" required/>
                           </div>
                           <div class="col">
                             <!-- <input type="text" class="form-control" id="modal-status" placeholder="Employee Status" name="emp_status" /> -->
                          
                             <!-- <form action="func_insert_employee.php" method="POST"> -->
-                            <input type="text" class="form-control" placeholder="Lastname" name="emp_lname" />
+                            <input type="text" class="form-control" placeholder="Lastname" name="emp_lname" required/>
                              
                             <!-- </form> -->
                           </div>
                       </div>
                       <div class="row mb-2 my-0 py-0 gx-0">
                       
-                        <select class = "my-auto" name="emp_status_post" id="selected_status" style = "font-size:18px;">
+                        <select class = "my-auto" name="emp_status_post" id="selected_status" style = "font-size:18px;" >
                           <option value="Active">Active</option>
                           <option value="Inactive">Inactive</option>
                           <option value="Suspended">Suspended</option>
@@ -355,26 +355,26 @@ body {
                       </div>
                       <div class="row mb-2 my-0 py-0 gx-0">
                       <div class="col">
-                            <input type="text" class="form-control" id="modal-email" placeholder="Email" name="emp_email" />
+                            <input type="text" class="form-control" id="modal-email" placeholder="Email" name="emp_email" required/>
                         </div>
                       </div>
                       <div class="row mb-2 my-0 py-0 gx-0">
                       
                       </div>
                       <div class="row mb-2 my-0 py-0 gx-0">
-                        <input type="text" class="form-control" id="modal-age" placeholder="username" name="emp_username" />
+                        <input type="text" class="form-control" id="modal-age" placeholder="username" name="emp_username" required/>
                       </div>
                       <div class="row mb-2 my-0 py-0 gx-0">
                         <input type="tel" class="form-control" id="modal-contact_num" placeholder="Contact Number" name="emp_contact_num" />
                       </div>
-                      <div class="row mb-2 my-0 py-0 gx-0">
-                        <select value="<?php //echo $rows['emp_position_post']?>" id="selected_position" name="position">
+                      <div class="row mb-2 my-1 py-0 gx-0">
+                        <select class = "my-auto" style = "font-size:18px;" value="<?php //echo $rows['emp_position_post']?>" id="selected_position" name="position">
                         <option value="Admin">Admin</option>
                         <option value="Staff">Staff</option>
                         <option value="Delivery">Delivery</option>
                       </div>
                       <div class="row mb-2 my-0 py-0 gx-0">
-                        <input type="password" class="form-control" id="modal-password" placeholder="Enter Password" name="password" />
+                        <input type="password" class="form-control" id="modal-password" placeholder="Enter Password" name="password" required/>
                       </div>
                     
                       
@@ -418,10 +418,10 @@ body {
                       <div class="row mb-2">
                           <div class="col">
                             <input type="text" value="<?php //echo $rows['staff_id']?>" name="id" id="modal-id" hidden>
-                            <input type="text" value="<?php //echo $rows['emp_name']?>" class="form-control" id="modal-name" name="fname"/>
+                            <input type="text" value="<?php //echo $rows['emp_name']?>" class="form-control" id="modal-name" name="fname" required/>
                           </div>
                           <div class="col">
-                            <input type="text" value="<?php //echo $rows['emp_name']?>" class="form-control" id="modal-lname" name="lname"/>
+                            <input type="text" value="<?php //echo $rows['emp_name']?>" class="form-control" id="modal-lname" name="lname" required/>
                            
                             </div>
                         </div>
@@ -434,12 +434,12 @@ body {
                         </div>
                       <div class="row mb-2 my-0 py-0 gx-0">
                       
-                            <input type="text" value="<?php //echo $rows['emp_email']?>" class="form-control" id="modal_email" name="email"/>
+                            <input type="text" value="<?php //echo $rows['emp_email']?>" class="form-control" id="modal_email" name="email" required/>
                        
                       </div>
                       <div class="row mb-2 my-0 py-0 gx-0">
                       
-                            <input type="text" value="<?php //echo $rows['emp_email']?>" class="form-control" id="modal_username" name="username"/>
+                            <input type="text" value="<?php //echo $rows['emp_email']?>" class="form-control" id="modal_username" name="username" required/>
                        
                       </div>
                       <!-- <div class="row mb-2 my-0 py-0 gx-0">

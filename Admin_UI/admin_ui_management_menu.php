@@ -175,8 +175,8 @@ body {
               <div class="navbar accNavbar">
                     <div class="col-lg-12 col-md-12 col-sm-12">
                       <h2><b>Menu Management</b></h2>
-                      <a href="#" class="btn btn-secondary" style="margin-right: 15px"><i class="material-icons">file_download</i> <span>Export to Excel</span></a>
-                      <a href="#" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#add-item"><i class="fa-sharp fa-solid fa-circle-plus" data-toggle="tooltip" title="Add"></i> <span>Add New Item</span></a>
+                      <a href="#" class="btn btn-secondary" style="margin-right: 15px" hidden><i class="material-icons">file_download</i> <span>Export to Excel</span></a>
+                      <a href="#" class="btn btn-secondary" style="margin-right: 15px" data-bs-toggle="modal" data-bs-target="#add-item"><i class="fa-sharp fa-solid fa-circle-plus" data-toggle="tooltip" title="Add"></i> <span>Add New Item</span></a>
                   </div>
               </div>
             </nav>
@@ -290,7 +290,7 @@ body {
                               <input name="menu_id" value = "" hidden> 
                               <!-- <input type="text" class="form-control" placeholder="Category" name="category" 
                               value="" /> -->
-                                <select name="category" id="selected_category" onchange="myFunction()" class="width: 100%; m-1 py-2">
+                                <select name="category" id="selected_category" onchange="myFunction()" class="width: 100%; m-1 py-2" required>
                                   <option value="Classics">Classics</option>
                                   <option value="Whole Mozzarella">Whole Mozzarella</option>
                                   <option value="Half Mozza Plus Half Sausage">Half Mozza Plus Half Sausage</option>
@@ -301,7 +301,7 @@ body {
                           </div>
                               <div class="col">
                               <input type="text" class="form-control" id="modal-item"  placeholder="Item Name" name="item_name" 
-                              value=""/>
+                              value="" required/>
                               </div>
                         </div>
                           <div class="row mb-2 my-0 py-0 gx-0">
@@ -314,7 +314,7 @@ body {
                           </div> -->
                           <div class="row mb-2 my-0 py-0 gx-0">
                             <input type="number" class="form-control" id="modal-price" placeholder="Price" name="item_price"  
-                            value="">
+                            value="" required>
                             <!-- <textarea 
                             ></textarea> -->
                           </div>
@@ -360,7 +360,7 @@ body {
                               <!-- <input name="menu_id" value = "" id="update_id" hidden>  -->
                               <!-- <input type="text" class="form-control" placeholder="Category" name="category" 
                               value="" /> -->
-                                <select name="category" id="selected_category_edit" onchange="myFunction()" class="width: 100%; m-1 py-2">
+                                <select name="category" id="selected_category_edit" onchange="myFunction()" class="width: 100%; m-1 py-2" required>
                                   <option value="Classics">Classics</option>
                                   <option value="Whole Mozzarella">Whole Mozarella</option>
                                   <option value="Half Mozza Plus Half Sausage">Half Mozza Plus Half Sausage</option>
@@ -371,7 +371,7 @@ body {
                           </div>
                               <div class="col">
                               <input type="text" class="form-control" id="modal-item_edit" placeholder="Item Name" name="item_name" 
-                              value=""/>
+                              value="" required/>
                               </div>
                         </div>
                           <div class="row mb-2 my-0 py-0 gx-0">
@@ -384,7 +384,7 @@ body {
                           </div> -->
                           <div class="row mb-2 my-0 py-0 gx-0">
                             <input type="number" class="form-control" id="modal_price_edit" placeholder="Price" name="item_price"  
-                            value="">
+                            value="" required>
                             <!-- <textarea 
                             ></textarea> -->
                           </div>

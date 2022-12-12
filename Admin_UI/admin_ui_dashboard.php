@@ -57,14 +57,14 @@ require "admin_sidebar.php";
         <div class="text-left">
             <div class="btn-wrapper">
             <a href="#" class="btn btn-otline-dark btn-sm align-items-center pull-right" hidden><i class="material-icons">share</i><span>Share</span></a>
-            <a href="#" class="btn btn-otline-dark btn-sm pull-right" onclick="window.print()"><i class="material-icons">print</i><span>Print</span></a>
+            <a href="#" class="btn btn-outline-dark btn-sm pull-right mx-1" style="float:right;"onclick="window.print()"><i class="material-icons">print</i><span>Print</span></a>
             </div>
         </div>
     </div>
               
     <div class="row my-2 mx1">
         <div class="col-lg-3 col-6 py-1">
-            <div class="card" style="width:100%;max-width:700px; background-color: beige;">
+            <div class="card" style="width:100%;max-width:700px; background-color: whitesmoke;">
                 <div class="card-body rounded">
                 <p class="statistics-title">TODAY SALES</p>
                 <h3 class="rate-percentage text-center" id = "today_sales">32.53%</h3>
@@ -72,7 +72,7 @@ require "admin_sidebar.php";
             </div>
             </div>
         <div class="col-lg-3 col-6 py-1">
-            <div class="card" style="width:100%;max-width:700px;background-color: beige;">
+            <div class="card" style="width:100%;max-width:700px;background-color: whitesmoke;">
                 <div class="card-body rounded" >
                 <p class="statistics-title">PENDING ORDERS</p>
                 <h3 class="rate-percentage text-center" id = "pending_total">58.00%</h3>
@@ -81,7 +81,7 @@ require "admin_sidebar.php";
             </div>
         </div>
         <div class="col-lg-3 col-6 py-1">
-            <div class="card" style="width:100%;max-width:700px;background-color: beige;">
+            <div class="card" style="width:100%;max-width:700px;background-color: whitesmoke;">
                 <div class="card-body rounded">
                 <p class="statistics-title">DELIVERED TODAY</p>
                 <h3 class="rate-percentage text-center" id = "d_today">32.53%</h3>    
@@ -90,7 +90,7 @@ require "admin_sidebar.php";
             </div>
         </div>
         <div class="col-lg-3 col-6 py-1">
-            <div class="card " style="width:100%;max-width:700px;background-color: beige;">
+            <div class="card " style="width:100%;max-width:700px;background-color: whitesmoke;">
                 <div class="card-body rounded">
                 <p class="statistics-title">TOTAL ACTIVE USERS</p>
                 <h3 class="rate-percentage text-center" id="active_user">32.53%</h3>
@@ -103,7 +103,7 @@ require "admin_sidebar.php";
    
                   <div class="row py-2">
                     <div class="col-lg-9 py-1 ">
-                        <div class="card" style="width:100%;max-width:1500px;min-height: 500px;background-color: beige;">
+                        <div class="card" style="width:100%;max-width:1500px;min-height: 500px;background-color: whitesmoke;">
                             <h4>MARKETING SALES</h4>
                            
                           <div id="myDIV" hidden>
@@ -122,7 +122,7 @@ require "admin_sidebar.php";
                    
                     <div class="col-md-3 py-1">
                         <div class="card" >
-                            <div class="card-body" style="width:100%;max-width:700px;min-height:500px;background-color: beige;">
+                            <div class="card-body" style="width:100%;max-width:700px;min-height:500px;background-color: whitesmoke;">
                                <p>TOP CUSTOMERS</p>
                                     <div class="row text-center" style ="font-weight:bold;">
                                             <div class="col">Username</div>
@@ -249,6 +249,11 @@ if(new_date.getDate() < 10){
 
     date = "0" + new_date.getDate();
     y_date  = "0" + parseInt(new_date.getDate()-1);
+}
+else{
+    date =new_date.getDate();
+    y_date = parseInt(new_date.getDate()-1);
+
 }
 
 var curr_date = new_date.getFullYear() + "-" + parseInt(new_date.getMonth()+1) + "-"+ date;

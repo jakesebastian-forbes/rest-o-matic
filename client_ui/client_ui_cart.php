@@ -445,7 +445,7 @@ function less(id,name){
         $("#qnty_counter_"+id).val(qnty-1);
 
         
-$.post("func_less_cart.php",
+$.post("../func/func_less_cart.php",
     {
         menu_id: id,
         client_id: <?php echo $_SESSION['client_id']?>
@@ -594,7 +594,7 @@ function confirm_delete(){
            id = a[i].firstChild.innerHTML;
            console.log(id);
 
-           $.post("func_delete_cart.php",
+           $.post("../func/func_delete_cart.php",
     {
         menu_id: id,
         client_id: <?php echo $_SESSION['client_id']?>
@@ -715,7 +715,7 @@ var a = $("#modal_list_selected").children();
 
 }
 //sleep because the page is reloading too fast
-sleep(500).then(() => {
+sleep(2000).then(() => {
 
 window.location.reload(true);
 });
@@ -726,10 +726,10 @@ window.location.reload(true);
 
 </script>
 
-<footer>
+<!-- <footer>
               <?php
-                require('../func/func_footer.php')
+                //require('../func/func_footer.php')
               ?>
-          </footer>
+          </footer> -->
 </body>
 </html>
